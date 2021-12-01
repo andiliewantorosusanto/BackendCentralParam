@@ -1,19 +1,26 @@
 package com.beCMS.BackendCentralParam.api;
 
 import java.security.Principal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.jar.JarException;
 
 import javax.servlet.http.HttpServletResponse;
+
+import com.beCMS.BackendCentralParam.model.modelTipeKonsumen;
 import com.beCMS.BackendCentralParam.repository.TipeKonsumenRepository;
 import com.beCMS.BackendCentralParam.repository.UserRepository;
 
+import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -66,4 +73,15 @@ public class TipeKonsumenRestController {
         }
     }
 
+    @PostMapping(path = "/input", consumes = "application/json")
+    public HashMap<String, String> insertTipeKonmodelTipeKonsumen(@RequestBody modelTipeKonsumen modelTipeKonsumen, Principal principal,
+            HttpServletResponse response) throws JarException, JSONException, ParseException {
+
+        tipeKonsumenRepository.save(modelTipeKonsumen);
+
+        HashMap<String, String> crunchifyMap = new HashMap<>();
+        crunchifyMap.put("code", "1");
+        crunchifyMap.put("message", "Input Tipe Konsumen Berhasil !");
+        return crunchifyMap;
+    }
 }
