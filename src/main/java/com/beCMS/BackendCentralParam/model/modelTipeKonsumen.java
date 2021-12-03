@@ -46,21 +46,22 @@ public class modelTipeKonsumen  implements Serializable {
         private String remarks;
             
         @Column(name = "createdby")
-        private Integer createdby;
+        private Long createdby;
             
         @Column(name = "createddate")
         private Date createddate;
             
         @Column(name = "updatedby")
-        private Integer updatedby;
+        private Long updatedby;
             
         @Column(name = "updateddate")
         private Date updateddate;
 
-        public modelTipeKonsumen(){
-            
-        }
-    public modelTipeKonsumen(Integer id, String Nama, Integer Produk, String Deskripsi, Date Start_date, Date End_date, Integer is_approved, Integer is_rejected, String remarks, Integer createdby, Date createddate, Integer updatedby, Date updateddate) {
+
+    public modelTipeKonsumen() {
+    }
+
+    public modelTipeKonsumen(Integer id, String Nama, Integer Produk, String Deskripsi, Date Start_date, Date End_date, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Date createddate, Long updatedby, Date updateddate) {
         this.id = id;
         this.Nama = Nama;
         this.Produk = Produk;
@@ -75,7 +76,6 @@ public class modelTipeKonsumen  implements Serializable {
         this.updatedby = updatedby;
         this.updateddate = updateddate;
     }
-
 
     public Integer getId() {
         return this.id;
@@ -149,11 +149,11 @@ public class modelTipeKonsumen  implements Serializable {
         this.remarks = remarks;
     }
 
-    public Integer getCreatedby() {
+    public Long getCreatedby() {
         return this.createdby;
     }
 
-    public void setCreatedby(Integer createdby) {
+    public void setCreatedby(Long createdby) {
         this.createdby = createdby;
     }
 
@@ -165,11 +165,11 @@ public class modelTipeKonsumen  implements Serializable {
         this.createddate = createddate;
     }
 
-    public Integer getUpdatedby() {
+    public Long getUpdatedby() {
         return this.updatedby;
     }
 
-    public void setUpdatedby(Integer updatedby) {
+    public void setUpdatedby(Long updatedby) {
         this.updatedby = updatedby;
     }
 
@@ -181,5 +181,89 @@ public class modelTipeKonsumen  implements Serializable {
         this.updateddate = updateddate;
     }
 
+    public modelTipeKonsumen id(Integer id) {
+        setId(id);
+        return this;
+    }
+
+    public modelTipeKonsumen Nama(String Nama) {
+        setNama(Nama);
+        return this;
+    }
+
+    public modelTipeKonsumen Produk(Integer Produk) {
+        setProduk(Produk);
+        return this;
+    }
+
+    public modelTipeKonsumen Deskripsi(String Deskripsi) {
+        setDeskripsi(Deskripsi);
+        return this;
+    }
+
+    public modelTipeKonsumen Start_date(Date Start_date) {
+        setStart_date(Start_date);
+        return this;
+    }
+
+    public modelTipeKonsumen End_date(Date End_date) {
+        setEnd_date(End_date);
+        return this;
+    }
+
+    public modelTipeKonsumen is_approved(Integer is_approved) {
+        setIs_approved(is_approved);
+        return this;
+    }
+
+    public modelTipeKonsumen is_rejected(Integer is_rejected) {
+        setIs_rejected(is_rejected);
+        return this;
+    }
+
+    public modelTipeKonsumen remarks(String remarks) {
+        setRemarks(remarks);
+        return this;
+    }
+
+    public modelTipeKonsumen createdby(Long createdby) {
+        setCreatedby(createdby);
+        return this;
+    }
+
+    public modelTipeKonsumen createddate(Date createddate) {
+        setCreateddate(createddate);
+        return this;
+    }
+
+    public modelTipeKonsumen updatedby(Long updatedby) {
+        setUpdatedby(updatedby);
+        return this;
+    }
+
+    public modelTipeKonsumen updateddate(Date updateddate) {
+        setUpdateddate(updateddate);
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", Nama='" + getNama() + "'" +
+            ", Produk='" + getProduk() + "'" +
+            ", Deskripsi='" + getDeskripsi() + "'" +
+            ", Start_date='" + getStart_date() + "'" +
+            ", End_date='" + getEnd_date() + "'" +
+            ", is_approved='" + getIs_approved() + "'" +
+            ", is_rejected='" + getIs_rejected() + "'" +
+            ", remarks='" + getRemarks() + "'" +
+            ", createdby='" + getCreatedby() + "'" +
+            ", createddate='" + getCreateddate() + "'" +
+            ", updatedby='" + getUpdatedby() + "'" +
+            ", updateddate='" + getUpdateddate() + "'" +
+            "}";
+    }
 
 }

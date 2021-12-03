@@ -3,6 +3,7 @@ package com.beCMS.BackendCentralParam.api;
 import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.jar.JarException;
@@ -10,6 +11,7 @@ import java.util.jar.JarException;
 import javax.servlet.http.HttpServletResponse;
 
 import com.beCMS.BackendCentralParam.model.modelTipeKonsumen;
+import com.beCMS.BackendCentralParam.model.userlogin.User;
 import com.beCMS.BackendCentralParam.repository.TipeKonsumenRepository;
 import com.beCMS.BackendCentralParam.repository.UserRepository;
 
@@ -18,6 +20,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -74,11 +78,61 @@ public class TipeKonsumenRestController {
     }
 
     @PostMapping(path = "/input", consumes = "application/json")
-    public HashMap<String, String> insertTipeKonmodelTipeKonsumen(@RequestBody modelTipeKonsumen modelTipeKonsumen, Principal principal,
-            HttpServletResponse response) throws JarException, JSONException, ParseException {
+    public HashMap<String, String> insertTipeKonsumen(@RequestBody modelTipeKonsumen modelTipeKonsumen,Principal principal) {
+        
+        User user = userRepository.findBynip(principal.getName());
+        modelTipeKonsumen.setCreatedby(user.getId());
+        modelTipeKonsumen.setCreateddate(new Date());
 
         tipeKonsumenRepository.save(modelTipeKonsumen);
+        HashMap<String, String> crunchifyMap = new HashMap<>();
+        crunchifyMap.put("code", "1");
+        crunchifyMap.put("message", "Input Tipe Konsumen Berhasil !");
+        return crunchifyMap;
+    }
 
+    @PostMapping(path = "/inputAndSubmit", consumes = "application/json")
+    public HashMap<String, String> insertAndSubmitTipeKonsumen(@RequestBody modelTipeKonsumen modelTipeKonsumen,Principal principal) {
+        
+        User user = userRepository.findBynip(principal.getName());
+        modelTipeKonsumen.setCreatedby(user.getId());
+        modelTipeKonsumen.setCreateddate(new Date());
+        modelTipeKonsumen.setIs_approved(0);
+        modelTipeKonsumen.setIs_rejected(0);
+
+        tipeKonsumenRepository.save(modelTipeKonsumen);
+        
+        HashMap<String, String> crunchifyMap = new HashMap<>();
+        crunchifyMap.put("code", "1");
+        crunchifyMap.put("message", "Input Tipe Konsumen Berhasil !");
+        return crunchifyMap;
+    }
+
+    @PostMapping(path = "/edit", consumes = "application/json")
+    public HashMap<String, String> editTipeKonsumen(@RequestBody modelTipeKonsumen modelTipeKonsumen,Principal principal) {
+        
+        User user = userRepository.findBynip(principal.getName());
+        modelTipeKonsumen.setUpdatedby(user.getId());
+        modelTipeKonsumen.setUpdateddate(new Date());
+
+        tipeKonsumenRepository.save(modelTipeKonsumen);
+        HashMap<String, String> crunchifyMap = new HashMap<>();
+        crunchifyMap.put("code", "1");
+        crunchifyMap.put("message", "Input Tipe Konsumen Berhasil !");
+        return crunchifyMap;
+    }
+
+    @PostMapping(path = "/editAndSubmit", consumes = "application/json")
+    public HashMap<String, String> editAndSubmitTipeKonsumen(@RequestBody modelTipeKonsumen modelTipeKonsumen,Principal principal) {
+        
+        User user = userRepository.findBynip(principal.getName());
+        modelTipeKonsumen.setUpdatedby(user.getId());
+        modelTipeKonsumen.setUpdateddate(new Date());
+        modelTipeKonsumen.setIs_approved(0);
+        modelTipeKonsumen.setIs_rejected(0);
+
+        tipeKonsumenRepository.save(modelTipeKonsumen);
+        
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Tipe Konsumen Berhasil !");
