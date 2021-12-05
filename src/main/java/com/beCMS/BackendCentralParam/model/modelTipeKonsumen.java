@@ -181,6 +181,26 @@ public class modelTipeKonsumen  implements Serializable {
         this.updateddate = updateddate;
     }
 
+    public modelTipeKonsumen submit(Long user) {
+        setIs_approved(0);
+        setIs_rejected(0);
+
+        trace(user);
+
+        return this;
+    }
+
+    public modelTipeKonsumen trace(Long user) {
+        if(this.createddate == null) {
+            setCreatedby(user);
+            setCreateddate(new Date());
+        } else {
+            setUpdatedby(user);
+            setUpdatedby(user);
+        }
+        return this;
+    }
+
     public modelTipeKonsumen id(Integer id) {
         setId(id);
         return this;

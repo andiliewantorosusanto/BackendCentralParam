@@ -81,10 +81,9 @@ public class TipeKonsumenRestController {
     public HashMap<String, String> insertTipeKonsumen(@RequestBody modelTipeKonsumen modelTipeKonsumen,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        modelTipeKonsumen.setCreatedby(user.getId());
-        modelTipeKonsumen.setCreateddate(new Date());
-
+        modelTipeKonsumen.trace(user.getId());
         tipeKonsumenRepository.save(modelTipeKonsumen);
+
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Tipe Konsumen Berhasil !");
@@ -95,11 +94,7 @@ public class TipeKonsumenRestController {
     public HashMap<String, String> insertAndSubmitTipeKonsumen(@RequestBody modelTipeKonsumen modelTipeKonsumen,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        modelTipeKonsumen.setCreatedby(user.getId());
-        modelTipeKonsumen.setCreateddate(new Date());
-        modelTipeKonsumen.setIs_approved(0);
-        modelTipeKonsumen.setIs_rejected(0);
-
+        modelTipeKonsumen.submit(user.getId());
         tipeKonsumenRepository.save(modelTipeKonsumen);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
@@ -112,8 +107,7 @@ public class TipeKonsumenRestController {
     public HashMap<String, String> editTipeKonsumen(@RequestBody modelTipeKonsumen modelTipeKonsumen,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        modelTipeKonsumen.setUpdatedby(user.getId());
-        modelTipeKonsumen.setUpdateddate(new Date());
+        modelTipeKonsumen.trace(user.getId());
 
         tipeKonsumenRepository.save(modelTipeKonsumen);
         HashMap<String, String> crunchifyMap = new HashMap<>();
@@ -126,10 +120,7 @@ public class TipeKonsumenRestController {
     public HashMap<String, String> editAndSubmitTipeKonsumen(@RequestBody modelTipeKonsumen modelTipeKonsumen,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        modelTipeKonsumen.setUpdatedby(user.getId());
-        modelTipeKonsumen.setUpdateddate(new Date());
-        modelTipeKonsumen.setIs_approved(0);
-        modelTipeKonsumen.setIs_rejected(0);
+        modelTipeKonsumen.submit(user.getId());
 
         tipeKonsumenRepository.save(modelTipeKonsumen);
         
