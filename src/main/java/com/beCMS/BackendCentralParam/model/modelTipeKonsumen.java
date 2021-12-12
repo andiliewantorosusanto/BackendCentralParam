@@ -182,10 +182,29 @@ public class modelTipeKonsumen  implements Serializable {
     }
 
     public modelTipeKonsumen submit(Long user) {
-        setIs_approved(0);
-        setIs_rejected(0);
+        if(this.is_approved == null && this.is_rejected == null){
+            setIs_approved(0);
+            setIs_rejected(0);
+    
+            trace(user);
+        }
+        return this;
+    }
 
-        trace(user);
+    public modelTipeKonsumen approve(Long user) {
+        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+            setIs_approved(1);
+            trace(user);
+        }
+
+        return this;
+    }
+
+    public modelTipeKonsumen decline(Long user) {
+        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+            setIs_rejected(1);
+            trace(user);
+        }
 
         return this;
     }

@@ -1,6 +1,7 @@
 package com.beCMS.BackendCentralParam.api;
 
 import java.security.Principal;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -23,7 +24,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -101,6 +101,7 @@ public class TipeKonsumenRestController {
     public HashMap<String, String> insertTipeKonsumen(@RequestBody modelTipeKonsumen modelTipeKonsumen,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
+        System.out.println("hey : " +modelTipeKonsumen.toString());
         modelTipeKonsumen.trace(user.getId());
         tipeKonsumenRepository.save(modelTipeKonsumen);
 
@@ -114,6 +115,7 @@ public class TipeKonsumenRestController {
     public HashMap<String, String> insertAndSubmitTipeKonsumen(@RequestBody modelTipeKonsumen modelTipeKonsumen,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
+        System.out.println("hey : " +modelTipeKonsumen.toString());
         modelTipeKonsumen.submit(user.getId());
         tipeKonsumenRepository.save(modelTipeKonsumen);
         
@@ -123,10 +125,76 @@ public class TipeKonsumenRestController {
         return crunchifyMap;
     }
 
+    @PostMapping(path = "/approveData", consumes = "application/json")
+    public HashMap<String, String> approveDataTipeKonsumen(@RequestBody modelTipeKonsumen modelTipeKonsumen,Principal principal) {
+        
+        User user = userRepository.findBynip(principal.getName());
+        modelTipeKonsumen.approve(user.getId());
+        tipeKonsumenRepository.save(modelTipeKonsumen);
+        
+        HashMap<String, String> crunchifyMap = new HashMap<>();
+        crunchifyMap.put("code", "1");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
+        return crunchifyMap;
+    }
+
+    @PostMapping(path = "/declineData", consumes = "application/json")
+    public HashMap<String, String> declineDataTipeKonsumen(@RequestBody modelTipeKonsumen modelTipeKonsumen,Principal principal) {
+        
+        User user = userRepository.findBynip(principal.getName());
+        modelTipeKonsumen.decline(user.getId());
+        tipeKonsumenRepository.save(modelTipeKonsumen);
+        
+        HashMap<String, String> crunchifyMap = new HashMap<>();
+        crunchifyMap.put("code", "1");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
+        return crunchifyMap;
+    }
+
+    @PostMapping(path = "/approve", consumes = "application/json")
+    public HashMap<String, String> approveTipeKonsumen(@RequestBody Map<String, Object> data,Principal principal) {
+        
+        User user = userRepository.findBynip(principal.getName());
+        List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
+        for(String id : idList) {
+            System.out.println("Mengakses ID : "+id);
+            Optional<modelTipeKonsumen> opTionalModelTipeKonsumen = tipeKonsumenRepository.findById(Integer.parseInt(id));
+            modelTipeKonsumen modelTipeKonsumen = opTionalModelTipeKonsumen.get();
+            modelTipeKonsumen.approve(user.getId());
+            tipeKonsumenRepository.save(modelTipeKonsumen);
+        }
+        
+        HashMap<String, String> crunchifyMap = new HashMap<>();
+        crunchifyMap.put("code", "1");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
+        return crunchifyMap;
+    }
+
+    @PostMapping(path = "/decline", consumes = "application/json")
+    public HashMap<String, String> declineTipeKonsumen(@RequestBody Map<String, Object> data,Principal principal) {
+        
+        User user = userRepository.findBynip(principal.getName());
+        List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
+        for(String id : idList) {
+            Optional<modelTipeKonsumen> opTionalModelTipeKonsumen = tipeKonsumenRepository.findById(Integer.parseInt(id));
+            modelTipeKonsumen modelTipeKonsumen = opTionalModelTipeKonsumen.get();
+            modelTipeKonsumen.decline(user.getId());
+            tipeKonsumenRepository.save(modelTipeKonsumen);
+        }
+        
+        HashMap<String, String> crunchifyMap = new HashMap<>();
+        crunchifyMap.put("code", "1");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
+        return crunchifyMap;
+    }
+
+
     @PostMapping(path = "/delete", consumes = "application/json")
-    public HashMap<String, String> deleteTipeKonsumen(@RequestParam("id[]") List<Integer> ids,Principal principal) {
-        for(Integer id : ids) {
-            Optional<modelTipeKonsumen> opTionalModelTipeKonsumen = tipeKonsumenRepository.findById(id);
+    public HashMap<String, String> deleteTipeKonsumen(@RequestBody Map<String, Object> data,Principal principal) {
+        List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
+
+        for(String id : idList) {
+            Optional<modelTipeKonsumen> opTionalModelTipeKonsumen = tipeKonsumenRepository.findById(Integer.parseInt(id));
             modelTipeKonsumen modelTipeKonsumen = opTionalModelTipeKonsumen.get();
             tipeKonsumenRepository.delete(modelTipeKonsumen);
         }
@@ -138,12 +206,13 @@ public class TipeKonsumenRestController {
     }
 
     @PostMapping(path = "/submit", consumes = "application/json")
-    public HashMap<String, String> submitTipeKonsumen(@RequestParam("id[]") List<Integer> ids,Principal principal) {
+    public HashMap<String, String> submitTipeKonsumen(@RequestBody Map<String, Object> data,Principal principal) {
         
+        List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
         User user = userRepository.findBynip(principal.getName());
 
-        for(Integer id : ids) {
-            Optional<modelTipeKonsumen> opTionalModelTipeKonsumen = tipeKonsumenRepository.findById(id);
+        for(String id : idList) {
+            Optional<modelTipeKonsumen> opTionalModelTipeKonsumen = tipeKonsumenRepository.findById(Integer.parseInt(id));
             modelTipeKonsumen modelTipeKonsumen = opTionalModelTipeKonsumen.get();
             modelTipeKonsumen.submit(user.getId());
             tipeKonsumenRepository.save(modelTipeKonsumen);
