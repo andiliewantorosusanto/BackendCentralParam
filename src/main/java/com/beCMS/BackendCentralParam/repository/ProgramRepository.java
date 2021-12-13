@@ -1,18 +1,15 @@
 package com.beCMS.BackendCentralParam.repository;
 
 import java.util.List;
-import org.springframework.data.domain.Pageable;
-import com.beCMS.BackendCentralParam.model.modelProgram;
-import com.beCMS.BackendCentralParam.model.modelRateBunga;
+import com.beCMS.BackendCentralParam.model.Program;
 import com.beCMS.BackendCentralParam.view.vwDataProgram;
-import com.beCMS.BackendCentralParam.view.vwSkemaRateBunga;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 @DynamicUpdate
-public interface ProgramRepository extends JpaRepository<modelProgram, Integer> {
+public interface ProgramRepository extends JpaRepository<Program, Integer> {
 
     @Query("SELECT new com.beCMS.BackendCentralParam.view.vwDataProgram(a.id, a.program, a.produk,m.produk as nama_produk, a.deskripsi, a.start_date, a.end_date, a.is_approved, a.is_rejected, a.remarks, a.createdby, a.createddate, a.updatedby, a.updateddate, a.BranchId, a.id_biayaadmin,f.namaSkema as nama_skema_biayaadmin, a.id_rateasuransi,d.namaSkema as nama_skema_rateasuransi, a.id_ratebunga,c.namaSkema as nama_skema_ratebunga, a.id_ratecp,c.namaSkema as nama_skema_ratecp, a.id_minimaldp,g.namaSkema as nama_skema_minimaldp, a.id_komponenph,h.namaSkema as nama_skema_komponenph, a.id_rateperluasan,i.namaSkema as nama_skema_rateperluasan, a.id_biayaprovisi,j.namaSkema as nama_skema_biayaprovisi, a.id_biayafidusia,k.namaSkema as nama_skema_biayafidusia, a.id_usiakendaraanlunas, l.namaSkema as nama_skema_usiakendaraanlunas) from modelProgram a "
     +" LEFT JOIN modelProduk b ON a.produk = b.id"

@@ -9,7 +9,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.beCMS.BackendCentralParam.model.modelTipeKonsumen;
+import com.beCMS.BackendCentralParam.model.TipeKonsumen;
 import com.beCMS.BackendCentralParam.model.userlogin.User;
 import com.beCMS.BackendCentralParam.repository.TipeKonsumenRepository;
 import com.beCMS.BackendCentralParam.repository.UserRepository;
@@ -98,7 +98,7 @@ public class TipeKonsumenRestController {
     }
 
     @PostMapping(path = "/input", consumes = "application/json")
-    public HashMap<String, String> insertTipeKonsumen(@RequestBody modelTipeKonsumen modelTipeKonsumen,Principal principal) {
+    public HashMap<String, String> insertTipeKonsumen(@RequestBody TipeKonsumen modelTipeKonsumen,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
         System.out.println("hey : " +modelTipeKonsumen.toString());
@@ -112,7 +112,7 @@ public class TipeKonsumenRestController {
     }
 
     @PostMapping(path = "/inputAndSubmit", consumes = "application/json")
-    public HashMap<String, String> insertAndSubmitTipeKonsumen(@RequestBody modelTipeKonsumen modelTipeKonsumen,Principal principal) {
+    public HashMap<String, String> insertAndSubmitTipeKonsumen(@RequestBody TipeKonsumen modelTipeKonsumen,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
         System.out.println("hey : " +modelTipeKonsumen.toString());
@@ -126,7 +126,7 @@ public class TipeKonsumenRestController {
     }
 
     @PostMapping(path = "/approveData", consumes = "application/json")
-    public HashMap<String, String> approveDataTipeKonsumen(@RequestBody modelTipeKonsumen modelTipeKonsumen,Principal principal) {
+    public HashMap<String, String> approveDataTipeKonsumen(@RequestBody TipeKonsumen modelTipeKonsumen,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
         modelTipeKonsumen.approve(user.getId());
@@ -139,7 +139,7 @@ public class TipeKonsumenRestController {
     }
 
     @PostMapping(path = "/declineData", consumes = "application/json")
-    public HashMap<String, String> declineDataTipeKonsumen(@RequestBody modelTipeKonsumen modelTipeKonsumen,Principal principal) {
+    public HashMap<String, String> declineDataTipeKonsumen(@RequestBody TipeKonsumen modelTipeKonsumen,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
         modelTipeKonsumen.decline(user.getId());
@@ -158,8 +158,8 @@ public class TipeKonsumenRestController {
         List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
         for(String id : idList) {
             System.out.println("Mengakses ID : "+id);
-            Optional<modelTipeKonsumen> opTionalModelTipeKonsumen = tipeKonsumenRepository.findById(Integer.parseInt(id));
-            modelTipeKonsumen modelTipeKonsumen = opTionalModelTipeKonsumen.get();
+            Optional<TipeKonsumen> optionalTipeKonsumen = tipeKonsumenRepository.findById(Integer.parseInt(id));
+            TipeKonsumen modelTipeKonsumen = optionalTipeKonsumen.get();
             modelTipeKonsumen.approve(user.getId());
             tipeKonsumenRepository.save(modelTipeKonsumen);
         }
@@ -176,8 +176,8 @@ public class TipeKonsumenRestController {
         User user = userRepository.findBynip(principal.getName());
         List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
         for(String id : idList) {
-            Optional<modelTipeKonsumen> opTionalModelTipeKonsumen = tipeKonsumenRepository.findById(Integer.parseInt(id));
-            modelTipeKonsumen modelTipeKonsumen = opTionalModelTipeKonsumen.get();
+            Optional<TipeKonsumen> optionalTipeKonsumen = tipeKonsumenRepository.findById(Integer.parseInt(id));
+            TipeKonsumen modelTipeKonsumen = optionalTipeKonsumen.get();
             modelTipeKonsumen.decline(user.getId());
             tipeKonsumenRepository.save(modelTipeKonsumen);
         }
@@ -194,8 +194,8 @@ public class TipeKonsumenRestController {
         List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
 
         for(String id : idList) {
-            Optional<modelTipeKonsumen> opTionalModelTipeKonsumen = tipeKonsumenRepository.findById(Integer.parseInt(id));
-            modelTipeKonsumen modelTipeKonsumen = opTionalModelTipeKonsumen.get();
+            Optional<TipeKonsumen> optionalTipeKonsumen = tipeKonsumenRepository.findById(Integer.parseInt(id));
+            TipeKonsumen modelTipeKonsumen = optionalTipeKonsumen.get();
             tipeKonsumenRepository.delete(modelTipeKonsumen);
         }
         
@@ -212,8 +212,8 @@ public class TipeKonsumenRestController {
         User user = userRepository.findBynip(principal.getName());
 
         for(String id : idList) {
-            Optional<modelTipeKonsumen> opTionalModelTipeKonsumen = tipeKonsumenRepository.findById(Integer.parseInt(id));
-            modelTipeKonsumen modelTipeKonsumen = opTionalModelTipeKonsumen.get();
+            Optional<TipeKonsumen> optionalTipeKonsumen = tipeKonsumenRepository.findById(Integer.parseInt(id));
+            TipeKonsumen modelTipeKonsumen = optionalTipeKonsumen.get();
             modelTipeKonsumen.submit(user.getId());
             tipeKonsumenRepository.save(modelTipeKonsumen);
         }

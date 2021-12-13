@@ -5,15 +5,13 @@ import java.util.List;
 
 import com.beCMS.BackendCentralParam.view.vwDataRateBunga;
 import com.beCMS.BackendCentralParam.view.vwSkemaRateBunga;
-import com.beCMS.BackendCentralParam.model.modelRateAsuransi;
-import com.beCMS.BackendCentralParam.model.modelRateBunga;
-import org.springframework.data.domain.Pageable;
+import com.beCMS.BackendCentralParam.model.RateBunga;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 @DynamicUpdate
-public interface RateBungaRepository extends JpaRepository<modelRateBunga, Integer> {
+public interface RateBungaRepository extends JpaRepository<RateBunga, Integer> {
 
     @Query("SELECT new com.beCMS.BackendCentralParam.view.vwDataRateBunga(a.namaSkema,a.loan_type,e.deskripsi,a.jenis_kendaraan,b.jenis_kendaraan_id as jenis_kendaraan,a.jenis_pembiayaan,d.jenis_pembiayaan_id as jenis_pembiayaan,a.cluster,c.cluster_id as cluster,a.start_tahun_kendaraan,a.end_tahun,a.start_berlaku,a.end_berlaku,a.statusApproved,a.Remarks) from modelRateBunga a left join modelJenisKendaraan b on a.jenis_kendaraan = b.id left join modelCluster c on a.cluster = c.id left join modelJenisPembiayaan d on a.jenis_pembiayaan = d.id left join modelLoanType e on a.loan_type = e.id_komp")
     List<vwDataRateBunga> getListDataRateBunga();

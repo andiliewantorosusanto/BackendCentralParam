@@ -2,7 +2,7 @@ package com.beCMS.BackendCentralParam.repository;
 
 import java.util.List;
 
-import com.beCMS.BackendCentralParam.model.modelMinimalDP;
+import com.beCMS.BackendCentralParam.model.MinimalDP;
 import com.beCMS.BackendCentralParam.view.vwDataMinimalDP;
 import com.beCMS.BackendCentralParam.view.vwSkemaMinimalDP;
 
@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 @DynamicUpdate
-public interface RateMinimalDPRepository extends JpaRepository<modelMinimalDP, Integer> {
+public interface MinimalDPRepository extends JpaRepository<MinimalDP, Integer> {
 
     @Query("SELECT new com.beCMS.BackendCentralParam.view.vwDataMinimalDP(a.id,a.namaSkema,a.loanType,b.deskripsi,a.tujuan_penggunaan,c.Nama,a.tipe_konsumen,d.Nama as Nama_konsumen,a.jeniskendaraanid,e.jenis_kendaraan_id,a.jenis_pembiayaan,f.jenis_pembiayaan_id,a.cluster,g.cluster_id,a.minimalDP,a.status,a.remarks) from modelMinimalDP a"
     +" LEFT JOIN modelLoanType b ON a.loanType = b.id_komp"

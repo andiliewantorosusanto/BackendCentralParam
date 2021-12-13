@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.beCMS.BackendCentralParam.model.LDAP.Credentials;
 import com.beCMS.BackendCentralParam.model.LDAP.CredentialsLogin;
 import com.beCMS.BackendCentralParam.model.LDAP.vwCredentials;
 import com.beCMS.BackendCentralParam.model.LDAP.vwJWTLDAP;

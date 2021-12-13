@@ -2,7 +2,7 @@ package com.beCMS.BackendCentralParam.repository;
 
 import java.util.List;
 
-import com.beCMS.BackendCentralParam.model.modelKomponenPH;
+import com.beCMS.BackendCentralParam.model.KomponenPH;
 import com.beCMS.BackendCentralParam.view.vwDataKomponenPH;
 import com.beCMS.BackendCentralParam.view.vwSkemaKomponenPH;
 
@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 @DynamicUpdate
-public interface KomponenPHRepository extends JpaRepository<modelKomponenPH, Integer> {
+public interface KomponenPHRepository extends JpaRepository<KomponenPH, Integer> {
 
     @Query("SELECT new com.beCMS.BackendCentralParam.view.vwDataKomponenPH(id, idKompPH, jenis, addm, addb, created_at, startBerlaku, endBerlaku, Remarks, is_rejected, group_id, kondisi_kendaraan, produk, status, tipe_konsumen, jenis_pembiayaan, jenis_kendaraan, program, cluster, is_login) from modelKomponenPH")
     List<vwDataKomponenPH> getListDataKomponenPH();

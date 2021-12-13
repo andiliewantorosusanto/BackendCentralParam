@@ -4,8 +4,6 @@ package com.beCMS.BackendCentralParam.model.LDAP;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import org.springframework.boot.autoconfigure.ldap.embedded.EmbeddedLdapProperties.Credential;
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class vwJWTLDAP {
 

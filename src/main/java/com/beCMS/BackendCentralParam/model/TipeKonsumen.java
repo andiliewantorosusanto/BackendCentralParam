@@ -15,7 +15,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="sp_tipekonsumen_kkbsk")
-public class modelTipeKonsumen  implements Serializable {
+public class TipeKonsumen  implements Serializable {
     
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "ID")
@@ -58,10 +58,10 @@ public class modelTipeKonsumen  implements Serializable {
         private Date updateddate;
 
 
-    public modelTipeKonsumen() {
+    public TipeKonsumen() {
     }
 
-    public modelTipeKonsumen(Integer id, String Nama, Integer Produk, String Deskripsi, Date Start_date, Date End_date, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Date createddate, Long updatedby, Date updateddate) {
+    public TipeKonsumen(Integer id, String Nama, Integer Produk, String Deskripsi, Date Start_date, Date End_date, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Date createddate, Long updatedby, Date updateddate) {
         this.id = id;
         this.Nama = Nama;
         this.Produk = Produk;
@@ -181,7 +181,7 @@ public class modelTipeKonsumen  implements Serializable {
         this.updateddate = updateddate;
     }
 
-    public modelTipeKonsumen submit(Long user) {
+    public TipeKonsumen submit(Long user) {
         if(this.is_approved == null && this.is_rejected == null){
             setIs_approved(0);
             setIs_rejected(0);
@@ -191,7 +191,7 @@ public class modelTipeKonsumen  implements Serializable {
         return this;
     }
 
-    public modelTipeKonsumen approve(Long user) {
+    public TipeKonsumen approve(Long user) {
         if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
             setIs_approved(1);
             trace(user);
@@ -200,7 +200,7 @@ public class modelTipeKonsumen  implements Serializable {
         return this;
     }
 
-    public modelTipeKonsumen decline(Long user) {
+    public TipeKonsumen decline(Long user) {
         if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
             setIs_rejected(1);
             trace(user);
@@ -209,78 +209,78 @@ public class modelTipeKonsumen  implements Serializable {
         return this;
     }
 
-    public modelTipeKonsumen trace(Long user) {
+    public TipeKonsumen trace(Long user) {
         if(this.createddate == null) {
             setCreatedby(user);
             setCreateddate(new Date());
         } else {
             setUpdatedby(user);
-            setUpdatedby(user);
+            setUpdateddate(new Date());
         }
         return this;
     }
 
-    public modelTipeKonsumen id(Integer id) {
+    public TipeKonsumen id(Integer id) {
         setId(id);
         return this;
     }
 
-    public modelTipeKonsumen Nama(String Nama) {
+    public TipeKonsumen Nama(String Nama) {
         setNama(Nama);
         return this;
     }
 
-    public modelTipeKonsumen Produk(Integer Produk) {
+    public TipeKonsumen Produk(Integer Produk) {
         setProduk(Produk);
         return this;
     }
 
-    public modelTipeKonsumen Deskripsi(String Deskripsi) {
+    public TipeKonsumen Deskripsi(String Deskripsi) {
         setDeskripsi(Deskripsi);
         return this;
     }
 
-    public modelTipeKonsumen Start_date(Date Start_date) {
+    public TipeKonsumen Start_date(Date Start_date) {
         setStart_date(Start_date);
         return this;
     }
 
-    public modelTipeKonsumen End_date(Date End_date) {
+    public TipeKonsumen End_date(Date End_date) {
         setEnd_date(End_date);
         return this;
     }
 
-    public modelTipeKonsumen is_approved(Integer is_approved) {
+    public TipeKonsumen is_approved(Integer is_approved) {
         setIs_approved(is_approved);
         return this;
     }
 
-    public modelTipeKonsumen is_rejected(Integer is_rejected) {
+    public TipeKonsumen is_rejected(Integer is_rejected) {
         setIs_rejected(is_rejected);
         return this;
     }
 
-    public modelTipeKonsumen remarks(String remarks) {
+    public TipeKonsumen remarks(String remarks) {
         setRemarks(remarks);
         return this;
     }
 
-    public modelTipeKonsumen createdby(Long createdby) {
+    public TipeKonsumen createdby(Long createdby) {
         setCreatedby(createdby);
         return this;
     }
 
-    public modelTipeKonsumen createddate(Date createddate) {
+    public TipeKonsumen createddate(Date createddate) {
         setCreateddate(createddate);
         return this;
     }
 
-    public modelTipeKonsumen updatedby(Long updatedby) {
+    public TipeKonsumen updatedby(Long updatedby) {
         setUpdatedby(updatedby);
         return this;
     }
 
-    public modelTipeKonsumen updateddate(Date updateddate) {
+    public TipeKonsumen updateddate(Date updateddate) {
         setUpdateddate(updateddate);
         return this;
     }

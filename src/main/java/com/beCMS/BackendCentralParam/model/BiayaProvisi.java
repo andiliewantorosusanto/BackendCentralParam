@@ -15,7 +15,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="sp_biayaprovisi_kkbsk")
-public class modelBiayaProvisi implements Serializable {
+public class BiayaProvisi implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
@@ -136,10 +136,10 @@ public class modelBiayaProvisi implements Serializable {
     private Date createddate;
 
     @Column(name = "createdby")
-    private Integer createdby;
+    private Long createdby;
 
     @Column(name = "updatedby")
-    private Integer updatedby;
+    private Long updatedby;
 
     @Column(name = "is_login")
     private Integer is_login;
@@ -147,11 +147,16 @@ public class modelBiayaProvisi implements Serializable {
     @Column(name = "statusapproved")
     private String statusApproved;
 
-    public modelBiayaProvisi() {
+    @Column(name = "is_rejected")
+    private Integer is_rejected;
+
+    @Column(name = "is_approved")
+    private Integer is_approved;
+
+    public BiayaProvisi() {
     }
 
-
-    public modelBiayaProvisi(Integer id, String namaSkema, Date startBerlaku, Date endBerlaku, Integer loanType, Integer productid, Integer jeniskendaraanid, Integer kondisikendaraanid, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6, Float tenor7, Float tenor8, Float tenor9, Float tenor10, Integer tipe_konsumen, Integer jenis_pembiayaan, Integer tujuan_penggunaan, Integer cluster, Integer program, String remarks, String status, Float tenor1_persen, Float tenor2_persen, Float tenor3_persen, Float tenor4_persen, Float tenor5_persen, Float tenor6_persen, Float tenor7_persen, Float tenor8_persen, Float tenor9_persen, Float tenor10_persen, Integer tahun_awal, Integer tahun_akhir, Date updateddate, Date createddate, Integer createdby, Integer updatedby, Integer is_login, String statusApproved) {
+    public BiayaProvisi(Integer id, String namaSkema, Date startBerlaku, Date endBerlaku, Integer loanType, Integer productid, Integer jeniskendaraanid, Integer kondisikendaraanid, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6, Float tenor7, Float tenor8, Float tenor9, Float tenor10, Integer tipe_konsumen, Integer jenis_pembiayaan, Integer tujuan_penggunaan, Integer cluster, Integer program, String remarks, String status, Float tenor1_persen, Float tenor2_persen, Float tenor3_persen, Float tenor4_persen, Float tenor5_persen, Float tenor6_persen, Float tenor7_persen, Float tenor8_persen, Float tenor9_persen, Float tenor10_persen, Integer tahun_awal, Integer tahun_akhir, Date updateddate, Date createddate, Long createdby, Long updatedby, Integer is_login, String statusApproved, Integer is_rejected, Integer is_approved) {
         this.id = id;
         this.namaSkema = namaSkema;
         this.startBerlaku = startBerlaku;
@@ -195,6 +200,8 @@ public class modelBiayaProvisi implements Serializable {
         this.updatedby = updatedby;
         this.is_login = is_login;
         this.statusApproved = statusApproved;
+        this.is_rejected = is_rejected;
+        this.is_approved = is_approved;
     }
 
     public Integer getId() {
@@ -509,19 +516,19 @@ public class modelBiayaProvisi implements Serializable {
         this.createddate = createddate;
     }
 
-    public Integer getCreatedby() {
+    public Long getCreatedby() {
         return this.createdby;
     }
 
-    public void setCreatedby(Integer createdby) {
+    public void setCreatedby(Long createdby) {
         this.createdby = createdby;
     }
 
-    public Integer getUpdatedby() {
+    public Long getUpdatedby() {
         return this.updatedby;
     }
 
-    public void setUpdatedby(Integer updatedby) {
+    public void setUpdatedby(Long updatedby) {
         this.updatedby = updatedby;
     }
 
@@ -541,5 +548,334 @@ public class modelBiayaProvisi implements Serializable {
         this.statusApproved = statusApproved;
     }
 
+    public Integer getIs_rejected() {
+        return this.is_rejected;
+    }
 
+    public void setIs_rejected(Integer is_rejected) {
+        this.is_rejected = is_rejected;
+    }
+
+    public Integer getIs_approved() {
+        return this.is_approved;
+    }
+
+    public void setIs_approved(Integer is_approved) {
+        this.is_approved = is_approved;
+    }
+
+    public BiayaProvisi id(Integer id) {
+        setId(id);
+        return this;
+    }
+
+    public BiayaProvisi namaSkema(String namaSkema) {
+        setNamaSkema(namaSkema);
+        return this;
+    }
+
+    public BiayaProvisi startBerlaku(Date startBerlaku) {
+        setStartBerlaku(startBerlaku);
+        return this;
+    }
+
+    public BiayaProvisi endBerlaku(Date endBerlaku) {
+        setEndBerlaku(endBerlaku);
+        return this;
+    }
+
+    public BiayaProvisi loanType(Integer loanType) {
+        setLoanType(loanType);
+        return this;
+    }
+
+    public BiayaProvisi productid(Integer productid) {
+        setProductid(productid);
+        return this;
+    }
+
+    public BiayaProvisi jeniskendaraanid(Integer jeniskendaraanid) {
+        setJeniskendaraanid(jeniskendaraanid);
+        return this;
+    }
+
+    public BiayaProvisi kondisikendaraanid(Integer kondisikendaraanid) {
+        setKondisikendaraanid(kondisikendaraanid);
+        return this;
+    }
+
+    public BiayaProvisi tenor1(Float tenor1) {
+        setTenor1(tenor1);
+        return this;
+    }
+
+    public BiayaProvisi tenor2(Float tenor2) {
+        setTenor2(tenor2);
+        return this;
+    }
+
+    public BiayaProvisi tenor3(Float tenor3) {
+        setTenor3(tenor3);
+        return this;
+    }
+
+    public BiayaProvisi tenor4(Float tenor4) {
+        setTenor4(tenor4);
+        return this;
+    }
+
+    public BiayaProvisi tenor5(Float tenor5) {
+        setTenor5(tenor5);
+        return this;
+    }
+
+    public BiayaProvisi tenor6(Float tenor6) {
+        setTenor6(tenor6);
+        return this;
+    }
+
+    public BiayaProvisi tenor7(Float tenor7) {
+        setTenor7(tenor7);
+        return this;
+    }
+
+    public BiayaProvisi tenor8(Float tenor8) {
+        setTenor8(tenor8);
+        return this;
+    }
+
+    public BiayaProvisi tenor9(Float tenor9) {
+        setTenor9(tenor9);
+        return this;
+    }
+
+    public BiayaProvisi tenor10(Float tenor10) {
+        setTenor10(tenor10);
+        return this;
+    }
+
+    public BiayaProvisi tipe_konsumen(Integer tipe_konsumen) {
+        setTipe_konsumen(tipe_konsumen);
+        return this;
+    }
+
+    public BiayaProvisi jenis_pembiayaan(Integer jenis_pembiayaan) {
+        setJenis_pembiayaan(jenis_pembiayaan);
+        return this;
+    }
+
+    public BiayaProvisi tujuan_penggunaan(Integer tujuan_penggunaan) {
+        setTujuan_penggunaan(tujuan_penggunaan);
+        return this;
+    }
+
+    public BiayaProvisi cluster(Integer cluster) {
+        setCluster(cluster);
+        return this;
+    }
+
+    public BiayaProvisi program(Integer program) {
+        setProgram(program);
+        return this;
+    }
+
+    public BiayaProvisi remarks(String remarks) {
+        setRemarks(remarks);
+        return this;
+    }
+
+    public BiayaProvisi status(String status) {
+        setStatus(status);
+        return this;
+    }
+
+    public BiayaProvisi tenor1_persen(Float tenor1_persen) {
+        setTenor1_persen(tenor1_persen);
+        return this;
+    }
+
+    public BiayaProvisi tenor2_persen(Float tenor2_persen) {
+        setTenor2_persen(tenor2_persen);
+        return this;
+    }
+
+    public BiayaProvisi tenor3_persen(Float tenor3_persen) {
+        setTenor3_persen(tenor3_persen);
+        return this;
+    }
+
+    public BiayaProvisi tenor4_persen(Float tenor4_persen) {
+        setTenor4_persen(tenor4_persen);
+        return this;
+    }
+
+    public BiayaProvisi tenor5_persen(Float tenor5_persen) {
+        setTenor5_persen(tenor5_persen);
+        return this;
+    }
+
+    public BiayaProvisi tenor6_persen(Float tenor6_persen) {
+        setTenor6_persen(tenor6_persen);
+        return this;
+    }
+
+    public BiayaProvisi tenor7_persen(Float tenor7_persen) {
+        setTenor7_persen(tenor7_persen);
+        return this;
+    }
+
+    public BiayaProvisi tenor8_persen(Float tenor8_persen) {
+        setTenor8_persen(tenor8_persen);
+        return this;
+    }
+
+    public BiayaProvisi tenor9_persen(Float tenor9_persen) {
+        setTenor9_persen(tenor9_persen);
+        return this;
+    }
+
+    public BiayaProvisi tenor10_persen(Float tenor10_persen) {
+        setTenor10_persen(tenor10_persen);
+        return this;
+    }
+
+    public BiayaProvisi tahun_awal(Integer tahun_awal) {
+        setTahun_awal(tahun_awal);
+        return this;
+    }
+
+    public BiayaProvisi tahun_akhir(Integer tahun_akhir) {
+        setTahun_akhir(tahun_akhir);
+        return this;
+    }
+
+    public BiayaProvisi updateddate(Date updateddate) {
+        setUpdateddate(updateddate);
+        return this;
+    }
+
+    public BiayaProvisi createddate(Date createddate) {
+        setCreateddate(createddate);
+        return this;
+    }
+
+    public BiayaProvisi createdby(Long createdby) {
+        setCreatedby(createdby);
+        return this;
+    }
+
+    public BiayaProvisi updatedby(Long updatedby) {
+        setUpdatedby(updatedby);
+        return this;
+    }
+
+    public BiayaProvisi is_login(Integer is_login) {
+        setIs_login(is_login);
+        return this;
+    }
+
+    public BiayaProvisi statusApproved(String statusApproved) {
+        setStatusApproved(statusApproved);
+        return this;
+    }
+
+    public BiayaProvisi is_rejected(Integer is_rejected) {
+        setIs_rejected(is_rejected);
+        return this;
+    }
+
+    public BiayaProvisi is_approved(Integer is_approved) {
+        setIs_approved(is_approved);
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", namaSkema='" + getNamaSkema() + "'" +
+            ", startBerlaku='" + getStartBerlaku() + "'" +
+            ", endBerlaku='" + getEndBerlaku() + "'" +
+            ", loanType='" + getLoanType() + "'" +
+            ", productid='" + getProductid() + "'" +
+            ", jeniskendaraanid='" + getJeniskendaraanid() + "'" +
+            ", kondisikendaraanid='" + getKondisikendaraanid() + "'" +
+            ", tenor1='" + getTenor1() + "'" +
+            ", tenor2='" + getTenor2() + "'" +
+            ", tenor3='" + getTenor3() + "'" +
+            ", tenor4='" + getTenor4() + "'" +
+            ", tenor5='" + getTenor5() + "'" +
+            ", tenor6='" + getTenor6() + "'" +
+            ", tenor7='" + getTenor7() + "'" +
+            ", tenor8='" + getTenor8() + "'" +
+            ", tenor9='" + getTenor9() + "'" +
+            ", tenor10='" + getTenor10() + "'" +
+            ", tipe_konsumen='" + getTipe_konsumen() + "'" +
+            ", jenis_pembiayaan='" + getJenis_pembiayaan() + "'" +
+            ", tujuan_penggunaan='" + getTujuan_penggunaan() + "'" +
+            ", cluster='" + getCluster() + "'" +
+            ", program='" + getProgram() + "'" +
+            ", remarks='" + getRemarks() + "'" +
+            ", status='" + getStatus() + "'" +
+            ", tenor1_persen='" + getTenor1_persen() + "'" +
+            ", tenor2_persen='" + getTenor2_persen() + "'" +
+            ", tenor3_persen='" + getTenor3_persen() + "'" +
+            ", tenor4_persen='" + getTenor4_persen() + "'" +
+            ", tenor5_persen='" + getTenor5_persen() + "'" +
+            ", tenor6_persen='" + getTenor6_persen() + "'" +
+            ", tenor7_persen='" + getTenor7_persen() + "'" +
+            ", tenor8_persen='" + getTenor8_persen() + "'" +
+            ", tenor9_persen='" + getTenor9_persen() + "'" +
+            ", tenor10_persen='" + getTenor10_persen() + "'" +
+            ", tahun_awal='" + getTahun_awal() + "'" +
+            ", tahun_akhir='" + getTahun_akhir() + "'" +
+            ", updateddate='" + getUpdateddate() + "'" +
+            ", createddate='" + getCreateddate() + "'" +
+            ", createdby='" + getCreatedby() + "'" +
+            ", updatedby='" + getUpdatedby() + "'" +
+            ", is_login='" + getIs_login() + "'" +
+            ", statusApproved='" + getStatusApproved() + "'" +
+            ", is_rejected='" + getIs_rejected() + "'" +
+            ", is_approved='" + getIs_approved() + "'" +
+            "}";
+    }
+
+    public BiayaProvisi submit(Long user) {
+        if(this.is_approved == null && this.is_rejected == null){
+            setIs_approved(0);
+            setIs_rejected(0);
+    
+            trace(user);
+        }
+        return this;
+    }
+
+    public BiayaProvisi approve(Long user) {
+        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+            setIs_approved(1);
+            trace(user);
+        }
+
+        return this;
+    }
+
+    public BiayaProvisi decline(Long user) {
+        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+            setIs_rejected(1);
+            trace(user);
+        }
+
+        return this;
+    }
+
+    public BiayaProvisi trace(Long user) {
+        if(this.createddate == null) {
+            setCreatedby(user);
+            setCreateddate(new Date());
+        } else {
+            setUpdatedby(user);
+            setUpdateddate(new Date());
+        }
+        return this;
+    }
 }

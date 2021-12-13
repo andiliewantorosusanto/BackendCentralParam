@@ -15,7 +15,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="sp_cluster")
-public class modelCluster implements Serializable {
+public class Cluster implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
@@ -46,23 +46,23 @@ public class modelCluster implements Serializable {
     private String remarks;
 
     @Column(name = "createdby")
-    private Integer createdby;
+    private Long createdby;
 
     @Column(name = "createddate")
     private Date createddate;
 
     @Column(name = "updatedby")
-    private Integer updatedby;
+    private Long updatedby;
 
     @Column(name = "updateddate")
     private Date updateddate;
 
 
-    public modelCluster() {
+    public Cluster() {
     }
     
 
-    public modelCluster(Integer id, String cluster_id, Integer produk, String deskripsi, Date start_date, Date end_date, Integer is_approved, Integer is_rejected, String remarks, Integer createdby, Date createddate, Integer updatedby, Date updateddate) {
+    public Cluster(Integer id, String cluster_id, Integer produk, String deskripsi, Date start_date, Date end_date, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Date createddate, Long updatedby, Date updateddate) {
         this.id = id;
         this.cluster_id = cluster_id;
         this.produk = produk;
@@ -150,11 +150,11 @@ public class modelCluster implements Serializable {
         this.remarks = remarks;
     }
 
-    public Integer getCreatedby() {
+    public Long getCreatedby() {
         return this.createdby;
     }
 
-    public void setCreatedby(Integer createdby) {
+    public void setCreatedby(Long createdby) {
         this.createdby = createdby;
     }
 
@@ -166,11 +166,11 @@ public class modelCluster implements Serializable {
         this.createddate = createddate;
     }
 
-    public Integer getUpdatedby() {
+    public Long getUpdatedby() {
         return this.updatedby;
     }
 
-    public void setUpdatedby(Integer updatedby) {
+    public void setUpdatedby(Long updatedby) {
         this.updatedby = updatedby;
     }
 
@@ -180,6 +180,46 @@ public class modelCluster implements Serializable {
 
     public void setUpdateddate(Date updateddate) {
         this.updateddate = updateddate;
+    }
+
+
+    public Cluster submit(Long user) {
+        if(this.is_approved == null && this.is_rejected == null){
+            setIs_approved(0);
+            setIs_rejected(0);
+    
+            trace(user);
+        }
+        return this;
+    }
+
+    public Cluster approve(Long user) {
+        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+            setIs_approved(1);
+            trace(user);
+        }
+
+        return this;
+    }
+
+    public Cluster decline(Long user) {
+        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+            setIs_rejected(1);
+            trace(user);
+        }
+
+        return this;
+    }
+
+    public Cluster trace(Long user) {
+        if(this.createddate == null) {
+            setCreatedby(user);
+            setCreateddate(new Date());
+        } else {
+            setUpdatedby(user);
+            setUpdateddate(new Date());
+        }
+        return this;
     }
 
 

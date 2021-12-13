@@ -15,7 +15,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "sp_program")
-public class modelProgram implements Serializable {
+public class Program implements Serializable {
   
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
@@ -46,13 +46,13 @@ public class modelProgram implements Serializable {
     private String remarks;
 
     @Column(name = "createdby")
-    private Integer createdby;
+    private Long createdby;
 
     @Column(name = "createddate")
     private Date createddate;
 
     @Column(name = "updatedby")
-    private Integer updatedby;
+    private Long updatedby;
 
     @Column(name = "updateddate")
     private Date updateddate;
@@ -91,10 +91,10 @@ public class modelProgram implements Serializable {
     private Integer id_usiakendaraanlunas;
 
 
-    public modelProgram() {
+    public Program() {
     }
 
-    public modelProgram(Integer id, String program, Integer produk, String deskripsi, Date start_date, Date end_date, Integer is_approved, Integer is_rejected, String remarks, Integer createdby, Date createddate, Integer updatedby, Date updateddate, String BranchId, Integer id_biayaadmin, Integer id_rateasuransi, Integer id_ratebunga, Integer id_ratecp, Integer id_minimaldp, Integer id_komponenph, Integer id_rateperluasan, Integer id_biayaprovisi, Integer id_biayafidusia, Integer id_usiakendaraanlunas) {
+    public Program(Integer id, String program, Integer produk, String deskripsi, Date start_date, Date end_date, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Date createddate, Long updatedby, Date updateddate, String BranchId, Integer id_biayaadmin, Integer id_rateasuransi, Integer id_ratebunga, Integer id_ratecp, Integer id_minimaldp, Integer id_komponenph, Integer id_rateperluasan, Integer id_biayaprovisi, Integer id_biayafidusia, Integer id_usiakendaraanlunas) {
         this.id = id;
         this.program = program;
         this.produk = produk;
@@ -193,11 +193,11 @@ public class modelProgram implements Serializable {
         this.remarks = remarks;
     }
 
-    public Integer getCreatedby() {
+    public Long getCreatedby() {
         return this.createdby;
     }
 
-    public void setCreatedby(Integer createdby) {
+    public void setCreatedby(Long createdby) {
         this.createdby = createdby;
     }
 
@@ -209,11 +209,11 @@ public class modelProgram implements Serializable {
         this.createddate = createddate;
     }
 
-    public Integer getUpdatedby() {
+    public Long getUpdatedby() {
         return this.updatedby;
     }
 
-    public void setUpdatedby(Integer updatedby) {
+    public void setUpdatedby(Long updatedby) {
         this.updatedby = updatedby;
     }
 
@@ -313,5 +313,192 @@ public class modelProgram implements Serializable {
         this.id_usiakendaraanlunas = id_usiakendaraanlunas;
     }
 
+    public Program id(Integer id) {
+        setId(id);
+        return this;
+    }
 
+    public Program program(String program) {
+        setProgram(program);
+        return this;
+    }
+
+    public Program produk(Integer produk) {
+        setProduk(produk);
+        return this;
+    }
+
+    public Program deskripsi(String deskripsi) {
+        setDeskripsi(deskripsi);
+        return this;
+    }
+
+    public Program start_date(Date start_date) {
+        setStart_date(start_date);
+        return this;
+    }
+
+    public Program end_date(Date end_date) {
+        setEnd_date(end_date);
+        return this;
+    }
+
+    public Program is_approved(Integer is_approved) {
+        setIs_approved(is_approved);
+        return this;
+    }
+
+    public Program is_rejected(Integer is_rejected) {
+        setIs_rejected(is_rejected);
+        return this;
+    }
+
+    public Program remarks(String remarks) {
+        setRemarks(remarks);
+        return this;
+    }
+
+    public Program createdby(Long createdby) {
+        setCreatedby(createdby);
+        return this;
+    }
+
+    public Program createddate(Date createddate) {
+        setCreateddate(createddate);
+        return this;
+    }
+
+    public Program updatedby(Long updatedby) {
+        setUpdatedby(updatedby);
+        return this;
+    }
+
+    public Program updateddate(Date updateddate) {
+        setUpdateddate(updateddate);
+        return this;
+    }
+
+    public Program BranchId(String BranchId) {
+        setBranchId(BranchId);
+        return this;
+    }
+
+    public Program id_biayaadmin(Integer id_biayaadmin) {
+        setId_biayaadmin(id_biayaadmin);
+        return this;
+    }
+
+    public Program id_rateasuransi(Integer id_rateasuransi) {
+        setId_rateasuransi(id_rateasuransi);
+        return this;
+    }
+
+    public Program id_ratebunga(Integer id_ratebunga) {
+        setId_ratebunga(id_ratebunga);
+        return this;
+    }
+
+    public Program id_ratecp(Integer id_ratecp) {
+        setId_ratecp(id_ratecp);
+        return this;
+    }
+
+    public Program id_minimaldp(Integer id_minimaldp) {
+        setId_minimaldp(id_minimaldp);
+        return this;
+    }
+
+    public Program id_komponenph(Integer id_komponenph) {
+        setId_komponenph(id_komponenph);
+        return this;
+    }
+
+    public Program id_rateperluasan(Integer id_rateperluasan) {
+        setId_rateperluasan(id_rateperluasan);
+        return this;
+    }
+
+    public Program id_biayaprovisi(Integer id_biayaprovisi) {
+        setId_biayaprovisi(id_biayaprovisi);
+        return this;
+    }
+
+    public Program id_biayafidusia(Integer id_biayafidusia) {
+        setId_biayafidusia(id_biayafidusia);
+        return this;
+    }
+
+    public Program id_usiakendaraanlunas(Integer id_usiakendaraanlunas) {
+        setId_usiakendaraanlunas(id_usiakendaraanlunas);
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", program='" + getProgram() + "'" +
+            ", produk='" + getProduk() + "'" +
+            ", deskripsi='" + getDeskripsi() + "'" +
+            ", start_date='" + getStart_date() + "'" +
+            ", end_date='" + getEnd_date() + "'" +
+            ", is_approved='" + getIs_approved() + "'" +
+            ", is_rejected='" + getIs_rejected() + "'" +
+            ", remarks='" + getRemarks() + "'" +
+            ", createdby='" + getCreatedby() + "'" +
+            ", createddate='" + getCreateddate() + "'" +
+            ", updatedby='" + getUpdatedby() + "'" +
+            ", updateddate='" + getUpdateddate() + "'" +
+            ", BranchId='" + getBranchId() + "'" +
+            ", id_biayaadmin='" + getId_biayaadmin() + "'" +
+            ", id_rateasuransi='" + getId_rateasuransi() + "'" +
+            ", id_ratebunga='" + getId_ratebunga() + "'" +
+            ", id_ratecp='" + getId_ratecp() + "'" +
+            ", id_minimaldp='" + getId_minimaldp() + "'" +
+            ", id_komponenph='" + getId_komponenph() + "'" +
+            ", id_rateperluasan='" + getId_rateperluasan() + "'" +
+            ", id_biayaprovisi='" + getId_biayaprovisi() + "'" +
+            ", id_biayafidusia='" + getId_biayafidusia() + "'" +
+            ", id_usiakendaraanlunas='" + getId_usiakendaraanlunas() + "'" +
+            "}";
+    }
+
+    public Program submit(Long user) {
+        if(this.is_approved == null && this.is_rejected == null){
+            setIs_approved(0);
+            setIs_rejected(0);
+    
+            trace(user);
+        }
+        return this;
+    }
+
+    public Program approve(Long user) {
+        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+            setIs_approved(1);
+            trace(user);
+        }
+
+        return this;
+    }
+
+    public Program decline(Long user) {
+        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+            setIs_rejected(1);
+            trace(user);
+        }
+
+        return this;
+    }
+
+    public Program trace(Long user) {
+        if(this.createddate == null) {
+            setCreatedby(user);
+            setCreateddate(new Date());
+        } else {
+            setUpdatedby(user);
+            setUpdateddate(new Date());
+        }
+        return this;
+    }
 }

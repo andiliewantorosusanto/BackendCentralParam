@@ -1,38 +1,33 @@
 package com.beCMS.BackendCentralParam.api;
 
-import java.math.BigDecimal;
 import java.security.Principal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.jar.JarException;
+import java.util.Optional;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.beCMS.BackendCentralParam.model.modelRateCP;
+import com.beCMS.BackendCentralParam.model.RateCP;
+import com.beCMS.BackendCentralParam.model.userlogin.User;
 import com.beCMS.BackendCentralParam.repository.RateCPRepository;
 import com.beCMS.BackendCentralParam.repository.UserRepository;
-import com.google.gson.Gson;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/ratecp")
+@RequestMapping("/api/rateCP")
 @CrossOrigin(origins = "*")
 public class RateCPRestController {
 
@@ -44,31 +39,25 @@ public class RateCPRestController {
     @Autowired
     private RateCPRepository rateCPRepository;
 
-    // NOTE Untuk liat list history penggunaan oleh Showroom REJECTED
     @PostMapping("/getalldata")
     public Map<String, Object> getAllDataRateCP(Principal principal, Pageable pageable,
             HttpServletResponse response) {
-        Map crunchifyMap = new HashMap<String, Object>();
-
-        // NOTE ambil dari token siapa yang sedang akses
-        System.out.println(principal.getName());
+        Map<String, Object> crunchifyMap = new HashMap<String, Object>();
         String id = principal.getName();
 
-        // NOTE cek diquery rolenya dia sebagai apa
         String role = userRepository.cekRoles(id);
         logger.info("NIP : " + id);
         logger.info("ROLE : " + role);
-        // NOTE kondisi dimana dia memiliki akses maka akan dilanjut
         if (role.contains("USER")) {
             try {
-                logger.info("Berhasil GET ALL DATA RATE CP");
-                crunchifyMap.put("dataRatecp", rateCPRepository.getListDataRateCP());
+                logger.info("Berhasil GET ALL DATA RateCP");
+                crunchifyMap.put("dataRateCP", rateCPRepository.findAll());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");
                 response.setStatus(400);
                 crunchifyMap.put("code", "0");
-                crunchifyMap.put("message", "Gagal membuka RATE CP!");
+                crunchifyMap.put("message", "Gagal membuka RateCP!");
             }
             return crunchifyMap;
         } else {
@@ -80,38 +69,23 @@ public class RateCPRestController {
         }
     }
 
-    @PostMapping(path = "/viewdata")
-    public HashMap<String, String> viewRateCP(HttpServletResponse response) {
-        HashMap<String, String> crunchifyMap = new HashMap<>();
-        crunchifyMap.put("message", "Testing");
-        return crunchifyMap;
-    }
-
-    // NOTE Untuk liat list history penggunaan oleh Showroom REJECTED
-    @PostMapping("/getalldataapproval")
-    public Map<String, Object> getAllDataApprovalRatecp(Principal principal, Pageable pageable,
+    @GetMapping("/{id}")
+    public Map<String, Object> getRateCP(Principal principal,@PathVariable Integer id,
             HttpServletResponse response) {
-        Map crunchifyMap = new HashMap<String, Object>();
+        Map<String, Object> crunchifyMap = new HashMap<String, Object>();
+        String userId = principal.getName();
 
-        // NOTE ambil dari token siapa yang sedang akses
-        System.out.println(principal.getName());
-        String id = principal.getName();
-
-        // NOTE cek diquery rolenya dia sebagai apa
-        String role = userRepository.cekRoles(id);
-        logger.info("NIP : " + id);
-        logger.info("ROLE : " + role);
-        // NOTE kondisi dimana dia memiliki akses maka akan dilanjut
+        String role = userRepository.cekRoles(userId);
         if (role.contains("USER")) {
             try {
-                logger.info("Berhasil GET ALL DATA RATE BUNGA");
-                crunchifyMap.put("dataRatecp", rateCPRepository.getListBucketApprovalRateCP());
+                logger.info("Berhasil RateCP");
+                crunchifyMap.put("rateCP", rateCPRepository.findById(id));
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");
                 response.setStatus(400);
                 crunchifyMap.put("code", "0");
-                crunchifyMap.put("message", "Gagal membuka history penggunaan!");
+                crunchifyMap.put("message", "Gagal membuka RateCP!");
             }
             return crunchifyMap;
         } else {
@@ -123,62 +97,130 @@ public class RateCPRestController {
         }
     }
 
-    // NOTE Input Rate Bunga
-    @PostMapping(path = "/edit", consumes = "application/json")
-    public HashMap<String, String> editRatecp(@RequestBody Map<String, Object> data, Principal principal,
-            HttpServletResponse response) {
-        HashMap<String, String> crunchifyMap = new HashMap<>();
-        return crunchifyMap;
-    }
-
-
-    // NOTE Input Program
     @PostMapping(path = "/input", consumes = "application/json")
-    public HashMap<String, String> insertRateBunga(@RequestBody Map<String, Object> data, Principal principal,
-            HttpServletResponse response) throws JarException, JSONException, ParseException {
-        Gson gson = new Gson();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        modelRateCP tmp = new modelRateCP();
-        tmp.setNamaSkema((String) data.get("nama_skema"));
-        tmp.setTipeKonsumen((Integer) data.get("tipe_konsumen"));
-
-        Date start_berlaku = dateFormat.parse(String.valueOf(data.get("start_berlaku")));
-        tmp.setStartBerlaku(start_berlaku);
+    public HashMap<String, String> insertRateCP(@RequestBody RateCP modelRateCP,Principal principal) {
         
-        Date end_berlaku = dateFormat.parse(String.valueOf(data.get("end_berlaku")));
-        tmp.setEndBerlaku(end_berlaku);
+        User user = userRepository.findBynip(principal.getName());
+        System.out.println("hey : " +modelRateCP.toString());
+        modelRateCP.trace(user.getId());
+        rateCPRepository.save(modelRateCP);
 
-
-        Date createdAtDated = dateFormat.parse(String.valueOf(data.get("created_at")));
-        tmp.setCreatedAt(createdAtDated);
-
-        
-        Float floatTenor1 = Float.parseFloat(String.valueOf(data.get("tenor1")));
-        tmp.setTenor1(floatTenor1);
-        Float floatTenor2 = Float.parseFloat(String.valueOf(data.get("tenor2")));
-        tmp.setTenor2(floatTenor2);
-        Float floatTenor3 = Float.parseFloat(String.valueOf(data.get("tenor3")));
-        tmp.setTenor3(floatTenor3);
-        Float floatTenor4 = Float.parseFloat(String.valueOf(data.get("tenor4")));
-        tmp.setTenor4(floatTenor4);
-        Float floatTenor5 = Float.parseFloat(String.valueOf(data.get("tenor5")));
-        tmp.setTenor5(floatTenor5);
-        Float floatTenor6 = Float.parseFloat(String.valueOf(data.get("tenor6")));
-        tmp.setTenor6(floatTenor6);
-        Float floatTenor7 = Float.parseFloat(String.valueOf(data.get("tenor7")));
-        tmp.setTenor7(floatTenor7);
-        Float floatTenor8 = Float.parseFloat(String.valueOf(data.get("tenor8")));
-        tmp.setTenor8(floatTenor8);
-        Float floatTenor9 = Float.parseFloat(String.valueOf(data.get("tenor9")));
-        tmp.setTenor9(floatTenor9);
-        Float floatTenor10 = Float.parseFloat(String.valueOf(data.get("tenor10")));
-        tmp.setTenor10(floatTenor10);
-
-        rateCPRepository.save(tmp);
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Rate CP Berhasil !");
+        crunchifyMap.put("message", "Input RateCP Berhasil !");
         return crunchifyMap;
     }
 
+    @PostMapping(path = "/inputAndSubmit", consumes = "application/json")
+    public HashMap<String, String> insertAndSubmitRateCP(@RequestBody RateCP modelRateCP,Principal principal) {
+        
+        User user = userRepository.findBynip(principal.getName());
+        System.out.println("hey : " +modelRateCP.toString());
+        modelRateCP.submit(user.getId());
+        rateCPRepository.save(modelRateCP);
+        
+        HashMap<String, String> crunchifyMap = new HashMap<>();
+        crunchifyMap.put("code", "1");
+        crunchifyMap.put("message", "Input Dan Submit RateCP Berhasil !");
+        return crunchifyMap;
+    }
+
+    @PostMapping(path = "/approveData", consumes = "application/json")
+    public HashMap<String, String> approveDataRateCP(@RequestBody RateCP modelRateCP,Principal principal) {
+        
+        User user = userRepository.findBynip(principal.getName());
+        modelRateCP.approve(user.getId());
+        rateCPRepository.save(modelRateCP);
+        
+        HashMap<String, String> crunchifyMap = new HashMap<>();
+        crunchifyMap.put("code", "1");
+        crunchifyMap.put("message", "Input Dan Submit RateCP Berhasil !");
+        return crunchifyMap;
+    }
+
+    @PostMapping(path = "/declineData", consumes = "application/json")
+    public HashMap<String, String> declineDataRateCP(@RequestBody RateCP modelRateCP,Principal principal) {
+        
+        User user = userRepository.findBynip(principal.getName());
+        modelRateCP.decline(user.getId());
+        rateCPRepository.save(modelRateCP);
+        
+        HashMap<String, String> crunchifyMap = new HashMap<>();
+        crunchifyMap.put("code", "1");
+        crunchifyMap.put("message", "Input Dan Submit RateCP Berhasil !");
+        return crunchifyMap;
+    }
+
+    @PostMapping(path = "/approve", consumes = "application/json")
+    public HashMap<String, String> approveRateCP(@RequestBody Map<String, Object> data,Principal principal) {
+        
+        User user = userRepository.findBynip(principal.getName());
+        List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
+        for(String id : idList) {
+            System.out.println("Mengakses ID : "+id);
+            Optional<RateCP> optionalRateCP = rateCPRepository.findById(Integer.parseInt(id));
+            RateCP modelRateCP = optionalRateCP.get();
+            modelRateCP.approve(user.getId());
+            rateCPRepository.save(modelRateCP);
+        }
+        
+        HashMap<String, String> crunchifyMap = new HashMap<>();
+        crunchifyMap.put("code", "1");
+        crunchifyMap.put("message", "Input Dan Submit RateCP Berhasil !");
+        return crunchifyMap;
+    }
+
+    @PostMapping(path = "/decline", consumes = "application/json")
+    public HashMap<String, String> declineRateCP(@RequestBody Map<String, Object> data,Principal principal) {
+        
+        User user = userRepository.findBynip(principal.getName());
+        List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
+        for(String id : idList) {
+            Optional<RateCP> optionalRateCP = rateCPRepository.findById(Integer.parseInt(id));
+            RateCP modelRateCP = optionalRateCP.get();
+            modelRateCP.decline(user.getId());
+            rateCPRepository.save(modelRateCP);
+        }
+        
+        HashMap<String, String> crunchifyMap = new HashMap<>();
+        crunchifyMap.put("code", "1");
+        crunchifyMap.put("message", "Input Dan Submit RateCP Berhasil !");
+        return crunchifyMap;
+    }
+
+
+    @PostMapping(path = "/delete", consumes = "application/json")
+    public HashMap<String, String> deleteRateCP(@RequestBody Map<String, Object> data,Principal principal) {
+        List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
+
+        for(String id : idList) {
+            Optional<RateCP> optionalRateCP = rateCPRepository.findById(Integer.parseInt(id));
+            RateCP modelRateCP = optionalRateCP.get();
+            rateCPRepository.delete(modelRateCP);
+        }
+        
+        HashMap<String, String> crunchifyMap = new HashMap<>();
+        crunchifyMap.put("code", "1");
+        crunchifyMap.put("message", "Delete RateCP Berhasil !");
+        return crunchifyMap;
+    }
+
+    @PostMapping(path = "/submit", consumes = "application/json")
+    public HashMap<String, String> submitRateCP(@RequestBody Map<String, Object> data,Principal principal) {
+        
+        List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
+        User user = userRepository.findBynip(principal.getName());
+
+        for(String id : idList) {
+            Optional<RateCP> optionalRateCP = rateCPRepository.findById(Integer.parseInt(id));
+            RateCP modelRateCP = optionalRateCP.get();
+            modelRateCP.submit(user.getId());
+            rateCPRepository.save(modelRateCP);
+        }
+        
+        HashMap<String, String> crunchifyMap = new HashMap<>();
+        crunchifyMap.put("code", "1");
+        crunchifyMap.put("message", "Edit Dan Submit RateCP Berhasil !");
+        return crunchifyMap;
+    }
 }

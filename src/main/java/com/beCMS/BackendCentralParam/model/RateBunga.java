@@ -15,7 +15,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="sp_ratebunga_kkbsk")
-public class modelRateBunga implements Serializable {
+public class RateBunga implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
@@ -145,8 +145,11 @@ public class modelRateBunga implements Serializable {
     private String Remarks;
     
     @Column(name = "is_rejected")
-    private String is_rejected;
+    private Integer is_rejected;
     
+    @Column(name = "is_approved")
+    private Integer is_approved;
+
     @Column(name = "jenis_pembiayaan")
     private Integer jenis_pembiayaan;
 
@@ -166,10 +169,10 @@ public class modelRateBunga implements Serializable {
     private Date updateddate;
 
     @Column(name = "updatedby")
-    private Integer updatedby;
+    private Long updatedby;
 
     @Column(name = "createdby")
-    private Integer createdby;
+    private Long createdby;
 
     @Column(name = "tipe_konsumen")
     private Integer tipe_konsumen;
@@ -177,13 +180,11 @@ public class modelRateBunga implements Serializable {
     @Column(name = "is_login")
     private Integer is_login;
 
-    
-    public modelRateBunga(){
 
+    public RateBunga() {
     }
 
-
-    public modelRateBunga(Integer id, String namaSkema, Integer loan_type, Integer produk, Integer jenis_kendaraan, Integer kondisi_kendaraan, Integer start_tahun_kendaraan, Integer end_tahun, Date start_berlaku, Date end_berlaku, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Integer tenor5periode1, Integer tenor5periode2, Float tenor5rate1, Float tenor5rate2, Integer tenor6periode1, Integer tenor6periode2, Float tenor6rate1, Float tenor6rate2, Integer tenor7periode1, Integer tenor7periode2, Float tenor7rate1, Float tenor7rate2, Integer tenor8periode1, Integer tenor8periode2, Float tenor8rate1, Float tenor8rate2, Integer tenor9periode1, Integer tenor9periode2, Float tenor9rate1, Float tenor9rate2, Integer tenor10periode1, Integer tenor10periode2, Float tenor10rate1, Float tenor10rate2, String operatorAwal, String operatorAkhir, String statusApproved, String Remarks, String is_rejected, Integer jenis_pembiayaan, Integer tujuan_penggunaan, Integer cluster, Integer program, Date createddate, Date updateddate, Integer updatedby, Integer createdby, Integer tipe_konsumen, Integer is_login) {
+    public RateBunga(Integer id, String namaSkema, Integer loan_type, Integer produk, Integer jenis_kendaraan, Integer kondisi_kendaraan, Integer start_tahun_kendaraan, Integer end_tahun, Date start_berlaku, Date end_berlaku, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Integer tenor5periode1, Integer tenor5periode2, Float tenor5rate1, Float tenor5rate2, Integer tenor6periode1, Integer tenor6periode2, Float tenor6rate1, Float tenor6rate2, Integer tenor7periode1, Integer tenor7periode2, Float tenor7rate1, Float tenor7rate2, Integer tenor8periode1, Integer tenor8periode2, Float tenor8rate1, Float tenor8rate2, Integer tenor9periode1, Integer tenor9periode2, Float tenor9rate1, Float tenor9rate2, Integer tenor10periode1, Integer tenor10periode2, Float tenor10rate1, Float tenor10rate2, String operatorAwal, String operatorAkhir, String statusApproved, String Remarks, Integer is_rejected, Integer is_approved, Integer jenis_pembiayaan, Integer tujuan_penggunaan, Integer cluster, Integer program, Date createddate, Date updateddate, Long updatedby, Long createdby, Integer tipe_konsumen, Integer is_login) {
         this.id = id;
         this.namaSkema = namaSkema;
         this.loan_type = loan_type;
@@ -227,6 +228,7 @@ public class modelRateBunga implements Serializable {
         this.statusApproved = statusApproved;
         this.Remarks = Remarks;
         this.is_rejected = is_rejected;
+        this.is_approved = is_approved;
         this.jenis_pembiayaan = jenis_pembiayaan;
         this.tujuan_penggunaan = tujuan_penggunaan;
         this.cluster = cluster;
@@ -575,12 +577,20 @@ public class modelRateBunga implements Serializable {
         this.Remarks = Remarks;
     }
 
-    public String getIs_rejected() {
+    public Integer getIs_rejected() {
         return this.is_rejected;
     }
 
-    public void setIs_rejected(String is_rejected) {
+    public void setIs_rejected(Integer is_rejected) {
         this.is_rejected = is_rejected;
+    }
+
+    public Integer getIs_approved() {
+        return this.is_approved;
+    }
+
+    public void setIs_approved(Integer is_approved) {
+        this.is_approved = is_approved;
     }
 
     public Integer getJenis_pembiayaan() {
@@ -631,19 +641,19 @@ public class modelRateBunga implements Serializable {
         this.updateddate = updateddate;
     }
 
-    public Integer getUpdatedby() {
+    public Long getUpdatedby() {
         return this.updatedby;
     }
 
-    public void setUpdatedby(Integer updatedby) {
+    public void setUpdatedby(Long updatedby) {
         this.updatedby = updatedby;
     }
 
-    public Integer getCreatedby() {
+    public Long getCreatedby() {
         return this.createdby;
     }
 
-    public void setCreatedby(Integer createdby) {
+    public void setCreatedby(Long createdby) {
         this.createdby = createdby;
     }
 
@@ -663,5 +673,372 @@ public class modelRateBunga implements Serializable {
         this.is_login = is_login;
     }
 
+    public RateBunga id(Integer id) {
+        setId(id);
+        return this;
+    }
 
+    public RateBunga namaSkema(String namaSkema) {
+        setNamaSkema(namaSkema);
+        return this;
+    }
+
+    public RateBunga loan_type(Integer loan_type) {
+        setLoan_type(loan_type);
+        return this;
+    }
+
+    public RateBunga produk(Integer produk) {
+        setProduk(produk);
+        return this;
+    }
+
+    public RateBunga jenis_kendaraan(Integer jenis_kendaraan) {
+        setJenis_kendaraan(jenis_kendaraan);
+        return this;
+    }
+
+    public RateBunga kondisi_kendaraan(Integer kondisi_kendaraan) {
+        setKondisi_kendaraan(kondisi_kendaraan);
+        return this;
+    }
+
+    public RateBunga start_tahun_kendaraan(Integer start_tahun_kendaraan) {
+        setStart_tahun_kendaraan(start_tahun_kendaraan);
+        return this;
+    }
+
+    public RateBunga end_tahun(Integer end_tahun) {
+        setEnd_tahun(end_tahun);
+        return this;
+    }
+
+    public RateBunga start_berlaku(Date start_berlaku) {
+        setStart_berlaku(start_berlaku);
+        return this;
+    }
+
+    public RateBunga end_berlaku(Date end_berlaku) {
+        setEnd_berlaku(end_berlaku);
+        return this;
+    }
+
+    public RateBunga tenor1(Float tenor1) {
+        setTenor1(tenor1);
+        return this;
+    }
+
+    public RateBunga tenor2(Float tenor2) {
+        setTenor2(tenor2);
+        return this;
+    }
+
+    public RateBunga tenor3(Float tenor3) {
+        setTenor3(tenor3);
+        return this;
+    }
+
+    public RateBunga tenor4(Float tenor4) {
+        setTenor4(tenor4);
+        return this;
+    }
+
+    public RateBunga tenor5periode1(Integer tenor5periode1) {
+        setTenor5periode1(tenor5periode1);
+        return this;
+    }
+
+    public RateBunga tenor5periode2(Integer tenor5periode2) {
+        setTenor5periode2(tenor5periode2);
+        return this;
+    }
+
+    public RateBunga tenor5rate1(Float tenor5rate1) {
+        setTenor5rate1(tenor5rate1);
+        return this;
+    }
+
+    public RateBunga tenor5rate2(Float tenor5rate2) {
+        setTenor5rate2(tenor5rate2);
+        return this;
+    }
+
+    public RateBunga tenor6periode1(Integer tenor6periode1) {
+        setTenor6periode1(tenor6periode1);
+        return this;
+    }
+
+    public RateBunga tenor6periode2(Integer tenor6periode2) {
+        setTenor6periode2(tenor6periode2);
+        return this;
+    }
+
+    public RateBunga tenor6rate1(Float tenor6rate1) {
+        setTenor6rate1(tenor6rate1);
+        return this;
+    }
+
+    public RateBunga tenor6rate2(Float tenor6rate2) {
+        setTenor6rate2(tenor6rate2);
+        return this;
+    }
+
+    public RateBunga tenor7periode1(Integer tenor7periode1) {
+        setTenor7periode1(tenor7periode1);
+        return this;
+    }
+
+    public RateBunga tenor7periode2(Integer tenor7periode2) {
+        setTenor7periode2(tenor7periode2);
+        return this;
+    }
+
+    public RateBunga tenor7rate1(Float tenor7rate1) {
+        setTenor7rate1(tenor7rate1);
+        return this;
+    }
+
+    public RateBunga tenor7rate2(Float tenor7rate2) {
+        setTenor7rate2(tenor7rate2);
+        return this;
+    }
+
+    public RateBunga tenor8periode1(Integer tenor8periode1) {
+        setTenor8periode1(tenor8periode1);
+        return this;
+    }
+
+    public RateBunga tenor8periode2(Integer tenor8periode2) {
+        setTenor8periode2(tenor8periode2);
+        return this;
+    }
+
+    public RateBunga tenor8rate1(Float tenor8rate1) {
+        setTenor8rate1(tenor8rate1);
+        return this;
+    }
+
+    public RateBunga tenor8rate2(Float tenor8rate2) {
+        setTenor8rate2(tenor8rate2);
+        return this;
+    }
+
+    public RateBunga tenor9periode1(Integer tenor9periode1) {
+        setTenor9periode1(tenor9periode1);
+        return this;
+    }
+
+    public RateBunga tenor9periode2(Integer tenor9periode2) {
+        setTenor9periode2(tenor9periode2);
+        return this;
+    }
+
+    public RateBunga tenor9rate1(Float tenor9rate1) {
+        setTenor9rate1(tenor9rate1);
+        return this;
+    }
+
+    public RateBunga tenor9rate2(Float tenor9rate2) {
+        setTenor9rate2(tenor9rate2);
+        return this;
+    }
+
+    public RateBunga tenor10periode1(Integer tenor10periode1) {
+        setTenor10periode1(tenor10periode1);
+        return this;
+    }
+
+    public RateBunga tenor10periode2(Integer tenor10periode2) {
+        setTenor10periode2(tenor10periode2);
+        return this;
+    }
+
+    public RateBunga tenor10rate1(Float tenor10rate1) {
+        setTenor10rate1(tenor10rate1);
+        return this;
+    }
+
+    public RateBunga tenor10rate2(Float tenor10rate2) {
+        setTenor10rate2(tenor10rate2);
+        return this;
+    }
+
+    public RateBunga operatorAwal(String operatorAwal) {
+        setOperatorAwal(operatorAwal);
+        return this;
+    }
+
+    public RateBunga operatorAkhir(String operatorAkhir) {
+        setOperatorAkhir(operatorAkhir);
+        return this;
+    }
+
+    public RateBunga statusApproved(String statusApproved) {
+        setStatusApproved(statusApproved);
+        return this;
+    }
+
+    public RateBunga Remarks(String Remarks) {
+        setRemarks(Remarks);
+        return this;
+    }
+
+    public RateBunga is_rejected(Integer is_rejected) {
+        setIs_rejected(is_rejected);
+        return this;
+    }
+
+    public RateBunga is_approved(Integer is_approved) {
+        setIs_approved(is_approved);
+        return this;
+    }
+
+    public RateBunga jenis_pembiayaan(Integer jenis_pembiayaan) {
+        setJenis_pembiayaan(jenis_pembiayaan);
+        return this;
+    }
+
+    public RateBunga tujuan_penggunaan(Integer tujuan_penggunaan) {
+        setTujuan_penggunaan(tujuan_penggunaan);
+        return this;
+    }
+
+    public RateBunga cluster(Integer cluster) {
+        setCluster(cluster);
+        return this;
+    }
+
+    public RateBunga program(Integer program) {
+        setProgram(program);
+        return this;
+    }
+
+    public RateBunga createddate(Date createddate) {
+        setCreateddate(createddate);
+        return this;
+    }
+
+    public RateBunga updateddate(Date updateddate) {
+        setUpdateddate(updateddate);
+        return this;
+    }
+
+    public RateBunga updatedby(Long updatedby) {
+        setUpdatedby(updatedby);
+        return this;
+    }
+
+    public RateBunga createdby(Long createdby) {
+        setCreatedby(createdby);
+        return this;
+    }
+
+    public RateBunga tipe_konsumen(Integer tipe_konsumen) {
+        setTipe_konsumen(tipe_konsumen);
+        return this;
+    }
+
+    public RateBunga is_login(Integer is_login) {
+        setIs_login(is_login);
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", namaSkema='" + getNamaSkema() + "'" +
+            ", loan_type='" + getLoan_type() + "'" +
+            ", produk='" + getProduk() + "'" +
+            ", jenis_kendaraan='" + getJenis_kendaraan() + "'" +
+            ", kondisi_kendaraan='" + getKondisi_kendaraan() + "'" +
+            ", start_tahun_kendaraan='" + getStart_tahun_kendaraan() + "'" +
+            ", end_tahun='" + getEnd_tahun() + "'" +
+            ", start_berlaku='" + getStart_berlaku() + "'" +
+            ", end_berlaku='" + getEnd_berlaku() + "'" +
+            ", tenor1='" + getTenor1() + "'" +
+            ", tenor2='" + getTenor2() + "'" +
+            ", tenor3='" + getTenor3() + "'" +
+            ", tenor4='" + getTenor4() + "'" +
+            ", tenor5periode1='" + getTenor5periode1() + "'" +
+            ", tenor5periode2='" + getTenor5periode2() + "'" +
+            ", tenor5rate1='" + getTenor5rate1() + "'" +
+            ", tenor5rate2='" + getTenor5rate2() + "'" +
+            ", tenor6periode1='" + getTenor6periode1() + "'" +
+            ", tenor6periode2='" + getTenor6periode2() + "'" +
+            ", tenor6rate1='" + getTenor6rate1() + "'" +
+            ", tenor6rate2='" + getTenor6rate2() + "'" +
+            ", tenor7periode1='" + getTenor7periode1() + "'" +
+            ", tenor7periode2='" + getTenor7periode2() + "'" +
+            ", tenor7rate1='" + getTenor7rate1() + "'" +
+            ", tenor7rate2='" + getTenor7rate2() + "'" +
+            ", tenor8periode1='" + getTenor8periode1() + "'" +
+            ", tenor8periode2='" + getTenor8periode2() + "'" +
+            ", tenor8rate1='" + getTenor8rate1() + "'" +
+            ", tenor8rate2='" + getTenor8rate2() + "'" +
+            ", tenor9periode1='" + getTenor9periode1() + "'" +
+            ", tenor9periode2='" + getTenor9periode2() + "'" +
+            ", tenor9rate1='" + getTenor9rate1() + "'" +
+            ", tenor9rate2='" + getTenor9rate2() + "'" +
+            ", tenor10periode1='" + getTenor10periode1() + "'" +
+            ", tenor10periode2='" + getTenor10periode2() + "'" +
+            ", tenor10rate1='" + getTenor10rate1() + "'" +
+            ", tenor10rate2='" + getTenor10rate2() + "'" +
+            ", operatorAwal='" + getOperatorAwal() + "'" +
+            ", operatorAkhir='" + getOperatorAkhir() + "'" +
+            ", statusApproved='" + getStatusApproved() + "'" +
+            ", Remarks='" + getRemarks() + "'" +
+            ", is_rejected='" + getIs_rejected() + "'" +
+            ", is_approved='" + getIs_approved() + "'" +
+            ", jenis_pembiayaan='" + getJenis_pembiayaan() + "'" +
+            ", tujuan_penggunaan='" + getTujuan_penggunaan() + "'" +
+            ", cluster='" + getCluster() + "'" +
+            ", program='" + getProgram() + "'" +
+            ", createddate='" + getCreateddate() + "'" +
+            ", updateddate='" + getUpdateddate() + "'" +
+            ", updatedby='" + getUpdatedby() + "'" +
+            ", createdby='" + getCreatedby() + "'" +
+            ", tipe_konsumen='" + getTipe_konsumen() + "'" +
+            ", is_login='" + getIs_login() + "'" +
+            "}";
+    }
+    
+    public RateBunga submit(Long user) {
+        if(this.is_approved == null && this.is_rejected == null){
+            setIs_approved(0);
+            setIs_rejected(0);
+    
+            trace(user);
+        }
+        return this;
+    }
+
+    public RateBunga approve(Long user) {
+        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+            setIs_approved(1);
+            trace(user);
+        }
+
+        return this;
+    }
+
+    public RateBunga decline(Long user) {
+        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+            setIs_rejected(1);
+            trace(user);
+        }
+
+        return this;
+    }
+
+    public RateBunga trace(Long user) {
+        if(this.createddate == null) {
+            setCreatedby(user);
+            setCreateddate(new Date());
+        } else {
+            setUpdatedby(user);
+            setUpdateddate(new Date());
+        }
+        return this;
+    }
 }

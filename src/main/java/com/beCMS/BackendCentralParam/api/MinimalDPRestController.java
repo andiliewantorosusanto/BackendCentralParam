@@ -9,9 +9,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.beCMS.BackendCentralParam.model.JenisKendaraan;
+import com.beCMS.BackendCentralParam.model.MinimalDP;
 import com.beCMS.BackendCentralParam.model.userlogin.User;
-import com.beCMS.BackendCentralParam.repository.JenisKendaraanRepository;
+import com.beCMS.BackendCentralParam.repository.MinimalDPRepository;
 import com.beCMS.BackendCentralParam.repository.UserRepository;
 
 import org.slf4j.Logger;
@@ -27,20 +27,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/jeniskendaraan")
+@RequestMapping("/api/rateMinimalDP")
 @CrossOrigin(origins = "*")
-public class JenisKendaraanRestController {
+public class MinimalDPRestController {
 
-    Logger logger = LoggerFactory.getLogger(JenisKendaraanRestController.class);
+    Logger logger = LoggerFactory.getLogger(MinimalDPRestController.class);
 
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
-    private JenisKendaraanRepository jenisKendaraanRepository;
+    private MinimalDPRepository rateMinimalDPRepository;
 
     @PostMapping("/getalldata")
-    public Map<String, Object> getAllDataJenisKendaraan(Principal principal, Pageable pageable,
+    public Map<String, Object> getAllDataMinimalDP(Principal principal, Pageable pageable,
             HttpServletResponse response) {
         Map<String, Object> crunchifyMap = new HashMap<String, Object>();
         String id = principal.getName();
@@ -50,14 +50,14 @@ public class JenisKendaraanRestController {
         logger.info("ROLE : " + role);
         if (role.contains("USER")) {
             try {
-                logger.info("Berhasil GET ALL DATA JenisKendaraan");
-                crunchifyMap.put("dataJenisKendaraan", jenisKendaraanRepository.findAll());
+                logger.info("Berhasil GET ALL DATA MinimalDP");
+                crunchifyMap.put("dataMinimalDP", rateMinimalDPRepository.findAll());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");
                 response.setStatus(400);
                 crunchifyMap.put("code", "0");
-                crunchifyMap.put("message", "Gagal membuka JenisKendaraan!");
+                crunchifyMap.put("message", "Gagal membuka MinimalDP!");
             }
             return crunchifyMap;
         } else {
@@ -70,7 +70,7 @@ public class JenisKendaraanRestController {
     }
 
     @GetMapping("/{id}")
-    public Map<String, Object> getJenisKendaraan(Principal principal,@PathVariable Integer id,
+    public Map<String, Object> getMinimalDP(Principal principal,@PathVariable Integer id,
             HttpServletResponse response) {
         Map<String, Object> crunchifyMap = new HashMap<String, Object>();
         String userId = principal.getName();
@@ -78,14 +78,14 @@ public class JenisKendaraanRestController {
         String role = userRepository.cekRoles(userId);
         if (role.contains("USER")) {
             try {
-                logger.info("Berhasil JenisKendaraan");
-                crunchifyMap.put("jenisKendaraan", jenisKendaraanRepository.findById(id));
+                logger.info("Berhasil MinimalDP");
+                crunchifyMap.put("rateMinimalDP", rateMinimalDPRepository.findById(id));
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");
                 response.setStatus(400);
                 crunchifyMap.put("code", "0");
-                crunchifyMap.put("message", "Gagal membuka JenisKendaraan!");
+                crunchifyMap.put("message", "Gagal membuka MinimalDP!");
             }
             return crunchifyMap;
         } else {
@@ -98,129 +98,129 @@ public class JenisKendaraanRestController {
     }
 
     @PostMapping(path = "/input", consumes = "application/json")
-    public HashMap<String, String> insertJenisKendaraan(@RequestBody JenisKendaraan jenisKendaraan,Principal principal) {
+    public HashMap<String, String> insertMinimalDP(@RequestBody MinimalDP MinimalDP,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        System.out.println("hey : " +jenisKendaraan.toString());
-        jenisKendaraan.trace(user.getId());
-        jenisKendaraanRepository.save(jenisKendaraan);
+        System.out.println("hey : " +MinimalDP.toString());
+        MinimalDP.trace(user.getId());
+        rateMinimalDPRepository.save(MinimalDP);
 
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input JenisKendaraan Berhasil !");
+        crunchifyMap.put("message", "Input MinimalDP Berhasil !");
         return crunchifyMap;
     }
 
     @PostMapping(path = "/inputAndSubmit", consumes = "application/json")
-    public HashMap<String, String> insertAndSubmitJenisKendaraan(@RequestBody JenisKendaraan jenisKendaraan,Principal principal) {
+    public HashMap<String, String> insertAndSubmitMinimalDP(@RequestBody MinimalDP MinimalDP,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        System.out.println("hey : " +jenisKendaraan.toString());
-        jenisKendaraan.submit(user.getId());
-        jenisKendaraanRepository.save(jenisKendaraan);
+        System.out.println("hey : " +MinimalDP.toString());
+        MinimalDP.submit(user.getId());
+        rateMinimalDPRepository.save(MinimalDP);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit JenisKendaraan Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit MinimalDP Berhasil !");
         return crunchifyMap;
     }
 
     @PostMapping(path = "/approveData", consumes = "application/json")
-    public HashMap<String, String> approveDataJenisKendaraan(@RequestBody JenisKendaraan jenisKendaraan,Principal principal) {
+    public HashMap<String, String> approveDataMinimalDP(@RequestBody MinimalDP MinimalDP,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        jenisKendaraan.approve(user.getId());
-        jenisKendaraanRepository.save(jenisKendaraan);
+        MinimalDP.approve(user.getId());
+        rateMinimalDPRepository.save(MinimalDP);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit JenisKendaraan Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit MinimalDP Berhasil !");
         return crunchifyMap;
     }
 
     @PostMapping(path = "/declineData", consumes = "application/json")
-    public HashMap<String, String> declineDataJenisKendaraan(@RequestBody JenisKendaraan jenisKendaraan,Principal principal) {
+    public HashMap<String, String> declineDataMinimalDP(@RequestBody MinimalDP MinimalDP,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        jenisKendaraan.decline(user.getId());
-        jenisKendaraanRepository.save(jenisKendaraan);
+        MinimalDP.decline(user.getId());
+        rateMinimalDPRepository.save(MinimalDP);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit JenisKendaraan Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit MinimalDP Berhasil !");
         return crunchifyMap;
     }
 
     @PostMapping(path = "/approve", consumes = "application/json")
-    public HashMap<String, String> approveJenisKendaraan(@RequestBody Map<String, Object> data,Principal principal) {
+    public HashMap<String, String> approveMinimalDP(@RequestBody Map<String, Object> data,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
         List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
         for(String id : idList) {
             System.out.println("Mengakses ID : "+id);
-            Optional<JenisKendaraan> optionalJenisKendaraan = jenisKendaraanRepository.findById(Integer.parseInt(id));
-            JenisKendaraan jenisKendaraan = optionalJenisKendaraan.get();
-            jenisKendaraan.approve(user.getId());
-            jenisKendaraanRepository.save(jenisKendaraan);
+            Optional<MinimalDP> optionalMinimalDP = rateMinimalDPRepository.findById(Integer.parseInt(id));
+            MinimalDP MinimalDP = optionalMinimalDP.get();
+            MinimalDP.approve(user.getId());
+            rateMinimalDPRepository.save(MinimalDP);
         }
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit JenisKendaraan Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit MinimalDP Berhasil !");
         return crunchifyMap;
     }
 
     @PostMapping(path = "/decline", consumes = "application/json")
-    public HashMap<String, String> declineJenisKendaraan(@RequestBody Map<String, Object> data,Principal principal) {
+    public HashMap<String, String> declineMinimalDP(@RequestBody Map<String, Object> data,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
         List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
         for(String id : idList) {
-            Optional<JenisKendaraan> optionalJenisKendaraan = jenisKendaraanRepository.findById(Integer.parseInt(id));
-            JenisKendaraan jenisKendaraan = optionalJenisKendaraan.get();
-            jenisKendaraan.decline(user.getId());
-            jenisKendaraanRepository.save(jenisKendaraan);
+            Optional<MinimalDP> optionalMinimalDP = rateMinimalDPRepository.findById(Integer.parseInt(id));
+            MinimalDP MinimalDP = optionalMinimalDP.get();
+            MinimalDP.decline(user.getId());
+            rateMinimalDPRepository.save(MinimalDP);
         }
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit JenisKendaraan Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit MinimalDP Berhasil !");
         return crunchifyMap;
     }
 
 
     @PostMapping(path = "/delete", consumes = "application/json")
-    public HashMap<String, String> deleteJenisKendaraan(@RequestBody Map<String, Object> data,Principal principal) {
+    public HashMap<String, String> deleteMinimalDP(@RequestBody Map<String, Object> data,Principal principal) {
         List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
 
         for(String id : idList) {
-            Optional<JenisKendaraan> optionalJenisKendaraan = jenisKendaraanRepository.findById(Integer.parseInt(id));
-            JenisKendaraan jenisKendaraan = optionalJenisKendaraan.get();
-            jenisKendaraanRepository.delete(jenisKendaraan);
+            Optional<MinimalDP> optionalMinimalDP = rateMinimalDPRepository.findById(Integer.parseInt(id));
+            MinimalDP MinimalDP = optionalMinimalDP.get();
+            rateMinimalDPRepository.delete(MinimalDP);
         }
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Delete JenisKendaraan Berhasil !");
+        crunchifyMap.put("message", "Delete MinimalDP Berhasil !");
         return crunchifyMap;
     }
 
     @PostMapping(path = "/submit", consumes = "application/json")
-    public HashMap<String, String> submitJenisKendaraan(@RequestBody Map<String, Object> data,Principal principal) {
+    public HashMap<String, String> submitMinimalDP(@RequestBody Map<String, Object> data,Principal principal) {
         
         List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
         User user = userRepository.findBynip(principal.getName());
 
         for(String id : idList) {
-            Optional<JenisKendaraan> optionalJenisKendaraan = jenisKendaraanRepository.findById(Integer.parseInt(id));
-            JenisKendaraan jenisKendaraan = optionalJenisKendaraan.get();
-            jenisKendaraan.submit(user.getId());
-            jenisKendaraanRepository.save(jenisKendaraan);
+            Optional<MinimalDP> optionalMinimalDP = rateMinimalDPRepository.findById(Integer.parseInt(id));
+            MinimalDP MinimalDP = optionalMinimalDP.get();
+            MinimalDP.submit(user.getId());
+            rateMinimalDPRepository.save(MinimalDP);
         }
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Edit Dan Submit JenisKendaraan Berhasil !");
+        crunchifyMap.put("message", "Edit Dan Submit MinimalDP Berhasil !");
         return crunchifyMap;
     }
 }

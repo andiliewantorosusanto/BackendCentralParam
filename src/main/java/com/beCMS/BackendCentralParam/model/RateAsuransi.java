@@ -15,7 +15,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="SP_rateasuransi_KKBSK")
-public class modelRateAsuransi implements Serializable {
+public class RateAsuransi implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
@@ -112,7 +112,10 @@ public class modelRateAsuransi implements Serializable {
     private String remarks;
 
     @Column(name = "is_rejected")
-    private String is_rejected;
+    private Integer is_rejected;
+
+    @Column(name = "is_approved")
+    private Integer is_approved;
 
     @Column(name = "jenis_pembiayaan")
     private Integer jenis_pembiayaan;
@@ -126,11 +129,19 @@ public class modelRateAsuransi implements Serializable {
     @Column(name = "is_login")
     private Integer is_login;
 
+    @Column(name = "createdby")
+    private Long createdby;
 
-    public modelRateAsuransi() {
+    @Column(name = "updatedby")
+    private Long updatedby;
+
+    @Column(name = "updateddate")
+    private Date updateddate;
+
+    public RateAsuransi() {
     }
 
-    public modelRateAsuransi(Integer id, String namaSkema, Integer wilayah, Integer startOTR, Integer endOTR, Integer startyear, Integer endyear, Float tenor1, Integer tipeAsuransi, Date startBerlaku, Date endBerlaku, Date created_at, Integer loan_type, Integer produk, Integer jenis_kendaraan, Integer kondisi_kendaraan, Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6, Float tenor7, Float tenor8, Float tenor9, Float tenor10, String operatorTahunAwal, String operatorTahunAkhir, String operatorOTRAwal, String operatorOTRAkhir, String statusApproved, String remarks, String is_rejected, Integer jenis_pembiayaan, Integer tujuan_penggunaan, Integer program, Integer is_login) {
+    public RateAsuransi(Integer id, String namaSkema, Integer wilayah, Integer startOTR, Integer endOTR, Integer startyear, Integer endyear, Float tenor1, Integer tipeAsuransi, Date startBerlaku, Date endBerlaku, Date created_at, Integer loan_type, Integer produk, Integer jenis_kendaraan, Integer kondisi_kendaraan, Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6, Float tenor7, Float tenor8, Float tenor9, Float tenor10, String operatorTahunAwal, String operatorTahunAkhir, String operatorOTRAwal, String operatorOTRAkhir, String statusApproved, String remarks, Integer is_rejected, Integer is_approved, Integer jenis_pembiayaan, Integer tujuan_penggunaan, Integer program, Integer is_login, Long createdby, Long updatedby, Date updateddate) {
         this.id = id;
         this.namaSkema = namaSkema;
         this.wilayah = wilayah;
@@ -163,10 +174,14 @@ public class modelRateAsuransi implements Serializable {
         this.statusApproved = statusApproved;
         this.remarks = remarks;
         this.is_rejected = is_rejected;
+        this.is_approved = is_approved;
         this.jenis_pembiayaan = jenis_pembiayaan;
         this.tujuan_penggunaan = tujuan_penggunaan;
         this.program = program;
         this.is_login = is_login;
+        this.createdby = createdby;
+        this.updatedby = updatedby;
+        this.updateddate = updateddate;
     }
 
     public Integer getId() {
@@ -417,12 +432,20 @@ public class modelRateAsuransi implements Serializable {
         this.remarks = remarks;
     }
 
-    public String getIs_rejected() {
+    public Integer getIs_rejected() {
         return this.is_rejected;
     }
 
-    public void setIs_rejected(String is_rejected) {
+    public void setIs_rejected(Integer is_rejected) {
         this.is_rejected = is_rejected;
+    }
+
+    public Integer getIs_approved() {
+        return this.is_approved;
+    }
+
+    public void setIs_approved(Integer is_approved) {
+        this.is_approved = is_approved;
     }
 
     public Integer getJenis_pembiayaan() {
@@ -456,7 +479,313 @@ public class modelRateAsuransi implements Serializable {
     public void setIs_login(Integer is_login) {
         this.is_login = is_login;
     }
+
+    public Long getCreatedby() {
+        return this.createdby;
+    }
+
+    public void setCreatedby(Long createdby) {
+        this.createdby = createdby;
+    }
+
+    public Long getUpdatedby() {
+        return this.updatedby;
+    }
+
+    public void setUpdatedby(Long updatedby) {
+        this.updatedby = updatedby;
+    }
+
+    public Date getUpdateddate() {
+        return this.updateddate;
+    }
+
+    public void setUpdateddate(Date updateddate) {
+        this.updateddate = updateddate;
+    }
+
+    public RateAsuransi id(Integer id) {
+        setId(id);
+        return this;
+    }
+
+    public RateAsuransi namaSkema(String namaSkema) {
+        setNamaSkema(namaSkema);
+        return this;
+    }
+
+    public RateAsuransi wilayah(Integer wilayah) {
+        setWilayah(wilayah);
+        return this;
+    }
+
+    public RateAsuransi startOTR(Integer startOTR) {
+        setStartOTR(startOTR);
+        return this;
+    }
+
+    public RateAsuransi endOTR(Integer endOTR) {
+        setEndOTR(endOTR);
+        return this;
+    }
+
+    public RateAsuransi startyear(Integer startyear) {
+        setStartyear(startyear);
+        return this;
+    }
+
+    public RateAsuransi endyear(Integer endyear) {
+        setEndyear(endyear);
+        return this;
+    }
+
+    public RateAsuransi tenor1(Float tenor1) {
+        setTenor1(tenor1);
+        return this;
+    }
+
+    public RateAsuransi tipeAsuransi(Integer tipeAsuransi) {
+        setTipeAsuransi(tipeAsuransi);
+        return this;
+    }
+
+    public RateAsuransi startBerlaku(Date startBerlaku) {
+        setStartBerlaku(startBerlaku);
+        return this;
+    }
+
+    public RateAsuransi endBerlaku(Date endBerlaku) {
+        setEndBerlaku(endBerlaku);
+        return this;
+    }
+
+    public RateAsuransi created_at(Date created_at) {
+        setCreated_at(created_at);
+        return this;
+    }
+
+    public RateAsuransi loan_type(Integer loan_type) {
+        setLoan_type(loan_type);
+        return this;
+    }
+
+    public RateAsuransi produk(Integer produk) {
+        setProduk(produk);
+        return this;
+    }
+
+    public RateAsuransi jenis_kendaraan(Integer jenis_kendaraan) {
+        setJenis_kendaraan(jenis_kendaraan);
+        return this;
+    }
+
+    public RateAsuransi kondisi_kendaraan(Integer kondisi_kendaraan) {
+        setKondisi_kendaraan(kondisi_kendaraan);
+        return this;
+    }
+
+    public RateAsuransi tenor2(Float tenor2) {
+        setTenor2(tenor2);
+        return this;
+    }
+
+    public RateAsuransi tenor3(Float tenor3) {
+        setTenor3(tenor3);
+        return this;
+    }
+
+    public RateAsuransi tenor4(Float tenor4) {
+        setTenor4(tenor4);
+        return this;
+    }
+
+    public RateAsuransi tenor5(Float tenor5) {
+        setTenor5(tenor5);
+        return this;
+    }
+
+    public RateAsuransi tenor6(Float tenor6) {
+        setTenor6(tenor6);
+        return this;
+    }
+
+    public RateAsuransi tenor7(Float tenor7) {
+        setTenor7(tenor7);
+        return this;
+    }
+
+    public RateAsuransi tenor8(Float tenor8) {
+        setTenor8(tenor8);
+        return this;
+    }
+
+    public RateAsuransi tenor9(Float tenor9) {
+        setTenor9(tenor9);
+        return this;
+    }
+
+    public RateAsuransi tenor10(Float tenor10) {
+        setTenor10(tenor10);
+        return this;
+    }
+
+    public RateAsuransi operatorTahunAwal(String operatorTahunAwal) {
+        setOperatorTahunAwal(operatorTahunAwal);
+        return this;
+    }
+
+    public RateAsuransi operatorTahunAkhir(String operatorTahunAkhir) {
+        setOperatorTahunAkhir(operatorTahunAkhir);
+        return this;
+    }
+
+    public RateAsuransi operatorOTRAwal(String operatorOTRAwal) {
+        setOperatorOTRAwal(operatorOTRAwal);
+        return this;
+    }
+
+    public RateAsuransi operatorOTRAkhir(String operatorOTRAkhir) {
+        setOperatorOTRAkhir(operatorOTRAkhir);
+        return this;
+    }
+
+    public RateAsuransi statusApproved(String statusApproved) {
+        setStatusApproved(statusApproved);
+        return this;
+    }
+
+    public RateAsuransi remarks(String remarks) {
+        setRemarks(remarks);
+        return this;
+    }
+
+    public RateAsuransi is_rejected(Integer is_rejected) {
+        setIs_rejected(is_rejected);
+        return this;
+    }
+
+    public RateAsuransi is_approved(Integer is_approved) {
+        setIs_approved(is_approved);
+        return this;
+    }
+
+    public RateAsuransi jenis_pembiayaan(Integer jenis_pembiayaan) {
+        setJenis_pembiayaan(jenis_pembiayaan);
+        return this;
+    }
+
+    public RateAsuransi tujuan_penggunaan(Integer tujuan_penggunaan) {
+        setTujuan_penggunaan(tujuan_penggunaan);
+        return this;
+    }
+
+    public RateAsuransi program(Integer program) {
+        setProgram(program);
+        return this;
+    }
+
+    public RateAsuransi is_login(Integer is_login) {
+        setIs_login(is_login);
+        return this;
+    }
+
+    public RateAsuransi createdby(Long createdby) {
+        setCreatedby(createdby);
+        return this;
+    }
+
+    public RateAsuransi updatedby(Long updatedby) {
+        setUpdatedby(updatedby);
+        return this;
+    }
+
+    public RateAsuransi updateddate(Date updateddate) {
+        setUpdateddate(updateddate);
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", namaSkema='" + getNamaSkema() + "'" +
+            ", wilayah='" + getWilayah() + "'" +
+            ", startOTR='" + getStartOTR() + "'" +
+            ", endOTR='" + getEndOTR() + "'" +
+            ", startyear='" + getStartyear() + "'" +
+            ", endyear='" + getEndyear() + "'" +
+            ", tenor1='" + getTenor1() + "'" +
+            ", tipeAsuransi='" + getTipeAsuransi() + "'" +
+            ", startBerlaku='" + getStartBerlaku() + "'" +
+            ", endBerlaku='" + getEndBerlaku() + "'" +
+            ", created_at='" + getCreated_at() + "'" +
+            ", loan_type='" + getLoan_type() + "'" +
+            ", produk='" + getProduk() + "'" +
+            ", jenis_kendaraan='" + getJenis_kendaraan() + "'" +
+            ", kondisi_kendaraan='" + getKondisi_kendaraan() + "'" +
+            ", tenor2='" + getTenor2() + "'" +
+            ", tenor3='" + getTenor3() + "'" +
+            ", tenor4='" + getTenor4() + "'" +
+            ", tenor5='" + getTenor5() + "'" +
+            ", tenor6='" + getTenor6() + "'" +
+            ", tenor7='" + getTenor7() + "'" +
+            ", tenor8='" + getTenor8() + "'" +
+            ", tenor9='" + getTenor9() + "'" +
+            ", tenor10='" + getTenor10() + "'" +
+            ", operatorTahunAwal='" + getOperatorTahunAwal() + "'" +
+            ", operatorTahunAkhir='" + getOperatorTahunAkhir() + "'" +
+            ", operatorOTRAwal='" + getOperatorOTRAwal() + "'" +
+            ", operatorOTRAkhir='" + getOperatorOTRAkhir() + "'" +
+            ", statusApproved='" + getStatusApproved() + "'" +
+            ", remarks='" + getRemarks() + "'" +
+            ", is_rejected='" + getIs_rejected() + "'" +
+            ", is_approved='" + getIs_approved() + "'" +
+            ", jenis_pembiayaan='" + getJenis_pembiayaan() + "'" +
+            ", tujuan_penggunaan='" + getTujuan_penggunaan() + "'" +
+            ", program='" + getProgram() + "'" +
+            ", is_login='" + getIs_login() + "'" +
+            ", createdby='" + getCreatedby() + "'" +
+            ", updatedby='" + getUpdatedby() + "'" +
+            ", updateddate='" + getUpdateddate() + "'" +
+            "}";
+    }
     
+    public RateAsuransi submit(Long user) {
+        if(this.is_approved == null && this.is_rejected == null){
+            setIs_approved(0);
+            setIs_rejected(0);
+    
+            trace(user);
+        }
+        return this;
+    }
 
+    public RateAsuransi approve(Long user) {
+        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+            setIs_approved(1);
+            trace(user);
+        }
 
+        return this;
+    }
+
+    public RateAsuransi decline(Long user) {
+        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+            setIs_rejected(1);
+            trace(user);
+        }
+
+        return this;
+    }
+
+    public RateAsuransi trace(Long user) {
+        if(this.created_at == null) {
+            setCreatedby(user);
+            setCreated_at(new Date());
+        } else {
+            setUpdatedby(user);
+            setUpdateddate(new Date());
+        }
+        return this;
+    }
 }

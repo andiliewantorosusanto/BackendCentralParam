@@ -24,21 +24,17 @@ public class HelperRestController {
     @Autowired
     private UserRepository userRepository;
 
-     // NOTE Untuk liat list history penggunaan oleh Showroom REJECTED
      @PostMapping("/cekToken")
      public Map<String, Object> cekTokenExp(Principal principal,
              HttpServletResponse response) {
-         Map crunchifyMap = new HashMap<String, Object>();
+         Map<String, Object> crunchifyMap= new HashMap<String, Object>();
  
-         // NOTE ambil dari token siapa yang sedang akses
          System.out.println(principal.getName());
          String id = principal.getName();
  
-         // NOTE cek diquery rolenya dia sebagai apa
          String role = userRepository.cekRoles(id);
          logger.info("NIP : " + id);
          logger.info("ROLE : " + role);
-         // NOTE kondisi dimana dia memiliki akses maka akan dilanjut
          if (role.contains("USER")) {
              try {
                  crunchifyMap.put("code", "1");

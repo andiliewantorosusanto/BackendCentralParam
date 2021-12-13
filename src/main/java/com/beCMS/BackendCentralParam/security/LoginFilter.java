@@ -2,17 +2,13 @@ package com.beCMS.BackendCentralParam.security;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.DateFormat;
 import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.time.ZonedDateTime;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -28,8 +24,6 @@ import com.beCMS.BackendCentralParam.security.services.AuthenticationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -65,7 +59,7 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
        
         System.out.println("Jumlah Count" + repository.countCounter(creds.getUsername()));
         System.out.println("Jumlah Login" + repository.cekLogin(creds.getUsername()));
-        String cok = repository.cekLoginExpired(creds.getUsername());
+
         Date date = new Date() ;
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm") ;
         dateFormat.format(date);
@@ -75,7 +69,7 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
         
         if (repository.cekUser(creds.getUsername()) == null) {
             repository.simpanCounter(creds.getUsername());
-            Map map = new HashMap();
+            Map<String,String> map = new HashMap<String,String>();
             map.put("succeed", "Fail !");
             map.put("message", "Username / Password Salah");
 
@@ -96,7 +90,7 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
                 logger.info("USER TERBLOKIR ! ");
                 // if user not found then send message succeed :false
 
-                Map map = new HashMap();
+                Map<String,String> map = new HashMap<String,String>();
                 // gagal login counter
                 repository.simpanCounter(creds.getUsername());
                 map.put("succeed", "Fail ! ");
@@ -122,7 +116,7 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
                 } catch (final AuthenticationException e) {
                     logger.info("User not found");
                     // if user not found then send message succeed :false
-                    Map map = new HashMap();
+                    Map<String,String> map = new HashMap<String,String>();
                     // gagal login counter
                     repository.simpanCounter(creds.getUsername());
                     map.put("succeed", "Username / Password Salah !");
