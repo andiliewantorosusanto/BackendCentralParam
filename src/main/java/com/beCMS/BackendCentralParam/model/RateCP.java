@@ -517,28 +517,35 @@ public class RateCP implements Serializable {
             "}";
     }
 
-    public RateCP submit(Long user) {
-        if(this.is_approved == null && this.is_rejected == null){
+    public TipeKonsumen submit(Long user) {
+        if(this.statusApproval == null || this.statusApproval == 0){
             setIs_approved(0);
             setIs_rejected(0);
-    
+            setStatusApproval(1);
+            
             trace(user);
         }
         return this;
     }
 
-    public RateCP approve(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+    public TipeKonsumen approve(Long user) {
+        if(this.statusApproval == 1) {
             setIs_approved(1);
+            setIs_rejected(0);
+            setStatusApproval(2);
+
             trace(user);
         }
 
         return this;
     }
 
-    public RateCP decline(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+    public TipeKonsumen decline(Long user) {
+        if(this.statusApproval == 1) {
+            setIs_approved(0);
             setIs_rejected(1);
+            setStatusApproval(2);
+
             trace(user);
         }
 

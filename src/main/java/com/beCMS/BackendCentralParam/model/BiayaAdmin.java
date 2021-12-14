@@ -105,7 +105,7 @@ public class BiayaAdmin implements Serializable {
 
 
     @Column(name = "statusapproval")
-    private String statusApproval;
+    private Integer statusApproval;
 
 
     @Column(name = "remarks")
@@ -161,14 +161,13 @@ public class BiayaAdmin implements Serializable {
     private Date updateddate;
 
 
-
     @Column(name = "is_login")
     private Integer is_login;
 
     public BiayaAdmin() {
     }
 
-    public BiayaAdmin(Integer id, String namaSkema, Integer loanType, Integer productid, Integer jeniskendaraanid, Integer kondisikendaraanid, Integer usiaKendaraanLunasMin, Integer usiaKendaraanLunasMax, Integer tenor1, Integer tenor2, Integer tenor3, Integer tenor4, Integer tenor5, Integer tenor6, Integer tenor7, Integer tenor8, Integer tenor9, Integer tenor10, Date startBerlaku, Date endBerlaku, String operatorAwal, String operatorAkhir, String statusApproval, String remarks, Integer is_rejected, Integer is_approved, Integer tujuan_penggunaan, Integer tipe_konsumen, Integer jenis_pembiayaan, Integer cluster, Integer diskon_npwp, Integer program, Long createdby, Date createddate, Long updatedby, Date updateddate, Integer is_login) {
+    public BiayaAdmin(Integer id, String namaSkema, Integer loanType, Integer productid, Integer jeniskendaraanid, Integer kondisikendaraanid, Integer usiaKendaraanLunasMin, Integer usiaKendaraanLunasMax, Integer tenor1, Integer tenor2, Integer tenor3, Integer tenor4, Integer tenor5, Integer tenor6, Integer tenor7, Integer tenor8, Integer tenor9, Integer tenor10, Date startBerlaku, Date endBerlaku, String operatorAwal, String operatorAkhir, Integer statusApproval, String remarks, Integer is_rejected, Integer is_approved, Integer tujuan_penggunaan, Integer tipe_konsumen, Integer jenis_pembiayaan, Integer cluster, Integer diskon_npwp, Integer program, Long createdby, Date createddate, Long updatedby, Date updateddate, Integer is_login) {
         this.id = id;
         this.namaSkema = namaSkema;
         this.loanType = loanType;
@@ -384,11 +383,11 @@ public class BiayaAdmin implements Serializable {
         this.operatorAkhir = operatorAkhir;
     }
 
-    public String getStatusApproval() {
+    public Integer getStatusApproval() {
         return this.statusApproval;
     }
 
-    public void setStatusApproval(String statusApproval) {
+    public void setStatusApproval(Integer statusApproval) {
         this.statusApproval = statusApproval;
     }
 
@@ -614,7 +613,7 @@ public class BiayaAdmin implements Serializable {
         return this;
     }
 
-    public BiayaAdmin statusApproval(String statusApproval) {
+    public BiayaAdmin statusApproval(Integer statusApproval) {
         setStatusApproval(statusApproval);
         return this;
     }
@@ -732,21 +731,23 @@ public class BiayaAdmin implements Serializable {
             "}";
     }
 
-
-
     public BiayaAdmin submit(Long user) {
-        if(this.is_approved == null && this.is_rejected == null){
+        if(this.statusApproval == null || this.statusApproval == 0){
             setIs_approved(0);
             setIs_rejected(0);
-    
+            setStatusApproval(1);
+            
             trace(user);
         }
         return this;
     }
 
     public BiayaAdmin approve(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproval == 1) {
             setIs_approved(1);
+            setIs_rejected(0);
+            setStatusApproval(2);
+
             trace(user);
         }
 
@@ -754,8 +755,11 @@ public class BiayaAdmin implements Serializable {
     }
 
     public BiayaAdmin decline(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproval == 1) {
+            setIs_approved(0);
             setIs_rejected(1);
+            setStatusApproval(2);
+
             trace(user);
         }
 

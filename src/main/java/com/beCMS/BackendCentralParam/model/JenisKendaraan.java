@@ -22,7 +22,7 @@ public class JenisKendaraan implements Serializable {
     private Integer id;
 
     @Column(name = "jenis_kendaraan")
-    private String jenis_kendaraan_id;
+    private String jenis_kendaraan;
     
     @Column(name = "deskripsi")
     private String deskripsi;
@@ -57,13 +57,16 @@ public class JenisKendaraan implements Serializable {
     @Column(name = "updateddate")
     private Date updateddate;
 
+    @Column(name = "statusapproval")
+    private Integer statusApproval;
+
 
     public JenisKendaraan() {
     }
 
-    public JenisKendaraan(Integer id, String jenis_kendaraan_id, String deskripsi, Date startBerlaku, Date endBerlaku, Date created_at, String status, String remarks, Integer is_rejected, Integer is_approved, Long createdby, Long updatedby, Date updateddate) {
+    public JenisKendaraan(Integer id, String jenis_kendaraan, String deskripsi, Date startBerlaku, Date endBerlaku, Date created_at, String status, String remarks, Integer is_rejected, Integer is_approved, Long createdby, Long updatedby, Date updateddate, Integer statusApproval) {
         this.id = id;
-        this.jenis_kendaraan_id = jenis_kendaraan_id;
+        this.jenis_kendaraan = jenis_kendaraan;
         this.deskripsi = deskripsi;
         this.startBerlaku = startBerlaku;
         this.endBerlaku = endBerlaku;
@@ -75,6 +78,7 @@ public class JenisKendaraan implements Serializable {
         this.createdby = createdby;
         this.updatedby = updatedby;
         this.updateddate = updateddate;
+        this.statusApproval = statusApproval;
     }
 
     public Integer getId() {
@@ -85,12 +89,12 @@ public class JenisKendaraan implements Serializable {
         this.id = id;
     }
 
-    public String getJenis_kendaraan_id() {
-        return this.jenis_kendaraan_id;
+    public String getJenis_kendaraan() {
+        return this.jenis_kendaraan;
     }
 
-    public void setJenis_kendaraan_id(String jenis_kendaraan_id) {
-        this.jenis_kendaraan_id = jenis_kendaraan_id;
+    public void setJenis_kendaraan(String jenis_kendaraan) {
+        this.jenis_kendaraan = jenis_kendaraan;
     }
 
     public String getDeskripsi() {
@@ -181,13 +185,21 @@ public class JenisKendaraan implements Serializable {
         this.updateddate = updateddate;
     }
 
+    public Integer getStatusApproval() {
+        return this.statusApproval;
+    }
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
     public JenisKendaraan id(Integer id) {
         setId(id);
         return this;
     }
 
-    public JenisKendaraan jenis_kendaraan_id(String jenis_kendaraan_id) {
-        setJenis_kendaraan_id(jenis_kendaraan_id);
+    public JenisKendaraan jenis_kendaraan(String jenis_kendaraan) {
+        setJenis_kendaraan(jenis_kendaraan);
         return this;
     }
 
@@ -246,12 +258,16 @@ public class JenisKendaraan implements Serializable {
         return this;
     }
 
+    public JenisKendaraan statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
+        return this;
+    }
 
     @Override
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +
-            ", jenis_kendaraan_id='" + getJenis_kendaraan_id() + "'" +
+            ", jenis_kendaraan='" + getJenis_kendaraan() + "'" +
             ", deskripsi='" + getDeskripsi() + "'" +
             ", startBerlaku='" + getStartBerlaku() + "'" +
             ", endBerlaku='" + getEndBerlaku() + "'" +
@@ -263,22 +279,27 @@ public class JenisKendaraan implements Serializable {
             ", createdby='" + getCreatedby() + "'" +
             ", updatedby='" + getUpdatedby() + "'" +
             ", updateddate='" + getUpdateddate() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
             "}";
     }
 
     public JenisKendaraan submit(Long user) {
-        if(this.is_approved == null && this.is_rejected == null){
+        if(this.statusApproval == null || this.statusApproval == 0){
             setIs_approved(0);
             setIs_rejected(0);
-    
+            setStatusApproval(1);
+            
             trace(user);
         }
         return this;
     }
 
     public JenisKendaraan approve(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproval == 1) {
             setIs_approved(1);
+            setIs_rejected(0);
+            setStatusApproval(2);
+
             trace(user);
         }
 
@@ -286,8 +307,11 @@ public class JenisKendaraan implements Serializable {
     }
 
     public JenisKendaraan decline(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproval == 1) {
+            setIs_approved(0);
             setIs_rejected(1);
+            setStatusApproval(2);
+
             trace(user);
         }
 

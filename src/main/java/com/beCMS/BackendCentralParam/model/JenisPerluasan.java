@@ -60,11 +60,14 @@ public class JenisPerluasan implements Serializable {
     @Column(name = "multiple_select")
     private Integer multiple_select;
     
+    @Column(name = "statusapproval")
+    private Integer statusApproval;
+
 
     public JenisPerluasan() {
     }
 
-    public JenisPerluasan(Integer id, String jenis_perluasan_id, Integer Produk, String Deskripsi, Date Start_date, Date End_date, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Date createddate, Long updatedby, Date updateddate, Integer multiple_select) {
+    public JenisPerluasan(Integer id, String jenis_perluasan_id, Integer Produk, String Deskripsi, Date Start_date, Date End_date, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Date createddate, Long updatedby, Date updateddate, Integer multiple_select, Integer statusApproval) {
         this.id = id;
         this.jenis_perluasan_id = jenis_perluasan_id;
         this.Produk = Produk;
@@ -79,6 +82,7 @@ public class JenisPerluasan implements Serializable {
         this.updatedby = updatedby;
         this.updateddate = updateddate;
         this.multiple_select = multiple_select;
+        this.statusApproval = statusApproval;
     }
 
     public Integer getId() {
@@ -193,6 +197,14 @@ public class JenisPerluasan implements Serializable {
         this.multiple_select = multiple_select;
     }
 
+    public Integer getStatusApproval() {
+        return this.statusApproval;
+    }
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
     public JenisPerluasan id(Integer id) {
         setId(id);
         return this;
@@ -263,6 +275,11 @@ public class JenisPerluasan implements Serializable {
         return this;
     }
 
+    public JenisPerluasan statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
+        return this;
+    }
+
     @Override
     public String toString() {
         return "{" +
@@ -280,22 +297,28 @@ public class JenisPerluasan implements Serializable {
             ", updatedby='" + getUpdatedby() + "'" +
             ", updateddate='" + getUpdateddate() + "'" +
             ", multiple_select='" + getMultiple_select() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
             "}";
     }
 
+
     public JenisPerluasan submit(Long user) {
-        if(this.is_approved == null && this.is_rejected == null){
+        if(this.statusApproval == null || this.statusApproval == 0){
             setIs_approved(0);
             setIs_rejected(0);
-    
+            setStatusApproval(1);
+            
             trace(user);
         }
         return this;
     }
 
     public JenisPerluasan approve(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproval == 1) {
             setIs_approved(1);
+            setIs_rejected(0);
+            setStatusApproval(2);
+
             trace(user);
         }
 
@@ -303,14 +326,16 @@ public class JenisPerluasan implements Serializable {
     }
 
     public JenisPerluasan decline(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproval == 1) {
+            setIs_approved(0);
             setIs_rejected(1);
+            setStatusApproval(2);
+
             trace(user);
         }
 
         return this;
     }
-
     public JenisPerluasan trace(Long user) {
         if(this.createddate == null) {
             setCreatedby(user);

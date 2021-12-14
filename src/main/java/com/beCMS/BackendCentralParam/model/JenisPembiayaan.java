@@ -22,7 +22,7 @@ public class JenisPembiayaan implements Serializable {
     private Integer id;
 
     @Column(name = "jenis_pembiayaan")
-    private String jenis_pembiayaan_id;
+    private String jenis_pembiayaan;
     
     @Column(name = "produk")
     private Integer produk;
@@ -57,13 +57,16 @@ public class JenisPembiayaan implements Serializable {
     @Column(name = "remarks")
     private String remarks;
 
+    @Column(name = "statusapproval")
+    private Integer statusApproval;
+
 
     public JenisPembiayaan() {
     }
 
-    public JenisPembiayaan(Integer id, String jenis_pembiayaan_id, Integer produk, Integer is_refinancing, Date start_date, Date end_date, Integer is_approved, Integer is_rejected, Long createdby, Date createddate, Long updatedby, Date updateddate, String remarks) {
+    public JenisPembiayaan(Integer id, String jenis_pembiayaan, Integer produk, Integer is_refinancing, Date start_date, Date end_date, Integer is_approved, Integer is_rejected, Long createdby, Date createddate, Long updatedby, Date updateddate, String remarks, Integer statusApproval) {
         this.id = id;
-        this.jenis_pembiayaan_id = jenis_pembiayaan_id;
+        this.jenis_pembiayaan = jenis_pembiayaan;
         this.produk = produk;
         this.is_refinancing = is_refinancing;
         this.start_date = start_date;
@@ -75,6 +78,7 @@ public class JenisPembiayaan implements Serializable {
         this.updatedby = updatedby;
         this.updateddate = updateddate;
         this.remarks = remarks;
+        this.statusApproval = statusApproval;
     }
 
     public Integer getId() {
@@ -85,12 +89,12 @@ public class JenisPembiayaan implements Serializable {
         this.id = id;
     }
 
-    public String getJenis_pembiayaan_id() {
-        return this.jenis_pembiayaan_id;
+    public String getJenis_pembiayaan() {
+        return this.jenis_pembiayaan;
     }
 
-    public void setJenis_pembiayaan_id(String jenis_pembiayaan_id) {
-        this.jenis_pembiayaan_id = jenis_pembiayaan_id;
+    public void setJenis_pembiayaan(String jenis_pembiayaan) {
+        this.jenis_pembiayaan = jenis_pembiayaan;
     }
 
     public Integer getProduk() {
@@ -181,13 +185,21 @@ public class JenisPembiayaan implements Serializable {
         this.remarks = remarks;
     }
 
+    public Integer getStatusApproval() {
+        return this.statusApproval;
+    }
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
     public JenisPembiayaan id(Integer id) {
         setId(id);
         return this;
     }
 
-    public JenisPembiayaan jenis_pembiayaan_id(String jenis_pembiayaan_id) {
-        setJenis_pembiayaan_id(jenis_pembiayaan_id);
+    public JenisPembiayaan jenis_pembiayaan(String jenis_pembiayaan) {
+        setJenis_pembiayaan(jenis_pembiayaan);
         return this;
     }
 
@@ -246,11 +258,16 @@ public class JenisPembiayaan implements Serializable {
         return this;
     }
 
+    public JenisPembiayaan statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
+        return this;
+    }
+
     @Override
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +
-            ", jenis_pembiayaan_id='" + getJenis_pembiayaan_id() + "'" +
+            ", jenis_pembiayaan='" + getJenis_pembiayaan() + "'" +
             ", produk='" + getProduk() + "'" +
             ", is_refinancing='" + getIs_refinancing() + "'" +
             ", start_date='" + getStart_date() + "'" +
@@ -262,22 +279,28 @@ public class JenisPembiayaan implements Serializable {
             ", updatedby='" + getUpdatedby() + "'" +
             ", updateddate='" + getUpdateddate() + "'" +
             ", remarks='" + getRemarks() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
             "}";
     }
 
+
     public JenisPembiayaan submit(Long user) {
-        if(this.is_approved == null && this.is_rejected == null){
+        if(this.statusApproval == null || this.statusApproval == 0){
             setIs_approved(0);
             setIs_rejected(0);
-    
+            setStatusApproval(1);
+            
             trace(user);
         }
         return this;
     }
 
     public JenisPembiayaan approve(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproval == 1) {
             setIs_approved(1);
+            setIs_rejected(0);
+            setStatusApproval(2);
+
             trace(user);
         }
 
@@ -285,8 +308,11 @@ public class JenisPembiayaan implements Serializable {
     }
 
     public JenisPembiayaan decline(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproval == 1) {
+            setIs_approved(0);
             setIs_rejected(1);
+            setStatusApproval(2);
+
             trace(user);
         }
 

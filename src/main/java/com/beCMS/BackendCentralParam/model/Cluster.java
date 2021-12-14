@@ -22,7 +22,7 @@ public class Cluster implements Serializable {
     private Integer id;
 
     @Column(name = "cluster")
-    private String cluster_id;
+    private String cluster;
     
     @Column(name = "produk")
     private Integer produk;
@@ -57,14 +57,16 @@ public class Cluster implements Serializable {
     @Column(name = "updateddate")
     private Date updateddate;
 
+    @Column(name = "statusapproval")
+    private Integer statusApproval;
+
 
     public Cluster() {
     }
-    
 
-    public Cluster(Integer id, String cluster_id, Integer produk, String deskripsi, Date start_date, Date end_date, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Date createddate, Long updatedby, Date updateddate) {
+    public Cluster(Integer id, String cluster, Integer produk, String deskripsi, Date start_date, Date end_date, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Date createddate, Long updatedby, Date updateddate, Integer statusApproval) {
         this.id = id;
-        this.cluster_id = cluster_id;
+        this.cluster = cluster;
         this.produk = produk;
         this.deskripsi = deskripsi;
         this.start_date = start_date;
@@ -76,6 +78,7 @@ public class Cluster implements Serializable {
         this.createddate = createddate;
         this.updatedby = updatedby;
         this.updateddate = updateddate;
+        this.statusApproval = statusApproval;
     }
 
     public Integer getId() {
@@ -86,12 +89,12 @@ public class Cluster implements Serializable {
         this.id = id;
     }
 
-    public String getCluster_id() {
-        return this.cluster_id;
+    public String getCluster() {
+        return this.cluster;
     }
 
-    public void setCluster_id(String cluster_id) {
-        this.cluster_id = cluster_id;
+    public void setCluster(String cluster) {
+        this.cluster = cluster;
     }
 
     public Integer getProduk() {
@@ -182,20 +185,123 @@ public class Cluster implements Serializable {
         this.updateddate = updateddate;
     }
 
+    public Integer getStatusApproval() {
+        return this.statusApproval;
+    }
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
+    public Cluster id(Integer id) {
+        setId(id);
+        return this;
+    }
+
+    public Cluster cluster(String cluster) {
+        setCluster(cluster);
+        return this;
+    }
+
+    public Cluster produk(Integer produk) {
+        setProduk(produk);
+        return this;
+    }
+
+    public Cluster deskripsi(String deskripsi) {
+        setDeskripsi(deskripsi);
+        return this;
+    }
+
+    public Cluster start_date(Date start_date) {
+        setStart_date(start_date);
+        return this;
+    }
+
+    public Cluster end_date(Date end_date) {
+        setEnd_date(end_date);
+        return this;
+    }
+
+    public Cluster is_approved(Integer is_approved) {
+        setIs_approved(is_approved);
+        return this;
+    }
+
+    public Cluster is_rejected(Integer is_rejected) {
+        setIs_rejected(is_rejected);
+        return this;
+    }
+
+    public Cluster remarks(String remarks) {
+        setRemarks(remarks);
+        return this;
+    }
+
+    public Cluster createdby(Long createdby) {
+        setCreatedby(createdby);
+        return this;
+    }
+
+    public Cluster createddate(Date createddate) {
+        setCreateddate(createddate);
+        return this;
+    }
+
+    public Cluster updatedby(Long updatedby) {
+        setUpdatedby(updatedby);
+        return this;
+    }
+
+    public Cluster updateddate(Date updateddate) {
+        setUpdateddate(updateddate);
+        return this;
+    }
+
+    public Cluster statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", cluster='" + getCluster() + "'" +
+            ", produk='" + getProduk() + "'" +
+            ", deskripsi='" + getDeskripsi() + "'" +
+            ", start_date='" + getStart_date() + "'" +
+            ", end_date='" + getEnd_date() + "'" +
+            ", is_approved='" + getIs_approved() + "'" +
+            ", is_rejected='" + getIs_rejected() + "'" +
+            ", remarks='" + getRemarks() + "'" +
+            ", createdby='" + getCreatedby() + "'" +
+            ", createddate='" + getCreateddate() + "'" +
+            ", updatedby='" + getUpdatedby() + "'" +
+            ", updateddate='" + getUpdateddate() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
+            "}";
+    }
+    
 
     public Cluster submit(Long user) {
-        if(this.is_approved == null && this.is_rejected == null){
+        if(this.statusApproval == null || this.statusApproval == 0){
             setIs_approved(0);
             setIs_rejected(0);
-    
+            setStatusApproval(1);
+            
             trace(user);
         }
         return this;
     }
 
     public Cluster approve(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproval == 1) {
             setIs_approved(1);
+            setIs_rejected(0);
+            setStatusApproval(2);
+
             trace(user);
         }
 
@@ -203,8 +309,11 @@ public class Cluster implements Serializable {
     }
 
     public Cluster decline(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproval == 1) {
+            setIs_approved(0);
             setIs_rejected(1);
+            setStatusApproval(2);
+
             trace(user);
         }
 

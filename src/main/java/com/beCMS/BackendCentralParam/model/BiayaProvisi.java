@@ -145,7 +145,7 @@ public class BiayaProvisi implements Serializable {
     private Integer is_login;
 
     @Column(name = "statusapproved")
-    private String statusApproved;
+    private Integer statusApproved;
 
     @Column(name = "is_rejected")
     private Integer is_rejected;
@@ -156,7 +156,7 @@ public class BiayaProvisi implements Serializable {
     public BiayaProvisi() {
     }
 
-    public BiayaProvisi(Integer id, String namaSkema, Date startBerlaku, Date endBerlaku, Integer loanType, Integer productid, Integer jeniskendaraanid, Integer kondisikendaraanid, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6, Float tenor7, Float tenor8, Float tenor9, Float tenor10, Integer tipe_konsumen, Integer jenis_pembiayaan, Integer tujuan_penggunaan, Integer cluster, Integer program, String remarks, String status, Float tenor1_persen, Float tenor2_persen, Float tenor3_persen, Float tenor4_persen, Float tenor5_persen, Float tenor6_persen, Float tenor7_persen, Float tenor8_persen, Float tenor9_persen, Float tenor10_persen, Integer tahun_awal, Integer tahun_akhir, Date updateddate, Date createddate, Long createdby, Long updatedby, Integer is_login, String statusApproved, Integer is_rejected, Integer is_approved) {
+    public BiayaProvisi(Integer id, String namaSkema, Date startBerlaku, Date endBerlaku, Integer loanType, Integer productid, Integer jeniskendaraanid, Integer kondisikendaraanid, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6, Float tenor7, Float tenor8, Float tenor9, Float tenor10, Integer tipe_konsumen, Integer jenis_pembiayaan, Integer tujuan_penggunaan, Integer cluster, Integer program, String remarks, String status, Float tenor1_persen, Float tenor2_persen, Float tenor3_persen, Float tenor4_persen, Float tenor5_persen, Float tenor6_persen, Float tenor7_persen, Float tenor8_persen, Float tenor9_persen, Float tenor10_persen, Integer tahun_awal, Integer tahun_akhir, Date updateddate, Date createddate, Long createdby, Long updatedby, Integer is_login, Integer statusApproved, Integer is_rejected, Integer is_approved) {
         this.id = id;
         this.namaSkema = namaSkema;
         this.startBerlaku = startBerlaku;
@@ -540,11 +540,11 @@ public class BiayaProvisi implements Serializable {
         this.is_login = is_login;
     }
 
-    public String getStatusApproved() {
+    public Integer getStatusApproved() {
         return this.statusApproved;
     }
 
-    public void setStatusApproved(String statusApproved) {
+    public void setStatusApproved(Integer statusApproved) {
         this.statusApproved = statusApproved;
     }
 
@@ -774,7 +774,7 @@ public class BiayaProvisi implements Serializable {
         return this;
     }
 
-    public BiayaProvisi statusApproved(String statusApproved) {
+    public BiayaProvisi statusApproved(Integer statusApproved) {
         setStatusApproved(statusApproved);
         return this;
     }
@@ -841,18 +841,22 @@ public class BiayaProvisi implements Serializable {
     }
 
     public BiayaProvisi submit(Long user) {
-        if(this.is_approved == null && this.is_rejected == null){
+        if(this.statusApproved == null || this.statusApproved == 0){
             setIs_approved(0);
             setIs_rejected(0);
-    
+            setStatusApproved(1);
+            
             trace(user);
         }
         return this;
     }
 
     public BiayaProvisi approve(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproved == 1) {
             setIs_approved(1);
+            setIs_rejected(0);
+            setStatusApproved(2);
+
             trace(user);
         }
 
@@ -860,8 +864,11 @@ public class BiayaProvisi implements Serializable {
     }
 
     public BiayaProvisi decline(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproved == 1) {
+            setIs_approved(0);
             setIs_rejected(1);
+            setStatusApproved(2);
+
             trace(user);
         }
 

@@ -58,7 +58,7 @@ public class BiayaFidusia implements Serializable {
     private String remarks;
 
     @Column(name = "statusapproved")
-    private String statusApproved;
+    private Integer statusApproved;
 
     @Column(name = "program")
     private Integer program;
@@ -84,7 +84,7 @@ public class BiayaFidusia implements Serializable {
     public BiayaFidusia() {
     }
 
-    public BiayaFidusia(Integer id, String namaSkema, Integer startPH, Integer endPH, Integer biaya, Date startBerlaku, Date endBerlaku, Date created_at, String operatorAwal, String operatorAkhir, Integer is_rejected, Integer is_approved, String remarks, String statusApproved, Integer program, Integer produk, Date createddate, Long createdby, Date updateddate, Long updatedby, Integer is_login) {
+    public BiayaFidusia(Integer id, String namaSkema, Integer startPH, Integer endPH, Integer biaya, Date startBerlaku, Date endBerlaku, Date created_at, String operatorAwal, String operatorAkhir, Integer is_rejected, Integer is_approved, String remarks, Integer statusApproved, Integer program, Integer produk, Date createddate, Long createdby, Date updateddate, Long updatedby, Integer is_login) {
         this.id = id;
         this.namaSkema = namaSkema;
         this.startPH = startPH;
@@ -212,11 +212,11 @@ public class BiayaFidusia implements Serializable {
         this.remarks = remarks;
     }
 
-    public String getStatusApproved() {
+    public Integer getStatusApproved() {
         return this.statusApproved;
     }
 
-    public void setStatusApproved(String statusApproved) {
+    public void setStatusApproved(Integer statusApproved) {
         this.statusApproved = statusApproved;
     }
 
@@ -341,7 +341,7 @@ public class BiayaFidusia implements Serializable {
         return this;
     }
 
-    public BiayaFidusia statusApproved(String statusApproved) {
+    public BiayaFidusia statusApproved(Integer statusApproved) {
         setStatusApproved(statusApproved);
         return this;
     }
@@ -409,18 +409,22 @@ public class BiayaFidusia implements Serializable {
     }
 
     public BiayaFidusia submit(Long user) {
-        if(this.is_approved == null && this.is_rejected == null){
+        if(this.statusApproved == null || this.statusApproved == 0){
             setIs_approved(0);
             setIs_rejected(0);
-    
+            setStatusApproved(1);
+            
             trace(user);
         }
         return this;
     }
 
     public BiayaFidusia approve(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproved == 1) {
             setIs_approved(1);
+            setIs_rejected(0);
+            setStatusApproved(2);
+
             trace(user);
         }
 
@@ -428,8 +432,11 @@ public class BiayaFidusia implements Serializable {
     }
 
     public BiayaFidusia decline(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproved == 1) {
+            setIs_approved(0);
             setIs_rejected(1);
+            setStatusApproved(2);
+
             trace(user);
         }
 

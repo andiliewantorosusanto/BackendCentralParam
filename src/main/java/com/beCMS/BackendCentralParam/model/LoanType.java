@@ -45,11 +45,14 @@ public class LoanType implements Serializable {
     @Column(name = "is_approved")
     private Integer is_approved;
 
+    @Column(name = "statusapproval")
+    private Integer statusApproval;
+
 
     public LoanType() {
     }
 
-    public LoanType(Integer id, Integer id_komp, String deskripsi, Date created_at, Long createdby, Long updatedby, Date updateddate, Integer is_rejected, Integer is_approved) {
+    public LoanType(Integer id, Integer id_komp, String deskripsi, Date created_at, Long createdby, Long updatedby, Date updateddate, Integer is_rejected, Integer is_approved, Integer statusApproval) {
         this.id = id;
         this.id_komp = id_komp;
         this.deskripsi = deskripsi;
@@ -59,6 +62,7 @@ public class LoanType implements Serializable {
         this.updateddate = updateddate;
         this.is_rejected = is_rejected;
         this.is_approved = is_approved;
+        this.statusApproval = statusApproval;
     }
 
     public Integer getId() {
@@ -133,6 +137,14 @@ public class LoanType implements Serializable {
         this.is_approved = is_approved;
     }
 
+    public Integer getStatusApproval() {
+        return this.statusApproval;
+    }
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
     public LoanType id(Integer id) {
         setId(id);
         return this;
@@ -178,6 +190,11 @@ public class LoanType implements Serializable {
         return this;
     }
 
+    public LoanType statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
+        return this;
+    }
+
     @Override
     public String toString() {
         return "{" +
@@ -190,22 +207,28 @@ public class LoanType implements Serializable {
             ", updateddate='" + getUpdateddate() + "'" +
             ", is_rejected='" + getIs_rejected() + "'" +
             ", is_approved='" + getIs_approved() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
             "}";
     }
 
+    
     public LoanType submit(Long user) {
-        if(this.is_approved == null && this.is_rejected == null){
+        if(this.statusApproval == null || this.statusApproval == 0){
             setIs_approved(0);
             setIs_rejected(0);
-    
+            setStatusApproval(1);
+            
             trace(user);
         }
         return this;
     }
 
     public LoanType approve(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproval == 1) {
             setIs_approved(1);
+            setIs_rejected(0);
+            setStatusApproval(2);
+
             trace(user);
         }
 
@@ -213,8 +236,11 @@ public class LoanType implements Serializable {
     }
 
     public LoanType decline(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproval == 1) {
+            setIs_approved(0);
             setIs_rejected(1);
+            setStatusApproval(2);
+
             trace(user);
         }
 

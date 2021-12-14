@@ -57,11 +57,14 @@ public class TipeKonsumen  implements Serializable {
         @Column(name = "updateddate")
         private Date updateddate;
 
+        @Column(name = "statusApproval")
+        private Integer statusApproval;
+
 
     public TipeKonsumen() {
     }
 
-    public TipeKonsumen(Integer id, String Nama, Integer Produk, String Deskripsi, Date Start_date, Date End_date, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Date createddate, Long updatedby, Date updateddate) {
+    public TipeKonsumen(Integer id, String Nama, Integer Produk, String Deskripsi, Date Start_date, Date End_date, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Date createddate, Long updatedby, Date updateddate, Integer statusApproval) {
         this.id = id;
         this.Nama = Nama;
         this.Produk = Produk;
@@ -75,6 +78,7 @@ public class TipeKonsumen  implements Serializable {
         this.createddate = createddate;
         this.updatedby = updatedby;
         this.updateddate = updateddate;
+        this.statusApproval = statusApproval;
     }
 
     public Integer getId() {
@@ -181,19 +185,36 @@ public class TipeKonsumen  implements Serializable {
         this.updateddate = updateddate;
     }
 
+    public Integer getStatusApproval() {
+        return this.statusApproval;
+    }
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
+    public TipeKonsumen statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
+        return this;
+    }
+
     public TipeKonsumen submit(Long user) {
-        if(this.is_approved == null && this.is_rejected == null){
+        if(this.statusApproval == null || this.statusApproval == 0){
             setIs_approved(0);
             setIs_rejected(0);
-    
+            setStatusApproval(1);
+            
             trace(user);
         }
         return this;
     }
 
     public TipeKonsumen approve(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproval == 1) {
             setIs_approved(1);
+            setIs_rejected(0);
+            setStatusApproval(2);
+
             trace(user);
         }
 
@@ -201,8 +222,11 @@ public class TipeKonsumen  implements Serializable {
     }
 
     public TipeKonsumen decline(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproval == 1) {
+            setIs_approved(0);
             setIs_rejected(1);
+            setStatusApproval(2);
+
             trace(user);
         }
 

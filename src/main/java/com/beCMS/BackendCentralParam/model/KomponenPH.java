@@ -93,11 +93,14 @@ public class KomponenPH implements Serializable {
     @Column(name = "updateddate")
     private Date updateddate;
 
+    @Column(name = "statusapproval")
+    private Integer statusApproval;
+
 
     public KomponenPH() {
     }
 
-    public KomponenPH(Integer id, String namaSkema, Integer idKompPH, String jenis, Integer addm, Integer addb, Date created_at, Date startBerlaku, Date endBerlaku, String Remarks, Integer is_rejected, Integer is_approved, String group_id, String kondisi_kendaraan, String produk, String status, Integer tipe_konsumen, Integer jenis_pembiayaan, Integer jenis_kendaraan, Integer program, Integer cluster, Integer is_login, Long createdby, Long updatedby, Date updateddate) {
+    public KomponenPH(Integer id, String namaSkema, Integer idKompPH, String jenis, Integer addm, Integer addb, Date created_at, Date startBerlaku, Date endBerlaku, String Remarks, Integer is_rejected, Integer is_approved, String group_id, String kondisi_kendaraan, String produk, String status, Integer tipe_konsumen, Integer jenis_pembiayaan, Integer jenis_kendaraan, Integer program, Integer cluster, Integer is_login, Long createdby, Long updatedby, Date updateddate, Integer statusApproval) {
         this.id = id;
         this.namaSkema = namaSkema;
         this.idKompPH = idKompPH;
@@ -123,6 +126,7 @@ public class KomponenPH implements Serializable {
         this.createdby = createdby;
         this.updatedby = updatedby;
         this.updateddate = updateddate;
+        this.statusApproval = statusApproval;
     }
 
     public Integer getId() {
@@ -325,6 +329,14 @@ public class KomponenPH implements Serializable {
         this.updateddate = updateddate;
     }
 
+    public Integer getStatusApproval() {
+        return this.statusApproval;
+    }
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
     public KomponenPH id(Integer id) {
         setId(id);
         return this;
@@ -450,6 +462,11 @@ public class KomponenPH implements Serializable {
         return this;
     }
 
+    public KomponenPH statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
+        return this;
+    }
+
     @Override
     public String toString() {
         return "{" +
@@ -478,22 +495,28 @@ public class KomponenPH implements Serializable {
             ", createdby='" + getCreatedby() + "'" +
             ", updatedby='" + getUpdatedby() + "'" +
             ", updateddate='" + getUpdateddate() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
             "}";
     }
 
+
     public KomponenPH submit(Long user) {
-        if(this.is_approved == null && this.is_rejected == null){
+        if(this.statusApproval == null || this.statusApproval == 0){
             setIs_approved(0);
             setIs_rejected(0);
-    
+            setStatusApproval(1);
+            
             trace(user);
         }
         return this;
     }
 
     public KomponenPH approve(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproval == 1) {
             setIs_approved(1);
+            setIs_rejected(0);
+            setStatusApproval(2);
+
             trace(user);
         }
 
@@ -501,8 +524,11 @@ public class KomponenPH implements Serializable {
     }
 
     public KomponenPH decline(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproval == 1) {
+            setIs_approved(0);
             setIs_rejected(1);
+            setStatusApproval(2);
+
             trace(user);
         }
 

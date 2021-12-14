@@ -73,7 +73,7 @@ public class MinimalDP implements Serializable {
     private Integer is_login;
 
     @Column(name = "statusapproved")
-    private String statusApproved;
+    private Integer statusApproved;
 
     @Column(name = "tipe_konsumen")
     private Integer tipe_konsumen;
@@ -94,7 +94,7 @@ public class MinimalDP implements Serializable {
     public MinimalDP() {
     }
 
-    public MinimalDP(Integer id, String namaSkema, Float minimalDP, Date created_at, Date startBerlaku, Date endBerlaku, Integer loanType, Integer productid, Integer jeniskendaraanid, Integer kondisikendaraanid, String status, String remarks, Integer is_rejected, Integer cluster, Integer tujuan_penggunaan, Integer jenis_pembiayaan, Integer tahun_kendaraan, Integer is_login, String statusApproved, Integer tipe_konsumen, Long createdby, Long updatedby, Date updateddate, Integer is_approved) {
+    public MinimalDP(Integer id, String namaSkema, Float minimalDP, Date created_at, Date startBerlaku, Date endBerlaku, Integer loanType, Integer productid, Integer jeniskendaraanid, Integer kondisikendaraanid, String status, String remarks, Integer is_rejected, Integer cluster, Integer tujuan_penggunaan, Integer jenis_pembiayaan, Integer tahun_kendaraan, Integer is_login, Integer statusApproved, Integer tipe_konsumen, Long createdby, Long updatedby, Date updateddate, Integer is_approved) {
         this.id = id;
         this.namaSkema = namaSkema;
         this.minimalDP = minimalDP;
@@ -265,11 +265,11 @@ public class MinimalDP implements Serializable {
         this.is_login = is_login;
     }
 
-    public String getStatusApproved() {
+    public Integer getStatusApproved() {
         return this.statusApproved;
     }
 
-    public void setStatusApproved(String statusApproved) {
+    public void setStatusApproved(Integer statusApproved) {
         this.statusApproved = statusApproved;
     }
 
@@ -403,7 +403,7 @@ public class MinimalDP implements Serializable {
         return this;
     }
 
-    public MinimalDP statusApproved(String statusApproved) {
+    public MinimalDP statusApproved(Integer statusApproved) {
         setStatusApproved(statusApproved);
         return this;
     }
@@ -464,18 +464,22 @@ public class MinimalDP implements Serializable {
     }
 
     public MinimalDP submit(Long user) {
-        if(this.is_approved == null && this.is_rejected == null){
+        if(this.statusApproved == null || this.statusApproved == 0){
             setIs_approved(0);
             setIs_rejected(0);
-    
+            setStatusApproved(1);
+            
             trace(user);
         }
         return this;
     }
 
     public MinimalDP approve(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproved == 1) {
             setIs_approved(1);
+            setIs_rejected(0);
+            setStatusApproved(2);
+
             trace(user);
         }
 
@@ -483,8 +487,11 @@ public class MinimalDP implements Serializable {
     }
 
     public MinimalDP decline(Long user) {
-        if(this.is_approved != null && this.is_rejected != null && this.is_approved == 0 && this.is_rejected == 0) {
+        if(this.statusApproved == 1) {
+            setIs_approved(0);
             setIs_rejected(1);
+            setStatusApproved(2);
+
             trace(user);
         }
 
