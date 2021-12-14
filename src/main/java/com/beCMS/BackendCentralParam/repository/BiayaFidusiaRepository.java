@@ -13,12 +13,12 @@ import org.springframework.data.jpa.repository.Query;
 @DynamicUpdate
 public interface BiayaFidusiaRepository extends JpaRepository<BiayaFidusia, Integer> {
 
-    @Query("SELECT new com.beCMS.BackendCentralParam.view.vwDataBiayaFidusia(id,namaSkema, startPH, endPH, biaya, startBerlaku, endBerlaku, created_at, operatorAwal, operatorAkhir, is_rejected, remarks, statusApproved, program, produk, createddate, createdby, updateddate, updatedby, is_login) from modelBiayaFidusia")
-    List<vwDataBiayaFidusia> getListDataBiayaFidusia();
+    // @Query("SELECT new com.beCMS.BackendCentralParam.view.vwDataBiayaFidusia(id,namaSkema, startPH, endPH, biaya, startBerlaku, endBerlaku, created_at, operatorAwal, operatorAkhir, is_rejected, remarks, statusApproved, program, produk, createddate, createdby, updateddate, updatedby, is_login) from modelBiayaFidusia")
+    // List<vwDataBiayaFidusia> getListDataBiayaFidusia();
 
-    @Query("SELECT new com.beCMS.BackendCentralParam.view.vwDataBiayaFidusia(id,namaSkema, startPH, endPH, biaya, startBerlaku, endBerlaku, created_at, operatorAwal, operatorAkhir, is_rejected, remarks, statusApproved, program, produk, createddate, createdby, updateddate, updatedby, is_login) from modelBiayaFidusia where statusApproved = 0 OR statusApproved IS NULL")
-    List<vwDataBiayaFidusia> getListBucketApprovalBiayaFidusia();
+    // @Query("SELECT new com.beCMS.BackendCentralParam.view.vwDataBiayaFidusia(id,namaSkema, startPH, endPH, biaya, startBerlaku, endBerlaku, created_at, operatorAwal, operatorAkhir, is_rejected, remarks, statusApproved, program, produk, createddate, createdby, updateddate, updatedby, is_login) from modelBiayaFidusia where statusApproved = 0 OR statusApproved IS NULL")
+    // List<vwDataBiayaFidusia> getListBucketApprovalBiayaFidusia();
 
-    @Query("SELECT new com.beCMS.BackendCentralParam.view.vwSkemaBiayaFidusia(id,namaSkema) from modelBiayaFidusia")
-    List<vwSkemaBiayaFidusia> getAllDatavwSkemaBiayaFidusia();
+    // @Query("SELECT new com.beCMS.BackendCentralParam.view.vwSkemaBiayaFidusia(id,namaSkema) from modelBiayaFidusia")
+    // List<vwSkemaBiayaFidusia> getAllDatavwSkemaBiayaFidusia();
 }
