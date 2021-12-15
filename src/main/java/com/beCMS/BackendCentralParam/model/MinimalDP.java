@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -22,34 +24,52 @@ public class MinimalDP implements Serializable {
     private Integer id;
 
     @Column(name = "nama_skema")
-    private String namaSkema;
-
-    @Column(name = "minimaldp")
-    private Float minimalDP;
-
-    @Column(name = "created_at")
-    private Date created_at;
-
-    @Column(name = "startberlaku")
-    private Date startBerlaku;
-
-    @Column(name = "endberlaku")
-    private Date endBerlaku;
-
+    private String nama_skema;
+    
     @Column(name = "loantype")
     private Integer loanType;
 
+    @Column(name = "minimaldp")
+    private Float minimalDp;
+
+    @OneToOne()
+    @JoinColumn(name = "productid",referencedColumnName = "id",insertable = false,updatable = false)
+    private Produk produkObject;
     @Column(name = "productid")
-    private Integer productid;
+    private Integer produk;
 
+    @OneToOne()
+    @JoinColumn(name = "tujuan_penggunaan",referencedColumnName = "id",insertable = false,updatable = false)
+    private TujuanPenggunaan tujuan_penggunaanObject;
+    @Column(name = "tujuan_penggunaan")
+    private Integer tujuan_penggunaan;
+
+    @OneToOne()
+    @JoinColumn(name = "tipe_konsumen",referencedColumnName = "id",insertable = false,updatable = false)
+    private TipeKonsumen tipe_konsumenObject;
+    @Column(name = "tipe_konsumen")
+    private Integer tipe_konsumen;
+
+    @OneToOne()
+    @JoinColumn(name = "jeniskendaraanid",referencedColumnName = "id",insertable = false,updatable = false)
+    private JenisKendaraan jenis_kendaraanObject;
     @Column(name = "jeniskendaraanid")
-    private Integer jeniskendaraanid;
+    private Integer jenis_kendaraan;
 
-    @Column(name = "kondisikendaraanid")
-    private Integer kondisikendaraanid;
+    @OneToOne()
+    @JoinColumn(name = "jenis_pembiayaan",referencedColumnName = "id",insertable = false,updatable = false)
+    private JenisPembiayaan jenis_pembiayaanObject;
+    @Column(name = "jenis_pembiayaan")
+    private Integer jenis_pembiayaan;
 
-    @Column(name = "status")
-    private String status;
+    @OneToOne()
+    @JoinColumn(name = "cluster",referencedColumnName = "id",insertable = false,updatable = false)
+    private Cluster clusterObject;
+    @Column(name = "cluster")
+    private Integer cluster;
+
+    @Column(name = "created_at")
+    private Date created_at;
 
     @Column(name = "remarks")
     private String remarks;
@@ -57,26 +77,11 @@ public class MinimalDP implements Serializable {
     @Column(name = "is_rejected")
     private Integer is_rejected;
 
-    @Column(name = "cluster")
-    private Integer cluster;
-
-    @Column(name = "tujuan_penggunaan")
-    private Integer tujuan_penggunaan;
-
-    @Column(name = "jenis_pembiayaan")
-    private Integer jenis_pembiayaan;
-
-    @Column(name = "tahun_kendaraan")
-    private Integer tahun_kendaraan;
-
     @Column(name = "is_login")
     private Integer is_login;
 
     @Column(name = "statusapproved")
     private Integer statusApproved;
-
-    @Column(name = "tipe_konsumen")
-    private Integer tipe_konsumen;
     
     @Column(name = "createdby")
     private Long createdby;
@@ -94,27 +99,28 @@ public class MinimalDP implements Serializable {
     public MinimalDP() {
     }
 
-    public MinimalDP(Integer id, String namaSkema, Float minimalDP, Date created_at, Date startBerlaku, Date endBerlaku, Integer loanType, Integer productid, Integer jeniskendaraanid, Integer kondisikendaraanid, String status, String remarks, Integer is_rejected, Integer cluster, Integer tujuan_penggunaan, Integer jenis_pembiayaan, Integer tahun_kendaraan, Integer is_login, Integer statusApproved, Integer tipe_konsumen, Long createdby, Long updatedby, Date updateddate, Integer is_approved) {
+    public MinimalDP(Integer id, String nama_skema, Integer loanType, Float minimalDp, Produk produkObject, Integer produk, TujuanPenggunaan tujuan_penggunaanObject, Integer tujuan_penggunaan, TipeKonsumen tipe_konsumenObject, Integer tipe_konsumen, JenisKendaraan jenis_kendaraanObject, Integer jenis_kendaraan, JenisPembiayaan jenis_pembiayaanObject, Integer jenis_pembiayaan, Cluster clusterObject, Integer cluster, Date created_at, String remarks, Integer is_rejected, Integer is_login, Integer statusApproved, Long createdby, Long updatedby, Date updateddate, Integer is_approved) {
         this.id = id;
-        this.namaSkema = namaSkema;
-        this.minimalDP = minimalDP;
-        this.created_at = created_at;
-        this.startBerlaku = startBerlaku;
-        this.endBerlaku = endBerlaku;
+        this.nama_skema = nama_skema;
         this.loanType = loanType;
-        this.productid = productid;
-        this.jeniskendaraanid = jeniskendaraanid;
-        this.kondisikendaraanid = kondisikendaraanid;
-        this.status = status;
+        this.minimalDp = minimalDp;
+        this.produkObject = produkObject;
+        this.produk = produk;
+        this.tujuan_penggunaanObject = tujuan_penggunaanObject;
+        this.tujuan_penggunaan = tujuan_penggunaan;
+        this.tipe_konsumenObject = tipe_konsumenObject;
+        this.tipe_konsumen = tipe_konsumen;
+        this.jenis_kendaraanObject = jenis_kendaraanObject;
+        this.jenis_kendaraan = jenis_kendaraan;
+        this.jenis_pembiayaanObject = jenis_pembiayaanObject;
+        this.jenis_pembiayaan = jenis_pembiayaan;
+        this.clusterObject = clusterObject;
+        this.cluster = cluster;
+        this.created_at = created_at;
         this.remarks = remarks;
         this.is_rejected = is_rejected;
-        this.cluster = cluster;
-        this.tujuan_penggunaan = tujuan_penggunaan;
-        this.jenis_pembiayaan = jenis_pembiayaan;
-        this.tahun_kendaraan = tahun_kendaraan;
         this.is_login = is_login;
         this.statusApproved = statusApproved;
-        this.tipe_konsumen = tipe_konsumen;
         this.createdby = createdby;
         this.updatedby = updatedby;
         this.updateddate = updateddate;
@@ -129,44 +135,12 @@ public class MinimalDP implements Serializable {
         this.id = id;
     }
 
-    public String getNamaSkema() {
-        return this.namaSkema;
+    public String getNama_skema() {
+        return this.nama_skema;
     }
 
-    public void setNamaSkema(String namaSkema) {
-        this.namaSkema = namaSkema;
-    }
-
-    public Float getMinimalDP() {
-        return this.minimalDP;
-    }
-
-    public void setMinimalDP(Float minimalDP) {
-        this.minimalDP = minimalDP;
-    }
-
-    public Date getCreated_at() {
-        return this.created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-    public Date getStartBerlaku() {
-        return this.startBerlaku;
-    }
-
-    public void setStartBerlaku(Date startBerlaku) {
-        this.startBerlaku = startBerlaku;
-    }
-
-    public Date getEndBerlaku() {
-        return this.endBerlaku;
-    }
-
-    public void setEndBerlaku(Date endBerlaku) {
-        this.endBerlaku = endBerlaku;
+    public void setNama_skema(String nama_skema) {
+        this.nama_skema = nama_skema;
     }
 
     public Integer getLoanType() {
@@ -177,36 +151,116 @@ public class MinimalDP implements Serializable {
         this.loanType = loanType;
     }
 
-    public Integer getProductid() {
-        return this.productid;
+    public Float getMinimalDp() {
+        return this.minimalDp;
     }
 
-    public void setProductid(Integer productid) {
-        this.productid = productid;
+    public void setMinimalDp(Float minimalDp) {
+        this.minimalDp = minimalDp;
     }
 
-    public Integer getJeniskendaraanid() {
-        return this.jeniskendaraanid;
+    public Produk getProdukObject() {
+        return this.produkObject;
     }
 
-    public void setJeniskendaraanid(Integer jeniskendaraanid) {
-        this.jeniskendaraanid = jeniskendaraanid;
+    public void setProdukObject(Produk produkObject) {
+        this.produkObject = produkObject;
     }
 
-    public Integer getKondisikendaraanid() {
-        return this.kondisikendaraanid;
+    public Integer getProduk() {
+        return this.produk;
     }
 
-    public void setKondisikendaraanid(Integer kondisikendaraanid) {
-        this.kondisikendaraanid = kondisikendaraanid;
+    public void setProduk(Integer produk) {
+        this.produk = produk;
     }
 
-    public String getStatus() {
-        return this.status;
+    public TujuanPenggunaan getTujuan_penggunaanObject() {
+        return this.tujuan_penggunaanObject;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setTujuan_penggunaanObject(TujuanPenggunaan tujuan_penggunaanObject) {
+        this.tujuan_penggunaanObject = tujuan_penggunaanObject;
+    }
+
+    public Integer getTujuan_penggunaan() {
+        return this.tujuan_penggunaan;
+    }
+
+    public void setTujuan_penggunaan(Integer tujuan_penggunaan) {
+        this.tujuan_penggunaan = tujuan_penggunaan;
+    }
+
+    public TipeKonsumen getTipe_konsumenObject() {
+        return this.tipe_konsumenObject;
+    }
+
+    public void setTipe_konsumenObject(TipeKonsumen tipe_konsumenObject) {
+        this.tipe_konsumenObject = tipe_konsumenObject;
+    }
+
+    public Integer getTipe_konsumen() {
+        return this.tipe_konsumen;
+    }
+
+    public void setTipe_konsumen(Integer tipe_konsumen) {
+        this.tipe_konsumen = tipe_konsumen;
+    }
+
+    public JenisKendaraan getJenis_kendaraanObject() {
+        return this.jenis_kendaraanObject;
+    }
+
+    public void setJenis_kendaraanObject(JenisKendaraan jenis_kendaraanObject) {
+        this.jenis_kendaraanObject = jenis_kendaraanObject;
+    }
+
+    public Integer getJenis_kendaraan() {
+        return this.jenis_kendaraan;
+    }
+
+    public void setJenis_kendaraan(Integer jenis_kendaraan) {
+        this.jenis_kendaraan = jenis_kendaraan;
+    }
+
+    public JenisPembiayaan getJenis_pembiayaanObject() {
+        return this.jenis_pembiayaanObject;
+    }
+
+    public void setJenis_pembiayaanObject(JenisPembiayaan jenis_pembiayaanObject) {
+        this.jenis_pembiayaanObject = jenis_pembiayaanObject;
+    }
+
+    public Integer getJenis_pembiayaan() {
+        return this.jenis_pembiayaan;
+    }
+
+    public void setJenis_pembiayaan(Integer jenis_pembiayaan) {
+        this.jenis_pembiayaan = jenis_pembiayaan;
+    }
+
+    public Cluster getClusterObject() {
+        return this.clusterObject;
+    }
+
+    public void setClusterObject(Cluster clusterObject) {
+        this.clusterObject = clusterObject;
+    }
+
+    public Integer getCluster() {
+        return this.cluster;
+    }
+
+    public void setCluster(Integer cluster) {
+        this.cluster = cluster;
+    }
+
+    public Date getCreated_at() {
+        return this.created_at;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
     }
 
     public String getRemarks() {
@@ -225,38 +279,6 @@ public class MinimalDP implements Serializable {
         this.is_rejected = is_rejected;
     }
 
-    public Integer getCluster() {
-        return this.cluster;
-    }
-
-    public void setCluster(Integer cluster) {
-        this.cluster = cluster;
-    }
-
-    public Integer getTujuan_penggunaan() {
-        return this.tujuan_penggunaan;
-    }
-
-    public void setTujuan_penggunaan(Integer tujuan_penggunaan) {
-        this.tujuan_penggunaan = tujuan_penggunaan;
-    }
-
-    public Integer getJenis_pembiayaan() {
-        return this.jenis_pembiayaan;
-    }
-
-    public void setJenis_pembiayaan(Integer jenis_pembiayaan) {
-        this.jenis_pembiayaan = jenis_pembiayaan;
-    }
-
-    public Integer getTahun_kendaraan() {
-        return this.tahun_kendaraan;
-    }
-
-    public void setTahun_kendaraan(Integer tahun_kendaraan) {
-        this.tahun_kendaraan = tahun_kendaraan;
-    }
-
     public Integer getIs_login() {
         return this.is_login;
     }
@@ -271,14 +293,6 @@ public class MinimalDP implements Serializable {
 
     public void setStatusApproved(Integer statusApproved) {
         this.statusApproved = statusApproved;
-    }
-
-    public Integer getTipe_konsumen() {
-        return this.tipe_konsumen;
-    }
-
-    public void setTipe_konsumen(Integer tipe_konsumen) {
-        this.tipe_konsumen = tipe_konsumen;
     }
 
     public Long getCreatedby() {
@@ -318,28 +332,8 @@ public class MinimalDP implements Serializable {
         return this;
     }
 
-    public MinimalDP namaSkema(String namaSkema) {
-        setNamaSkema(namaSkema);
-        return this;
-    }
-
-    public MinimalDP minimalDP(Float minimalDP) {
-        setMinimalDP(minimalDP);
-        return this;
-    }
-
-    public MinimalDP created_at(Date created_at) {
-        setCreated_at(created_at);
-        return this;
-    }
-
-    public MinimalDP startBerlaku(Date startBerlaku) {
-        setStartBerlaku(startBerlaku);
-        return this;
-    }
-
-    public MinimalDP endBerlaku(Date endBerlaku) {
-        setEndBerlaku(endBerlaku);
+    public MinimalDP nama_skema(String nama_skema) {
+        setNama_skema(nama_skema);
         return this;
     }
 
@@ -348,23 +342,73 @@ public class MinimalDP implements Serializable {
         return this;
     }
 
-    public MinimalDP productid(Integer productid) {
-        setProductid(productid);
+    public MinimalDP minimalDp(Float minimalDp) {
+        setMinimalDp(minimalDp);
         return this;
     }
 
-    public MinimalDP jeniskendaraanid(Integer jeniskendaraanid) {
-        setJeniskendaraanid(jeniskendaraanid);
+    public MinimalDP produkObject(Produk produkObject) {
+        setProdukObject(produkObject);
         return this;
     }
 
-    public MinimalDP kondisikendaraanid(Integer kondisikendaraanid) {
-        setKondisikendaraanid(kondisikendaraanid);
+    public MinimalDP produk(Integer produk) {
+        setProduk(produk);
         return this;
     }
 
-    public MinimalDP status(String status) {
-        setStatus(status);
+    public MinimalDP tujuan_penggunaanObject(TujuanPenggunaan tujuan_penggunaanObject) {
+        setTujuan_penggunaanObject(tujuan_penggunaanObject);
+        return this;
+    }
+
+    public MinimalDP tujuan_penggunaan(Integer tujuan_penggunaan) {
+        setTujuan_penggunaan(tujuan_penggunaan);
+        return this;
+    }
+
+    public MinimalDP tipe_konsumenObject(TipeKonsumen tipe_konsumenObject) {
+        setTipe_konsumenObject(tipe_konsumenObject);
+        return this;
+    }
+
+    public MinimalDP tipe_konsumen(Integer tipe_konsumen) {
+        setTipe_konsumen(tipe_konsumen);
+        return this;
+    }
+
+    public MinimalDP jenis_kendaraanObject(JenisKendaraan jenis_kendaraanObject) {
+        setJenis_kendaraanObject(jenis_kendaraanObject);
+        return this;
+    }
+
+    public MinimalDP jenis_kendaraan(Integer jenis_kendaraan) {
+        setJenis_kendaraan(jenis_kendaraan);
+        return this;
+    }
+
+    public MinimalDP jenis_pembiayaanObject(JenisPembiayaan jenis_pembiayaanObject) {
+        setJenis_pembiayaanObject(jenis_pembiayaanObject);
+        return this;
+    }
+
+    public MinimalDP jenis_pembiayaan(Integer jenis_pembiayaan) {
+        setJenis_pembiayaan(jenis_pembiayaan);
+        return this;
+    }
+
+    public MinimalDP clusterObject(Cluster clusterObject) {
+        setClusterObject(clusterObject);
+        return this;
+    }
+
+    public MinimalDP cluster(Integer cluster) {
+        setCluster(cluster);
+        return this;
+    }
+
+    public MinimalDP created_at(Date created_at) {
+        setCreated_at(created_at);
         return this;
     }
 
@@ -378,26 +422,6 @@ public class MinimalDP implements Serializable {
         return this;
     }
 
-    public MinimalDP cluster(Integer cluster) {
-        setCluster(cluster);
-        return this;
-    }
-
-    public MinimalDP tujuan_penggunaan(Integer tujuan_penggunaan) {
-        setTujuan_penggunaan(tujuan_penggunaan);
-        return this;
-    }
-
-    public MinimalDP jenis_pembiayaan(Integer jenis_pembiayaan) {
-        setJenis_pembiayaan(jenis_pembiayaan);
-        return this;
-    }
-
-    public MinimalDP tahun_kendaraan(Integer tahun_kendaraan) {
-        setTahun_kendaraan(tahun_kendaraan);
-        return this;
-    }
-
     public MinimalDP is_login(Integer is_login) {
         setIs_login(is_login);
         return this;
@@ -405,11 +429,6 @@ public class MinimalDP implements Serializable {
 
     public MinimalDP statusApproved(Integer statusApproved) {
         setStatusApproved(statusApproved);
-        return this;
-    }
-
-    public MinimalDP tipe_konsumen(Integer tipe_konsumen) {
-        setTipe_konsumen(tipe_konsumen);
         return this;
     }
 
@@ -437,31 +456,33 @@ public class MinimalDP implements Serializable {
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +
-            ", namaSkema='" + getNamaSkema() + "'" +
-            ", minimalDP='" + getMinimalDP() + "'" +
-            ", created_at='" + getCreated_at() + "'" +
-            ", startBerlaku='" + getStartBerlaku() + "'" +
-            ", endBerlaku='" + getEndBerlaku() + "'" +
+            ", nama_skema='" + getNama_skema() + "'" +
             ", loanType='" + getLoanType() + "'" +
-            ", productid='" + getProductid() + "'" +
-            ", jeniskendaraanid='" + getJeniskendaraanid() + "'" +
-            ", kondisikendaraanid='" + getKondisikendaraanid() + "'" +
-            ", status='" + getStatus() + "'" +
+            ", minimalDp='" + getMinimalDp() + "'" +
+            ", produkObject='" + getProdukObject() + "'" +
+            ", produk='" + getProduk() + "'" +
+            ", tujuan_penggunaanObject='" + getTujuan_penggunaanObject() + "'" +
+            ", tujuan_penggunaan='" + getTujuan_penggunaan() + "'" +
+            ", tipe_konsumenObject='" + getTipe_konsumenObject() + "'" +
+            ", tipe_konsumen='" + getTipe_konsumen() + "'" +
+            ", jenis_kendaraanObject='" + getJenis_kendaraanObject() + "'" +
+            ", jenis_kendaraan='" + getJenis_kendaraan() + "'" +
+            ", jenis_pembiayaanObject='" + getJenis_pembiayaanObject() + "'" +
+            ", jenis_pembiayaan='" + getJenis_pembiayaan() + "'" +
+            ", clusterObject='" + getClusterObject() + "'" +
+            ", cluster='" + getCluster() + "'" +
+            ", created_at='" + getCreated_at() + "'" +
             ", remarks='" + getRemarks() + "'" +
             ", is_rejected='" + getIs_rejected() + "'" +
-            ", cluster='" + getCluster() + "'" +
-            ", tujuan_penggunaan='" + getTujuan_penggunaan() + "'" +
-            ", jenis_pembiayaan='" + getJenis_pembiayaan() + "'" +
-            ", tahun_kendaraan='" + getTahun_kendaraan() + "'" +
             ", is_login='" + getIs_login() + "'" +
             ", statusApproved='" + getStatusApproved() + "'" +
-            ", tipe_konsumen='" + getTipe_konsumen() + "'" +
             ", createdby='" + getCreatedby() + "'" +
             ", updatedby='" + getUpdatedby() + "'" +
             ", updateddate='" + getUpdateddate() + "'" +
             ", is_approved='" + getIs_approved() + "'" +
             "}";
     }
+
 
     public MinimalDP submit(Long user) {
         if(this.statusApproved == null || this.statusApproved == 0){

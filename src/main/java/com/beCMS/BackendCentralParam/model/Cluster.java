@@ -30,7 +30,6 @@ public class Cluster implements Serializable {
     @OneToOne()
     @JoinColumn(name = "produk",referencedColumnName = "id",insertable = false,updatable = false)
     private Produk produkObject;
-
     @Column(name = "produk")
     private Integer produk;
 

@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/rateMinimalDP")
+@RequestMapping("/api/minimaldp")
 @CrossOrigin(origins = "*")
 public class MinimalDPRestController {
 
@@ -54,6 +54,7 @@ public class MinimalDPRestController {
                 crunchifyMap.put("dataMinimalDP", rateMinimalDPRepository.findAll());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
+                System.out.println("err"+e.toString());
                 logger.error("ERROR");
                 response.setStatus(400);
                 crunchifyMap.put("code", "0");
