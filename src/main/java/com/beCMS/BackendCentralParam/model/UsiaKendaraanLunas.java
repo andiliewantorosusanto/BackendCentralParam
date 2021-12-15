@@ -48,11 +48,14 @@ public class UsiaKendaraanLunas implements Serializable {
     @Column(name = "updatedby")
     private Long updatedby;
 
+    @Column(name = "statusapproval")
+    private Integer statusApproval;
+
 
     public UsiaKendaraanLunas() {
     }
 
-    public UsiaKendaraanLunas(Integer id, String namaSkema, String maksimalUsiaKendaraan, Integer is_approved, Integer is_rejected, String remarks, Date createddate, Long createdby, Date updateddate, Long updatedby) {
+    public UsiaKendaraanLunas(Integer id, String namaSkema, String maksimalUsiaKendaraan, Integer is_approved, Integer is_rejected, String remarks, Date createddate, Long createdby, Date updateddate, Long updatedby, Integer statusApproval) {
         this.id = id;
         this.namaSkema = namaSkema;
         this.maksimalUsiaKendaraan = maksimalUsiaKendaraan;
@@ -63,6 +66,7 @@ public class UsiaKendaraanLunas implements Serializable {
         this.createdby = createdby;
         this.updateddate = updateddate;
         this.updatedby = updatedby;
+        this.statusApproval = statusApproval;
     }
 
     public Integer getId() {
@@ -145,6 +149,14 @@ public class UsiaKendaraanLunas implements Serializable {
         this.updatedby = updatedby;
     }
 
+    public Integer getStatusApproval() {
+        return this.statusApproval;
+    }
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
     public UsiaKendaraanLunas id(Integer id) {
         setId(id);
         return this;
@@ -195,6 +207,11 @@ public class UsiaKendaraanLunas implements Serializable {
         return this;
     }
 
+    public UsiaKendaraanLunas statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
+        return this;
+    }
+
     @Override
     public String toString() {
         return "{" +
@@ -208,10 +225,12 @@ public class UsiaKendaraanLunas implements Serializable {
             ", createdby='" + getCreatedby() + "'" +
             ", updateddate='" + getUpdateddate() + "'" +
             ", updatedby='" + getUpdatedby() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
             "}";
     }
 
-    public TipeKonsumen submit(Long user) {
+
+    public UsiaKendaraanLunas submit(Long user) {
         if(this.statusApproval == null || this.statusApproval == 0){
             setIs_approved(0);
             setIs_rejected(0);
@@ -222,8 +241,8 @@ public class UsiaKendaraanLunas implements Serializable {
         return this;
     }
 
-    public TipeKonsumen approve(Long user) {
-        if(this.statusApproval == 1) {
+    public UsiaKendaraanLunas approve(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(1);
             setIs_rejected(0);
             setStatusApproval(2);
@@ -234,8 +253,8 @@ public class UsiaKendaraanLunas implements Serializable {
         return this;
     }
 
-    public TipeKonsumen decline(Long user) {
-        if(this.statusApproval == 1) {
+    public UsiaKendaraanLunas decline(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(0);
             setIs_rejected(1);
             setStatusApproval(2);

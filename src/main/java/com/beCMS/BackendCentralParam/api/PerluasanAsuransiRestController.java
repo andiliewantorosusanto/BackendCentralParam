@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/ratePerluasanAsuransi")
+@RequestMapping("/api/perluasanasuransi")
 @CrossOrigin(origins = "*")
 public class PerluasanAsuransiRestController {
 
@@ -53,6 +53,7 @@ public class PerluasanAsuransiRestController {
                 logger.info("Berhasil GET ALL DATA PerluasanAsuransi");
                 crunchifyMap.put("dataPerluasanAsuransi", ratePerluasanAsuransiRepository.findAll());
                 crunchifyMap.put("code", "1");
+                System.out.println(ratePerluasanAsuransiRepository.findAll().get(1).toString());
             } catch (Exception e) {
                 logger.error("ERROR");
                 response.setStatus(400);

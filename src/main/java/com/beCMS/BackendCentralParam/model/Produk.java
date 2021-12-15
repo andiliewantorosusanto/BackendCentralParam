@@ -37,7 +37,7 @@ public class Produk implements Serializable {
     private Date created_at;
 
     @Column(name = "status")
-    private String status;
+    private Integer status;
 
     @Column(name = "remarks")
     private String remarks;
@@ -56,12 +56,15 @@ public class Produk implements Serializable {
 
     @Column(name = "is_approved")
     private Integer is_approved;
+    
+    @Column(name = "statusapproval")
+    private Integer statusApproval;
 
 
     public Produk() {
     }
 
-    public Produk(Integer id, String produk, String deskripsi, Date startBerlaku, Date endBerlaku, Date created_at, String status, String remarks, Integer is_rejected, Long createdby, Long updatedby, Date updateddate, Integer is_approved) {
+    public Produk(Integer id, String produk, String deskripsi, Date startBerlaku, Date endBerlaku, Date created_at, Integer status, String remarks, Integer is_rejected, Long createdby, Long updatedby, Date updateddate, Integer is_approved, Integer statusApproval) {
         this.id = id;
         this.produk = produk;
         this.deskripsi = deskripsi;
@@ -75,6 +78,7 @@ public class Produk implements Serializable {
         this.updatedby = updatedby;
         this.updateddate = updateddate;
         this.is_approved = is_approved;
+        this.statusApproval = statusApproval;
     }
 
     public Integer getId() {
@@ -125,11 +129,11 @@ public class Produk implements Serializable {
         this.created_at = created_at;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return this.status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -181,6 +185,14 @@ public class Produk implements Serializable {
         this.is_approved = is_approved;
     }
 
+    public Integer getStatusApproval() {
+        return this.statusApproval;
+    }
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
     public Produk id(Integer id) {
         setId(id);
         return this;
@@ -211,7 +223,7 @@ public class Produk implements Serializable {
         return this;
     }
 
-    public Produk status(String status) {
+    public Produk status(Integer status) {
         setStatus(status);
         return this;
     }
@@ -246,6 +258,11 @@ public class Produk implements Serializable {
         return this;
     }
 
+    public Produk statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
+        return this;
+    }
+
     @Override
     public String toString() {
         return "{" +
@@ -262,10 +279,12 @@ public class Produk implements Serializable {
             ", updatedby='" + getUpdatedby() + "'" +
             ", updateddate='" + getUpdateddate() + "'" +
             ", is_approved='" + getIs_approved() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
             "}";
     }
 
-    public TipeKonsumen submit(Long user) {
+
+    public Produk submit(Long user) {
         if(this.statusApproval == null || this.statusApproval == 0){
             setIs_approved(0);
             setIs_rejected(0);
@@ -276,8 +295,8 @@ public class Produk implements Serializable {
         return this;
     }
 
-    public TipeKonsumen approve(Long user) {
-        if(this.statusApproval == 1) {
+    public Produk approve(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(1);
             setIs_rejected(0);
             setStatusApproval(2);
@@ -288,8 +307,8 @@ public class Produk implements Serializable {
         return this;
     }
 
-    public TipeKonsumen decline(Long user) {
-        if(this.statusApproval == 1) {
+    public Produk decline(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(0);
             setIs_rejected(1);
             setStatusApproval(2);
@@ -299,6 +318,7 @@ public class Produk implements Serializable {
 
         return this;
     }
+
 
     public Produk trace(Long user) {
         if(this.created_at == null) {

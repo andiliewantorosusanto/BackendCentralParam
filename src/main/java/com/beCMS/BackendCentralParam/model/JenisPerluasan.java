@@ -3,11 +3,14 @@ package com.beCMS.BackendCentralParam.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -21,9 +24,12 @@ public class JenisPerluasan implements Serializable {
     @Column(name = "ID")
     private Integer id;
 
-    @Column(name = "Nama")
-    private String jenis_perluasan_id;
+    @Column(name = "nama")
+    private String nama;
     
+    @OneToOne()
+    @JoinColumn(name = "produk",referencedColumnName = "id",insertable = false,updatable = false)
+    private Produk produkObject;
     @Column(name = "Produk")
     private Integer Produk;
 
@@ -67,9 +73,10 @@ public class JenisPerluasan implements Serializable {
     public JenisPerluasan() {
     }
 
-    public JenisPerluasan(Integer id, String jenis_perluasan_id, Integer Produk, String Deskripsi, Date Start_date, Date End_date, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Date createddate, Long updatedby, Date updateddate, Integer multiple_select, Integer statusApproval) {
+    public JenisPerluasan(Integer id, String nama, Produk produkObject, Integer Produk, String Deskripsi, Date Start_date, Date End_date, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Date createddate, Long updatedby, Date updateddate, Integer multiple_select, Integer statusApproval) {
         this.id = id;
-        this.jenis_perluasan_id = jenis_perluasan_id;
+        this.nama = nama;
+        this.produkObject = produkObject;
         this.Produk = Produk;
         this.Deskripsi = Deskripsi;
         this.Start_date = Start_date;
@@ -93,12 +100,20 @@ public class JenisPerluasan implements Serializable {
         this.id = id;
     }
 
-    public String getJenis_perluasan_id() {
-        return this.jenis_perluasan_id;
+    public String getNama() {
+        return this.nama;
     }
 
-    public void setJenis_perluasan_id(String jenis_perluasan_id) {
-        this.jenis_perluasan_id = jenis_perluasan_id;
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public Produk getProdukObject() {
+        return this.produkObject;
+    }
+
+    public void setProdukObject(Produk produkObject) {
+        this.produkObject = produkObject;
     }
 
     public Integer getProduk() {
@@ -210,8 +225,13 @@ public class JenisPerluasan implements Serializable {
         return this;
     }
 
-    public JenisPerluasan jenis_perluasan_id(String jenis_perluasan_id) {
-        setJenis_perluasan_id(jenis_perluasan_id);
+    public JenisPerluasan nama(String nama) {
+        setNama(nama);
+        return this;
+    }
+
+    public JenisPerluasan produkObject(Produk produkObject) {
+        setProdukObject(produkObject);
         return this;
     }
 
@@ -279,12 +299,13 @@ public class JenisPerluasan implements Serializable {
         setStatusApproval(statusApproval);
         return this;
     }
-
+    
     @Override
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +
-            ", jenis_perluasan_id='" + getJenis_perluasan_id() + "'" +
+            ", nama='" + getNama() + "'" +
+            ", produkObject='" + getProdukObject() + "'" +
             ", Produk='" + getProduk() + "'" +
             ", Deskripsi='" + getDeskripsi() + "'" +
             ", Start_date='" + getStart_date() + "'" +
@@ -314,7 +335,7 @@ public class JenisPerluasan implements Serializable {
     }
 
     public JenisPerluasan approve(Long user) {
-        if(this.statusApproval == 1) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(1);
             setIs_rejected(0);
             setStatusApproval(2);
@@ -326,7 +347,7 @@ public class JenisPerluasan implements Serializable {
     }
 
     public JenisPerluasan decline(Long user) {
-        if(this.statusApproval == 1) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(0);
             setIs_rejected(1);
             setStatusApproval(2);

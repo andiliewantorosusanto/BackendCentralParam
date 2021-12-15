@@ -36,6 +36,9 @@ public class Program implements Serializable {
     @Column(name = "end_date")
     private Date end_date;
 
+    @Column(name = "statusapproval")
+    private Integer statusApproval;
+
     @Column(name = "is_approved")
     private Integer is_approved;
 
@@ -94,13 +97,14 @@ public class Program implements Serializable {
     public Program() {
     }
 
-    public Program(Integer id, String program, Integer produk, String deskripsi, Date start_date, Date end_date, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Date createddate, Long updatedby, Date updateddate, String BranchId, Integer id_biayaadmin, Integer id_rateasuransi, Integer id_ratebunga, Integer id_ratecp, Integer id_minimaldp, Integer id_komponenph, Integer id_rateperluasan, Integer id_biayaprovisi, Integer id_biayafidusia, Integer id_usiakendaraanlunas) {
+    public Program(Integer id, String program, Integer produk, String deskripsi, Date start_date, Date end_date, Integer statusApproval, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Date createddate, Long updatedby, Date updateddate, String BranchId, Integer id_biayaadmin, Integer id_rateasuransi, Integer id_ratebunga, Integer id_ratecp, Integer id_minimaldp, Integer id_komponenph, Integer id_rateperluasan, Integer id_biayaprovisi, Integer id_biayafidusia, Integer id_usiakendaraanlunas) {
         this.id = id;
         this.program = program;
         this.produk = produk;
         this.deskripsi = deskripsi;
         this.start_date = start_date;
         this.end_date = end_date;
+        this.statusApproval = statusApproval;
         this.is_approved = is_approved;
         this.is_rejected = is_rejected;
         this.remarks = remarks;
@@ -167,6 +171,14 @@ public class Program implements Serializable {
 
     public void setEnd_date(Date end_date) {
         this.end_date = end_date;
+    }
+
+    public Integer getStatusApproval() {
+        return this.statusApproval;
+    }
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
     }
 
     public Integer getIs_approved() {
@@ -343,6 +355,11 @@ public class Program implements Serializable {
         return this;
     }
 
+    public Program statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
+        return this;
+    }
+
     public Program is_approved(Integer is_approved) {
         setIs_approved(is_approved);
         return this;
@@ -442,6 +459,7 @@ public class Program implements Serializable {
             ", deskripsi='" + getDeskripsi() + "'" +
             ", start_date='" + getStart_date() + "'" +
             ", end_date='" + getEnd_date() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
             ", is_approved='" + getIs_approved() + "'" +
             ", is_rejected='" + getIs_rejected() + "'" +
             ", remarks='" + getRemarks() + "'" +
@@ -463,7 +481,8 @@ public class Program implements Serializable {
             "}";
     }
 
-    public TipeKonsumen submit(Long user) {
+
+    public Program submit(Long user) {
         if(this.statusApproval == null || this.statusApproval == 0){
             setIs_approved(0);
             setIs_rejected(0);
@@ -474,8 +493,8 @@ public class Program implements Serializable {
         return this;
     }
 
-    public TipeKonsumen approve(Long user) {
-        if(this.statusApproval == 1) {
+    public Program approve(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(1);
             setIs_rejected(0);
             setStatusApproval(2);
@@ -486,8 +505,8 @@ public class Program implements Serializable {
         return this;
     }
 
-    public TipeKonsumen decline(Long user) {
-        if(this.statusApproval == 1) {
+    public Program decline(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(0);
             setIs_rejected(1);
             setStatusApproval(2);

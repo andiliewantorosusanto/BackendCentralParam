@@ -3,11 +3,14 @@ package com.beCMS.BackendCentralParam.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -24,6 +27,10 @@ public class Cluster implements Serializable {
     @Column(name = "cluster")
     private String cluster;
     
+    @OneToOne()
+    @JoinColumn(name = "produk",referencedColumnName = "id",insertable = false,updatable = false)
+    private Produk produkObject;
+
     @Column(name = "produk")
     private Integer produk;
 
@@ -64,9 +71,10 @@ public class Cluster implements Serializable {
     public Cluster() {
     }
 
-    public Cluster(Integer id, String cluster, Integer produk, String deskripsi, Date start_date, Date end_date, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Date createddate, Long updatedby, Date updateddate, Integer statusApproval) {
+    public Cluster(Integer id, String cluster, Produk produkObject, Integer produk, String deskripsi, Date start_date, Date end_date, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Date createddate, Long updatedby, Date updateddate, Integer statusApproval) {
         this.id = id;
         this.cluster = cluster;
+        this.produkObject = produkObject;
         this.produk = produk;
         this.deskripsi = deskripsi;
         this.start_date = start_date;
@@ -95,6 +103,14 @@ public class Cluster implements Serializable {
 
     public void setCluster(String cluster) {
         this.cluster = cluster;
+    }
+
+    public Produk getProdukObject() {
+        return this.produkObject;
+    }
+
+    public void setProdukObject(Produk produkObject) {
+        this.produkObject = produkObject;
     }
 
     public Integer getProduk() {
@@ -203,6 +219,11 @@ public class Cluster implements Serializable {
         return this;
     }
 
+    public Cluster produkObject(Produk produkObject) {
+        setProdukObject(produkObject);
+        return this;
+    }
+
     public Cluster produk(Integer produk) {
         setProduk(produk);
         return this;
@@ -263,12 +284,12 @@ public class Cluster implements Serializable {
         return this;
     }
 
-
     @Override
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +
             ", cluster='" + getCluster() + "'" +
+            ", produkObject='" + getProdukObject() + "'" +
             ", produk='" + getProduk() + "'" +
             ", deskripsi='" + getDeskripsi() + "'" +
             ", start_date='" + getStart_date() + "'" +
@@ -283,7 +304,7 @@ public class Cluster implements Serializable {
             ", statusApproval='" + getStatusApproval() + "'" +
             "}";
     }
-    
+
 
     public Cluster submit(Long user) {
         if(this.statusApproval == null || this.statusApproval == 0){
@@ -297,7 +318,7 @@ public class Cluster implements Serializable {
     }
 
     public Cluster approve(Long user) {
-        if(this.statusApproval == 1) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(1);
             setIs_rejected(0);
             setStatusApproval(2);
@@ -309,7 +330,7 @@ public class Cluster implements Serializable {
     }
 
     public Cluster decline(Long user) {
-        if(this.statusApproval == 1) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(0);
             setIs_rejected(1);
             setStatusApproval(2);

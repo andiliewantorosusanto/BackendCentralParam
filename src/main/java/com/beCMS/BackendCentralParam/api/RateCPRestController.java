@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/rateCP")
+@RequestMapping("/api/ratecp")
 @CrossOrigin(origins = "*")
 public class RateCPRestController {
 

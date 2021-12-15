@@ -82,6 +82,7 @@ public class TipeKonsumenRestController {
                 crunchifyMap.put("tipeKonsumen", tipeKonsumenRepository.findById(id));
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
+                
                 logger.error("ERROR");
                 response.setStatus(400);
                 crunchifyMap.put("code", "0");

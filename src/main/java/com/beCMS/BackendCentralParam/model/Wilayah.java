@@ -37,7 +37,7 @@ public class Wilayah implements Serializable {
     private Date created_at;
 
     @Column(name = "status")
-    private String status;
+    private Integer status;
 
     @Column(name = "remarks")
     private String remarks;
@@ -57,11 +57,14 @@ public class Wilayah implements Serializable {
     @Column(name = "updatedby")
     private Long updatedby;
 
+    @Column(name = "statusapproval")
+    private Integer statusApproval;
+
 
     public Wilayah() {
     }
 
-    public Wilayah(Integer id, String namaWilayah, String deskripsi, Date startBerlaku, Date endBerlaku, Date created_at, String status, String remarks, Integer is_rejected, Integer is_approved, Long createdby, Date updateddate, Long updatedby) {
+    public Wilayah(Integer id, String namaWilayah, String deskripsi, Date startBerlaku, Date endBerlaku, Date created_at, Integer status, String remarks, Integer is_rejected, Integer is_approved, Long createdby, Date updateddate, Long updatedby, Integer statusApproval) {
         this.id = id;
         this.namaWilayah = namaWilayah;
         this.deskripsi = deskripsi;
@@ -75,6 +78,7 @@ public class Wilayah implements Serializable {
         this.createdby = createdby;
         this.updateddate = updateddate;
         this.updatedby = updatedby;
+        this.statusApproval = statusApproval;
     }
 
     public Integer getId() {
@@ -125,11 +129,11 @@ public class Wilayah implements Serializable {
         this.created_at = created_at;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return this.status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -181,6 +185,14 @@ public class Wilayah implements Serializable {
         this.updatedby = updatedby;
     }
 
+    public Integer getStatusApproval() {
+        return this.statusApproval;
+    }
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
     public Wilayah id(Integer id) {
         setId(id);
         return this;
@@ -211,7 +223,7 @@ public class Wilayah implements Serializable {
         return this;
     }
 
-    public Wilayah status(String status) {
+    public Wilayah status(Integer status) {
         setStatus(status);
         return this;
     }
@@ -246,6 +258,11 @@ public class Wilayah implements Serializable {
         return this;
     }
 
+    public Wilayah statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
+        return this;
+    }
+
     @Override
     public String toString() {
         return "{" +
@@ -262,10 +279,12 @@ public class Wilayah implements Serializable {
             ", createdby='" + getCreatedby() + "'" +
             ", updateddate='" + getUpdateddate() + "'" +
             ", updatedby='" + getUpdatedby() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
             "}";
     }
 
-    public TipeKonsumen submit(Long user) {
+
+    public Wilayah submit(Long user) {
         if(this.statusApproval == null || this.statusApproval == 0){
             setIs_approved(0);
             setIs_rejected(0);
@@ -276,8 +295,8 @@ public class Wilayah implements Serializable {
         return this;
     }
 
-    public TipeKonsumen approve(Long user) {
-        if(this.statusApproval == 1) {
+    public Wilayah approve(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(1);
             setIs_rejected(0);
             setStatusApproval(2);
@@ -288,8 +307,8 @@ public class Wilayah implements Serializable {
         return this;
     }
 
-    public TipeKonsumen decline(Long user) {
-        if(this.statusApproval == 1) {
+    public Wilayah decline(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(0);
             setIs_rejected(1);
             setStatusApproval(2);

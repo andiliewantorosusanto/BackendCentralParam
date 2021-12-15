@@ -512,7 +512,7 @@ public class KomponenPH implements Serializable {
     }
 
     public KomponenPH approve(Long user) {
-        if(this.statusApproval == 1) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(1);
             setIs_rejected(0);
             setStatusApproval(2);
@@ -524,7 +524,7 @@ public class KomponenPH implements Serializable {
     }
 
     public KomponenPH decline(Long user) {
-        if(this.statusApproval == 1) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(0);
             setIs_rejected(1);
             setStatusApproval(2);

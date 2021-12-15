@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -27,155 +29,98 @@ public class BiayaAdmin implements Serializable {
     @Column(name = "loantype")
     private Integer loanType;
 
+    @OneToOne()
+    @JoinColumn(name = "tipe_konsumen",referencedColumnName = "id",insertable = false,updatable = false)
+    private TipeKonsumen tipe_konsumenObject;
+    @Column(name = "tipe_konsumen")
+    private Integer tipe_konsumen;
 
-    @Column(name = "productid")
-    private Integer productid;
-
-
+    @OneToOne()
+    @JoinColumn(name = "jeniskendaraanid",referencedColumnName = "id",insertable = false,updatable = false)
+    private JenisKendaraan jenis_kendaraanObject;
     @Column(name = "jeniskendaraanid")
-    private Integer jeniskendaraanid;
+    private Integer jenis_kendaraan;
 
+    @OneToOne()
+    @JoinColumn(name = "jenis_pembiayaan",referencedColumnName = "id",insertable = false,updatable = false)
+    private JenisPembiayaan jenis_pembiayaanObject;
+    @Column(name = "jenis_pembiayaan")
+    private Integer jenis_pembiayaan;
 
-    @Column(name = "kondisikendaraanid")
-    private Integer kondisikendaraanid;
+    
+    @OneToOne()
+    @JoinColumn(name = "cluster",referencedColumnName = "id",insertable = false,updatable = false)
+    private Cluster clusterObject;
+    @Column(name = "cluster")
+    private Integer cluster;
 
-
-    @Column(name = "usiakendaraanlunasmin")
-    private Integer usiaKendaraanLunasMin;
-
-
-    @Column(name = "usiakendaraanlunasmax")
-    private Integer usiaKendaraanLunasMax;
+    @Column(name = "diskon_npwp")
+    private Integer diskon_npwp;
 
 
     @Column(name = "tenor1")
     private Integer tenor1;
-
-
     @Column(name = "tenor2")
     private Integer tenor2;
-
-
     @Column(name = "tenor3")
     private Integer tenor3;
-
-
     @Column(name = "tenor4")
     private Integer tenor4;
-
-
     @Column(name = "tenor5")
     private Integer tenor5;
-
-
     @Column(name = "tenor6")
     private Integer tenor6;
-
-
     @Column(name = "tenor7")
     private Integer tenor7;
-
-
     @Column(name = "tenor8")
     private Integer tenor8;
-
-
     @Column(name = "tenor9")
     private Integer tenor9;
-
-
     @Column(name = "tenor10")
     private Integer tenor10;
 
 
     @Column(name = "startberlaku")
     private Date startBerlaku;
-
-
     @Column(name = "endberlaku")
     private Date endBerlaku;
 
 
-    @Column(name = "operatorawal")
-    private String operatorAwal;
-
-
-    @Column(name = "operatorakhir")
-    private String operatorAkhir;
-
-
     @Column(name = "statusapproval")
     private Integer statusApproval;
-
-
     @Column(name = "remarks")
     private String remarks;
-
-
     @Column(name = "is_rejected")
     private Integer is_rejected;
-
     @Column(name = "is_approved")
     private Integer is_approved;
-    
-
-    @Column(name = "tujuan_penggunaan")
-    private Integer tujuan_penggunaan;
-
-
-    @Column(name = "tipe_konsumen")
-    private Integer tipe_konsumen;
-
-
-    @Column(name = "jenis_pembiayaan")
-    private Integer jenis_pembiayaan;
-
-
-    @Column(name = "cluster")
-    private Integer cluster;
-
-
-    @Column(name = "diskon_npwp")
-    private Integer diskon_npwp;
-
-
-    @Column(name = "program")
-    private Integer program;
-
 
     @Column(name = "createdby")
     private Long createdby;
-
-
     @Column(name = "createddate")
     private Date createddate;
-
-
-
     @Column(name = "updatedby")
     private Long updatedby;
-
-
-
     @Column(name = "updateddate")
     private Date updateddate;
 
 
-    @Column(name = "is_login")
-    private Integer is_login;
-
     public BiayaAdmin() {
     }
 
-    public BiayaAdmin(Integer id, String namaSkema, Integer loanType, Integer productid, Integer jeniskendaraanid, Integer kondisikendaraanid, Integer usiaKendaraanLunasMin, Integer usiaKendaraanLunasMax, Integer tenor1, Integer tenor2, Integer tenor3, Integer tenor4, Integer tenor5, Integer tenor6, Integer tenor7, Integer tenor8, Integer tenor9, Integer tenor10, Date startBerlaku, Date endBerlaku, String operatorAwal, String operatorAkhir, Integer statusApproval, String remarks, Integer is_rejected, Integer is_approved, Integer tujuan_penggunaan, Integer tipe_konsumen, Integer jenis_pembiayaan, Integer cluster, Integer diskon_npwp, Integer program, Long createdby, Date createddate, Long updatedby, Date updateddate, Integer is_login) {
+    public BiayaAdmin(Integer id, String namaSkema, Integer loanType, TipeKonsumen tipe_konsumenObject, Integer tipe_konsumen, JenisKendaraan jenis_kendaraanObject, Integer jenis_kendaraan, JenisPembiayaan jenis_pembiayaanObject, Integer jenis_pembiayaan, Cluster clusterObject, Integer cluster, Integer diskon_npwp, Integer tenor1, Integer tenor2, Integer tenor3, Integer tenor4, Integer tenor5, Integer tenor6, Integer tenor7, Integer tenor8, Integer tenor9, Integer tenor10, Date startBerlaku, Date endBerlaku, Integer statusApproval, String remarks, Integer is_rejected, Integer is_approved, Long createdby, Date createddate, Long updatedby, Date updateddate) {
         this.id = id;
         this.namaSkema = namaSkema;
         this.loanType = loanType;
-        this.productid = productid;
-        this.jeniskendaraanid = jeniskendaraanid;
-        this.kondisikendaraanid = kondisikendaraanid;
-        this.usiaKendaraanLunasMin = usiaKendaraanLunasMin;
-        this.usiaKendaraanLunasMax = usiaKendaraanLunasMax;
+        this.tipe_konsumenObject = tipe_konsumenObject;
+        this.tipe_konsumen = tipe_konsumen;
+        this.jenis_kendaraanObject = jenis_kendaraanObject;
+        this.jenis_kendaraan = jenis_kendaraan;
+        this.jenis_pembiayaanObject = jenis_pembiayaanObject;
+        this.jenis_pembiayaan = jenis_pembiayaan;
+        this.clusterObject = clusterObject;
+        this.cluster = cluster;
+        this.diskon_npwp = diskon_npwp;
         this.tenor1 = tenor1;
         this.tenor2 = tenor2;
         this.tenor3 = tenor3;
@@ -188,23 +133,14 @@ public class BiayaAdmin implements Serializable {
         this.tenor10 = tenor10;
         this.startBerlaku = startBerlaku;
         this.endBerlaku = endBerlaku;
-        this.operatorAwal = operatorAwal;
-        this.operatorAkhir = operatorAkhir;
         this.statusApproval = statusApproval;
         this.remarks = remarks;
         this.is_rejected = is_rejected;
         this.is_approved = is_approved;
-        this.tujuan_penggunaan = tujuan_penggunaan;
-        this.tipe_konsumen = tipe_konsumen;
-        this.jenis_pembiayaan = jenis_pembiayaan;
-        this.cluster = cluster;
-        this.diskon_npwp = diskon_npwp;
-        this.program = program;
         this.createdby = createdby;
         this.createddate = createddate;
         this.updatedby = updatedby;
         this.updateddate = updateddate;
-        this.is_login = is_login;
     }
 
     public Integer getId() {
@@ -231,44 +167,76 @@ public class BiayaAdmin implements Serializable {
         this.loanType = loanType;
     }
 
-    public Integer getProductid() {
-        return this.productid;
+    public TipeKonsumen getTipe_konsumenObject() {
+        return this.tipe_konsumenObject;
     }
 
-    public void setProductid(Integer productid) {
-        this.productid = productid;
+    public void setTipe_konsumenObject(TipeKonsumen tipe_konsumenObject) {
+        this.tipe_konsumenObject = tipe_konsumenObject;
     }
 
-    public Integer getJeniskendaraanid() {
-        return this.jeniskendaraanid;
+    public Integer getTipe_konsumen() {
+        return this.tipe_konsumen;
     }
 
-    public void setJeniskendaraanid(Integer jeniskendaraanid) {
-        this.jeniskendaraanid = jeniskendaraanid;
+    public void setTipe_konsumen(Integer tipe_konsumen) {
+        this.tipe_konsumen = tipe_konsumen;
     }
 
-    public Integer getKondisikendaraanid() {
-        return this.kondisikendaraanid;
+    public JenisKendaraan getJenis_kendaraanObject() {
+        return this.jenis_kendaraanObject;
     }
 
-    public void setKondisikendaraanid(Integer kondisikendaraanid) {
-        this.kondisikendaraanid = kondisikendaraanid;
+    public void setJenis_kendaraanObject(JenisKendaraan jenis_kendaraanObject) {
+        this.jenis_kendaraanObject = jenis_kendaraanObject;
     }
 
-    public Integer getUsiaKendaraanLunasMin() {
-        return this.usiaKendaraanLunasMin;
+    public Integer getJenis_kendaraan() {
+        return this.jenis_kendaraan;
     }
 
-    public void setUsiaKendaraanLunasMin(Integer usiaKendaraanLunasMin) {
-        this.usiaKendaraanLunasMin = usiaKendaraanLunasMin;
+    public void setJenis_kendaraan(Integer jenis_kendaraan) {
+        this.jenis_kendaraan = jenis_kendaraan;
     }
 
-    public Integer getUsiaKendaraanLunasMax() {
-        return this.usiaKendaraanLunasMax;
+    public JenisPembiayaan getJenis_pembiayaanObject() {
+        return this.jenis_pembiayaanObject;
     }
 
-    public void setUsiaKendaraanLunasMax(Integer usiaKendaraanLunasMax) {
-        this.usiaKendaraanLunasMax = usiaKendaraanLunasMax;
+    public void setJenis_pembiayaanObject(JenisPembiayaan jenis_pembiayaanObject) {
+        this.jenis_pembiayaanObject = jenis_pembiayaanObject;
+    }
+
+    public Integer getJenis_pembiayaan() {
+        return this.jenis_pembiayaan;
+    }
+
+    public void setJenis_pembiayaan(Integer jenis_pembiayaan) {
+        this.jenis_pembiayaan = jenis_pembiayaan;
+    }
+
+    public Cluster getClusterObject() {
+        return this.clusterObject;
+    }
+
+    public void setClusterObject(Cluster clusterObject) {
+        this.clusterObject = clusterObject;
+    }
+
+    public Integer getCluster() {
+        return this.cluster;
+    }
+
+    public void setCluster(Integer cluster) {
+        this.cluster = cluster;
+    }
+
+    public Integer getDiskon_npwp() {
+        return this.diskon_npwp;
+    }
+
+    public void setDiskon_npwp(Integer diskon_npwp) {
+        this.diskon_npwp = diskon_npwp;
     }
 
     public Integer getTenor1() {
@@ -367,22 +335,6 @@ public class BiayaAdmin implements Serializable {
         this.endBerlaku = endBerlaku;
     }
 
-    public String getOperatorAwal() {
-        return this.operatorAwal;
-    }
-
-    public void setOperatorAwal(String operatorAwal) {
-        this.operatorAwal = operatorAwal;
-    }
-
-    public String getOperatorAkhir() {
-        return this.operatorAkhir;
-    }
-
-    public void setOperatorAkhir(String operatorAkhir) {
-        this.operatorAkhir = operatorAkhir;
-    }
-
     public Integer getStatusApproval() {
         return this.statusApproval;
     }
@@ -413,54 +365,6 @@ public class BiayaAdmin implements Serializable {
 
     public void setIs_approved(Integer is_approved) {
         this.is_approved = is_approved;
-    }
-
-    public Integer getTujuan_penggunaan() {
-        return this.tujuan_penggunaan;
-    }
-
-    public void setTujuan_penggunaan(Integer tujuan_penggunaan) {
-        this.tujuan_penggunaan = tujuan_penggunaan;
-    }
-
-    public Integer getTipe_konsumen() {
-        return this.tipe_konsumen;
-    }
-
-    public void setTipe_konsumen(Integer tipe_konsumen) {
-        this.tipe_konsumen = tipe_konsumen;
-    }
-
-    public Integer getJenis_pembiayaan() {
-        return this.jenis_pembiayaan;
-    }
-
-    public void setJenis_pembiayaan(Integer jenis_pembiayaan) {
-        this.jenis_pembiayaan = jenis_pembiayaan;
-    }
-
-    public Integer getCluster() {
-        return this.cluster;
-    }
-
-    public void setCluster(Integer cluster) {
-        this.cluster = cluster;
-    }
-
-    public Integer getDiskon_npwp() {
-        return this.diskon_npwp;
-    }
-
-    public void setDiskon_npwp(Integer diskon_npwp) {
-        this.diskon_npwp = diskon_npwp;
-    }
-
-    public Integer getProgram() {
-        return this.program;
-    }
-
-    public void setProgram(Integer program) {
-        this.program = program;
     }
 
     public Long getCreatedby() {
@@ -495,14 +399,6 @@ public class BiayaAdmin implements Serializable {
         this.updateddate = updateddate;
     }
 
-    public Integer getIs_login() {
-        return this.is_login;
-    }
-
-    public void setIs_login(Integer is_login) {
-        this.is_login = is_login;
-    }
-
     public BiayaAdmin id(Integer id) {
         setId(id);
         return this;
@@ -518,28 +414,48 @@ public class BiayaAdmin implements Serializable {
         return this;
     }
 
-    public BiayaAdmin productid(Integer productid) {
-        setProductid(productid);
+    public BiayaAdmin tipe_konsumenObject(TipeKonsumen tipe_konsumenObject) {
+        setTipe_konsumenObject(tipe_konsumenObject);
         return this;
     }
 
-    public BiayaAdmin jeniskendaraanid(Integer jeniskendaraanid) {
-        setJeniskendaraanid(jeniskendaraanid);
+    public BiayaAdmin tipe_konsumen(Integer tipe_konsumen) {
+        setTipe_konsumen(tipe_konsumen);
         return this;
     }
 
-    public BiayaAdmin kondisikendaraanid(Integer kondisikendaraanid) {
-        setKondisikendaraanid(kondisikendaraanid);
+    public BiayaAdmin jenis_kendaraanObject(JenisKendaraan jenis_kendaraanObject) {
+        setJenis_kendaraanObject(jenis_kendaraanObject);
         return this;
     }
 
-    public BiayaAdmin usiaKendaraanLunasMin(Integer usiaKendaraanLunasMin) {
-        setUsiaKendaraanLunasMin(usiaKendaraanLunasMin);
+    public BiayaAdmin jenis_kendaraan(Integer jenis_kendaraan) {
+        setJenis_kendaraan(jenis_kendaraan);
         return this;
     }
 
-    public BiayaAdmin usiaKendaraanLunasMax(Integer usiaKendaraanLunasMax) {
-        setUsiaKendaraanLunasMax(usiaKendaraanLunasMax);
+    public BiayaAdmin jenis_pembiayaanObject(JenisPembiayaan jenis_pembiayaanObject) {
+        setJenis_pembiayaanObject(jenis_pembiayaanObject);
+        return this;
+    }
+
+    public BiayaAdmin jenis_pembiayaan(Integer jenis_pembiayaan) {
+        setJenis_pembiayaan(jenis_pembiayaan);
+        return this;
+    }
+
+    public BiayaAdmin clusterObject(Cluster clusterObject) {
+        setClusterObject(clusterObject);
+        return this;
+    }
+
+    public BiayaAdmin cluster(Integer cluster) {
+        setCluster(cluster);
+        return this;
+    }
+
+    public BiayaAdmin diskon_npwp(Integer diskon_npwp) {
+        setDiskon_npwp(diskon_npwp);
         return this;
     }
 
@@ -603,16 +519,6 @@ public class BiayaAdmin implements Serializable {
         return this;
     }
 
-    public BiayaAdmin operatorAwal(String operatorAwal) {
-        setOperatorAwal(operatorAwal);
-        return this;
-    }
-
-    public BiayaAdmin operatorAkhir(String operatorAkhir) {
-        setOperatorAkhir(operatorAkhir);
-        return this;
-    }
-
     public BiayaAdmin statusApproval(Integer statusApproval) {
         setStatusApproval(statusApproval);
         return this;
@@ -630,36 +536,6 @@ public class BiayaAdmin implements Serializable {
 
     public BiayaAdmin is_approved(Integer is_approved) {
         setIs_approved(is_approved);
-        return this;
-    }
-
-    public BiayaAdmin tujuan_penggunaan(Integer tujuan_penggunaan) {
-        setTujuan_penggunaan(tujuan_penggunaan);
-        return this;
-    }
-
-    public BiayaAdmin tipe_konsumen(Integer tipe_konsumen) {
-        setTipe_konsumen(tipe_konsumen);
-        return this;
-    }
-
-    public BiayaAdmin jenis_pembiayaan(Integer jenis_pembiayaan) {
-        setJenis_pembiayaan(jenis_pembiayaan);
-        return this;
-    }
-
-    public BiayaAdmin cluster(Integer cluster) {
-        setCluster(cluster);
-        return this;
-    }
-
-    public BiayaAdmin diskon_npwp(Integer diskon_npwp) {
-        setDiskon_npwp(diskon_npwp);
-        return this;
-    }
-
-    public BiayaAdmin program(Integer program) {
-        setProgram(program);
         return this;
     }
 
@@ -683,22 +559,21 @@ public class BiayaAdmin implements Serializable {
         return this;
     }
 
-    public BiayaAdmin is_login(Integer is_login) {
-        setIs_login(is_login);
-        return this;
-    }
-
     @Override
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +
             ", namaSkema='" + getNamaSkema() + "'" +
             ", loanType='" + getLoanType() + "'" +
-            ", productid='" + getProductid() + "'" +
-            ", jeniskendaraanid='" + getJeniskendaraanid() + "'" +
-            ", kondisikendaraanid='" + getKondisikendaraanid() + "'" +
-            ", usiaKendaraanLunasMin='" + getUsiaKendaraanLunasMin() + "'" +
-            ", usiaKendaraanLunasMax='" + getUsiaKendaraanLunasMax() + "'" +
+            ", tipe_konsumenObject='" + getTipe_konsumenObject() + "'" +
+            ", tipe_konsumen='" + getTipe_konsumen() + "'" +
+            ", jenis_kendaraanObject='" + getJenis_kendaraanObject() + "'" +
+            ", jenis_kendaraan='" + getJenis_kendaraan() + "'" +
+            ", jenis_pembiayaanObject='" + getJenis_pembiayaanObject() + "'" +
+            ", jenis_pembiayaan='" + getJenis_pembiayaan() + "'" +
+            ", clusterObject='" + getClusterObject() + "'" +
+            ", cluster='" + getCluster() + "'" +
+            ", diskon_npwp='" + getDiskon_npwp() + "'" +
             ", tenor1='" + getTenor1() + "'" +
             ", tenor2='" + getTenor2() + "'" +
             ", tenor3='" + getTenor3() + "'" +
@@ -711,25 +586,17 @@ public class BiayaAdmin implements Serializable {
             ", tenor10='" + getTenor10() + "'" +
             ", startBerlaku='" + getStartBerlaku() + "'" +
             ", endBerlaku='" + getEndBerlaku() + "'" +
-            ", operatorAwal='" + getOperatorAwal() + "'" +
-            ", operatorAkhir='" + getOperatorAkhir() + "'" +
             ", statusApproval='" + getStatusApproval() + "'" +
             ", remarks='" + getRemarks() + "'" +
             ", is_rejected='" + getIs_rejected() + "'" +
             ", is_approved='" + getIs_approved() + "'" +
-            ", tujuan_penggunaan='" + getTujuan_penggunaan() + "'" +
-            ", tipe_konsumen='" + getTipe_konsumen() + "'" +
-            ", jenis_pembiayaan='" + getJenis_pembiayaan() + "'" +
-            ", cluster='" + getCluster() + "'" +
-            ", diskon_npwp='" + getDiskon_npwp() + "'" +
-            ", program='" + getProgram() + "'" +
             ", createdby='" + getCreatedby() + "'" +
             ", createddate='" + getCreateddate() + "'" +
             ", updatedby='" + getUpdatedby() + "'" +
             ", updateddate='" + getUpdateddate() + "'" +
-            ", is_login='" + getIs_login() + "'" +
             "}";
     }
+
 
     public BiayaAdmin submit(Long user) {
         if(this.statusApproval == null || this.statusApproval == 0){
@@ -743,7 +610,7 @@ public class BiayaAdmin implements Serializable {
     }
 
     public BiayaAdmin approve(Long user) {
-        if(this.statusApproval == 1) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(1);
             setIs_rejected(0);
             setStatusApproval(2);
@@ -755,7 +622,7 @@ public class BiayaAdmin implements Serializable {
     }
 
     public BiayaAdmin decline(Long user) {
-        if(this.statusApproval == 1) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(0);
             setIs_rejected(1);
             setStatusApproval(2);

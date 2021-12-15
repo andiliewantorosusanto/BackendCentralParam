@@ -52,7 +52,6 @@ public class JenisKendaraanRestController {
             try {
                 logger.info("Berhasil GET ALL DATA JenisKendaraan");
                 crunchifyMap.put("dataJenisKendaraan", jenisKendaraanRepository.findAll());
-                System.out.println(jenisKendaraanRepository.findAll().get(1).toString());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");

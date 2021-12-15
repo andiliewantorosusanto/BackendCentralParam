@@ -295,7 +295,7 @@ public class JenisKendaraan implements Serializable {
     }
 
     public JenisKendaraan approve(Long user) {
-        if(this.statusApproval == 1) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(1);
             setIs_rejected(0);
             setStatusApproval(2);
@@ -307,7 +307,7 @@ public class JenisKendaraan implements Serializable {
     }
 
     public JenisKendaraan decline(Long user) {
-        if(this.statusApproval == 1) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(0);
             setIs_rejected(1);
             setStatusApproval(2);

@@ -54,11 +54,14 @@ public class TipeAsuransi implements Serializable {
     @Column(name = "updateddate")
     private Date updateddate;
     
+    @Column(name = "statusapproval")
+    private Integer statusApproval;
+
 
     public TipeAsuransi() {
     }
 
-    public TipeAsuransi(Integer id, String namaAsuransi, Date startBerlaku, Date endBerlaku, Date created_at, String deskripsi, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Long updatedby, Date updateddate) {
+    public TipeAsuransi(Integer id, String namaAsuransi, Date startBerlaku, Date endBerlaku, Date created_at, String deskripsi, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Long updatedby, Date updateddate, Integer statusApproval) {
         this.id = id;
         this.namaAsuransi = namaAsuransi;
         this.startBerlaku = startBerlaku;
@@ -71,6 +74,7 @@ public class TipeAsuransi implements Serializable {
         this.createdby = createdby;
         this.updatedby = updatedby;
         this.updateddate = updateddate;
+        this.statusApproval = statusApproval;
     }
 
     public Integer getId() {
@@ -169,6 +173,14 @@ public class TipeAsuransi implements Serializable {
         this.updateddate = updateddate;
     }
 
+    public Integer getStatusApproval() {
+        return this.statusApproval;
+    }
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
     public TipeAsuransi id(Integer id) {
         setId(id);
         return this;
@@ -229,6 +241,11 @@ public class TipeAsuransi implements Serializable {
         return this;
     }
 
+    public TipeAsuransi statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
+        return this;
+    }
+
     @Override
     public String toString() {
         return "{" +
@@ -244,11 +261,12 @@ public class TipeAsuransi implements Serializable {
             ", createdby='" + getCreatedby() + "'" +
             ", updatedby='" + getUpdatedby() + "'" +
             ", updateddate='" + getUpdateddate() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
             "}";
     }
 
 
-    public TipeKonsumen submit(Long user) {
+    public TipeAsuransi submit(Long user) {
         if(this.statusApproval == null || this.statusApproval == 0){
             setIs_approved(0);
             setIs_rejected(0);
@@ -259,8 +277,8 @@ public class TipeAsuransi implements Serializable {
         return this;
     }
 
-    public TipeKonsumen approve(Long user) {
-        if(this.statusApproval == 1) {
+    public TipeAsuransi approve(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(1);
             setIs_rejected(0);
             setStatusApproval(2);
@@ -271,8 +289,8 @@ public class TipeAsuransi implements Serializable {
         return this;
     }
 
-    public TipeKonsumen decline(Long user) {
-        if(this.statusApproval == 1) {
+    public TipeAsuransi decline(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(0);
             setIs_rejected(1);
             setStatusApproval(2);

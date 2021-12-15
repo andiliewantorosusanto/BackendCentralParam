@@ -3,11 +3,14 @@ package com.beCMS.BackendCentralParam.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -24,6 +27,10 @@ public class TujuanPenggunaan implements Serializable {
     @Column(name = "Nama")
     private String Nama;
 
+    @OneToOne()
+    @JoinColumn(name = "produk",referencedColumnName = "id",insertable = false,updatable = false)
+    private Produk produkObject;
+    
     @Column(name = "Produk")
     private Integer Produk;
 
@@ -57,13 +64,17 @@ public class TujuanPenggunaan implements Serializable {
     @Column(name = "updatedby")
     private Long updatedby;
     
+    @Column(name = "statusapproval")
+    private Integer statusApproval;
 
     public TujuanPenggunaan() {
+        
     }
 
-    public TujuanPenggunaan(Integer id, String Nama, Integer Produk, String Deskripsi, Date Start_date, Date End_date, Integer is_approved, Integer is_rejected, String remarks, Date createddate, Long createdby, Date updateddate, Long updatedby) {
+    public TujuanPenggunaan(Integer id, String Nama, Produk produkObject, Integer Produk, String Deskripsi, Date Start_date, Date End_date, Integer is_approved, Integer is_rejected, String remarks, Date createddate, Long createdby, Date updateddate, Long updatedby, Integer statusApproval) {
         this.id = id;
         this.Nama = Nama;
+        this.produkObject = produkObject;
         this.Produk = Produk;
         this.Deskripsi = Deskripsi;
         this.Start_date = Start_date;
@@ -75,6 +86,7 @@ public class TujuanPenggunaan implements Serializable {
         this.createdby = createdby;
         this.updateddate = updateddate;
         this.updatedby = updatedby;
+        this.statusApproval = statusApproval;
     }
 
     public Integer getId() {
@@ -91,6 +103,14 @@ public class TujuanPenggunaan implements Serializable {
 
     public void setNama(String Nama) {
         this.Nama = Nama;
+    }
+
+    public Produk getProdukObject() {
+        return this.produkObject;
+    }
+
+    public void setProdukObject(Produk produkObject) {
+        this.produkObject = produkObject;
     }
 
     public Integer getProduk() {
@@ -181,6 +201,14 @@ public class TujuanPenggunaan implements Serializable {
         this.updatedby = updatedby;
     }
 
+    public Integer getStatusApproval() {
+        return this.statusApproval;
+    }
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
     public TujuanPenggunaan id(Integer id) {
         setId(id);
         return this;
@@ -188,6 +216,11 @@ public class TujuanPenggunaan implements Serializable {
 
     public TujuanPenggunaan Nama(String Nama) {
         setNama(Nama);
+        return this;
+    }
+
+    public TujuanPenggunaan produkObject(Produk produkObject) {
+        setProdukObject(produkObject);
         return this;
     }
 
@@ -246,11 +279,17 @@ public class TujuanPenggunaan implements Serializable {
         return this;
     }
 
+    public TujuanPenggunaan statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
+        return this;
+    }
+
     @Override
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +
             ", Nama='" + getNama() + "'" +
+            ", produkObject='" + getProdukObject() + "'" +
             ", Produk='" + getProduk() + "'" +
             ", Deskripsi='" + getDeskripsi() + "'" +
             ", Start_date='" + getStart_date() + "'" +
@@ -262,10 +301,12 @@ public class TujuanPenggunaan implements Serializable {
             ", createdby='" + getCreatedby() + "'" +
             ", updateddate='" + getUpdateddate() + "'" +
             ", updatedby='" + getUpdatedby() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
             "}";
     }
+    
 
-    public TipeKonsumen submit(Long user) {
+    public TujuanPenggunaan submit(Long user) {
         if(this.statusApproval == null || this.statusApproval == 0){
             setIs_approved(0);
             setIs_rejected(0);
@@ -276,8 +317,8 @@ public class TujuanPenggunaan implements Serializable {
         return this;
     }
 
-    public TipeKonsumen approve(Long user) {
-        if(this.statusApproval == 1) {
+    public TujuanPenggunaan approve(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(1);
             setIs_rejected(0);
             setStatusApproval(2);
@@ -288,8 +329,8 @@ public class TujuanPenggunaan implements Serializable {
         return this;
     }
 
-    public TipeKonsumen decline(Long user) {
-        if(this.statusApproval == 1) {
+    public TujuanPenggunaan decline(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(0);
             setIs_rejected(1);
             setStatusApproval(2);

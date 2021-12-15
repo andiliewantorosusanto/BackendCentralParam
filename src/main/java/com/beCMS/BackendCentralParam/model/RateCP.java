@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -22,99 +24,67 @@ public class RateCP implements Serializable {
     private Integer id;
 
     @Column(name = "nama_skema")
-    private String namaSkema;
+    private String nama_skema;
+
+    @OneToOne()
+    @JoinColumn(name = "tipe_konsumen",referencedColumnName = "id",insertable = false,updatable = false)
+    private TipeKonsumen tipe_konsumenObject;
+    @Column(name = "tipe_konsumen")
+    private Integer tipe_konsumen;
 
     @Column(name = "tenor1")
     private Float tenor1;
+    @Column(name = "tenor2")
+    private Float tenor2;
+    @Column(name = "tenor3")
+    private Float tenor3;
+    @Column(name = "tenor4")
+    private Float tenor4;
+    @Column(name = "tenor5")
+    private Float tenor5;
+    @Column(name = "tenor6")
+    private Float tenor6;
+    @Column(name = "tenor7")
+    private Float tenor7;
+    @Column(name = "tenor8")
+    private Float tenor8;
+    @Column(name = "tenor9")
+    private Float tenor9;
+    @Column(name = "tenor10")
+    private Float tenor10;
 
     @Column(name = "startberlaku")
     private Date startBerlaku;
-
     @Column(name = "endberlaku")
     private Date endBerlaku;
 
     @Column(name = "created_at")
-    private Date createdAt;
-
-    @Column(name = "updateddate")
-    private Date updateddate;
-
-    @Column(name = "jenis_kendaraan")
-    private Integer jenis_kendaraan;
-
-    @Column(name = "produk")
-    private Integer produk;
-
-    @Column(name = "loan_type")
-    private Integer loan_type;
-
-    @Column(name = "kondisi_kendaraan")
-    private Integer kondisi_kendaraan;
-
-    @Column(name = "tenor2")
-    private Float tenor2;
-
-    @Column(name = "tenor3")
-    private Float tenor3;
-
-    @Column(name = "tenor4")
-    private Float tenor4;
-
-    @Column(name = "tenor5")
-    private Float tenor5;
-
-    @Column(name = "tenor6")
-    private Float tenor6;
-
-    @Column(name = "tenor7")
-    private Float tenor7;
-
-    @Column(name = "tenor8")
-    private Float tenor8;
-
-    @Column(name = "tenor9")
-    private Float tenor9;
-
-    @Column(name = "tenor10")
-    private Float tenor10;
-
-    @Column(name = "Remarks")
-    private String Remarks;
-    
+    private Date created_at;
+    @Column(name = "statusapproved")
+    private Integer statusApproved;
+    @Column(name = "remarks")
+    private String remarks;
     @Column(name = "is_rejected")
     private Integer is_rejected;
-
     @Column(name = "is_approved")
     private Integer is_approved;
-
-    @Column(name = "statusapproved")
-    private String statusApproved;
-
-    @Column(name = "tipe_konsumen")
-    private Integer tipeKonsumen;
-
-    @Column(name = "updatedby")
-    private Long updatedby;
-
     @Column(name = "createdby")
     private Long createdby;
+    @Column(name = "updatedby")
+    private Long updatedby;
+    @Column(name = "updateddate")
+    private Date updateddate;
 
 
     public RateCP() {
     }
 
-    public RateCP(Integer id, String namaSkema, Float tenor1, Date startBerlaku, Date endBerlaku, Date createdAt, Date updateddate, Integer jenis_kendaraan, Integer produk, Integer loan_type, Integer kondisi_kendaraan, Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6, Float tenor7, Float tenor8, Float tenor9, Float tenor10, String Remarks, Integer is_rejected, Integer is_approved, String statusApproved, Integer tipeKonsumen, Long updatedby, Long createdby) {
+    public RateCP(Integer id, String nama_skema, TipeKonsumen tipe_konsumenObject, Integer tipe_konsumen, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6, Float tenor7, Float tenor8, Float tenor9, Float tenor10, Date startBerlaku, Date endBerlaku, Date created_at, Integer statusApproved, String remarks, Integer is_rejected, Integer is_approved, Long createdby, Long updatedby, Date updateddate) {
         this.id = id;
-        this.namaSkema = namaSkema;
+        this.nama_skema = nama_skema;
+        this.tipe_konsumenObject = tipe_konsumenObject;
+        this.tipe_konsumen = tipe_konsumen;
         this.tenor1 = tenor1;
-        this.startBerlaku = startBerlaku;
-        this.endBerlaku = endBerlaku;
-        this.createdAt = createdAt;
-        this.updateddate = updateddate;
-        this.jenis_kendaraan = jenis_kendaraan;
-        this.produk = produk;
-        this.loan_type = loan_type;
-        this.kondisi_kendaraan = kondisi_kendaraan;
         this.tenor2 = tenor2;
         this.tenor3 = tenor3;
         this.tenor4 = tenor4;
@@ -124,13 +94,16 @@ public class RateCP implements Serializable {
         this.tenor8 = tenor8;
         this.tenor9 = tenor9;
         this.tenor10 = tenor10;
-        this.Remarks = Remarks;
+        this.startBerlaku = startBerlaku;
+        this.endBerlaku = endBerlaku;
+        this.created_at = created_at;
+        this.statusApproved = statusApproved;
+        this.remarks = remarks;
         this.is_rejected = is_rejected;
         this.is_approved = is_approved;
-        this.statusApproved = statusApproved;
-        this.tipeKonsumen = tipeKonsumen;
-        this.updatedby = updatedby;
         this.createdby = createdby;
+        this.updatedby = updatedby;
+        this.updateddate = updateddate;
     }
 
     public Integer getId() {
@@ -141,12 +114,28 @@ public class RateCP implements Serializable {
         this.id = id;
     }
 
-    public String getNamaSkema() {
-        return this.namaSkema;
+    public String getNama_skema() {
+        return this.nama_skema;
     }
 
-    public void setNamaSkema(String namaSkema) {
-        this.namaSkema = namaSkema;
+    public void setNama_skema(String nama_skema) {
+        this.nama_skema = nama_skema;
+    }
+
+    public TipeKonsumen getTipe_konsumenObject() {
+        return this.tipe_konsumenObject;
+    }
+
+    public void setTipe_konsumenObject(TipeKonsumen tipe_konsumenObject) {
+        this.tipe_konsumenObject = tipe_konsumenObject;
+    }
+
+    public Integer getTipe_konsumen() {
+        return this.tipe_konsumen;
+    }
+
+    public void setTipe_konsumen(Integer tipe_konsumen) {
+        this.tipe_konsumen = tipe_konsumen;
     }
 
     public Float getTenor1() {
@@ -155,70 +144,6 @@ public class RateCP implements Serializable {
 
     public void setTenor1(Float tenor1) {
         this.tenor1 = tenor1;
-    }
-
-    public Date getStartBerlaku() {
-        return this.startBerlaku;
-    }
-
-    public void setStartBerlaku(Date startBerlaku) {
-        this.startBerlaku = startBerlaku;
-    }
-
-    public Date getEndBerlaku() {
-        return this.endBerlaku;
-    }
-
-    public void setEndBerlaku(Date endBerlaku) {
-        this.endBerlaku = endBerlaku;
-    }
-
-    public Date getCreatedAt() {
-        return this.createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdateddate() {
-        return this.updateddate;
-    }
-
-    public void setUpdateddate(Date updateddate) {
-        this.updateddate = updateddate;
-    }
-
-    public Integer getJenis_kendaraan() {
-        return this.jenis_kendaraan;
-    }
-
-    public void setJenis_kendaraan(Integer jenis_kendaraan) {
-        this.jenis_kendaraan = jenis_kendaraan;
-    }
-
-    public Integer getProduk() {
-        return this.produk;
-    }
-
-    public void setProduk(Integer produk) {
-        this.produk = produk;
-    }
-
-    public Integer getLoan_type() {
-        return this.loan_type;
-    }
-
-    public void setLoan_type(Integer loan_type) {
-        this.loan_type = loan_type;
-    }
-
-    public Integer getKondisi_kendaraan() {
-        return this.kondisi_kendaraan;
-    }
-
-    public void setKondisi_kendaraan(Integer kondisi_kendaraan) {
-        this.kondisi_kendaraan = kondisi_kendaraan;
     }
 
     public Float getTenor2() {
@@ -293,12 +218,44 @@ public class RateCP implements Serializable {
         this.tenor10 = tenor10;
     }
 
-    public String getRemarks() {
-        return this.Remarks;
+    public Date getStartBerlaku() {
+        return this.startBerlaku;
     }
 
-    public void setRemarks(String Remarks) {
-        this.Remarks = Remarks;
+    public void setStartBerlaku(Date startBerlaku) {
+        this.startBerlaku = startBerlaku;
+    }
+
+    public Date getEndBerlaku() {
+        return this.endBerlaku;
+    }
+
+    public void setEndBerlaku(Date endBerlaku) {
+        this.endBerlaku = endBerlaku;
+    }
+
+    public Date getCreated_at() {
+        return this.created_at;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
+    }
+
+    public Integer getStatusApproved() {
+        return this.statusApproved;
+    }
+
+    public void setStatusApproved(Integer statusApproved) {
+        this.statusApproved = statusApproved;
+    }
+
+    public String getRemarks() {
+        return this.remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
     public Integer getIs_rejected() {
@@ -317,20 +274,12 @@ public class RateCP implements Serializable {
         this.is_approved = is_approved;
     }
 
-    public String getStatusApproved() {
-        return this.statusApproved;
+    public Long getCreatedby() {
+        return this.createdby;
     }
 
-    public void setStatusApproved(String statusApproved) {
-        this.statusApproved = statusApproved;
-    }
-
-    public Integer getTipeKonsumen() {
-        return this.tipeKonsumen;
-    }
-
-    public void setTipeKonsumen(Integer tipeKonsumen) {
-        this.tipeKonsumen = tipeKonsumen;
+    public void setCreatedby(Long createdby) {
+        this.createdby = createdby;
     }
 
     public Long getUpdatedby() {
@@ -341,12 +290,12 @@ public class RateCP implements Serializable {
         this.updatedby = updatedby;
     }
 
-    public Long getCreatedby() {
-        return this.createdby;
+    public Date getUpdateddate() {
+        return this.updateddate;
     }
 
-    public void setCreatedby(Long createdby) {
-        this.createdby = createdby;
+    public void setUpdateddate(Date updateddate) {
+        this.updateddate = updateddate;
     }
 
     public RateCP id(Integer id) {
@@ -354,53 +303,23 @@ public class RateCP implements Serializable {
         return this;
     }
 
-    public RateCP namaSkema(String namaSkema) {
-        setNamaSkema(namaSkema);
+    public RateCP nama_skema(String nama_skema) {
+        setNama_skema(nama_skema);
+        return this;
+    }
+
+    public RateCP tipe_konsumenObject(TipeKonsumen tipe_konsumenObject) {
+        setTipe_konsumenObject(tipe_konsumenObject);
+        return this;
+    }
+
+    public RateCP tipe_konsumen(Integer tipe_konsumen) {
+        setTipe_konsumen(tipe_konsumen);
         return this;
     }
 
     public RateCP tenor1(Float tenor1) {
         setTenor1(tenor1);
-        return this;
-    }
-
-    public RateCP startBerlaku(Date startBerlaku) {
-        setStartBerlaku(startBerlaku);
-        return this;
-    }
-
-    public RateCP endBerlaku(Date endBerlaku) {
-        setEndBerlaku(endBerlaku);
-        return this;
-    }
-
-    public RateCP createdAt(Date createdAt) {
-        setCreatedAt(createdAt);
-        return this;
-    }
-
-    public RateCP updateddate(Date updateddate) {
-        setUpdateddate(updateddate);
-        return this;
-    }
-
-    public RateCP jenis_kendaraan(Integer jenis_kendaraan) {
-        setJenis_kendaraan(jenis_kendaraan);
-        return this;
-    }
-
-    public RateCP produk(Integer produk) {
-        setProduk(produk);
-        return this;
-    }
-
-    public RateCP loan_type(Integer loan_type) {
-        setLoan_type(loan_type);
-        return this;
-    }
-
-    public RateCP kondisi_kendaraan(Integer kondisi_kendaraan) {
-        setKondisi_kendaraan(kondisi_kendaraan);
         return this;
     }
 
@@ -449,8 +368,28 @@ public class RateCP implements Serializable {
         return this;
     }
 
-    public RateCP Remarks(String Remarks) {
-        setRemarks(Remarks);
+    public RateCP startBerlaku(Date startBerlaku) {
+        setStartBerlaku(startBerlaku);
+        return this;
+    }
+
+    public RateCP endBerlaku(Date endBerlaku) {
+        setEndBerlaku(endBerlaku);
+        return this;
+    }
+
+    public RateCP created_at(Date created_at) {
+        setCreated_at(created_at);
+        return this;
+    }
+
+    public RateCP statusApproved(Integer statusApproved) {
+        setStatusApproved(statusApproved);
+        return this;
+    }
+
+    public RateCP remarks(String remarks) {
+        setRemarks(remarks);
         return this;
     }
 
@@ -464,13 +403,8 @@ public class RateCP implements Serializable {
         return this;
     }
 
-    public RateCP statusApproved(String statusApproved) {
-        setStatusApproved(statusApproved);
-        return this;
-    }
-
-    public RateCP tipeKonsumen(Integer tipeKonsumen) {
-        setTipeKonsumen(tipeKonsumen);
+    public RateCP createdby(Long createdby) {
+        setCreatedby(createdby);
         return this;
     }
 
@@ -479,8 +413,8 @@ public class RateCP implements Serializable {
         return this;
     }
 
-    public RateCP createdby(Long createdby) {
-        setCreatedby(createdby);
+    public RateCP updateddate(Date updateddate) {
+        setUpdateddate(updateddate);
         return this;
     }
 
@@ -488,16 +422,10 @@ public class RateCP implements Serializable {
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +
-            ", namaSkema='" + getNamaSkema() + "'" +
+            ", nama_skema='" + getNama_skema() + "'" +
+            ", tipe_konsumenObject='" + getTipe_konsumenObject() + "'" +
+            ", tipe_konsumen='" + getTipe_konsumen() + "'" +
             ", tenor1='" + getTenor1() + "'" +
-            ", startBerlaku='" + getStartBerlaku() + "'" +
-            ", endBerlaku='" + getEndBerlaku() + "'" +
-            ", createdAt='" + getCreatedAt() + "'" +
-            ", updateddate='" + getUpdateddate() + "'" +
-            ", jenis_kendaraan='" + getJenis_kendaraan() + "'" +
-            ", produk='" + getProduk() + "'" +
-            ", loan_type='" + getLoan_type() + "'" +
-            ", kondisi_kendaraan='" + getKondisi_kendaraan() + "'" +
             ", tenor2='" + getTenor2() + "'" +
             ", tenor3='" + getTenor3() + "'" +
             ", tenor4='" + getTenor4() + "'" +
@@ -507,32 +435,36 @@ public class RateCP implements Serializable {
             ", tenor8='" + getTenor8() + "'" +
             ", tenor9='" + getTenor9() + "'" +
             ", tenor10='" + getTenor10() + "'" +
-            ", Remarks='" + getRemarks() + "'" +
+            ", startBerlaku='" + getStartBerlaku() + "'" +
+            ", endBerlaku='" + getEndBerlaku() + "'" +
+            ", created_at='" + getCreated_at() + "'" +
+            ", statusApproved='" + getStatusApproved() + "'" +
+            ", remarks='" + getRemarks() + "'" +
             ", is_rejected='" + getIs_rejected() + "'" +
             ", is_approved='" + getIs_approved() + "'" +
-            ", statusApproved='" + getStatusApproved() + "'" +
-            ", tipeKonsumen='" + getTipeKonsumen() + "'" +
-            ", updatedby='" + getUpdatedby() + "'" +
             ", createdby='" + getCreatedby() + "'" +
+            ", updatedby='" + getUpdatedby() + "'" +
+            ", updateddate='" + getUpdateddate() + "'" +
             "}";
     }
 
-    public TipeKonsumen submit(Long user) {
-        if(this.statusApproval == null || this.statusApproval == 0){
+
+    public RateCP submit(Long user) {
+        if(this.statusApproved == null || this.statusApproved == 0){
             setIs_approved(0);
             setIs_rejected(0);
-            setStatusApproval(1);
+            setStatusApproved(1);
             
             trace(user);
         }
         return this;
     }
 
-    public TipeKonsumen approve(Long user) {
-        if(this.statusApproval == 1) {
+    public RateCP approve(Long user) {
+        if(this.statusApproved == 1) {
             setIs_approved(1);
             setIs_rejected(0);
-            setStatusApproval(2);
+            setStatusApproved(2);
 
             trace(user);
         }
@@ -540,11 +472,11 @@ public class RateCP implements Serializable {
         return this;
     }
 
-    public TipeKonsumen decline(Long user) {
-        if(this.statusApproval == 1) {
+    public RateCP decline(Long user) {
+        if(this.statusApproved == 1) {
             setIs_approved(0);
             setIs_rejected(1);
-            setStatusApproval(2);
+            setStatusApproved(2);
 
             trace(user);
         }
@@ -553,9 +485,9 @@ public class RateCP implements Serializable {
     }
 
     public RateCP trace(Long user) {
-        if(this.createdAt == null) {
+        if(this.created_at == null) {
             setCreatedby(user);
-            setCreatedAt(new Date());
+            setCreated_at(new Date());
         } else {
             setUpdatedby(user);
             setUpdateddate(new Date());

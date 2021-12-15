@@ -3,11 +3,14 @@ package com.beCMS.BackendCentralParam.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -23,6 +26,10 @@ public class JenisPembiayaan implements Serializable {
 
     @Column(name = "jenis_pembiayaan")
     private String jenis_pembiayaan;
+    
+    @OneToOne()
+    @JoinColumn(name = "produk",referencedColumnName = "id",insertable = false,updatable = false)
+    private Produk produkObject;
     
     @Column(name = "produk")
     private Integer produk;
@@ -64,9 +71,10 @@ public class JenisPembiayaan implements Serializable {
     public JenisPembiayaan() {
     }
 
-    public JenisPembiayaan(Integer id, String jenis_pembiayaan, Integer produk, Integer is_refinancing, Date start_date, Date end_date, Integer is_approved, Integer is_rejected, Long createdby, Date createddate, Long updatedby, Date updateddate, String remarks, Integer statusApproval) {
+    public JenisPembiayaan(Integer id, String jenis_pembiayaan, Produk produkObject, Integer produk, Integer is_refinancing, Date start_date, Date end_date, Integer is_approved, Integer is_rejected, Long createdby, Date createddate, Long updatedby, Date updateddate, String remarks, Integer statusApproval) {
         this.id = id;
         this.jenis_pembiayaan = jenis_pembiayaan;
+        this.produkObject = produkObject;
         this.produk = produk;
         this.is_refinancing = is_refinancing;
         this.start_date = start_date;
@@ -95,6 +103,14 @@ public class JenisPembiayaan implements Serializable {
 
     public void setJenis_pembiayaan(String jenis_pembiayaan) {
         this.jenis_pembiayaan = jenis_pembiayaan;
+    }
+
+    public Produk getProdukObject() {
+        return this.produkObject;
+    }
+
+    public void setProdukObject(Produk produkObject) {
+        this.produkObject = produkObject;
     }
 
     public Integer getProduk() {
@@ -203,6 +219,11 @@ public class JenisPembiayaan implements Serializable {
         return this;
     }
 
+    public JenisPembiayaan produkObject(Produk produkObject) {
+        setProdukObject(produkObject);
+        return this;
+    }
+
     public JenisPembiayaan produk(Integer produk) {
         setProduk(produk);
         return this;
@@ -268,6 +289,7 @@ public class JenisPembiayaan implements Serializable {
         return "{" +
             " id='" + getId() + "'" +
             ", jenis_pembiayaan='" + getJenis_pembiayaan() + "'" +
+            ", produkObject='" + getProdukObject() + "'" +
             ", produk='" + getProduk() + "'" +
             ", is_refinancing='" + getIs_refinancing() + "'" +
             ", start_date='" + getStart_date() + "'" +
@@ -296,7 +318,7 @@ public class JenisPembiayaan implements Serializable {
     }
 
     public JenisPembiayaan approve(Long user) {
-        if(this.statusApproval == 1) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(1);
             setIs_rejected(0);
             setStatusApproval(2);
@@ -308,7 +330,7 @@ public class JenisPembiayaan implements Serializable {
     }
 
     public JenisPembiayaan decline(Long user) {
-        if(this.statusApproval == 1) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
             setIs_approved(0);
             setIs_rejected(1);
             setStatusApproval(2);

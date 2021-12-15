@@ -139,7 +139,7 @@ public class RateBunga implements Serializable {
     private String operatorAkhir;
 
     @Column(name = "statusapproved")
-    private String statusApproved;
+    private Integer statusApproved;
 
     @Column(name = "Remarks")
     private String Remarks;
@@ -184,7 +184,7 @@ public class RateBunga implements Serializable {
     public RateBunga() {
     }
 
-    public RateBunga(Integer id, String namaSkema, Integer loan_type, Integer produk, Integer jenis_kendaraan, Integer kondisi_kendaraan, Integer start_tahun_kendaraan, Integer end_tahun, Date start_berlaku, Date end_berlaku, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Integer tenor5periode1, Integer tenor5periode2, Float tenor5rate1, Float tenor5rate2, Integer tenor6periode1, Integer tenor6periode2, Float tenor6rate1, Float tenor6rate2, Integer tenor7periode1, Integer tenor7periode2, Float tenor7rate1, Float tenor7rate2, Integer tenor8periode1, Integer tenor8periode2, Float tenor8rate1, Float tenor8rate2, Integer tenor9periode1, Integer tenor9periode2, Float tenor9rate1, Float tenor9rate2, Integer tenor10periode1, Integer tenor10periode2, Float tenor10rate1, Float tenor10rate2, String operatorAwal, String operatorAkhir, String statusApproved, String Remarks, Integer is_rejected, Integer is_approved, Integer jenis_pembiayaan, Integer tujuan_penggunaan, Integer cluster, Integer program, Date createddate, Date updateddate, Long updatedby, Long createdby, Integer tipe_konsumen, Integer is_login) {
+    public RateBunga(Integer id, String namaSkema, Integer loan_type, Integer produk, Integer jenis_kendaraan, Integer kondisi_kendaraan, Integer start_tahun_kendaraan, Integer end_tahun, Date start_berlaku, Date end_berlaku, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Integer tenor5periode1, Integer tenor5periode2, Float tenor5rate1, Float tenor5rate2, Integer tenor6periode1, Integer tenor6periode2, Float tenor6rate1, Float tenor6rate2, Integer tenor7periode1, Integer tenor7periode2, Float tenor7rate1, Float tenor7rate2, Integer tenor8periode1, Integer tenor8periode2, Float tenor8rate1, Float tenor8rate2, Integer tenor9periode1, Integer tenor9periode2, Float tenor9rate1, Float tenor9rate2, Integer tenor10periode1, Integer tenor10periode2, Float tenor10rate1, Float tenor10rate2, String operatorAwal, String operatorAkhir, Integer statusApproved, String Remarks, Integer is_rejected, Integer is_approved, Integer jenis_pembiayaan, Integer tujuan_penggunaan, Integer cluster, Integer program, Date createddate, Date updateddate, Long updatedby, Long createdby, Integer tipe_konsumen, Integer is_login) {
         this.id = id;
         this.namaSkema = namaSkema;
         this.loan_type = loan_type;
@@ -561,11 +561,11 @@ public class RateBunga implements Serializable {
         this.operatorAkhir = operatorAkhir;
     }
 
-    public String getStatusApproved() {
+    public Integer getStatusApproved() {
         return this.statusApproved;
     }
 
-    public void setStatusApproved(String statusApproved) {
+    public void setStatusApproved(Integer statusApproved) {
         this.statusApproved = statusApproved;
     }
 
@@ -873,7 +873,7 @@ public class RateBunga implements Serializable {
         return this;
     }
 
-    public RateBunga statusApproved(String statusApproved) {
+    public RateBunga statusApproved(Integer statusApproved) {
         setStatusApproved(statusApproved);
         return this;
     }
@@ -1003,22 +1003,22 @@ public class RateBunga implements Serializable {
             "}";
     }
     
-    public TipeKonsumen submit(Long user) {
-        if(this.statusApproval == null || this.statusApproval == 0){
+    public RateBunga submit(Long user) {
+        if(this.statusApproved == null || this.statusApproved == 0){
             setIs_approved(0);
             setIs_rejected(0);
-            setStatusApproval(1);
+            setStatusApproved(1);
             
             trace(user);
         }
         return this;
     }
 
-    public TipeKonsumen approve(Long user) {
-        if(this.statusApproval == 1) {
+    public RateBunga approve(Long user) {
+        if(this.statusApproved == 1) {
             setIs_approved(1);
             setIs_rejected(0);
-            setStatusApproval(2);
+            setStatusApproved(2);
 
             trace(user);
         }
@@ -1026,11 +1026,11 @@ public class RateBunga implements Serializable {
         return this;
     }
 
-    public TipeKonsumen decline(Long user) {
-        if(this.statusApproval == 1) {
+    public RateBunga decline(Long user) {
+        if(this.statusApproved == 1) {
             setIs_approved(0);
             setIs_rejected(1);
-            setStatusApproval(2);
+            setStatusApproved(2);
 
             trace(user);
         }

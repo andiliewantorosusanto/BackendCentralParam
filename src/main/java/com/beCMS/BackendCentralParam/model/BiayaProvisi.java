@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -22,7 +24,7 @@ public class BiayaProvisi implements Serializable {
     private Integer id;
     
     @Column(name = "nama_skema")
-    private String namaSkema;
+    private String nama_skema;
 
     @Column(name = "startberlaku")
     private Date startBerlaku;
@@ -32,139 +34,101 @@ public class BiayaProvisi implements Serializable {
         
     @Column(name = "loantype")
     private Integer loanType;
-        
-    @Column(name = "productid")
-    private Integer productid;
 
+    @OneToOne()
+    @JoinColumn(name = "jeniskendaraanid",referencedColumnName = "id",insertable = false,updatable = false)
+    private JenisKendaraan jenis_kendaraanObject;
     @Column(name = "jeniskendaraanid")
-    private Integer jeniskendaraanid;
+    private Integer jenis_kendaraan;
 
-    @Column(name = "kondisikendaraanid")
-    private Integer kondisikendaraanid;
-
-    @Column(name = "tenor1")
-    private Float tenor1;
-
-    @Column(name = "tenor2")
-    private Float tenor2;
-
-    @Column(name = "tenor3")
-    private Float tenor3;
-
-    @Column(name = "tenor4")
-    private Float tenor4;
-
-    @Column(name = "tenor5")
-    private Float tenor5;
-
-    @Column(name = "tenor6")
-    private Float tenor6;
-
-    @Column(name = "tenor7")
-    private Float tenor7;
-
-    @Column(name = "tenor8")
-    private Float tenor8;
-
-    @Column(name = "tenor9")
-    private Float tenor9;
-    
-    @Column(name = "tenor10")
-    private Float tenor10;
-
-    @Column(name = "tipe_konsumen")
-    private Integer tipe_konsumen;
-
+    @OneToOne()
+    @JoinColumn(name = "jenis_pembiayaan",referencedColumnName = "id",insertable = false,updatable = false)
+    private JenisPembiayaan jenis_pembiayaanObject;
     @Column(name = "jenis_pembiayaan")
     private Integer jenis_pembiayaan;
 
-    @Column(name = "tujuan_penggunaan")
-    private Integer tujuan_penggunaan;
 
-    @Column(name = "cluster")
-    private Integer cluster;
-
-    @Column(name = "program")
-    private Integer program;
+    @Column(name = "tenor1")
+    private Float tenor1;
+    @Column(name = "tenor2")
+    private Float tenor2;
+    @Column(name = "tenor3")
+    private Float tenor3;
+    @Column(name = "tenor4")
+    private Float tenor4;
+    @Column(name = "tenor5")
+    private Float tenor5;
+    @Column(name = "tenor6")
+    private Float tenor6;
+    @Column(name = "tenor7")
+    private Float tenor7;
+    @Column(name = "tenor8")
+    private Float tenor8;
+    @Column(name = "tenor9")
+    private Float tenor9;
+    @Column(name = "tenor10")
+    private Float tenor10;
 
     @Column(name = "remarks")
     private String remarks;
-
     @Column(name = "status")
     private String status;
 
     @Column(name = "tenor1_persen")
     private Float tenor1_persen;
-
     @Column(name = "tenor2_persen")
     private Float tenor2_persen;
-
     @Column(name = "tenor3_persen")
     private Float tenor3_persen;
-
     @Column(name = "tenor4_persen")
     private Float tenor4_persen;
-
     @Column(name = "tenor5_persen")
     private Float tenor5_persen;
-
     @Column(name = "tenor6_persen")
     private Float tenor6_persen;
-
     @Column(name = "tenor7_persen")
     private Float tenor7_persen;
-
     @Column(name = "tenor8_persen")
     private Float tenor8_persen;
-
     @Column(name = "tenor9_persen")
     private Float tenor9_persen;
-
     @Column(name = "tenor10_persen")
     private Float tenor10_persen;
     
-    @Column(name = "tahun_awal")
-    private Integer tahun_awal;
 
-    @Column(name = "tahun_akhir")
-    private Integer tahun_akhir;
 
     @Column(name = "updateddate")
     private Date updateddate;
-
     @Column(name = "createddate")
     private Date createddate;
-
     @Column(name = "createdby")
     private Long createdby;
-
     @Column(name = "updatedby")
     private Long updatedby;
 
     @Column(name = "is_login")
     private Integer is_login;
-
     @Column(name = "statusapproved")
     private Integer statusApproved;
-
     @Column(name = "is_rejected")
     private Integer is_rejected;
-
     @Column(name = "is_approved")
     private Integer is_approved;
+
 
     public BiayaProvisi() {
     }
 
-    public BiayaProvisi(Integer id, String namaSkema, Date startBerlaku, Date endBerlaku, Integer loanType, Integer productid, Integer jeniskendaraanid, Integer kondisikendaraanid, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6, Float tenor7, Float tenor8, Float tenor9, Float tenor10, Integer tipe_konsumen, Integer jenis_pembiayaan, Integer tujuan_penggunaan, Integer cluster, Integer program, String remarks, String status, Float tenor1_persen, Float tenor2_persen, Float tenor3_persen, Float tenor4_persen, Float tenor5_persen, Float tenor6_persen, Float tenor7_persen, Float tenor8_persen, Float tenor9_persen, Float tenor10_persen, Integer tahun_awal, Integer tahun_akhir, Date updateddate, Date createddate, Long createdby, Long updatedby, Integer is_login, Integer statusApproved, Integer is_rejected, Integer is_approved) {
+    public BiayaProvisi(Integer id, String nama_skema, Date startBerlaku, Date endBerlaku, Integer loanType, JenisKendaraan jenis_kendaraanObject, Integer jenis_kendaraan, JenisPembiayaan jenis_pembiayaanObject, Integer jenis_pembiayaan, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6, Float tenor7, Float tenor8, Float tenor9, Float tenor10, String remarks, String status, Float tenor1_persen, Float tenor2_persen, Float tenor3_persen, Float tenor4_persen, Float tenor5_persen, Float tenor6_persen, Float tenor7_persen, Float tenor8_persen, Float tenor9_persen, Float tenor10_persen, Date updateddate, Date createddate, Long createdby, Long updatedby, Integer is_login, Integer statusApproved, Integer is_rejected, Integer is_approved) {
         this.id = id;
-        this.namaSkema = namaSkema;
+        this.nama_skema = nama_skema;
         this.startBerlaku = startBerlaku;
         this.endBerlaku = endBerlaku;
         this.loanType = loanType;
-        this.productid = productid;
-        this.jeniskendaraanid = jeniskendaraanid;
-        this.kondisikendaraanid = kondisikendaraanid;
+        this.jenis_kendaraanObject = jenis_kendaraanObject;
+        this.jenis_kendaraan = jenis_kendaraan;
+        this.jenis_pembiayaanObject = jenis_pembiayaanObject;
+        this.jenis_pembiayaan = jenis_pembiayaan;
         this.tenor1 = tenor1;
         this.tenor2 = tenor2;
         this.tenor3 = tenor3;
@@ -175,11 +139,6 @@ public class BiayaProvisi implements Serializable {
         this.tenor8 = tenor8;
         this.tenor9 = tenor9;
         this.tenor10 = tenor10;
-        this.tipe_konsumen = tipe_konsumen;
-        this.jenis_pembiayaan = jenis_pembiayaan;
-        this.tujuan_penggunaan = tujuan_penggunaan;
-        this.cluster = cluster;
-        this.program = program;
         this.remarks = remarks;
         this.status = status;
         this.tenor1_persen = tenor1_persen;
@@ -192,8 +151,6 @@ public class BiayaProvisi implements Serializable {
         this.tenor8_persen = tenor8_persen;
         this.tenor9_persen = tenor9_persen;
         this.tenor10_persen = tenor10_persen;
-        this.tahun_awal = tahun_awal;
-        this.tahun_akhir = tahun_akhir;
         this.updateddate = updateddate;
         this.createddate = createddate;
         this.createdby = createdby;
@@ -212,12 +169,12 @@ public class BiayaProvisi implements Serializable {
         this.id = id;
     }
 
-    public String getNamaSkema() {
-        return this.namaSkema;
+    public String getNama_skema() {
+        return this.nama_skema;
     }
 
-    public void setNamaSkema(String namaSkema) {
-        this.namaSkema = namaSkema;
+    public void setNama_skema(String nama_skema) {
+        this.nama_skema = nama_skema;
     }
 
     public Date getStartBerlaku() {
@@ -244,28 +201,36 @@ public class BiayaProvisi implements Serializable {
         this.loanType = loanType;
     }
 
-    public Integer getProductid() {
-        return this.productid;
+    public JenisKendaraan getJenis_kendaraanObject() {
+        return this.jenis_kendaraanObject;
     }
 
-    public void setProductid(Integer productid) {
-        this.productid = productid;
+    public void setJenis_kendaraanObject(JenisKendaraan jenis_kendaraanObject) {
+        this.jenis_kendaraanObject = jenis_kendaraanObject;
     }
 
-    public Integer getJeniskendaraanid() {
-        return this.jeniskendaraanid;
+    public Integer getJenis_kendaraan() {
+        return this.jenis_kendaraan;
     }
 
-    public void setJeniskendaraanid(Integer jeniskendaraanid) {
-        this.jeniskendaraanid = jeniskendaraanid;
+    public void setJenis_kendaraan(Integer jenis_kendaraan) {
+        this.jenis_kendaraan = jenis_kendaraan;
     }
 
-    public Integer getKondisikendaraanid() {
-        return this.kondisikendaraanid;
+    public JenisPembiayaan getJenis_pembiayaanObject() {
+        return this.jenis_pembiayaanObject;
     }
 
-    public void setKondisikendaraanid(Integer kondisikendaraanid) {
-        this.kondisikendaraanid = kondisikendaraanid;
+    public void setJenis_pembiayaanObject(JenisPembiayaan jenis_pembiayaanObject) {
+        this.jenis_pembiayaanObject = jenis_pembiayaanObject;
+    }
+
+    public Integer getJenis_pembiayaan() {
+        return this.jenis_pembiayaan;
+    }
+
+    public void setJenis_pembiayaan(Integer jenis_pembiayaan) {
+        this.jenis_pembiayaan = jenis_pembiayaan;
     }
 
     public Float getTenor1() {
@@ -346,46 +311,6 @@ public class BiayaProvisi implements Serializable {
 
     public void setTenor10(Float tenor10) {
         this.tenor10 = tenor10;
-    }
-
-    public Integer getTipe_konsumen() {
-        return this.tipe_konsumen;
-    }
-
-    public void setTipe_konsumen(Integer tipe_konsumen) {
-        this.tipe_konsumen = tipe_konsumen;
-    }
-
-    public Integer getJenis_pembiayaan() {
-        return this.jenis_pembiayaan;
-    }
-
-    public void setJenis_pembiayaan(Integer jenis_pembiayaan) {
-        this.jenis_pembiayaan = jenis_pembiayaan;
-    }
-
-    public Integer getTujuan_penggunaan() {
-        return this.tujuan_penggunaan;
-    }
-
-    public void setTujuan_penggunaan(Integer tujuan_penggunaan) {
-        this.tujuan_penggunaan = tujuan_penggunaan;
-    }
-
-    public Integer getCluster() {
-        return this.cluster;
-    }
-
-    public void setCluster(Integer cluster) {
-        this.cluster = cluster;
-    }
-
-    public Integer getProgram() {
-        return this.program;
-    }
-
-    public void setProgram(Integer program) {
-        this.program = program;
     }
 
     public String getRemarks() {
@@ -484,22 +409,6 @@ public class BiayaProvisi implements Serializable {
         this.tenor10_persen = tenor10_persen;
     }
 
-    public Integer getTahun_awal() {
-        return this.tahun_awal;
-    }
-
-    public void setTahun_awal(Integer tahun_awal) {
-        this.tahun_awal = tahun_awal;
-    }
-
-    public Integer getTahun_akhir() {
-        return this.tahun_akhir;
-    }
-
-    public void setTahun_akhir(Integer tahun_akhir) {
-        this.tahun_akhir = tahun_akhir;
-    }
-
     public Date getUpdateddate() {
         return this.updateddate;
     }
@@ -569,8 +478,8 @@ public class BiayaProvisi implements Serializable {
         return this;
     }
 
-    public BiayaProvisi namaSkema(String namaSkema) {
-        setNamaSkema(namaSkema);
+    public BiayaProvisi nama_skema(String nama_skema) {
+        setNama_skema(nama_skema);
         return this;
     }
 
@@ -589,18 +498,23 @@ public class BiayaProvisi implements Serializable {
         return this;
     }
 
-    public BiayaProvisi productid(Integer productid) {
-        setProductid(productid);
+    public BiayaProvisi jenis_kendaraanObject(JenisKendaraan jenis_kendaraanObject) {
+        setJenis_kendaraanObject(jenis_kendaraanObject);
         return this;
     }
 
-    public BiayaProvisi jeniskendaraanid(Integer jeniskendaraanid) {
-        setJeniskendaraanid(jeniskendaraanid);
+    public BiayaProvisi jenis_kendaraan(Integer jenis_kendaraan) {
+        setJenis_kendaraan(jenis_kendaraan);
         return this;
     }
 
-    public BiayaProvisi kondisikendaraanid(Integer kondisikendaraanid) {
-        setKondisikendaraanid(kondisikendaraanid);
+    public BiayaProvisi jenis_pembiayaanObject(JenisPembiayaan jenis_pembiayaanObject) {
+        setJenis_pembiayaanObject(jenis_pembiayaanObject);
+        return this;
+    }
+
+    public BiayaProvisi jenis_pembiayaan(Integer jenis_pembiayaan) {
+        setJenis_pembiayaan(jenis_pembiayaan);
         return this;
     }
 
@@ -651,31 +565,6 @@ public class BiayaProvisi implements Serializable {
 
     public BiayaProvisi tenor10(Float tenor10) {
         setTenor10(tenor10);
-        return this;
-    }
-
-    public BiayaProvisi tipe_konsumen(Integer tipe_konsumen) {
-        setTipe_konsumen(tipe_konsumen);
-        return this;
-    }
-
-    public BiayaProvisi jenis_pembiayaan(Integer jenis_pembiayaan) {
-        setJenis_pembiayaan(jenis_pembiayaan);
-        return this;
-    }
-
-    public BiayaProvisi tujuan_penggunaan(Integer tujuan_penggunaan) {
-        setTujuan_penggunaan(tujuan_penggunaan);
-        return this;
-    }
-
-    public BiayaProvisi cluster(Integer cluster) {
-        setCluster(cluster);
-        return this;
-    }
-
-    public BiayaProvisi program(Integer program) {
-        setProgram(program);
         return this;
     }
 
@@ -739,16 +628,6 @@ public class BiayaProvisi implements Serializable {
         return this;
     }
 
-    public BiayaProvisi tahun_awal(Integer tahun_awal) {
-        setTahun_awal(tahun_awal);
-        return this;
-    }
-
-    public BiayaProvisi tahun_akhir(Integer tahun_akhir) {
-        setTahun_akhir(tahun_akhir);
-        return this;
-    }
-
     public BiayaProvisi updateddate(Date updateddate) {
         setUpdateddate(updateddate);
         return this;
@@ -793,13 +672,14 @@ public class BiayaProvisi implements Serializable {
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +
-            ", namaSkema='" + getNamaSkema() + "'" +
+            ", nama_skema='" + getNama_skema() + "'" +
             ", startBerlaku='" + getStartBerlaku() + "'" +
             ", endBerlaku='" + getEndBerlaku() + "'" +
             ", loanType='" + getLoanType() + "'" +
-            ", productid='" + getProductid() + "'" +
-            ", jeniskendaraanid='" + getJeniskendaraanid() + "'" +
-            ", kondisikendaraanid='" + getKondisikendaraanid() + "'" +
+            ", jenis_kendaraanObject='" + getJenis_kendaraanObject() + "'" +
+            ", jenis_kendaraan='" + getJenis_kendaraan() + "'" +
+            ", jenis_pembiayaanObject='" + getJenis_pembiayaanObject() + "'" +
+            ", jenis_pembiayaan='" + getJenis_pembiayaan() + "'" +
             ", tenor1='" + getTenor1() + "'" +
             ", tenor2='" + getTenor2() + "'" +
             ", tenor3='" + getTenor3() + "'" +
@@ -810,11 +690,6 @@ public class BiayaProvisi implements Serializable {
             ", tenor8='" + getTenor8() + "'" +
             ", tenor9='" + getTenor9() + "'" +
             ", tenor10='" + getTenor10() + "'" +
-            ", tipe_konsumen='" + getTipe_konsumen() + "'" +
-            ", jenis_pembiayaan='" + getJenis_pembiayaan() + "'" +
-            ", tujuan_penggunaan='" + getTujuan_penggunaan() + "'" +
-            ", cluster='" + getCluster() + "'" +
-            ", program='" + getProgram() + "'" +
             ", remarks='" + getRemarks() + "'" +
             ", status='" + getStatus() + "'" +
             ", tenor1_persen='" + getTenor1_persen() + "'" +
@@ -827,8 +702,6 @@ public class BiayaProvisi implements Serializable {
             ", tenor8_persen='" + getTenor8_persen() + "'" +
             ", tenor9_persen='" + getTenor9_persen() + "'" +
             ", tenor10_persen='" + getTenor10_persen() + "'" +
-            ", tahun_awal='" + getTahun_awal() + "'" +
-            ", tahun_akhir='" + getTahun_akhir() + "'" +
             ", updateddate='" + getUpdateddate() + "'" +
             ", createddate='" + getCreateddate() + "'" +
             ", createdby='" + getCreatedby() + "'" +
