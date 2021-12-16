@@ -126,28 +126,32 @@ public class ProdukRestController {
     }
 
     @PostMapping(path = "/approveData", consumes = "application/json")
-    public HashMap<String, String> approveDataProduk(@RequestBody Produk produk,Principal principal) {
+    public HashMap<String, String> approveDataProduk(@RequestBody Produk modelProduk,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        produk.approve(user.getId());
-        produkRepository.save(produk);
+        Optional<Produk> optionalProduk = produkRepository.findById(modelProduk.getId());
+        Produk approvalModel = optionalProduk.get();
+        approvalModel.approve(user.getId());
+        produkRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit Produk Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 
     @PostMapping(path = "/declineData", consumes = "application/json")
-    public HashMap<String, String> declineDataProduk(@RequestBody Produk produk,Principal principal) {
+    public HashMap<String, String> declineDataProduk(@RequestBody Produk modelProduk,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        produk.decline(user.getId());
-        produkRepository.save(produk);
+        Optional<Produk> optionalProduk = produkRepository.findById(modelProduk.getId());
+        Produk approvalModel = optionalProduk.get();
+        approvalModel.decline(user.getId());
+        produkRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit Produk Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 

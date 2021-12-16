@@ -129,12 +129,14 @@ public class WilayahRestController {
     public HashMap<String, String> approveDataWilayah(@RequestBody Wilayah modelWilayah,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        modelWilayah.approve(user.getId());
-        wilayahRepository.save(modelWilayah);
+        Optional<Wilayah> optionalWilayah = wilayahRepository.findById(modelWilayah.getId());
+        Wilayah approvalModel = optionalWilayah.get();
+        approvalModel.approve(user.getId());
+        wilayahRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit Wilayah Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 
@@ -142,12 +144,14 @@ public class WilayahRestController {
     public HashMap<String, String> declineDataWilayah(@RequestBody Wilayah modelWilayah,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        modelWilayah.decline(user.getId());
-        wilayahRepository.save(modelWilayah);
+        Optional<Wilayah> optionalWilayah = wilayahRepository.findById(modelWilayah.getId());
+        Wilayah approvalModel = optionalWilayah.get();
+        approvalModel.decline(user.getId());
+        wilayahRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit Wilayah Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 

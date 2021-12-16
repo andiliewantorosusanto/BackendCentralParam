@@ -130,8 +130,10 @@ public class TipeKonsumenRestController {
     public HashMap<String, String> approveDataTipeKonsumen(@RequestBody TipeKonsumen modelTipeKonsumen,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        modelTipeKonsumen.approve(user.getId());
-        tipeKonsumenRepository.save(modelTipeKonsumen);
+        Optional<TipeKonsumen> optionalTipeKonsumen = tipeKonsumenRepository.findById(modelTipeKonsumen.getId());
+        TipeKonsumen approvalModel = optionalTipeKonsumen.get();
+        approvalModel.approve(user.getId());
+        tipeKonsumenRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
@@ -143,8 +145,10 @@ public class TipeKonsumenRestController {
     public HashMap<String, String> declineDataTipeKonsumen(@RequestBody TipeKonsumen modelTipeKonsumen,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        modelTipeKonsumen.decline(user.getId());
-        tipeKonsumenRepository.save(modelTipeKonsumen);
+        Optional<TipeKonsumen> optionalTipeKonsumen = tipeKonsumenRepository.findById(modelTipeKonsumen.getId());
+        TipeKonsumen approvalModel = optionalTipeKonsumen.get();
+        approvalModel.decline(user.getId());
+        tipeKonsumenRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");

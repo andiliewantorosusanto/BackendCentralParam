@@ -129,12 +129,14 @@ public class RateCPRestController {
     public HashMap<String, String> approveDataRateCP(@RequestBody RateCP modelRateCP,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        modelRateCP.approve(user.getId());
-        rateCPRepository.save(modelRateCP);
+        Optional<RateCP> optionalRateCP = rateCPRepository.findById(modelRateCP.getId());
+        RateCP approvalModel = optionalRateCP.get();
+        approvalModel.approve(user.getId());
+        rateCPRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit RateCP Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 
@@ -142,12 +144,14 @@ public class RateCPRestController {
     public HashMap<String, String> declineDataRateCP(@RequestBody RateCP modelRateCP,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        modelRateCP.decline(user.getId());
-        rateCPRepository.save(modelRateCP);
+        Optional<RateCP> optionalRateCP = rateCPRepository.findById(modelRateCP.getId());
+        RateCP approvalModel = optionalRateCP.get();
+        approvalModel.decline(user.getId());
+        rateCPRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit RateCP Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 

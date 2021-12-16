@@ -126,28 +126,32 @@ public class BiayaAdminRestController {
     }
 
     @PostMapping(path = "/approveData", consumes = "application/json")
-    public HashMap<String, String> approveDataBiayaAdmin(@RequestBody BiayaAdmin biayaAdmin,Principal principal) {
+    public HashMap<String, String> approveDataBiayaAdmin(@RequestBody BiayaAdmin modelBiayaAdmin,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        biayaAdmin.approve(user.getId());
-        biayaAdminRepository.save(biayaAdmin);
+        Optional<BiayaAdmin> optionalBiayaAdmin = biayaAdminRepository.findById(modelBiayaAdmin.getId());
+        BiayaAdmin approvalModel = optionalBiayaAdmin.get();
+        approvalModel.approve(user.getId());
+        biayaAdminRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit Biaya Admin Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 
     @PostMapping(path = "/declineData", consumes = "application/json")
-    public HashMap<String, String> declineDataBiayaAdmin(@RequestBody BiayaAdmin biayaAdmin,Principal principal) {
+    public HashMap<String, String> declineDataBiayaAdmin(@RequestBody BiayaAdmin modelBiayaAdmin,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        biayaAdmin.decline(user.getId());
-        biayaAdminRepository.save(biayaAdmin);
+        Optional<BiayaAdmin> optionalBiayaAdmin = biayaAdminRepository.findById(modelBiayaAdmin.getId());
+        BiayaAdmin approvalModel = optionalBiayaAdmin.get();
+        approvalModel.decline(user.getId());
+        biayaAdminRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit biayaAdmin Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 

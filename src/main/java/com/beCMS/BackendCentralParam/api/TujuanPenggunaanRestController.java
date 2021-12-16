@@ -129,12 +129,14 @@ public class TujuanPenggunaanRestController {
     public HashMap<String, String> approveDataTujuanPenggunaan(@RequestBody TujuanPenggunaan modelTujuanPenggunaan,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        modelTujuanPenggunaan.approve(user.getId());
-        tujuanPenggunaanRepository.save(modelTujuanPenggunaan);
+        Optional<TujuanPenggunaan> optionalTujuanPenggunaan = tujuanPenggunaanRepository.findById(modelTujuanPenggunaan.getId());
+        TujuanPenggunaan approvalModel = optionalTujuanPenggunaan.get();
+        approvalModel.approve(user.getId());
+        tujuanPenggunaanRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit TujuanPenggunaan Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 
@@ -142,12 +144,14 @@ public class TujuanPenggunaanRestController {
     public HashMap<String, String> declineDataTujuanPenggunaan(@RequestBody TujuanPenggunaan modelTujuanPenggunaan,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        modelTujuanPenggunaan.decline(user.getId());
-        tujuanPenggunaanRepository.save(modelTujuanPenggunaan);
+        Optional<TujuanPenggunaan> optionalTujuanPenggunaan = tujuanPenggunaanRepository.findById(modelTujuanPenggunaan.getId());
+        TujuanPenggunaan approvalModel = optionalTujuanPenggunaan.get();
+        approvalModel.decline(user.getId());
+        tujuanPenggunaanRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit TujuanPenggunaan Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 

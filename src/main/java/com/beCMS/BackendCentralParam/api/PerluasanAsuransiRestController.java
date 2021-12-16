@@ -127,28 +127,32 @@ public class PerluasanAsuransiRestController {
     }
 
     @PostMapping(path = "/approveData", consumes = "application/json")
-    public HashMap<String, String> approveDataPerluasanAsuransi(@RequestBody PerluasanAsuransi PerluasanAsuransi,Principal principal) {
+    public HashMap<String, String> approveDataPerluasanAsuransi(@RequestBody PerluasanAsuransi modelPerluasanAsuransi,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        PerluasanAsuransi.approve(user.getId());
-        ratePerluasanAsuransiRepository.save(PerluasanAsuransi);
+        Optional<PerluasanAsuransi> optionalPerluasanAsuransi = ratePerluasanAsuransiRepository.findById(modelPerluasanAsuransi.getId());
+        PerluasanAsuransi approvalModel = optionalPerluasanAsuransi.get();
+        approvalModel.approve(user.getId());
+        ratePerluasanAsuransiRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit PerluasanAsuransi Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 
     @PostMapping(path = "/declineData", consumes = "application/json")
-    public HashMap<String, String> declineDataPerluasanAsuransi(@RequestBody PerluasanAsuransi PerluasanAsuransi,Principal principal) {
+    public HashMap<String, String> declineDataPerluasanAsuransi(@RequestBody PerluasanAsuransi modelPerluasanAsuransi,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        PerluasanAsuransi.decline(user.getId());
-        ratePerluasanAsuransiRepository.save(PerluasanAsuransi);
+        Optional<PerluasanAsuransi> optionalPerluasanAsuransi = ratePerluasanAsuransiRepository.findById(modelPerluasanAsuransi.getId());
+        PerluasanAsuransi approvalModel = optionalPerluasanAsuransi.get();
+        approvalModel.decline(user.getId());
+        ratePerluasanAsuransiRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit PerluasanAsuransi Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 

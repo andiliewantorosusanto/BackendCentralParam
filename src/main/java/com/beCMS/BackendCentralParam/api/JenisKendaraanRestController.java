@@ -126,28 +126,32 @@ public class JenisKendaraanRestController {
     }
 
     @PostMapping(path = "/approveData", consumes = "application/json")
-    public HashMap<String, String> approveDataJenisKendaraan(@RequestBody JenisKendaraan jenisKendaraan,Principal principal) {
+    public HashMap<String, String> approveDataJenisKendaraan(@RequestBody JenisKendaraan modelJenisKendaraan,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        jenisKendaraan.approve(user.getId());
-        jenisKendaraanRepository.save(jenisKendaraan);
+        Optional<JenisKendaraan> optionalJenisKendaraan = jenisKendaraanRepository.findById(modelJenisKendaraan.getId());
+        JenisKendaraan approvalModel = optionalJenisKendaraan.get();
+        approvalModel.approve(user.getId());
+        jenisKendaraanRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit JenisKendaraan Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 
     @PostMapping(path = "/declineData", consumes = "application/json")
-    public HashMap<String, String> declineDataJenisKendaraan(@RequestBody JenisKendaraan jenisKendaraan,Principal principal) {
+    public HashMap<String, String> declineDataJenisKendaraan(@RequestBody JenisKendaraan modelJenisKendaraan,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        jenisKendaraan.decline(user.getId());
-        jenisKendaraanRepository.save(jenisKendaraan);
+        Optional<JenisKendaraan> optionalJenisKendaraan = jenisKendaraanRepository.findById(modelJenisKendaraan.getId());
+        JenisKendaraan approvalModel = optionalJenisKendaraan.get();
+        approvalModel.decline(user.getId());
+        jenisKendaraanRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit JenisKendaraan Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 

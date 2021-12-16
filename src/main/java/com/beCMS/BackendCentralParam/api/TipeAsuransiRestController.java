@@ -129,12 +129,14 @@ public class TipeAsuransiRestController {
     public HashMap<String, String> approveDataTipeAsuransi(@RequestBody TipeAsuransi modelTipeAsuransi,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        modelTipeAsuransi.approve(user.getId());
-        tipeAsuransiRepository.save(modelTipeAsuransi);
+        Optional<TipeAsuransi> optionalTipeAsuransi = tipeAsuransiRepository.findById(modelTipeAsuransi.getId());
+        TipeAsuransi approvalModel = optionalTipeAsuransi.get();
+        approvalModel.approve(user.getId());
+        tipeAsuransiRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit TipeAsuransi Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 
@@ -142,12 +144,14 @@ public class TipeAsuransiRestController {
     public HashMap<String, String> declineDataTipeAsuransi(@RequestBody TipeAsuransi modelTipeAsuransi,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        modelTipeAsuransi.decline(user.getId());
-        tipeAsuransiRepository.save(modelTipeAsuransi);
+        Optional<TipeAsuransi> optionalTipeAsuransi = tipeAsuransiRepository.findById(modelTipeAsuransi.getId());
+        TipeAsuransi approvalModel = optionalTipeAsuransi.get();
+        approvalModel.decline(user.getId());
+        tipeAsuransiRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit TipeAsuransi Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 

@@ -129,12 +129,14 @@ public class RateBungaRestController {
     public HashMap<String, String> approveDataRateBunga(@RequestBody RateBunga modelRateBunga,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        modelRateBunga.approve(user.getId());
-        rateBungaRepository.save(modelRateBunga);
+        Optional<RateBunga> optionalRateBunga = rateBungaRepository.findById(modelRateBunga.getId());
+        RateBunga approvalModel = optionalRateBunga.get();
+        approvalModel.approve(user.getId());
+        rateBungaRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit RateBunga Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 
@@ -142,12 +144,14 @@ public class RateBungaRestController {
     public HashMap<String, String> declineDataRateBunga(@RequestBody RateBunga modelRateBunga,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        modelRateBunga.decline(user.getId());
-        rateBungaRepository.save(modelRateBunga);
+        Optional<RateBunga> optionalRateBunga = rateBungaRepository.findById(modelRateBunga.getId());
+        RateBunga approvalModel = optionalRateBunga.get();
+        approvalModel.decline(user.getId());
+        rateBungaRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit RateBunga Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 

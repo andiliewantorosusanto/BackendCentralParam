@@ -126,28 +126,32 @@ public class RateAsuransiRestController {
     }
 
     @PostMapping(path = "/approveData", consumes = "application/json")
-    public HashMap<String, String> approveDataRateAsuransi(@RequestBody RateAsuransi rateAsuransi,Principal principal) {
+    public HashMap<String, String> approveDataRateAsuransi(@RequestBody RateAsuransi modelRateAsuransi,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        rateAsuransi.approve(user.getId());
-        rateAsuransiRepository.save(rateAsuransi);
+        Optional<RateAsuransi> optionalRateAsuransi = rateAsuransiRepository.findById(modelRateAsuransi.getId());
+        RateAsuransi approvalModel = optionalRateAsuransi.get();
+        approvalModel.approve(user.getId());
+        rateAsuransiRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit RateAsuransi Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 
     @PostMapping(path = "/declineData", consumes = "application/json")
-    public HashMap<String, String> declineDataRateAsuransi(@RequestBody RateAsuransi rateAsuransi,Principal principal) {
+    public HashMap<String, String> declineDataRateAsuransi(@RequestBody RateAsuransi modelRateAsuransi,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        rateAsuransi.decline(user.getId());
-        rateAsuransiRepository.save(rateAsuransi);
+        Optional<RateAsuransi> optionalRateAsuransi = rateAsuransiRepository.findById(modelRateAsuransi.getId());
+        RateAsuransi approvalModel = optionalRateAsuransi.get();
+        approvalModel.decline(user.getId());
+        rateAsuransiRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit RateAsuransi Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 

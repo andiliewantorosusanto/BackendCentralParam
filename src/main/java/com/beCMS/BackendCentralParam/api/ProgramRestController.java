@@ -126,28 +126,32 @@ public class ProgramRestController {
     }
 
     @PostMapping(path = "/approveData", consumes = "application/json")
-    public HashMap<String, String> approveDataProgram(@RequestBody Program program,Principal principal) {
+    public HashMap<String, String> approveDataProgram(@RequestBody Program modelProgram,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        program.approve(user.getId());
-        programRepository.save(program);
+        Optional<Program> optionalProgram = programRepository.findById(modelProgram.getId());
+        Program approvalModel = optionalProgram.get();
+        approvalModel.approve(user.getId());
+        programRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit Program Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 
     @PostMapping(path = "/declineData", consumes = "application/json")
-    public HashMap<String, String> declineDataProgram(@RequestBody Program program,Principal principal) {
+    public HashMap<String, String> declineDataProgram(@RequestBody Program modelProgram,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        program.decline(user.getId());
-        programRepository.save(program);
+        Optional<Program> optionalProgram = programRepository.findById(modelProgram.getId());
+        Program approvalModel = optionalProgram.get();
+        approvalModel.decline(user.getId());
+        programRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit Program Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 

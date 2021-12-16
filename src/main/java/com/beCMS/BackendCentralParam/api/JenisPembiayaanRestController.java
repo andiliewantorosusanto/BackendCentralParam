@@ -126,28 +126,32 @@ public class JenisPembiayaanRestController {
     }
 
     @PostMapping(path = "/approveData", consumes = "application/json")
-    public HashMap<String, String> approveDataJenisPembiayaan(@RequestBody JenisPembiayaan jenisPembiayaan,Principal principal) {
+    public HashMap<String, String> approveDataJenisPembiayaan(@RequestBody JenisPembiayaan modelJenisPembiayaan,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        jenisPembiayaan.approve(user.getId());
-        jenisPembiayaanRepository.save(jenisPembiayaan);
+        Optional<JenisPembiayaan> optionalJenisPembiayaan = jenisPembiayaanRepository.findById(modelJenisPembiayaan.getId());
+        JenisPembiayaan approvalModel = optionalJenisPembiayaan.get();
+        approvalModel.approve(user.getId());
+        jenisPembiayaanRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit JenisPembiayaan Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 
     @PostMapping(path = "/declineData", consumes = "application/json")
-    public HashMap<String, String> declineDataJenisPembiayaan(@RequestBody JenisPembiayaan jenisPembiayaan,Principal principal) {
+    public HashMap<String, String> declineDataJenisPembiayaan(@RequestBody JenisPembiayaan modelJenisPembiayaan,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        jenisPembiayaan.decline(user.getId());
-        jenisPembiayaanRepository.save(jenisPembiayaan);
+        Optional<JenisPembiayaan> optionalJenisPembiayaan = jenisPembiayaanRepository.findById(modelJenisPembiayaan.getId());
+        JenisPembiayaan approvalModel = optionalJenisPembiayaan.get();
+        approvalModel.decline(user.getId());
+        jenisPembiayaanRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit JenisPembiayaan Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 

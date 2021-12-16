@@ -126,31 +126,34 @@ public class BiayaFidusiaRestController {
     }
 
     @PostMapping(path = "/approveData", consumes = "application/json")
-    public HashMap<String, String> approveDataBiayaFidusia(@RequestBody BiayaFidusia BiayaFidusia,Principal principal) {
+    public HashMap<String, String> approveDataBiayaFidusia(@RequestBody BiayaFidusia modelBiayaFidusia,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        BiayaFidusia.approve(user.getId());
-        biayaFidusiaRepository.save(BiayaFidusia);
+        Optional<BiayaFidusia> optionalBiayaFidusia = biayaFidusiaRepository.findById(modelBiayaFidusia.getId());
+        BiayaFidusia approvalModel = optionalBiayaFidusia.get();
+        approvalModel.approve(user.getId());
+        biayaFidusiaRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit BiayaFidusia Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 
     @PostMapping(path = "/declineData", consumes = "application/json")
-    public HashMap<String, String> declineDataBiayaFidusia(@RequestBody BiayaFidusia BiayaFidusia,Principal principal) {
+    public HashMap<String, String> declineDataBiayaFidusia(@RequestBody BiayaFidusia modelBiayaFidusia,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        BiayaFidusia.decline(user.getId());
-        biayaFidusiaRepository.save(BiayaFidusia);
+        Optional<BiayaFidusia> optionalBiayaFidusia = biayaFidusiaRepository.findById(modelBiayaFidusia.getId());
+        BiayaFidusia approvalModel = optionalBiayaFidusia.get();
+        approvalModel.decline(user.getId());
+        biayaFidusiaRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit BiayaFidusia Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
-
     @PostMapping(path = "/approve", consumes = "application/json")
     public HashMap<String, String> approveBiayaFidusia(@RequestBody Map<String, Object> data,Principal principal) {
         

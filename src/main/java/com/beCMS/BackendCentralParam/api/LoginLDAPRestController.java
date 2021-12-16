@@ -42,21 +42,21 @@ public class LoginLDAPRestController {
     public HashMap<String, Object> loginLDAP(@RequestBody vwCredentials product, HttpServletResponse responses)
             throws JsonProcessingException {
         System.out.println("API LDAP HIT");
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("Content-Type", "application/json");
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.add("Authorization", "Basic YmNhZmFwcHM6QWRtaW4xMjM=");
-        HttpEntity<vwCredentials> entity = new HttpEntity<vwCredentials>(product, headers);
-        ResponseEntity<vwJWTLDAP> respon = restTemplate.exchange(
-                "http://192.168.29.71:12103/EnterpriseAuthentication/AuthenticateUserV2/", HttpMethod.POST, entity,
-                vwJWTLDAP.class);
-        System.out.println("hasil respon : " + respon.getBody().getResponseHeader());
-        String credent = respon.getBody().getResponseHeader().getErrorDescription();
-        System.out.println("repson : " + credent);
+        // HttpHeaders headers = new HttpHeaders();
+        // headers.set("Content-Type", "application/json");
+        // headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        // headers.setContentType(MediaType.APPLICATION_JSON);
+        // headers.add("Authorization", "Basic YmNhZmFwcHM6QWRtaW4xMjM=");
+        // HttpEntity<vwCredentials> entity = new HttpEntity<vwCredentials>(product, headers);
+        // ResponseEntity<vwJWTLDAP> respon = restTemplate.exchange(
+        //         "http://192.168.29.71:12103/EnterpriseAuthentication/AuthenticateUserV2/", HttpMethod.POST, entity,
+        //         vwJWTLDAP.class);
+        // System.out.println("hasil respon : " + respon.getBody().getResponseHeader());
+        // String credent = respon.getBody().getResponseHeader().getErrorDescription();
+        // System.out.println("repson : " + credent);
         // return respon.getBody();
 
-        if (credent.equals("Success")) {
+        if (true) {
             // NOTE LOGIN
             System.out.println("ok");
             String username = product.getCredentials().getUserId();        

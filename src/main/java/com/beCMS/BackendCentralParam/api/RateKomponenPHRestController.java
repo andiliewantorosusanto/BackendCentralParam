@@ -126,28 +126,32 @@ public class RateKomponenPHRestController {
     }
 
     @PostMapping(path = "/approveData", consumes = "application/json")
-    public HashMap<String, String> approveDataRateKomponenPH(@RequestBody KomponenPH KomponenPH,Principal principal) {
+    public HashMap<String, String> approveDataKomponenPH(@RequestBody KomponenPH modelKomponenPH,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        KomponenPH.approve(user.getId());
-        rateKomponenPHRepository.save(KomponenPH);
+        Optional<KomponenPH> optionalKomponenPH = rateKomponenPHRepository.findById(modelKomponenPH.getId());
+        KomponenPH approvalModel = optionalKomponenPH.get();
+        approvalModel.approve(user.getId());
+        rateKomponenPHRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit RateKomponenPH Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 
     @PostMapping(path = "/declineData", consumes = "application/json")
-    public HashMap<String, String> declineDataRateKomponenPH(@RequestBody KomponenPH KomponenPH,Principal principal) {
+    public HashMap<String, String> declineDataKomponenPH(@RequestBody KomponenPH modelKomponenPH,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        KomponenPH.decline(user.getId());
-        rateKomponenPHRepository.save(KomponenPH);
+        Optional<KomponenPH> optionalKomponenPH = rateKomponenPHRepository.findById(modelKomponenPH.getId());
+        KomponenPH approvalModel = optionalKomponenPH.get();
+        approvalModel.decline(user.getId());
+        rateKomponenPHRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit RateKomponenPH Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 

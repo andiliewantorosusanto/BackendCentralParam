@@ -129,12 +129,14 @@ public class JenisPerluasanRestController {
     public HashMap<String, String> approveDataJenisPerluasan(@RequestBody JenisPerluasan modelJenisPerluasan,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        modelJenisPerluasan.approve(user.getId());
-        jenisPerluasanRepository.save(modelJenisPerluasan);
+        Optional<JenisPerluasan> optionalJenisPerluasan = jenisPerluasanRepository.findById(modelJenisPerluasan.getId());
+        JenisPerluasan approvalModel = optionalJenisPerluasan.get();
+        approvalModel.approve(user.getId());
+        jenisPerluasanRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit JenisPerluasan Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 
@@ -142,12 +144,14 @@ public class JenisPerluasanRestController {
     public HashMap<String, String> declineDataJenisPerluasan(@RequestBody JenisPerluasan modelJenisPerluasan,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        modelJenisPerluasan.decline(user.getId());
-        jenisPerluasanRepository.save(modelJenisPerluasan);
+        Optional<JenisPerluasan> optionalJenisPerluasan = jenisPerluasanRepository.findById(modelJenisPerluasan.getId());
+        JenisPerluasan approvalModel = optionalJenisPerluasan.get();
+        approvalModel.decline(user.getId());
+        jenisPerluasanRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit JenisPerluasan Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 

@@ -127,28 +127,32 @@ public class MinimalDPRestController {
     }
 
     @PostMapping(path = "/approveData", consumes = "application/json")
-    public HashMap<String, String> approveDataMinimalDP(@RequestBody MinimalDP MinimalDP,Principal principal) {
+    public HashMap<String, String> approveDataMinimalDP(@RequestBody MinimalDP modelMinimalDP,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        MinimalDP.approve(user.getId());
-        rateMinimalDPRepository.save(MinimalDP);
+        Optional<MinimalDP> optionalMinimalDP = rateMinimalDPRepository.findById(modelMinimalDP.getId());
+        MinimalDP approvalModel = optionalMinimalDP.get();
+        approvalModel.approve(user.getId());
+        rateMinimalDPRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit MinimalDP Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 
     @PostMapping(path = "/declineData", consumes = "application/json")
-    public HashMap<String, String> declineDataMinimalDP(@RequestBody MinimalDP MinimalDP,Principal principal) {
+    public HashMap<String, String> declineDataMinimalDP(@RequestBody MinimalDP modelMinimalDP,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        MinimalDP.decline(user.getId());
-        rateMinimalDPRepository.save(MinimalDP);
+        Optional<MinimalDP> optionalMinimalDP = rateMinimalDPRepository.findById(modelMinimalDP.getId());
+        MinimalDP approvalModel = optionalMinimalDP.get();
+        approvalModel.decline(user.getId());
+        rateMinimalDPRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit MinimalDP Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 

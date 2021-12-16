@@ -126,28 +126,32 @@ public class BiayaProvisiRestController {
     }
 
     @PostMapping(path = "/approveData", consumes = "application/json")
-    public HashMap<String, String> approveDataBiayaProvisi(@RequestBody BiayaProvisi biayaProvisi,Principal principal) {
+    public HashMap<String, String> approveDataBiayaProvisi(@RequestBody BiayaProvisi modelBiayaProvisi,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        biayaProvisi.approve(user.getId());
-        biayaProvisiRepository.save(biayaProvisi);
+        Optional<BiayaProvisi> optionalBiayaProvisi = biayaProvisiRepository.findById(modelBiayaProvisi.getId());
+        BiayaProvisi approvalModel = optionalBiayaProvisi.get();
+        approvalModel.approve(user.getId());
+        biayaProvisiRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit BiayaProvisi Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 
     @PostMapping(path = "/declineData", consumes = "application/json")
-    public HashMap<String, String> declineDataBiayaProvisi(@RequestBody BiayaProvisi biayaProvisi,Principal principal) {
+    public HashMap<String, String> declineDataBiayaProvisi(@RequestBody BiayaProvisi modelBiayaProvisi,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        biayaProvisi.decline(user.getId());
-        biayaProvisiRepository.save(biayaProvisi);
+        Optional<BiayaProvisi> optionalBiayaProvisi = biayaProvisiRepository.findById(modelBiayaProvisi.getId());
+        BiayaProvisi approvalModel = optionalBiayaProvisi.get();
+        approvalModel.decline(user.getId());
+        biayaProvisiRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
-        crunchifyMap.put("message", "Input Dan Submit BiayaProvisi Berhasil !");
+        crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
     }
 
