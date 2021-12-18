@@ -34,7 +34,7 @@ public class Produk implements Serializable {
     private Date endBerlaku;
 
     @Column(name = "created_at")
-    private Date created_at;
+    private Date createdDate;
 
     @Column(name = "status")
     private Integer status;
@@ -43,154 +43,25 @@ public class Produk implements Serializable {
     private String remarks;
 
     @Column(name = "is_rejected")
-    private Integer is_rejected;
+    private Integer isRejected;
 
     @Column(name = "createdby")
-    private Long createdby;
+    private Long createdBy;
 
     @Column(name = "updatedby")
-    private Long updatedby;
+    private Long updatedBy;
 
     @Column(name = "updateddate")
-    private Date updateddate;
+    private Date updatedDate;
 
     @Column(name = "is_approved")
-    private Integer is_approved;
+    private Integer isApproved;
     
     @Column(name = "statusapproval")
     private Integer statusApproval;
 
 
     public Produk() {
-    }
-
-    public Produk(Integer id, String produk, String deskripsi, Date startBerlaku, Date endBerlaku, Date created_at, Integer status, String remarks, Integer is_rejected, Long createdby, Long updatedby, Date updateddate, Integer is_approved, Integer statusApproval) {
-        this.id = id;
-        this.produk = produk;
-        this.deskripsi = deskripsi;
-        this.startBerlaku = startBerlaku;
-        this.endBerlaku = endBerlaku;
-        this.created_at = created_at;
-        this.status = status;
-        this.remarks = remarks;
-        this.is_rejected = is_rejected;
-        this.createdby = createdby;
-        this.updatedby = updatedby;
-        this.updateddate = updateddate;
-        this.is_approved = is_approved;
-        this.statusApproval = statusApproval;
-    }
-
-    public Integer getId() {
-        return this.id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getProduk() {
-        return this.produk;
-    }
-
-    public void setProduk(String produk) {
-        this.produk = produk;
-    }
-
-    public String getDeskripsi() {
-        return this.deskripsi;
-    }
-
-    public void setDeskripsi(String deskripsi) {
-        this.deskripsi = deskripsi;
-    }
-
-    public Date getStartBerlaku() {
-        return this.startBerlaku;
-    }
-
-    public void setStartBerlaku(Date startBerlaku) {
-        this.startBerlaku = startBerlaku;
-    }
-
-    public Date getEndBerlaku() {
-        return this.endBerlaku;
-    }
-
-    public void setEndBerlaku(Date endBerlaku) {
-        this.endBerlaku = endBerlaku;
-    }
-
-    public Date getCreated_at() {
-        return this.created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-    public Integer getStatus() {
-        return this.status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public String getRemarks() {
-        return this.remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
-    public Integer getIs_rejected() {
-        return this.is_rejected;
-    }
-
-    public void setIs_rejected(Integer is_rejected) {
-        this.is_rejected = is_rejected;
-    }
-
-    public Long getCreatedby() {
-        return this.createdby;
-    }
-
-    public void setCreatedby(Long createdby) {
-        this.createdby = createdby;
-    }
-
-    public Long getUpdatedby() {
-        return this.updatedby;
-    }
-
-    public void setUpdatedby(Long updatedby) {
-        this.updatedby = updatedby;
-    }
-
-    public Date getUpdateddate() {
-        return this.updateddate;
-    }
-
-    public void setUpdateddate(Date updateddate) {
-        this.updateddate = updateddate;
-    }
-
-    public Integer getIs_approved() {
-        return this.is_approved;
-    }
-
-    public void setIs_approved(Integer is_approved) {
-        this.is_approved = is_approved;
-    }
-
-    public Integer getStatusApproval() {
-        return this.statusApproval;
-    }
-
-    public void setStatusApproval(Integer statusApproval) {
-        this.statusApproval = statusApproval;
     }
 
     public Produk id(Integer id) {
@@ -218,8 +89,8 @@ public class Produk implements Serializable {
         return this;
     }
 
-    public Produk created_at(Date created_at) {
-        setCreated_at(created_at);
+    public Produk createdDate(Date createdDate) {
+        setCreatedDate(createdDate);
         return this;
     }
 
@@ -233,28 +104,28 @@ public class Produk implements Serializable {
         return this;
     }
 
-    public Produk is_rejected(Integer is_rejected) {
-        setIs_rejected(is_rejected);
+    public Produk isRejected(Integer isRejected) {
+        setIsRejected(isRejected);
         return this;
     }
 
-    public Produk createdby(Long createdby) {
-        setCreatedby(createdby);
+    public Produk createdBy(Long createdBy) {
+        setCreatedBy(createdBy);
         return this;
     }
 
-    public Produk updatedby(Long updatedby) {
-        setUpdatedby(updatedby);
+    public Produk updatedBy(Long updatedBy) {
+        setUpdatedBy(updatedBy);
         return this;
     }
 
-    public Produk updateddate(Date updateddate) {
-        setUpdateddate(updateddate);
+    public Produk updatedDate(Date updatedDate) {
+        setUpdatedDate(updatedDate);
         return this;
     }
 
-    public Produk is_approved(Integer is_approved) {
-        setIs_approved(is_approved);
+    public Produk isApproved(Integer isApproved) {
+        setIsApproved(isApproved);
         return this;
     }
 
@@ -271,64 +142,244 @@ public class Produk implements Serializable {
             ", deskripsi='" + getDeskripsi() + "'" +
             ", startBerlaku='" + getStartBerlaku() + "'" +
             ", endBerlaku='" + getEndBerlaku() + "'" +
-            ", created_at='" + getCreated_at() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
             ", status='" + getStatus() + "'" +
             ", remarks='" + getRemarks() + "'" +
-            ", is_rejected='" + getIs_rejected() + "'" +
-            ", createdby='" + getCreatedby() + "'" +
-            ", updatedby='" + getUpdatedby() + "'" +
-            ", updateddate='" + getUpdateddate() + "'" +
-            ", is_approved='" + getIs_approved() + "'" +
+            ", isRejected='" + getIsRejected() + "'" +
+            ", createdBy='" + getCreatedBy() + "'" +
+            ", updatedBy='" + getUpdatedBy() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
+            ", isApproved='" + getIsApproved() + "'" +
             ", statusApproval='" + getStatusApproval() + "'" +
             "}";
     }
 
 
-    public Produk submit(Long user) {
+    public Produk(Integer id, String produk, String deskripsi, Date startBerlaku, Date endBerlaku, Date createdDate,
+            Integer status, String remarks, Integer isRejected, Long createdBy, Long updatedBy, Date updatedDate,
+            Integer isApproved, Integer statusApproval) {
+        this.id = id;
+        this.produk = produk;
+        this.deskripsi = deskripsi;
+        this.startBerlaku = startBerlaku;
+        this.endBerlaku = endBerlaku;
+        this.createdDate = createdDate;
+        this.status = status;
+        this.remarks = remarks;
+        this.isRejected = isRejected;
+        this.createdBy = createdBy;
+        this.updatedBy = updatedBy;
+        this.updatedDate = updatedDate;
+        this.isApproved = isApproved;
+        this.statusApproval = statusApproval;
+    }
+
+
+    
+    public Integer getId() {
+        return id;
+    }
+
+
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+
+
+    public String getProduk() {
+        return produk;
+    }
+
+
+
+    public void setProduk(String produk) {
+        this.produk = produk;
+    }
+
+
+
+    public String getDeskripsi() {
+        return deskripsi;
+    }
+
+
+
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
+    }
+
+
+
+    public Date getStartBerlaku() {
+        return startBerlaku;
+    }
+
+
+
+    public void setStartBerlaku(Date startBerlaku) {
+        this.startBerlaku = startBerlaku;
+    }
+
+
+
+    public Date getEndBerlaku() {
+        return endBerlaku;
+    }
+
+
+
+    public void setEndBerlaku(Date endBerlaku) {
+        this.endBerlaku = endBerlaku;
+    }
+
+
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+
+
+    public Integer getStatus() {
+        return status;
+    }
+
+
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+
+
+    public Integer getIsRejected() {
+        return isRejected;
+    }
+
+
+
+    public void setIsRejected(Integer isRejected) {
+        this.isRejected = isRejected;
+    }
+
+
+
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+
+
+    public Long getUpdatedBy() {
+        return updatedBy;
+    }
+
+
+
+    public void setUpdatedBy(Long updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+
+
+    public Integer getIsApproved() {
+        return isApproved;
+    }
+
+
+
+    public void setIsApproved(Integer isApproved) {
+        this.isApproved = isApproved;
+    }
+
+
+
+    public Integer getStatusApproval() {
+        return statusApproval;
+    }
+
+
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
+    public void submit(Long user) {
         if(this.statusApproval == null || this.statusApproval == 0){
-            setIs_approved(0);
-            setIs_rejected(0);
+            setIsApproved(0);
+            setIsRejected(0);
             setStatusApproval(1);
             
             trace(user);
         }
-        return this;
     }
 
-    public Produk approve(Long user) {
+    public void approve(Long user) {
         if(this.statusApproval != null && this.statusApproval == 1) {
-            setIs_approved(1);
-            setIs_rejected(0);
+            setIsApproved(1);
+            setIsRejected(0);
             setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public Produk decline(Long user) {
+    public void decline(Long user) {
         if(this.statusApproval != null && this.statusApproval == 1) {
-            setIs_approved(0);
-            setIs_rejected(1);
+            setIsApproved(0);
+            setIsRejected(1);
             setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-
-    public Produk trace(Long user) {
-        if(this.created_at == null) {
-            setCreatedby(user);
-            setCreated_at(new Date());
+    public void trace(Long user) {
+        if(this.createdDate == null) {
+            setCreatedBy(user);
+            setCreatedDate(new Date());
         } else {
-            setUpdatedby(user);
-            setUpdateddate(new Date());
+            setUpdatedBy(user);
+            setUpdatedDate(new Date());
         }
-        return this;
     }
  
 }

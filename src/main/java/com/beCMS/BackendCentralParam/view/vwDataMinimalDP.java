@@ -1,64 +1,85 @@
 
-    package com.beCMS.BackendCentralParam.view;
+package com.beCMS.BackendCentralParam.view;
 
-    import java.util.Date;
-    
-    public class vwDataMinimalDP {
+import java.util.Date;
+
+public class vwDataMinimalDP {
 
     private Integer id;
 
     private String namaSkema;
-
     private Integer loanType;
-    private String deskripsi;
 
-    private Integer tujuan_penggunaan;
-    private String Nama;
+    private Float minimalDp;
 
-    private Integer tipe_konsumen;
-    private String Nama_konsumen;
+    private String produkName;
+    private Integer produk;
 
-    private Integer jeniskendaraanid;
-    private String jenis_kendaraan_id;
+    private String tujuanpenggunaanName;
+    private Integer tujuanPenggunaan;
 
-    private Integer jenis_pembiayaan;
-    private String jenis_pembiayaan_id;
+    private String tipeKonsumenName;
+    private Integer tipeKonsumen;
 
+    private String jenisKendaraanName;
+    private Integer jenisKendaraan;
+
+    private String jenisPembiayaanName;
+    private Integer jenisPembiayaan;
+
+    private String clusterName;
     private Integer cluster;
-    private String cluster_id;
 
-    private Float minimalDP;
+    private Date createdDate;
 
-    private String status;
-    
     private String remarks;
 
+    private Integer isRejected;
 
-    public vwDataMinimalDP() {
-    }
+    private Integer statusApproval;
+    
+    private Long createdBy;
 
-    public vwDataMinimalDP(Integer id, String namaSkema, Integer loanType, String deskripsi, Integer tujuan_penggunaan, String Nama, Integer tipe_konsumen, String Nama_konsumen, Integer jeniskendaraanid, String jenis_kendaraan_id, Integer jenis_pembiayaan, String jenis_pembiayaan_id, Integer cluster, String cluster_id, Float minimalDP, String status, String remarks) {
+    private Long updatedBy;
+
+    private Date updatedDate;
+
+    private Integer isApproved;
+
+    public vwDataMinimalDP(Integer id, String namaSkema, Integer loanType, Float minimalDp, String produkName,
+            Integer produk, String tujuanpenggunaanName, Integer tujuanPenggunaan, String tipeKonsumenName,
+            Integer tipeKonsumen, String jenisKendaraanName, Integer jenisKendaraan, String jenisPembiayaanName,
+            Integer jenisPembiayaan, String clusterName, Integer cluster, Date createdDate, String remarks,
+            Integer isRejected, Integer statusApproval, Long createdBy, Long updatedBy, Date updatedDate,
+            Integer isApproved) {
         this.id = id;
         this.namaSkema = namaSkema;
         this.loanType = loanType;
-        this.deskripsi = deskripsi;
-        this.tujuan_penggunaan = tujuan_penggunaan;
-        this.Nama = Nama;
-        this.tipe_konsumen = tipe_konsumen;
-        this.Nama_konsumen = Nama_konsumen;
-        this.jeniskendaraanid = jeniskendaraanid;
-        this.jenis_kendaraan_id = jenis_kendaraan_id;
-        this.jenis_pembiayaan = jenis_pembiayaan;
-        this.jenis_pembiayaan_id = jenis_pembiayaan_id;
+        this.minimalDp = minimalDp;
+        this.produkName = produkName;
+        this.produk = produk;
+        this.tujuanpenggunaanName = tujuanpenggunaanName;
+        this.tujuanPenggunaan = tujuanPenggunaan;
+        this.tipeKonsumenName = tipeKonsumenName;
+        this.tipeKonsumen = tipeKonsumen;
+        this.jenisKendaraanName = jenisKendaraanName;
+        this.jenisKendaraan = jenisKendaraan;
+        this.jenisPembiayaanName = jenisPembiayaanName;
+        this.jenisPembiayaan = jenisPembiayaan;
+        this.clusterName = clusterName;
         this.cluster = cluster;
-        this.cluster_id = cluster_id;
-        this.minimalDP = minimalDP;
-        this.status = status;
+        this.createdDate = createdDate;
         this.remarks = remarks;
+        this.isRejected = isRejected;
+        this.statusApproval = statusApproval;
+        this.createdBy = createdBy;
+        this.updatedBy = updatedBy;
+        this.updatedDate = updatedDate;
+        this.isApproved = isApproved;
     }
 
     public Integer getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(Integer id) {
@@ -66,7 +87,7 @@
     }
 
     public String getNamaSkema() {
-        return this.namaSkema;
+        return namaSkema;
     }
 
     public void setNamaSkema(String namaSkema) {
@@ -74,124 +95,181 @@
     }
 
     public Integer getLoanType() {
-        return this.loanType;
+        return loanType;
     }
 
     public void setLoanType(Integer loanType) {
         this.loanType = loanType;
     }
 
-    public String getDeskripsi() {
-        return this.deskripsi;
+    public Float getMinimalDp() {
+        return minimalDp;
     }
 
-    public void setDeskripsi(String deskripsi) {
-        this.deskripsi = deskripsi;
+    public void setMinimalDp(Float minimalDp) {
+        this.minimalDp = minimalDp;
     }
 
-    public Integer getTujuan_penggunaan() {
-        return this.tujuan_penggunaan;
+    public String getProdukName() {
+        return produkName;
     }
 
-    public void setTujuan_penggunaan(Integer tujuan_penggunaan) {
-        this.tujuan_penggunaan = tujuan_penggunaan;
+    public void setProdukName(String produkName) {
+        this.produkName = produkName;
     }
 
-    public String getNama() {
-        return this.Nama;
+    public Integer getProduk() {
+        return produk;
     }
 
-    public void setNama(String Nama) {
-        this.Nama = Nama;
+    public void setProduk(Integer produk) {
+        this.produk = produk;
     }
 
-    public Integer getTipe_konsumen() {
-        return this.tipe_konsumen;
+    public String getTujuanpenggunaanName() {
+        return tujuanpenggunaanName;
     }
 
-    public void setTipe_konsumen(Integer tipe_konsumen) {
-        this.tipe_konsumen = tipe_konsumen;
+    public void setTujuanpenggunaanName(String tujuanpenggunaanName) {
+        this.tujuanpenggunaanName = tujuanpenggunaanName;
     }
 
-    public String getNama_konsumen() {
-        return this.Nama_konsumen;
+    public Integer getTujuanPenggunaan() {
+        return tujuanPenggunaan;
     }
 
-    public void setNama_konsumen(String Nama_konsumen) {
-        this.Nama_konsumen = Nama_konsumen;
+    public void setTujuanPenggunaan(Integer tujuanPenggunaan) {
+        this.tujuanPenggunaan = tujuanPenggunaan;
     }
 
-    public Integer getJeniskendaraanid() {
-        return this.jeniskendaraanid;
+    public String getTipeKonsumenName() {
+        return tipeKonsumenName;
     }
 
-    public void setJeniskendaraanid(Integer jeniskendaraanid) {
-        this.jeniskendaraanid = jeniskendaraanid;
+    public void setTipeKonsumenName(String tipeKonsumenName) {
+        this.tipeKonsumenName = tipeKonsumenName;
     }
 
-    public String getJenis_kendaraan_id() {
-        return this.jenis_kendaraan_id;
+    public Integer getTipeKonsumen() {
+        return tipeKonsumen;
     }
 
-    public void setJenis_kendaraan_id(String jenis_kendaraan_id) {
-        this.jenis_kendaraan_id = jenis_kendaraan_id;
+    public void setTipeKonsumen(Integer tipeKonsumen) {
+        this.tipeKonsumen = tipeKonsumen;
     }
 
-    public Integer getJenis_pembiayaan() {
-        return this.jenis_pembiayaan;
+    public String getJenisKendaraanName() {
+        return jenisKendaraanName;
     }
 
-    public void setJenis_pembiayaan(Integer jenis_pembiayaan) {
-        this.jenis_pembiayaan = jenis_pembiayaan;
+    public void setJenisKendaraanName(String jenisKendaraanName) {
+        this.jenisKendaraanName = jenisKendaraanName;
     }
 
-    public String getJenis_pembiayaan_id() {
-        return this.jenis_pembiayaan_id;
+    public Integer getJenisKendaraan() {
+        return jenisKendaraan;
     }
 
-    public void setJenis_pembiayaan_id(String jenis_pembiayaan_id) {
-        this.jenis_pembiayaan_id = jenis_pembiayaan_id;
+    public void setJenisKendaraan(Integer jenisKendaraan) {
+        this.jenisKendaraan = jenisKendaraan;
+    }
+
+    public String getJenisPembiayaanName() {
+        return jenisPembiayaanName;
+    }
+
+    public void setJenisPembiayaanName(String jenisPembiayaanName) {
+        this.jenisPembiayaanName = jenisPembiayaanName;
+    }
+
+    public Integer getJenisPembiayaan() {
+        return jenisPembiayaan;
+    }
+
+    public void setJenisPembiayaan(Integer jenisPembiayaan) {
+        this.jenisPembiayaan = jenisPembiayaan;
+    }
+
+    public String getClusterName() {
+        return clusterName;
+    }
+
+    public void setClusterName(String clusterName) {
+        this.clusterName = clusterName;
     }
 
     public Integer getCluster() {
-        return this.cluster;
+        return cluster;
     }
 
     public void setCluster(Integer cluster) {
         this.cluster = cluster;
     }
 
-    public String getCluster_id() {
-        return this.cluster_id;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCluster_id(String cluster_id) {
-        this.cluster_id = cluster_id;
-    }
-
-    public Float getMinimalDP() {
-        return this.minimalDP;
-    }
-
-    public void setMinimalDP(Float minimalDP) {
-        this.minimalDP = minimalDP;
-    }
-
-    public String getStatus() {
-        return this.status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     public String getRemarks() {
-        return this.remarks;
+        return remarks;
     }
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
     }
 
-
+    public Integer getIsRejected() {
+        return isRejected;
     }
+
+    public void setIsRejected(Integer isRejected) {
+        this.isRejected = isRejected;
+    }
+
+    public Integer getStatusApproval() {
+        return statusApproval;
+    }
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Long getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(Long updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+    public Integer getIsApproved() {
+        return isApproved;
+    }
+
+    public void setIsApproved(Integer isApproved) {
+        this.isApproved = isApproved;
+    }
+    
+    
+
+}

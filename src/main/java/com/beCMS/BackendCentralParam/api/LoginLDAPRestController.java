@@ -1,13 +1,11 @@
 package com.beCMS.BackendCentralParam.api;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletResponse;
 
 import com.beCMS.BackendCentralParam.model.LDAP.CredentialsLogin;
 import com.beCMS.BackendCentralParam.model.LDAP.vwCredentials;
-import com.beCMS.BackendCentralParam.model.LDAP.vwJWTLDAP;
 import com.beCMS.BackendCentralParam.model.LDAP.vwLoginLDAP;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;

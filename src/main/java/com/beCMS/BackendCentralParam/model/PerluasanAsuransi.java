@@ -5,12 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -25,36 +22,24 @@ public class PerluasanAsuransi implements Serializable {
     private Integer id;
 
     @Column(name = "nama_skema")
-    private String nama_skema;
+    private String namaSkema;
 
-    @OneToOne()
-    @JoinColumn(name = "wilayah",referencedColumnName = "id",insertable = false,updatable = false)
-    private Wilayah wilayahObject;
     @Column(name = "wilayah")
     private Integer wilayah;
 
-    @OneToOne()
-    @JoinColumn(name = "jenis_kendaraan",referencedColumnName = "id",insertable = false,updatable = false)
-    private JenisKendaraan jenis_kendaraanObject;
     @Column(name = "jenis_kendaraan")
-    private Integer jenis_kendaraan;
+    private Integer jenisKendaraan;
 
-    @OneToOne()
-    @JoinColumn(name = "tipe_asuransi",referencedColumnName = "id",insertable = false,updatable = false)
-    private TipeAsuransi tipe_asuransiObject;
     @Column(name = "tipe_asuransi")
-    private Integer tipe_asuransi;
+    private Integer tipeAsuransi;
 
-    @OneToOne(optional = true)
-    @JoinColumn(name = "jenis_perluasan",referencedColumnName = "id",insertable = false,updatable = false,nullable = true)
-    private JenisPerluasan jenis_perluasanObject;
     @Column(name = "jenis_perluasan")
-    private Integer jenis_perluasan;
+    private Integer jenisPerluasan;
 
     @Column(name = "startOTR")
-    private Integer startOTR;
+    private Integer startOtr;
     @Column(name = "endOTR")
-    private Integer endOTR;
+    private Integer endOtr;
 
     @Column(name = "startyear")
     private Integer startYear;
@@ -88,333 +73,24 @@ public class PerluasanAsuransi implements Serializable {
     private Date endBerlaku;
 
     @Column(name = "createddate")
-    private Date createddate;
+    private Date createdDate;
     @Column(name = "statusapproved")
-    private Integer statusApproved;
+    private Integer statusApproval;
     @Column(name = "remarks")
     private String remarks;
     @Column(name = "is_rejected")
-    private Integer is_rejected;
+    private Integer isRejected;
     @Column(name = "is_approved")
-    private Integer is_approved;
+    private Integer isApproved;
     @Column(name = "createdby")
-    private Long createdby;
+    private Long createdBy;
     @Column(name = "updatedby")
-    private Long updatedby;
+    private Long updatedBy;
     @Column(name = "updateddate")
-    private Date updateddate;
+    private Date updatedDate;
 
 
     public PerluasanAsuransi() {
-    }
-
-    public PerluasanAsuransi(Integer id, String nama_skema, Wilayah wilayahObject, Integer wilayah, JenisKendaraan jenis_kendaraanObject, Integer jenis_kendaraan, TipeAsuransi tipe_asuransiObject, Integer tipe_asuransi, JenisPerluasan jenis_perluasanObject, Integer jenis_perluasan, Integer startOTR, Integer endOTR, Integer startYear, Integer endYear, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6, Float tenor7, Float tenor8, Float tenor9, Float tenor10, Date startBerlaku, Date endBerlaku, Date createddate, Integer statusApproved, String remarks, Integer is_rejected, Integer is_approved, Long createdby, Long updatedby, Date updateddate) {
-        this.id = id;
-        this.nama_skema = nama_skema;
-        this.wilayahObject = wilayahObject;
-        this.wilayah = wilayah;
-        this.jenis_kendaraanObject = jenis_kendaraanObject;
-        this.jenis_kendaraan = jenis_kendaraan;
-        this.tipe_asuransiObject = tipe_asuransiObject;
-        this.tipe_asuransi = tipe_asuransi;
-        this.jenis_perluasanObject = jenis_perluasanObject;
-        this.jenis_perluasan = jenis_perluasan;
-        this.startOTR = startOTR;
-        this.endOTR = endOTR;
-        this.startYear = startYear;
-        this.endYear = endYear;
-        this.tenor1 = tenor1;
-        this.tenor2 = tenor2;
-        this.tenor3 = tenor3;
-        this.tenor4 = tenor4;
-        this.tenor5 = tenor5;
-        this.tenor6 = tenor6;
-        this.tenor7 = tenor7;
-        this.tenor8 = tenor8;
-        this.tenor9 = tenor9;
-        this.tenor10 = tenor10;
-        this.startBerlaku = startBerlaku;
-        this.endBerlaku = endBerlaku;
-        this.createddate = createddate;
-        this.statusApproved = statusApproved;
-        this.remarks = remarks;
-        this.is_rejected = is_rejected;
-        this.is_approved = is_approved;
-        this.createdby = createdby;
-        this.updatedby = updatedby;
-        this.updateddate = updateddate;
-    }
-
-    public Integer getId() {
-        return this.id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNama_skema() {
-        return this.nama_skema;
-    }
-
-    public void setNama_skema(String nama_skema) {
-        this.nama_skema = nama_skema;
-    }
-
-    public Wilayah getWilayahObject() {
-        return this.wilayahObject;
-    }
-
-    public void setWilayahObject(Wilayah wilayahObject) {
-        this.wilayahObject = wilayahObject;
-    }
-
-    public Integer getWilayah() {
-        return this.wilayah;
-    }
-
-    public void setWilayah(Integer wilayah) {
-        this.wilayah = wilayah;
-    }
-
-    public JenisKendaraan getJenis_kendaraanObject() {
-        return this.jenis_kendaraanObject;
-    }
-
-    public void setJenis_kendaraanObject(JenisKendaraan jenis_kendaraanObject) {
-        this.jenis_kendaraanObject = jenis_kendaraanObject;
-    }
-
-    public Integer getJenis_kendaraan() {
-        return this.jenis_kendaraan;
-    }
-
-    public void setJenis_kendaraan(Integer jenis_kendaraan) {
-        this.jenis_kendaraan = jenis_kendaraan;
-    }
-
-    public TipeAsuransi getTipe_asuransiObject() {
-        return this.tipe_asuransiObject;
-    }
-
-    public void setTipe_asuransiObject(TipeAsuransi tipe_asuransiObject) {
-        this.tipe_asuransiObject = tipe_asuransiObject;
-    }
-
-    public Integer getTipe_asuransi() {
-        return this.tipe_asuransi;
-    }
-
-    public void setTipe_asuransi(Integer tipe_asuransi) {
-        this.tipe_asuransi = tipe_asuransi;
-    }
-
-    public JenisPerluasan getJenis_perluasanObject() {
-        return this.jenis_perluasanObject;
-    }
-
-    public void setJenis_perluasanObject(JenisPerluasan jenis_perluasanObject) {
-        this.jenis_perluasanObject = jenis_perluasanObject;
-    }
-
-    public Integer getJenis_perluasan() {
-        return this.jenis_perluasan;
-    }
-
-    public void setJenis_perluasan(Integer jenis_perluasan) {
-        this.jenis_perluasan = jenis_perluasan;
-    }
-
-    public Integer getStartOTR() {
-        return this.startOTR;
-    }
-
-    public void setStartOTR(Integer startOTR) {
-        this.startOTR = startOTR;
-    }
-
-    public Integer getEndOTR() {
-        return this.endOTR;
-    }
-
-    public void setEndOTR(Integer endOTR) {
-        this.endOTR = endOTR;
-    }
-
-    public Integer getStartYear() {
-        return this.startYear;
-    }
-
-    public void setStartYear(Integer startYear) {
-        this.startYear = startYear;
-    }
-
-    public Integer getEndYear() {
-        return this.endYear;
-    }
-
-    public void setEndYear(Integer endYear) {
-        this.endYear = endYear;
-    }
-
-    public Float getTenor1() {
-        return this.tenor1;
-    }
-
-    public void setTenor1(Float tenor1) {
-        this.tenor1 = tenor1;
-    }
-
-    public Float getTenor2() {
-        return this.tenor2;
-    }
-
-    public void setTenor2(Float tenor2) {
-        this.tenor2 = tenor2;
-    }
-
-    public Float getTenor3() {
-        return this.tenor3;
-    }
-
-    public void setTenor3(Float tenor3) {
-        this.tenor3 = tenor3;
-    }
-
-    public Float getTenor4() {
-        return this.tenor4;
-    }
-
-    public void setTenor4(Float tenor4) {
-        this.tenor4 = tenor4;
-    }
-
-    public Float getTenor5() {
-        return this.tenor5;
-    }
-
-    public void setTenor5(Float tenor5) {
-        this.tenor5 = tenor5;
-    }
-
-    public Float getTenor6() {
-        return this.tenor6;
-    }
-
-    public void setTenor6(Float tenor6) {
-        this.tenor6 = tenor6;
-    }
-
-    public Float getTenor7() {
-        return this.tenor7;
-    }
-
-    public void setTenor7(Float tenor7) {
-        this.tenor7 = tenor7;
-    }
-
-    public Float getTenor8() {
-        return this.tenor8;
-    }
-
-    public void setTenor8(Float tenor8) {
-        this.tenor8 = tenor8;
-    }
-
-    public Float getTenor9() {
-        return this.tenor9;
-    }
-
-    public void setTenor9(Float tenor9) {
-        this.tenor9 = tenor9;
-    }
-
-    public Float getTenor10() {
-        return this.tenor10;
-    }
-
-    public void setTenor10(Float tenor10) {
-        this.tenor10 = tenor10;
-    }
-
-    public Date getStartBerlaku() {
-        return this.startBerlaku;
-    }
-
-    public void setStartBerlaku(Date startBerlaku) {
-        this.startBerlaku = startBerlaku;
-    }
-
-    public Date getEndBerlaku() {
-        return this.endBerlaku;
-    }
-
-    public void setEndBerlaku(Date endBerlaku) {
-        this.endBerlaku = endBerlaku;
-    }
-
-    public Date getCreateddate() {
-        return this.createddate;
-    }
-
-    public void setCreateddate(Date createddate) {
-        this.createddate = createddate;
-    }
-
-    public Integer getStatusApproved() {
-        return this.statusApproved;
-    }
-
-    public void setStatusApproved(Integer statusApproved) {
-        this.statusApproved = statusApproved;
-    }
-
-    public String getRemarks() {
-        return this.remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
-    public Integer getIs_rejected() {
-        return this.is_rejected;
-    }
-
-    public void setIs_rejected(Integer is_rejected) {
-        this.is_rejected = is_rejected;
-    }
-
-    public Integer getIs_approved() {
-        return this.is_approved;
-    }
-
-    public void setIs_approved(Integer is_approved) {
-        this.is_approved = is_approved;
-    }
-
-    public Long getCreatedby() {
-        return this.createdby;
-    }
-
-    public void setCreatedby(Long createdby) {
-        this.createdby = createdby;
-    }
-
-    public Long getUpdatedby() {
-        return this.updatedby;
-    }
-
-    public void setUpdatedby(Long updatedby) {
-        this.updatedby = updatedby;
-    }
-
-    public Date getUpdateddate() {
-        return this.updateddate;
-    }
-
-    public void setUpdateddate(Date updateddate) {
-        this.updateddate = updateddate;
     }
 
     public PerluasanAsuransi id(Integer id) {
@@ -422,13 +98,8 @@ public class PerluasanAsuransi implements Serializable {
         return this;
     }
 
-    public PerluasanAsuransi nama_skema(String nama_skema) {
-        setNama_skema(nama_skema);
-        return this;
-    }
-
-    public PerluasanAsuransi wilayahObject(Wilayah wilayahObject) {
-        setWilayahObject(wilayahObject);
+    public PerluasanAsuransi namaSkema(String namaSkema) {
+        setNamaSkema(namaSkema);
         return this;
     }
 
@@ -437,43 +108,28 @@ public class PerluasanAsuransi implements Serializable {
         return this;
     }
 
-    public PerluasanAsuransi jenis_kendaraanObject(JenisKendaraan jenis_kendaraanObject) {
-        setJenis_kendaraanObject(jenis_kendaraanObject);
+    public PerluasanAsuransi jenisKendaraan(Integer jenisKendaraan) {
+        setJenisKendaraan(jenisKendaraan);
         return this;
     }
 
-    public PerluasanAsuransi jenis_kendaraan(Integer jenis_kendaraan) {
-        setJenis_kendaraan(jenis_kendaraan);
+    public PerluasanAsuransi tipeAsuransi(Integer tipeAsuransi) {
+        setTipeAsuransi(tipeAsuransi);
         return this;
     }
 
-    public PerluasanAsuransi tipe_asuransiObject(TipeAsuransi tipe_asuransiObject) {
-        setTipe_asuransiObject(tipe_asuransiObject);
+    public PerluasanAsuransi jenisPerluasan(Integer jenisPerluasan) {
+        setJenisPerluasan(jenisPerluasan);
         return this;
     }
 
-    public PerluasanAsuransi tipe_asuransi(Integer tipe_asuransi) {
-        setTipe_asuransi(tipe_asuransi);
+    public PerluasanAsuransi startOtr(Integer startOtr) {
+        setStartOtr(startOtr);
         return this;
     }
 
-    public PerluasanAsuransi jenis_perluasanObject(JenisPerluasan jenis_perluasanObject) {
-        setJenis_perluasanObject(jenis_perluasanObject);
-        return this;
-    }
-
-    public PerluasanAsuransi jenis_perluasan(Integer jenis_perluasan) {
-        setJenis_perluasan(jenis_perluasan);
-        return this;
-    }
-
-    public PerluasanAsuransi startOTR(Integer startOTR) {
-        setStartOTR(startOTR);
-        return this;
-    }
-
-    public PerluasanAsuransi endOTR(Integer endOTR) {
-        setEndOTR(endOTR);
+    public PerluasanAsuransi endOtr(Integer endOtr) {
+        setEndOtr(endOtr);
         return this;
     }
 
@@ -547,13 +203,13 @@ public class PerluasanAsuransi implements Serializable {
         return this;
     }
 
-    public PerluasanAsuransi createddate(Date createddate) {
-        setCreateddate(createddate);
+    public PerluasanAsuransi createdDate(Date createdDate) {
+        setCreatedDate(createdDate);
         return this;
     }
 
-    public PerluasanAsuransi statusApproved(Integer statusApproved) {
-        setStatusApproved(statusApproved);
+    public PerluasanAsuransi statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
         return this;
     }
 
@@ -562,28 +218,28 @@ public class PerluasanAsuransi implements Serializable {
         return this;
     }
 
-    public PerluasanAsuransi is_rejected(Integer is_rejected) {
-        setIs_rejected(is_rejected);
+    public PerluasanAsuransi isRejected(Integer isRejected) {
+        setIsRejected(isRejected);
         return this;
     }
 
-    public PerluasanAsuransi is_approved(Integer is_approved) {
-        setIs_approved(is_approved);
+    public PerluasanAsuransi isApproved(Integer isApproved) {
+        setIsApproved(isApproved);
         return this;
     }
 
-    public PerluasanAsuransi createdby(Long createdby) {
-        setCreatedby(createdby);
+    public PerluasanAsuransi createdBy(Long createdBy) {
+        setCreatedBy(createdBy);
         return this;
     }
 
-    public PerluasanAsuransi updatedby(Long updatedby) {
-        setUpdatedby(updatedby);
+    public PerluasanAsuransi updatedBy(Long updatedBy) {
+        setUpdatedBy(updatedBy);
         return this;
     }
 
-    public PerluasanAsuransi updateddate(Date updateddate) {
-        setUpdateddate(updateddate);
+    public PerluasanAsuransi updatedDate(Date updatedDate) {
+        setUpdatedDate(updatedDate);
         return this;
     }
 
@@ -591,17 +247,13 @@ public class PerluasanAsuransi implements Serializable {
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +
-            ", nama_skema='" + getNama_skema() + "'" +
-            ", wilayahObject='" + getWilayahObject() + "'" +
+            ", namaSkema='" + getNamaSkema() + "'" +
             ", wilayah='" + getWilayah() + "'" +
-            ", jenis_kendaraanObject='" + getJenis_kendaraanObject() + "'" +
-            ", jenis_kendaraan='" + getJenis_kendaraan() + "'" +
-            ", tipe_asuransiObject='" + getTipe_asuransiObject() + "'" +
-            ", tipe_asuransi='" + getTipe_asuransi() + "'" +
-            ", jenis_perluasanObject='" + getJenis_perluasanObject() + "'" +
-            ", jenis_perluasan='" + getJenis_perluasan() + "'" +
-            ", startOTR='" + getStartOTR() + "'" +
-            ", endOTR='" + getEndOTR() + "'" +
+            ", jenisKendaraan='" + getJenisKendaraan() + "'" +
+            ", tipeAsuransi='" + getTipeAsuransi() + "'" +
+            ", jenisPerluasan='" + getJenisPerluasan() + "'" +
+            ", startOtr='" + getStartOtr() + "'" +
+            ", endOtr='" + getEndOtr() + "'" +
             ", startYear='" + getStartYear() + "'" +
             ", endYear='" + getEndYear() + "'" +
             ", tenor1='" + getTenor1() + "'" +
@@ -616,61 +268,455 @@ public class PerluasanAsuransi implements Serializable {
             ", tenor10='" + getTenor10() + "'" +
             ", startBerlaku='" + getStartBerlaku() + "'" +
             ", endBerlaku='" + getEndBerlaku() + "'" +
-            ", createddate='" + getCreateddate() + "'" +
-            ", statusApproved='" + getStatusApproved() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
             ", remarks='" + getRemarks() + "'" +
-            ", is_rejected='" + getIs_rejected() + "'" +
-            ", is_approved='" + getIs_approved() + "'" +
-            ", createdby='" + getCreatedby() + "'" +
-            ", updatedby='" + getUpdatedby() + "'" +
-            ", updateddate='" + getUpdateddate() + "'" +
+            ", isRejected='" + getIsRejected() + "'" +
+            ", isApproved='" + getIsApproved() + "'" +
+            ", createdBy='" + getCreatedBy() + "'" +
+            ", updatedBy='" + getUpdatedBy() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             "}";
     }
 
 
-    public PerluasanAsuransi submit(Long user) {
-        if(this.statusApproved == null || this.statusApproved == 0){
-            setIs_approved(0);
-            setIs_rejected(0);
-            setStatusApproved(1);
+    public PerluasanAsuransi(Integer id, String namaSkema, Integer wilayah, Integer jenisKendaraan,
+            Integer tipeAsuransi, Integer jenisPerluasan, Integer startOtr, Integer endOtr, Integer startYear,
+            Integer endYear, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6,
+            Float tenor7, Float tenor8, Float tenor9, Float tenor10, Date startBerlaku, Date endBerlaku,
+            Date createdDate, Integer statusApproval, String remarks, Integer isRejected, Integer isApproved,
+            Long createdBy, Long updatedBy, Date updatedDate) {
+        this.id = id;
+        this.namaSkema = namaSkema;
+        this.wilayah = wilayah;
+        this.jenisKendaraan = jenisKendaraan;
+        this.tipeAsuransi = tipeAsuransi;
+        this.jenisPerluasan = jenisPerluasan;
+        this.startOtr = startOtr;
+        this.endOtr = endOtr;
+        this.startYear = startYear;
+        this.endYear = endYear;
+        this.tenor1 = tenor1;
+        this.tenor2 = tenor2;
+        this.tenor3 = tenor3;
+        this.tenor4 = tenor4;
+        this.tenor5 = tenor5;
+        this.tenor6 = tenor6;
+        this.tenor7 = tenor7;
+        this.tenor8 = tenor8;
+        this.tenor9 = tenor9;
+        this.tenor10 = tenor10;
+        this.startBerlaku = startBerlaku;
+        this.endBerlaku = endBerlaku;
+        this.createdDate = createdDate;
+        this.statusApproval = statusApproval;
+        this.remarks = remarks;
+        this.isRejected = isRejected;
+        this.isApproved = isApproved;
+        this.createdBy = createdBy;
+        this.updatedBy = updatedBy;
+        this.updatedDate = updatedDate;
+    }
+
+    
+
+    public Integer getId() {
+        return id;
+    }
+
+
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+
+
+    public String getNamaSkema() {
+        return namaSkema;
+    }
+
+
+
+    public void setNamaSkema(String namaSkema) {
+        this.namaSkema = namaSkema;
+    }
+
+
+
+    public Integer getWilayah() {
+        return wilayah;
+    }
+
+
+
+    public void setWilayah(Integer wilayah) {
+        this.wilayah = wilayah;
+    }
+
+
+
+    public Integer getJenisKendaraan() {
+        return jenisKendaraan;
+    }
+
+
+
+    public void setJenisKendaraan(Integer jenisKendaraan) {
+        this.jenisKendaraan = jenisKendaraan;
+    }
+
+
+
+    public Integer getTipeAsuransi() {
+        return tipeAsuransi;
+    }
+
+
+
+    public void setTipeAsuransi(Integer tipeAsuransi) {
+        this.tipeAsuransi = tipeAsuransi;
+    }
+
+
+
+    public Integer getJenisPerluasan() {
+        return jenisPerluasan;
+    }
+
+
+
+    public void setJenisPerluasan(Integer jenisPerluasan) {
+        this.jenisPerluasan = jenisPerluasan;
+    }
+
+
+
+    public Integer getStartOtr() {
+        return startOtr;
+    }
+
+
+
+    public void setStartOtr(Integer startOtr) {
+        this.startOtr = startOtr;
+    }
+
+
+
+    public Integer getEndOtr() {
+        return endOtr;
+    }
+
+
+
+    public void setEndOtr(Integer endOtr) {
+        this.endOtr = endOtr;
+    }
+
+
+
+    public Integer getStartYear() {
+        return startYear;
+    }
+
+
+
+    public void setStartYear(Integer startYear) {
+        this.startYear = startYear;
+    }
+
+
+
+    public Integer getEndYear() {
+        return endYear;
+    }
+
+
+
+    public void setEndYear(Integer endYear) {
+        this.endYear = endYear;
+    }
+
+
+
+    public Float getTenor1() {
+        return tenor1;
+    }
+
+
+
+    public void setTenor1(Float tenor1) {
+        this.tenor1 = tenor1;
+    }
+
+
+
+    public Float getTenor2() {
+        return tenor2;
+    }
+
+
+
+    public void setTenor2(Float tenor2) {
+        this.tenor2 = tenor2;
+    }
+
+
+
+    public Float getTenor3() {
+        return tenor3;
+    }
+
+
+
+    public void setTenor3(Float tenor3) {
+        this.tenor3 = tenor3;
+    }
+
+
+
+    public Float getTenor4() {
+        return tenor4;
+    }
+
+
+
+    public void setTenor4(Float tenor4) {
+        this.tenor4 = tenor4;
+    }
+
+
+
+    public Float getTenor5() {
+        return tenor5;
+    }
+
+
+
+    public void setTenor5(Float tenor5) {
+        this.tenor5 = tenor5;
+    }
+
+
+
+    public Float getTenor6() {
+        return tenor6;
+    }
+
+
+
+    public void setTenor6(Float tenor6) {
+        this.tenor6 = tenor6;
+    }
+
+
+
+    public Float getTenor7() {
+        return tenor7;
+    }
+
+
+
+    public void setTenor7(Float tenor7) {
+        this.tenor7 = tenor7;
+    }
+
+
+
+    public Float getTenor8() {
+        return tenor8;
+    }
+
+
+
+    public void setTenor8(Float tenor8) {
+        this.tenor8 = tenor8;
+    }
+
+
+
+    public Float getTenor9() {
+        return tenor9;
+    }
+
+
+
+    public void setTenor9(Float tenor9) {
+        this.tenor9 = tenor9;
+    }
+
+
+
+    public Float getTenor10() {
+        return tenor10;
+    }
+
+
+
+    public void setTenor10(Float tenor10) {
+        this.tenor10 = tenor10;
+    }
+
+
+
+    public Date getStartBerlaku() {
+        return startBerlaku;
+    }
+
+
+
+    public void setStartBerlaku(Date startBerlaku) {
+        this.startBerlaku = startBerlaku;
+    }
+
+
+
+    public Date getEndBerlaku() {
+        return endBerlaku;
+    }
+
+
+
+    public void setEndBerlaku(Date endBerlaku) {
+        this.endBerlaku = endBerlaku;
+    }
+
+
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+
+
+    public Integer getStatusApproval() {
+        return statusApproval;
+    }
+
+
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
+
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+
+
+    public Integer getIsRejected() {
+        return isRejected;
+    }
+
+
+
+    public void setIsRejected(Integer isRejected) {
+        this.isRejected = isRejected;
+    }
+
+
+
+    public Integer getIsApproved() {
+        return isApproved;
+    }
+
+
+
+    public void setIsApproved(Integer isApproved) {
+        this.isApproved = isApproved;
+    }
+
+
+
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+
+
+    public Long getUpdatedBy() {
+        return updatedBy;
+    }
+
+
+
+    public void setUpdatedBy(Long updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+
+
+    public void submit(Long user) {
+        if(this.statusApproval == null || this.statusApproval == 0){
+            setIsApproved(0);
+            setIsRejected(0);
+            setStatusApproval(1);
             
             trace(user);
         }
-        return this;
     }
 
-    public PerluasanAsuransi approve(Long user) {
-        if(this.statusApproved == 1) {
-            setIs_approved(1);
-            setIs_rejected(0);
-            setStatusApproved(2);
+    public void approve(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
+            setIsApproved(1);
+            setIsRejected(0);
+            setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public PerluasanAsuransi decline(Long user) {
-        if(this.statusApproved == 1) {
-            setIs_approved(0);
-            setIs_rejected(1);
-            setStatusApproved(2);
+    public void decline(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
+            setIsApproved(0);
+            setIsRejected(1);
+            setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public PerluasanAsuransi trace(Long user) {
-        if(this.createddate == null) {
-            setCreatedby(user);
-            setCreateddate(new Date());
+    public void trace(Long user) {
+        if(this.createdDate == null) {
+            setCreatedBy(user);
+            setCreatedDate(new Date());
         } else {
-            setUpdatedby(user);
-            setUpdateddate(new Date());
+            setUpdatedBy(user);
+            setUpdatedDate(new Date());
         }
-        return this;
     }
 }

@@ -28,133 +28,31 @@ public class UsiaKendaraanLunas implements Serializable {
     private String maksimalUsiaKendaraan;
 
     @Column(name = "is_approved")
-    private Integer is_approved;
+    private Integer isApproved;
 
     @Column(name = "is_rejected")
-    private Integer is_rejected;
+    private Integer isRejected;
 
     @Column(name = "remarks")
     private String remarks;
 
     @Column(name = "createddate")
-    private Date createddate;
+    private Date createdDate;
 
     @Column(name = "createdby")
-    private Long createdby;
+    private Long createdBy;
 
     @Column(name = "updateddate")
-    private Date updateddate;
+    private Date updatedDate;
 
     @Column(name = "updatedby")
-    private Long updatedby;
+    private Long updatedBy;
 
     @Column(name = "statusapproval")
     private Integer statusApproval;
 
 
     public UsiaKendaraanLunas() {
-    }
-
-    public UsiaKendaraanLunas(Integer id, String namaSkema, String maksimalUsiaKendaraan, Integer is_approved, Integer is_rejected, String remarks, Date createddate, Long createdby, Date updateddate, Long updatedby, Integer statusApproval) {
-        this.id = id;
-        this.namaSkema = namaSkema;
-        this.maksimalUsiaKendaraan = maksimalUsiaKendaraan;
-        this.is_approved = is_approved;
-        this.is_rejected = is_rejected;
-        this.remarks = remarks;
-        this.createddate = createddate;
-        this.createdby = createdby;
-        this.updateddate = updateddate;
-        this.updatedby = updatedby;
-        this.statusApproval = statusApproval;
-    }
-
-    public Integer getId() {
-        return this.id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNamaSkema() {
-        return this.namaSkema;
-    }
-
-    public void setNamaSkema(String namaSkema) {
-        this.namaSkema = namaSkema;
-    }
-
-    public String getMaksimalUsiaKendaraan() {
-        return this.maksimalUsiaKendaraan;
-    }
-
-    public void setMaksimalUsiaKendaraan(String maksimalUsiaKendaraan) {
-        this.maksimalUsiaKendaraan = maksimalUsiaKendaraan;
-    }
-
-    public Integer getIs_approved() {
-        return this.is_approved;
-    }
-
-    public void setIs_approved(Integer is_approved) {
-        this.is_approved = is_approved;
-    }
-
-    public Integer getIs_rejected() {
-        return this.is_rejected;
-    }
-
-    public void setIs_rejected(Integer is_rejected) {
-        this.is_rejected = is_rejected;
-    }
-
-    public String getRemarks() {
-        return this.remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
-    public Date getCreateddate() {
-        return this.createddate;
-    }
-
-    public void setCreateddate(Date createddate) {
-        this.createddate = createddate;
-    }
-
-    public Long getCreatedby() {
-        return this.createdby;
-    }
-
-    public void setCreatedby(Long createdby) {
-        this.createdby = createdby;
-    }
-
-    public Date getUpdateddate() {
-        return this.updateddate;
-    }
-
-    public void setUpdateddate(Date updateddate) {
-        this.updateddate = updateddate;
-    }
-
-    public Long getUpdatedby() {
-        return this.updatedby;
-    }
-
-    public void setUpdatedby(Long updatedby) {
-        this.updatedby = updatedby;
-    }
-
-    public Integer getStatusApproval() {
-        return this.statusApproval;
-    }
-
-    public void setStatusApproval(Integer statusApproval) {
-        this.statusApproval = statusApproval;
     }
 
     public UsiaKendaraanLunas id(Integer id) {
@@ -172,13 +70,13 @@ public class UsiaKendaraanLunas implements Serializable {
         return this;
     }
 
-    public UsiaKendaraanLunas is_approved(Integer is_approved) {
-        setIs_approved(is_approved);
+    public UsiaKendaraanLunas isApproved(Integer isApproved) {
+        setIsApproved(isApproved);
         return this;
     }
 
-    public UsiaKendaraanLunas is_rejected(Integer is_rejected) {
-        setIs_rejected(is_rejected);
+    public UsiaKendaraanLunas isRejected(Integer isRejected) {
+        setIsRejected(isRejected);
         return this;
     }
 
@@ -187,23 +85,23 @@ public class UsiaKendaraanLunas implements Serializable {
         return this;
     }
 
-    public UsiaKendaraanLunas createddate(Date createddate) {
-        setCreateddate(createddate);
+    public UsiaKendaraanLunas createdDate(Date createdDate) {
+        setCreatedDate(createdDate);
         return this;
     }
 
-    public UsiaKendaraanLunas createdby(Long createdby) {
-        setCreatedby(createdby);
+    public UsiaKendaraanLunas createdBy(Long createdBy) {
+        setCreatedBy(createdBy);
         return this;
     }
 
-    public UsiaKendaraanLunas updateddate(Date updateddate) {
-        setUpdateddate(updateddate);
+    public UsiaKendaraanLunas updatedDate(Date updatedDate) {
+        setUpdatedDate(updatedDate);
         return this;
     }
 
-    public UsiaKendaraanLunas updatedby(Long updatedby) {
-        setUpdatedby(updatedby);
+    public UsiaKendaraanLunas updatedBy(Long updatedBy) {
+        setUpdatedBy(updatedBy);
         return this;
     }
 
@@ -218,61 +116,203 @@ public class UsiaKendaraanLunas implements Serializable {
             " id='" + getId() + "'" +
             ", namaSkema='" + getNamaSkema() + "'" +
             ", maksimalUsiaKendaraan='" + getMaksimalUsiaKendaraan() + "'" +
-            ", is_approved='" + getIs_approved() + "'" +
-            ", is_rejected='" + getIs_rejected() + "'" +
+            ", isApproved='" + getIsApproved() + "'" +
+            ", isRejected='" + getIsRejected() + "'" +
             ", remarks='" + getRemarks() + "'" +
-            ", createddate='" + getCreateddate() + "'" +
-            ", createdby='" + getCreatedby() + "'" +
-            ", updateddate='" + getUpdateddate() + "'" +
-            ", updatedby='" + getUpdatedby() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", createdBy='" + getCreatedBy() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
+            ", updatedBy='" + getUpdatedBy() + "'" +
             ", statusApproval='" + getStatusApproval() + "'" +
             "}";
     }
+    
+
+    public UsiaKendaraanLunas(Integer id, String namaSkema, String maksimalUsiaKendaraan, Integer isApproved,
+            Integer isRejected, String remarks, Date createdDate, Long createdBy, Date updatedDate, Long updatedBy,
+            Integer statusApproval) {
+        this.id = id;
+        this.namaSkema = namaSkema;
+        this.maksimalUsiaKendaraan = maksimalUsiaKendaraan;
+        this.isApproved = isApproved;
+        this.isRejected = isRejected;
+        this.remarks = remarks;
+        this.createdDate = createdDate;
+        this.createdBy = createdBy;
+        this.updatedDate = updatedDate;
+        this.updatedBy = updatedBy;
+        this.statusApproval = statusApproval;
+    }
+
+    public Integer getId() {
+        return id;
+    }
 
 
-    public UsiaKendaraanLunas submit(Long user) {
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+
+
+    public String getNamaSkema() {
+        return namaSkema;
+    }
+
+
+
+    public void setNamaSkema(String namaSkema) {
+        this.namaSkema = namaSkema;
+    }
+
+
+
+    public String getMaksimalUsiaKendaraan() {
+        return maksimalUsiaKendaraan;
+    }
+
+
+
+    public void setMaksimalUsiaKendaraan(String maksimalUsiaKendaraan) {
+        this.maksimalUsiaKendaraan = maksimalUsiaKendaraan;
+    }
+
+
+
+    public Integer getIsApproved() {
+        return isApproved;
+    }
+
+
+
+    public void setIsApproved(Integer isApproved) {
+        this.isApproved = isApproved;
+    }
+
+
+
+    public Integer getIsRejected() {
+        return isRejected;
+    }
+
+
+
+    public void setIsRejected(Integer isRejected) {
+        this.isRejected = isRejected;
+    }
+
+
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+
+
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+
+
+    public Long getUpdatedBy() {
+        return updatedBy;
+    }
+
+
+
+    public void setUpdatedBy(Long updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+
+
+    public Integer getStatusApproval() {
+        return statusApproval;
+    }
+
+
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
+
+
+    public void submit(Long user) {
         if(this.statusApproval == null || this.statusApproval == 0){
-            setIs_approved(0);
-            setIs_rejected(0);
+            setIsApproved(0);
+            setIsRejected(0);
             setStatusApproval(1);
             
             trace(user);
         }
-        return this;
     }
 
-    public UsiaKendaraanLunas approve(Long user) {
+    public void approve(Long user) {
         if(this.statusApproval != null && this.statusApproval == 1) {
-            setIs_approved(1);
-            setIs_rejected(0);
+            setIsApproved(1);
+            setIsRejected(0);
             setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public UsiaKendaraanLunas decline(Long user) {
+    public void decline(Long user) {
         if(this.statusApproval != null && this.statusApproval == 1) {
-            setIs_approved(0);
-            setIs_rejected(1);
+            setIsApproved(0);
+            setIsRejected(1);
             setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public UsiaKendaraanLunas trace(Long user) {
-        if(this.createddate == null) {
-            setCreatedby(user);
-            setCreateddate(new Date());
+    public void trace(Long user) {
+        if(this.createdDate == null) {
+            setCreatedBy(user);
+            setCreatedDate(new Date());
         } else {
-            setUpdatedby(user);
-            setUpdateddate(new Date());
+            setUpdatedBy(user);
+            setUpdatedDate(new Date());
         }
-        return this;
     }
 }

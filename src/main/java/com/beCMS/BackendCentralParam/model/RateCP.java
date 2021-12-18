@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -24,13 +22,10 @@ public class RateCP implements Serializable {
     private Integer id;
 
     @Column(name = "nama_skema")
-    private String nama_skema;
+    private String namaSkema;
 
-    @OneToOne()
-    @JoinColumn(name = "tipe_konsumen",referencedColumnName = "id",insertable = false,updatable = false)
-    private TipeKonsumen tipe_konsumenObject;
     @Column(name = "tipe_konsumen")
-    private Integer tipe_konsumen;
+    private Integer tipeKonsumen;
 
     @Column(name = "tenor1")
     private Float tenor1;
@@ -59,243 +54,24 @@ public class RateCP implements Serializable {
     private Date endBerlaku;
 
     @Column(name = "created_at")
-    private Date created_at;
+    private Date createdDate;
     @Column(name = "statusapproved")
-    private Integer statusApproved;
+    private Integer statusApproval;
     @Column(name = "remarks")
     private String remarks;
     @Column(name = "is_rejected")
-    private Integer is_rejected;
+    private Integer isRejected;
     @Column(name = "is_approved")
-    private Integer is_approved;
+    private Integer isApproved;
     @Column(name = "createdby")
-    private Long createdby;
+    private Long createdBy;
     @Column(name = "updatedby")
-    private Long updatedby;
+    private Long updatedBy;
     @Column(name = "updateddate")
-    private Date updateddate;
+    private Date updatedDate;
 
 
     public RateCP() {
-    }
-
-    public RateCP(Integer id, String nama_skema, TipeKonsumen tipe_konsumenObject, Integer tipe_konsumen, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6, Float tenor7, Float tenor8, Float tenor9, Float tenor10, Date startBerlaku, Date endBerlaku, Date created_at, Integer statusApproved, String remarks, Integer is_rejected, Integer is_approved, Long createdby, Long updatedby, Date updateddate) {
-        this.id = id;
-        this.nama_skema = nama_skema;
-        this.tipe_konsumenObject = tipe_konsumenObject;
-        this.tipe_konsumen = tipe_konsumen;
-        this.tenor1 = tenor1;
-        this.tenor2 = tenor2;
-        this.tenor3 = tenor3;
-        this.tenor4 = tenor4;
-        this.tenor5 = tenor5;
-        this.tenor6 = tenor6;
-        this.tenor7 = tenor7;
-        this.tenor8 = tenor8;
-        this.tenor9 = tenor9;
-        this.tenor10 = tenor10;
-        this.startBerlaku = startBerlaku;
-        this.endBerlaku = endBerlaku;
-        this.created_at = created_at;
-        this.statusApproved = statusApproved;
-        this.remarks = remarks;
-        this.is_rejected = is_rejected;
-        this.is_approved = is_approved;
-        this.createdby = createdby;
-        this.updatedby = updatedby;
-        this.updateddate = updateddate;
-    }
-
-    public Integer getId() {
-        return this.id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNama_skema() {
-        return this.nama_skema;
-    }
-
-    public void setNama_skema(String nama_skema) {
-        this.nama_skema = nama_skema;
-    }
-
-    public TipeKonsumen getTipe_konsumenObject() {
-        return this.tipe_konsumenObject;
-    }
-
-    public void setTipe_konsumenObject(TipeKonsumen tipe_konsumenObject) {
-        this.tipe_konsumenObject = tipe_konsumenObject;
-    }
-
-    public Integer getTipe_konsumen() {
-        return this.tipe_konsumen;
-    }
-
-    public void setTipe_konsumen(Integer tipe_konsumen) {
-        this.tipe_konsumen = tipe_konsumen;
-    }
-
-    public Float getTenor1() {
-        return this.tenor1;
-    }
-
-    public void setTenor1(Float tenor1) {
-        this.tenor1 = tenor1;
-    }
-
-    public Float getTenor2() {
-        return this.tenor2;
-    }
-
-    public void setTenor2(Float tenor2) {
-        this.tenor2 = tenor2;
-    }
-
-    public Float getTenor3() {
-        return this.tenor3;
-    }
-
-    public void setTenor3(Float tenor3) {
-        this.tenor3 = tenor3;
-    }
-
-    public Float getTenor4() {
-        return this.tenor4;
-    }
-
-    public void setTenor4(Float tenor4) {
-        this.tenor4 = tenor4;
-    }
-
-    public Float getTenor5() {
-        return this.tenor5;
-    }
-
-    public void setTenor5(Float tenor5) {
-        this.tenor5 = tenor5;
-    }
-
-    public Float getTenor6() {
-        return this.tenor6;
-    }
-
-    public void setTenor6(Float tenor6) {
-        this.tenor6 = tenor6;
-    }
-
-    public Float getTenor7() {
-        return this.tenor7;
-    }
-
-    public void setTenor7(Float tenor7) {
-        this.tenor7 = tenor7;
-    }
-
-    public Float getTenor8() {
-        return this.tenor8;
-    }
-
-    public void setTenor8(Float tenor8) {
-        this.tenor8 = tenor8;
-    }
-
-    public Float getTenor9() {
-        return this.tenor9;
-    }
-
-    public void setTenor9(Float tenor9) {
-        this.tenor9 = tenor9;
-    }
-
-    public Float getTenor10() {
-        return this.tenor10;
-    }
-
-    public void setTenor10(Float tenor10) {
-        this.tenor10 = tenor10;
-    }
-
-    public Date getStartBerlaku() {
-        return this.startBerlaku;
-    }
-
-    public void setStartBerlaku(Date startBerlaku) {
-        this.startBerlaku = startBerlaku;
-    }
-
-    public Date getEndBerlaku() {
-        return this.endBerlaku;
-    }
-
-    public void setEndBerlaku(Date endBerlaku) {
-        this.endBerlaku = endBerlaku;
-    }
-
-    public Date getCreated_at() {
-        return this.created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-    public Integer getStatusApproved() {
-        return this.statusApproved;
-    }
-
-    public void setStatusApproved(Integer statusApproved) {
-        this.statusApproved = statusApproved;
-    }
-
-    public String getRemarks() {
-        return this.remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
-    public Integer getIs_rejected() {
-        return this.is_rejected;
-    }
-
-    public void setIs_rejected(Integer is_rejected) {
-        this.is_rejected = is_rejected;
-    }
-
-    public Integer getIs_approved() {
-        return this.is_approved;
-    }
-
-    public void setIs_approved(Integer is_approved) {
-        this.is_approved = is_approved;
-    }
-
-    public Long getCreatedby() {
-        return this.createdby;
-    }
-
-    public void setCreatedby(Long createdby) {
-        this.createdby = createdby;
-    }
-
-    public Long getUpdatedby() {
-        return this.updatedby;
-    }
-
-    public void setUpdatedby(Long updatedby) {
-        this.updatedby = updatedby;
-    }
-
-    public Date getUpdateddate() {
-        return this.updateddate;
-    }
-
-    public void setUpdateddate(Date updateddate) {
-        this.updateddate = updateddate;
     }
 
     public RateCP id(Integer id) {
@@ -303,18 +79,13 @@ public class RateCP implements Serializable {
         return this;
     }
 
-    public RateCP nama_skema(String nama_skema) {
-        setNama_skema(nama_skema);
+    public RateCP namaSkema(String namaSkema) {
+        setNamaSkema(namaSkema);
         return this;
     }
 
-    public RateCP tipe_konsumenObject(TipeKonsumen tipe_konsumenObject) {
-        setTipe_konsumenObject(tipe_konsumenObject);
-        return this;
-    }
-
-    public RateCP tipe_konsumen(Integer tipe_konsumen) {
-        setTipe_konsumen(tipe_konsumen);
+    public RateCP tipeKonsumen(Integer tipeKonsumen) {
+        setTipeKonsumen(tipeKonsumen);
         return this;
     }
 
@@ -378,13 +149,13 @@ public class RateCP implements Serializable {
         return this;
     }
 
-    public RateCP created_at(Date created_at) {
-        setCreated_at(created_at);
+    public RateCP createdDate(Date createdDate) {
+        setCreatedDate(createdDate);
         return this;
     }
 
-    public RateCP statusApproved(Integer statusApproved) {
-        setStatusApproved(statusApproved);
+    public RateCP statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
         return this;
     }
 
@@ -393,28 +164,28 @@ public class RateCP implements Serializable {
         return this;
     }
 
-    public RateCP is_rejected(Integer is_rejected) {
-        setIs_rejected(is_rejected);
+    public RateCP isRejected(Integer isRejected) {
+        setIsRejected(isRejected);
         return this;
     }
 
-    public RateCP is_approved(Integer is_approved) {
-        setIs_approved(is_approved);
+    public RateCP isApproved(Integer isApproved) {
+        setIsApproved(isApproved);
         return this;
     }
 
-    public RateCP createdby(Long createdby) {
-        setCreatedby(createdby);
+    public RateCP createdBy(Long createdBy) {
+        setCreatedBy(createdBy);
         return this;
     }
 
-    public RateCP updatedby(Long updatedby) {
-        setUpdatedby(updatedby);
+    public RateCP updatedBy(Long updatedBy) {
+        setUpdatedBy(updatedBy);
         return this;
     }
 
-    public RateCP updateddate(Date updateddate) {
-        setUpdateddate(updateddate);
+    public RateCP updatedDate(Date updatedDate) {
+        setUpdatedDate(updatedDate);
         return this;
     }
 
@@ -422,9 +193,8 @@ public class RateCP implements Serializable {
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +
-            ", nama_skema='" + getNama_skema() + "'" +
-            ", tipe_konsumenObject='" + getTipe_konsumenObject() + "'" +
-            ", tipe_konsumen='" + getTipe_konsumen() + "'" +
+            ", namaSkema='" + getNamaSkema() + "'" +
+            ", tipeKonsumen='" + getTipeKonsumen() + "'" +
             ", tenor1='" + getTenor1() + "'" +
             ", tenor2='" + getTenor2() + "'" +
             ", tenor3='" + getTenor3() + "'" +
@@ -437,61 +207,315 @@ public class RateCP implements Serializable {
             ", tenor10='" + getTenor10() + "'" +
             ", startBerlaku='" + getStartBerlaku() + "'" +
             ", endBerlaku='" + getEndBerlaku() + "'" +
-            ", created_at='" + getCreated_at() + "'" +
-            ", statusApproved='" + getStatusApproved() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
             ", remarks='" + getRemarks() + "'" +
-            ", is_rejected='" + getIs_rejected() + "'" +
-            ", is_approved='" + getIs_approved() + "'" +
-            ", createdby='" + getCreatedby() + "'" +
-            ", updatedby='" + getUpdatedby() + "'" +
-            ", updateddate='" + getUpdateddate() + "'" +
+            ", isRejected='" + getIsRejected() + "'" +
+            ", isApproved='" + getIsApproved() + "'" +
+            ", createdBy='" + getCreatedBy() + "'" +
+            ", updatedBy='" + getUpdatedBy() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             "}";
     }
 
 
-    public RateCP submit(Long user) {
-        if(this.statusApproved == null || this.statusApproved == 0){
-            setIs_approved(0);
-            setIs_rejected(0);
-            setStatusApproved(1);
+    public RateCP(Integer id, String namaSkema, Integer tipeKonsumen, Float tenor1, Float tenor2, Float tenor3,
+            Float tenor4, Float tenor5, Float tenor6, Float tenor7, Float tenor8, Float tenor9, Float tenor10,
+            Date startBerlaku, Date endBerlaku, Date createdDate, Integer statusApproval, String remarks,
+            Integer isRejected, Integer isApproved, Long createdBy, Long updatedBy, Date updatedDate) {
+        this.id = id;
+        this.namaSkema = namaSkema;
+        this.tipeKonsumen = tipeKonsumen;
+        this.tenor1 = tenor1;
+        this.tenor2 = tenor2;
+        this.tenor3 = tenor3;
+        this.tenor4 = tenor4;
+        this.tenor5 = tenor5;
+        this.tenor6 = tenor6;
+        this.tenor7 = tenor7;
+        this.tenor8 = tenor8;
+        this.tenor9 = tenor9;
+        this.tenor10 = tenor10;
+        this.startBerlaku = startBerlaku;
+        this.endBerlaku = endBerlaku;
+        this.createdDate = createdDate;
+        this.statusApproval = statusApproval;
+        this.remarks = remarks;
+        this.isRejected = isRejected;
+        this.isApproved = isApproved;
+        this.createdBy = createdBy;
+        this.updatedBy = updatedBy;
+        this.updatedDate = updatedDate;
+    }
+
+    
+    public Integer getId() {
+        return id;
+    }
+
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+
+    public String getNamaSkema() {
+        return namaSkema;
+    }
+
+
+    public void setNamaSkema(String namaSkema) {
+        this.namaSkema = namaSkema;
+    }
+
+
+    public Integer getTipeKonsumen() {
+        return tipeKonsumen;
+    }
+
+
+    public void setTipeKonsumen(Integer tipeKonsumen) {
+        this.tipeKonsumen = tipeKonsumen;
+    }
+
+
+    public Float getTenor1() {
+        return tenor1;
+    }
+
+
+    public void setTenor1(Float tenor1) {
+        this.tenor1 = tenor1;
+    }
+
+
+    public Float getTenor2() {
+        return tenor2;
+    }
+
+
+    public void setTenor2(Float tenor2) {
+        this.tenor2 = tenor2;
+    }
+
+
+    public Float getTenor3() {
+        return tenor3;
+    }
+
+
+    public void setTenor3(Float tenor3) {
+        this.tenor3 = tenor3;
+    }
+
+
+    public Float getTenor4() {
+        return tenor4;
+    }
+
+
+    public void setTenor4(Float tenor4) {
+        this.tenor4 = tenor4;
+    }
+
+
+    public Float getTenor5() {
+        return tenor5;
+    }
+
+
+    public void setTenor5(Float tenor5) {
+        this.tenor5 = tenor5;
+    }
+
+
+    public Float getTenor6() {
+        return tenor6;
+    }
+
+
+    public void setTenor6(Float tenor6) {
+        this.tenor6 = tenor6;
+    }
+
+
+    public Float getTenor7() {
+        return tenor7;
+    }
+
+
+    public void setTenor7(Float tenor7) {
+        this.tenor7 = tenor7;
+    }
+
+
+    public Float getTenor8() {
+        return tenor8;
+    }
+
+
+    public void setTenor8(Float tenor8) {
+        this.tenor8 = tenor8;
+    }
+
+
+    public Float getTenor9() {
+        return tenor9;
+    }
+
+
+    public void setTenor9(Float tenor9) {
+        this.tenor9 = tenor9;
+    }
+
+
+    public Float getTenor10() {
+        return tenor10;
+    }
+
+
+    public void setTenor10(Float tenor10) {
+        this.tenor10 = tenor10;
+    }
+
+
+    public Date getStartBerlaku() {
+        return startBerlaku;
+    }
+
+
+    public void setStartBerlaku(Date startBerlaku) {
+        this.startBerlaku = startBerlaku;
+    }
+
+
+    public Date getEndBerlaku() {
+        return endBerlaku;
+    }
+
+
+    public void setEndBerlaku(Date endBerlaku) {
+        this.endBerlaku = endBerlaku;
+    }
+
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+
+    public Integer getStatusApproval() {
+        return statusApproval;
+    }
+
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+
+    public Integer getIsRejected() {
+        return isRejected;
+    }
+
+
+    public void setIsRejected(Integer isRejected) {
+        this.isRejected = isRejected;
+    }
+
+
+    public Integer getIsApproved() {
+        return isApproved;
+    }
+
+
+    public void setIsApproved(Integer isApproved) {
+        this.isApproved = isApproved;
+    }
+
+
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+
+    public Long getUpdatedBy() {
+        return updatedBy;
+    }
+
+
+    public void setUpdatedBy(Long updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+
+    public void submit(Long user) {
+        if(this.statusApproval == null || this.statusApproval == 0){
+            setIsApproved(0);
+            setIsRejected(0);
+            setStatusApproval(1);
             
             trace(user);
         }
-        return this;
     }
 
-    public RateCP approve(Long user) {
-        if(this.statusApproved == 1) {
-            setIs_approved(1);
-            setIs_rejected(0);
-            setStatusApproved(2);
+    public void approve(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
+            setIsApproved(1);
+            setIsRejected(0);
+            setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public RateCP decline(Long user) {
-        if(this.statusApproved == 1) {
-            setIs_approved(0);
-            setIs_rejected(1);
-            setStatusApproved(2);
+    public void decline(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
+            setIsApproved(0);
+            setIsRejected(1);
+            setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public RateCP trace(Long user) {
-        if(this.created_at == null) {
-            setCreatedby(user);
-            setCreated_at(new Date());
+    public void trace(Long user) {
+        if(this.createdDate == null) {
+            setCreatedBy(user);
+            setCreatedDate(new Date());
         } else {
-            setUpdatedby(user);
-            setUpdateddate(new Date());
+            setUpdatedBy(user);
+            setUpdatedDate(new Date());
         }
-        return this;
     }
 }

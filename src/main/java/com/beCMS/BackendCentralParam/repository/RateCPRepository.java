@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.beCMS.BackendCentralParam.model.RateCP;
 import com.beCMS.BackendCentralParam.view.vwDataRateCP;
-import com.beCMS.BackendCentralParam.view.vwSkemaRateCP;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;

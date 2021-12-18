@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -24,36 +22,24 @@ public class RateAsuransi implements Serializable {
     private Integer id;
 
     @Column(name = "nama_skema")
-    private String nama_skema;
+    private String namaSkema;
 
-    @OneToOne()
-    @JoinColumn(name = "wilayah",referencedColumnName = "id",insertable = false,updatable = false)
-    private Wilayah wilayahObject;
     @Column(name = "wilayah")
     private Integer wilayah;
 
-    @OneToOne()
-    @JoinColumn(name = "jenis_pembiayaan",referencedColumnName = "id",insertable = false,updatable = false)
-    private JenisPembiayaan jenis_pembiayaanObject;
     @Column(name = "jenis_pembiayaan")
-    private Integer jenis_pembiayaan;
+    private Integer jenisPembiayaan;
 
-    @OneToOne()
-    @JoinColumn(name = "jenis_kendaraan",referencedColumnName = "id",insertable = false,updatable = false)
-    private JenisKendaraan jenis_kendaraanObject;
     @Column(name = "jenis_kendaraan")
-    private Integer jenis_kendaraan;
+    private Integer jenisKendaraan;
 
-    @OneToOne()
-    @JoinColumn(name = "tipeasuransi",referencedColumnName = "id",insertable = false,updatable = false)
-    private TipeAsuransi tipeAsuransiObject;
     @Column(name = "tipeasuransi")
     private Integer tipeAsuransi;
 
     @Column(name = "startOTR")
-    private Integer startOTR;
+    private Integer startOtr;
     @Column(name = "endOTR")
-    private Integer endOTR;
+    private Integer endOtr;
 
     @Column(name = "startyear")
     private Integer startYear;
@@ -87,39 +73,35 @@ public class RateAsuransi implements Serializable {
     private Date endBerlaku;
 
     @Column(name = "created_at")
-    private Date created_at;
+    private Date createdDate;
     @Column(name = "statusapproved")
-    private Integer statusApproved;
+    private Integer statusApproval;
     @Column(name = "remarks")
     private String remarks;
     @Column(name = "is_rejected")
-    private Integer is_rejected;
+    private Integer isRejected;
     @Column(name = "is_approved")
-    private Integer is_approved;
+    private Integer isApproved;
     @Column(name = "createdby")
-    private Long createdby;
+    private Long createdBy;
     @Column(name = "updatedby")
-    private Long updatedby;
+    private Long updatedBy;
     @Column(name = "updateddate")
-    private Date updateddate;
+    private Date updatedDate;
 
 
     public RateAsuransi() {
     }
 
-    public RateAsuransi(Integer id, String nama_skema, Wilayah wilayahObject, Integer wilayah, JenisPembiayaan jenis_pembiayaanObject, Integer jenis_pembiayaan, JenisKendaraan jenis_kendaraanObject, Integer jenis_kendaraan, TipeAsuransi tipeAsuransiObject, Integer tipeAsuransi, Integer startOTR, Integer endOTR, Integer startYear, Integer endYear, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6, Float tenor7, Float tenor8, Float tenor9, Float tenor10, Date startBerlaku, Date endBerlaku, Date created_at, Integer statusApproved, String remarks, Integer is_rejected, Integer is_approved, Long createdby, Long updatedby, Date updateddate) {
+    public RateAsuransi(Integer id, String namaSkema, Integer wilayah, Integer jenisPembiayaan, Integer jenisKendaraan, Integer tipeAsuransi, Integer startOtr, Integer endOtr, Integer startYear, Integer endYear, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6, Float tenor7, Float tenor8, Float tenor9, Float tenor10, Date startBerlaku, Date endBerlaku, Date createdDate, Integer statusApproval, String remarks, Integer isRejected, Integer isApproved, Long createdBy, Long updatedBy, Date updatedDate) {
         this.id = id;
-        this.nama_skema = nama_skema;
-        this.wilayahObject = wilayahObject;
+        this.namaSkema = namaSkema;
         this.wilayah = wilayah;
-        this.jenis_pembiayaanObject = jenis_pembiayaanObject;
-        this.jenis_pembiayaan = jenis_pembiayaan;
-        this.jenis_kendaraanObject = jenis_kendaraanObject;
-        this.jenis_kendaraan = jenis_kendaraan;
-        this.tipeAsuransiObject = tipeAsuransiObject;
+        this.jenisPembiayaan = jenisPembiayaan;
+        this.jenisKendaraan = jenisKendaraan;
         this.tipeAsuransi = tipeAsuransi;
-        this.startOTR = startOTR;
-        this.endOTR = endOTR;
+        this.startOtr = startOtr;
+        this.endOtr = endOtr;
         this.startYear = startYear;
         this.endYear = endYear;
         this.tenor1 = tenor1;
@@ -134,14 +116,14 @@ public class RateAsuransi implements Serializable {
         this.tenor10 = tenor10;
         this.startBerlaku = startBerlaku;
         this.endBerlaku = endBerlaku;
-        this.created_at = created_at;
-        this.statusApproved = statusApproved;
+        this.createdDate = createdDate;
+        this.statusApproval = statusApproval;
         this.remarks = remarks;
-        this.is_rejected = is_rejected;
-        this.is_approved = is_approved;
-        this.createdby = createdby;
-        this.updatedby = updatedby;
-        this.updateddate = updateddate;
+        this.isRejected = isRejected;
+        this.isApproved = isApproved;
+        this.createdBy = createdBy;
+        this.updatedBy = updatedBy;
+        this.updatedDate = updatedDate;
     }
 
     public Integer getId() {
@@ -152,20 +134,12 @@ public class RateAsuransi implements Serializable {
         this.id = id;
     }
 
-    public String getNama_skema() {
-        return this.nama_skema;
+    public String getNamaSkema() {
+        return this.namaSkema;
     }
 
-    public void setNama_skema(String nama_skema) {
-        this.nama_skema = nama_skema;
-    }
-
-    public Wilayah getWilayahObject() {
-        return this.wilayahObject;
-    }
-
-    public void setWilayahObject(Wilayah wilayahObject) {
-        this.wilayahObject = wilayahObject;
+    public void setNamaSkema(String namaSkema) {
+        this.namaSkema = namaSkema;
     }
 
     public Integer getWilayah() {
@@ -176,44 +150,20 @@ public class RateAsuransi implements Serializable {
         this.wilayah = wilayah;
     }
 
-    public JenisPembiayaan getJenis_pembiayaanObject() {
-        return this.jenis_pembiayaanObject;
+    public Integer getJenisPembiayaan() {
+        return this.jenisPembiayaan;
     }
 
-    public void setJenis_pembiayaanObject(JenisPembiayaan jenis_pembiayaanObject) {
-        this.jenis_pembiayaanObject = jenis_pembiayaanObject;
+    public void setJenisPembiayaan(Integer jenisPembiayaan) {
+        this.jenisPembiayaan = jenisPembiayaan;
     }
 
-    public Integer getJenis_pembiayaan() {
-        return this.jenis_pembiayaan;
+    public Integer getJenisKendaraan() {
+        return this.jenisKendaraan;
     }
 
-    public void setJenis_pembiayaan(Integer jenis_pembiayaan) {
-        this.jenis_pembiayaan = jenis_pembiayaan;
-    }
-
-    public JenisKendaraan getJenis_kendaraanObject() {
-        return this.jenis_kendaraanObject;
-    }
-
-    public void setJenis_kendaraanObject(JenisKendaraan jenis_kendaraanObject) {
-        this.jenis_kendaraanObject = jenis_kendaraanObject;
-    }
-
-    public Integer getJenis_kendaraan() {
-        return this.jenis_kendaraan;
-    }
-
-    public void setJenis_kendaraan(Integer jenis_kendaraan) {
-        this.jenis_kendaraan = jenis_kendaraan;
-    }
-
-    public TipeAsuransi getTipeAsuransiObject() {
-        return this.tipeAsuransiObject;
-    }
-
-    public void setTipeAsuransiObject(TipeAsuransi tipeAsuransiObject) {
-        this.tipeAsuransiObject = tipeAsuransiObject;
+    public void setJenisKendaraan(Integer jenisKendaraan) {
+        this.jenisKendaraan = jenisKendaraan;
     }
 
     public Integer getTipeAsuransi() {
@@ -224,20 +174,20 @@ public class RateAsuransi implements Serializable {
         this.tipeAsuransi = tipeAsuransi;
     }
 
-    public Integer getStartOTR() {
-        return this.startOTR;
+    public Integer getStartOtr() {
+        return this.startOtr;
     }
 
-    public void setStartOTR(Integer startOTR) {
-        this.startOTR = startOTR;
+    public void setStartOtr(Integer startOtr) {
+        this.startOtr = startOtr;
     }
 
-    public Integer getEndOTR() {
-        return this.endOTR;
+    public Integer getEndOtr() {
+        return this.endOtr;
     }
 
-    public void setEndOTR(Integer endOTR) {
-        this.endOTR = endOTR;
+    public void setEndOtr(Integer endOtr) {
+        this.endOtr = endOtr;
     }
 
     public Integer getStartYear() {
@@ -352,20 +302,20 @@ public class RateAsuransi implements Serializable {
         this.endBerlaku = endBerlaku;
     }
 
-    public Date getCreated_at() {
-        return this.created_at;
+    public Date getCreatedDate() {
+        return this.createdDate;
     }
 
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public Integer getStatusApproved() {
-        return this.statusApproved;
+    public Integer getStatusApproval() {
+        return this.statusApproval;
     }
 
-    public void setStatusApproved(Integer statusApproved) {
-        this.statusApproved = statusApproved;
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
     }
 
     public String getRemarks() {
@@ -376,44 +326,44 @@ public class RateAsuransi implements Serializable {
         this.remarks = remarks;
     }
 
-    public Integer getIs_rejected() {
-        return this.is_rejected;
+    public Integer getIsRejected() {
+        return this.isRejected;
     }
 
-    public void setIs_rejected(Integer is_rejected) {
-        this.is_rejected = is_rejected;
+    public void setIsRejected(Integer isRejected) {
+        this.isRejected = isRejected;
     }
 
-    public Integer getIs_approved() {
-        return this.is_approved;
+    public Integer getIsApproved() {
+        return this.isApproved;
     }
 
-    public void setIs_approved(Integer is_approved) {
-        this.is_approved = is_approved;
+    public void setIsApproved(Integer isApproved) {
+        this.isApproved = isApproved;
     }
 
-    public Long getCreatedby() {
-        return this.createdby;
+    public Long getCreatedBy() {
+        return this.createdBy;
     }
 
-    public void setCreatedby(Long createdby) {
-        this.createdby = createdby;
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
     }
 
-    public Long getUpdatedby() {
-        return this.updatedby;
+    public Long getUpdatedBy() {
+        return this.updatedBy;
     }
 
-    public void setUpdatedby(Long updatedby) {
-        this.updatedby = updatedby;
+    public void setUpdatedBy(Long updatedBy) {
+        this.updatedBy = updatedBy;
     }
 
-    public Date getUpdateddate() {
-        return this.updateddate;
+    public Date getUpdatedDate() {
+        return this.updatedDate;
     }
 
-    public void setUpdateddate(Date updateddate) {
-        this.updateddate = updateddate;
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     public RateAsuransi id(Integer id) {
@@ -421,13 +371,8 @@ public class RateAsuransi implements Serializable {
         return this;
     }
 
-    public RateAsuransi nama_skema(String nama_skema) {
-        setNama_skema(nama_skema);
-        return this;
-    }
-
-    public RateAsuransi wilayahObject(Wilayah wilayahObject) {
-        setWilayahObject(wilayahObject);
+    public RateAsuransi namaSkema(String namaSkema) {
+        setNamaSkema(namaSkema);
         return this;
     }
 
@@ -436,28 +381,13 @@ public class RateAsuransi implements Serializable {
         return this;
     }
 
-    public RateAsuransi jenis_pembiayaanObject(JenisPembiayaan jenis_pembiayaanObject) {
-        setJenis_pembiayaanObject(jenis_pembiayaanObject);
+    public RateAsuransi jenisPembiayaan(Integer jenisPembiayaan) {
+        setJenisPembiayaan(jenisPembiayaan);
         return this;
     }
 
-    public RateAsuransi jenis_pembiayaan(Integer jenis_pembiayaan) {
-        setJenis_pembiayaan(jenis_pembiayaan);
-        return this;
-    }
-
-    public RateAsuransi jenis_kendaraanObject(JenisKendaraan jenis_kendaraanObject) {
-        setJenis_kendaraanObject(jenis_kendaraanObject);
-        return this;
-    }
-
-    public RateAsuransi jenis_kendaraan(Integer jenis_kendaraan) {
-        setJenis_kendaraan(jenis_kendaraan);
-        return this;
-    }
-
-    public RateAsuransi tipeAsuransiObject(TipeAsuransi tipeAsuransiObject) {
-        setTipeAsuransiObject(tipeAsuransiObject);
+    public RateAsuransi jenisKendaraan(Integer jenisKendaraan) {
+        setJenisKendaraan(jenisKendaraan);
         return this;
     }
 
@@ -466,13 +396,13 @@ public class RateAsuransi implements Serializable {
         return this;
     }
 
-    public RateAsuransi startOTR(Integer startOTR) {
-        setStartOTR(startOTR);
+    public RateAsuransi startOtr(Integer startOtr) {
+        setStartOtr(startOtr);
         return this;
     }
 
-    public RateAsuransi endOTR(Integer endOTR) {
-        setEndOTR(endOTR);
+    public RateAsuransi endOtr(Integer endOtr) {
+        setEndOtr(endOtr);
         return this;
     }
 
@@ -546,13 +476,13 @@ public class RateAsuransi implements Serializable {
         return this;
     }
 
-    public RateAsuransi created_at(Date created_at) {
-        setCreated_at(created_at);
+    public RateAsuransi createdDate(Date createdDate) {
+        setCreatedDate(createdDate);
         return this;
     }
 
-    public RateAsuransi statusApproved(Integer statusApproved) {
-        setStatusApproved(statusApproved);
+    public RateAsuransi statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
         return this;
     }
 
@@ -561,28 +491,28 @@ public class RateAsuransi implements Serializable {
         return this;
     }
 
-    public RateAsuransi is_rejected(Integer is_rejected) {
-        setIs_rejected(is_rejected);
+    public RateAsuransi isRejected(Integer isRejected) {
+        setIsRejected(isRejected);
         return this;
     }
 
-    public RateAsuransi is_approved(Integer is_approved) {
-        setIs_approved(is_approved);
+    public RateAsuransi isApproved(Integer isApproved) {
+        setIsApproved(isApproved);
         return this;
     }
 
-    public RateAsuransi createdby(Long createdby) {
-        setCreatedby(createdby);
+    public RateAsuransi createdBy(Long createdBy) {
+        setCreatedBy(createdBy);
         return this;
     }
 
-    public RateAsuransi updatedby(Long updatedby) {
-        setUpdatedby(updatedby);
+    public RateAsuransi updatedBy(Long updatedBy) {
+        setUpdatedBy(updatedBy);
         return this;
     }
 
-    public RateAsuransi updateddate(Date updateddate) {
-        setUpdateddate(updateddate);
+    public RateAsuransi updatedDate(Date updatedDate) {
+        setUpdatedDate(updatedDate);
         return this;
     }
 
@@ -590,17 +520,13 @@ public class RateAsuransi implements Serializable {
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +
-            ", nama_skema='" + getNama_skema() + "'" +
-            ", wilayahObject='" + getWilayahObject() + "'" +
+            ", namaSkema='" + getNamaSkema() + "'" +
             ", wilayah='" + getWilayah() + "'" +
-            ", jenis_pembiayaanObject='" + getJenis_pembiayaanObject() + "'" +
-            ", jenis_pembiayaan='" + getJenis_pembiayaan() + "'" +
-            ", jenis_kendaraanObject='" + getJenis_kendaraanObject() + "'" +
-            ", jenis_kendaraan='" + getJenis_kendaraan() + "'" +
-            ", tipeAsuransiObject='" + getTipeAsuransiObject() + "'" +
+            ", jenisPembiayaan='" + getJenisPembiayaan() + "'" +
+            ", jenisKendaraan='" + getJenisKendaraan() + "'" +
             ", tipeAsuransi='" + getTipeAsuransi() + "'" +
-            ", startOTR='" + getStartOTR() + "'" +
-            ", endOTR='" + getEndOTR() + "'" +
+            ", startOtr='" + getStartOtr() + "'" +
+            ", endOtr='" + getEndOtr() + "'" +
             ", startYear='" + getStartYear() + "'" +
             ", endYear='" + getEndYear() + "'" +
             ", tenor1='" + getTenor1() + "'" +
@@ -615,61 +541,55 @@ public class RateAsuransi implements Serializable {
             ", tenor10='" + getTenor10() + "'" +
             ", startBerlaku='" + getStartBerlaku() + "'" +
             ", endBerlaku='" + getEndBerlaku() + "'" +
-            ", created_at='" + getCreated_at() + "'" +
-            ", statusApproved='" + getStatusApproved() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
             ", remarks='" + getRemarks() + "'" +
-            ", is_rejected='" + getIs_rejected() + "'" +
-            ", is_approved='" + getIs_approved() + "'" +
-            ", createdby='" + getCreatedby() + "'" +
-            ", updatedby='" + getUpdatedby() + "'" +
-            ", updateddate='" + getUpdateddate() + "'" +
+            ", isRejected='" + getIsRejected() + "'" +
+            ", isApproved='" + getIsApproved() + "'" +
+            ", createdBy='" + getCreatedBy() + "'" +
+            ", updatedBy='" + getUpdatedBy() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             "}";
     }
 
 
-    public RateAsuransi submit(Long user) {
-        if(this.statusApproved == null || this.statusApproved == 0){
-            setIs_approved(0);
-            setIs_rejected(0);
-            setStatusApproved(1);
+    public void submit(Long user) {
+        if(this.statusApproval == null || this.statusApproval == 0){
+            setIsApproved(0);
+            setIsRejected(0);
+            setStatusApproval(1);
             
             trace(user);
         }
-        return this;
     }
 
-    public RateAsuransi approve(Long user) {
-        if(this.statusApproved == 1) {
-            setIs_approved(1);
-            setIs_rejected(0);
-            setStatusApproved(2);
+    public void approve(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
+            setIsApproved(1);
+            setIsRejected(0);
+            setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public RateAsuransi decline(Long user) {
-        if(this.statusApproved == 1) {
-            setIs_approved(0);
-            setIs_rejected(1);
-            setStatusApproved(2);
+    public void decline(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
+            setIsApproved(0);
+            setIsRejected(1);
+            setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public RateAsuransi trace(Long user) {
-        if(this.created_at == null) {
-            setCreatedby(user);
-            setCreated_at(new Date());
+    public void trace(Long user) {
+        if(this.createdDate == null) {
+            setCreatedBy(user);
+            setCreatedDate(new Date());
         } else {
-            setUpdatedby(user);
-            setUpdateddate(new Date());
+            setUpdatedBy(user);
+            setUpdatedDate(new Date());
         }
-        return this;
     }
 }

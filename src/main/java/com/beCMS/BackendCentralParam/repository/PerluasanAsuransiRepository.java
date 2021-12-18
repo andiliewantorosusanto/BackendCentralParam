@@ -4,8 +4,7 @@ import java.util.List;
 import org.springframework.data.domain.Pageable;
 
 import com.beCMS.BackendCentralParam.model.PerluasanAsuransi;
-import com.beCMS.BackendCentralParam.view.vwDataRatePerluasanAsuransi;
-import com.beCMS.BackendCentralParam.view.vwSkemaPerluasanAsuransi;
+import com.beCMS.BackendCentralParam.view.vwDataPerluasanAsuransi;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;

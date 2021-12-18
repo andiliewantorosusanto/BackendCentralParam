@@ -8,106 +8,103 @@ public class vwDataProgram {
 
     private String program;
 
+    private String produkName;
     private Integer produk;
-
-    private String nama_produk;
 
     private String deskripsi;
 
-    private Date start_date;
+    private Date startBerlaku;
+    private Date endBerlaku;
 
-    private Date end_date;
-
-    private Integer is_approved;
-
-    private Integer is_rejected;
-
+    private Integer statusApproval;
+    private Integer isApproved;
+    private Integer isRejected;
     private String remarks;
-
-    private Integer createdby;
-
-    private Date createddate;
-
-    private Integer updatedby;
-
-    private Date updateddate;
+    private Long createdBy;
+    private Date createdDate;
+    private Long updatedBy;
+    private Date updatedDate;
     
-    private String BranchId;
+    private String branch;
+
+    private String BiayaAdminName;
+    private Integer biayaAdmin;
+
+    private String rateAsuransiName;
+    private Integer rateAsuransi;
+
+    private String rateBungaName;
+    private Integer rateBunga;
+
+    private String rateCpName;
+    private Integer rateCp;
+
+    private String minimalDpName;
+    private Integer minmalDp;
+
+    private String komponenPhName;
+    private Integer komponenPh;
+
+    private String ratePerluasanName;
+    private Integer ratePerluasan;
+
+    private String biayaProvisiName;
+    private Integer biayaProvisi;
+
+    private String biayaFidusiaName;
+    private Integer biayaFidusia;
+
+    private String usiaKendaraanLunasName;
+    private Integer usiaKendaraanLunas;
     
-    private Integer id_biayaadmin;
-    private String nama_skema_biayaadmin;
-
-    private Integer id_rateasuransi;
-    private String nama_skema_rateasuransi;
-
-    private Integer id_ratebunga;
-    private String nama_skema_ratebunga;
-
-    private Integer id_ratecp;
-    private String nama_skema_ratecp;
-
-    private Integer id_minimaldp;
-    private String nama_skema_minimaldp;
-
-    private Integer id_komponenph;
-    private String nama_skema_komponenph;
-    
-    private Integer id_rateperluasan;
-    private String nama_skema_rateperluasan;
-
-    private Integer id_biayaprovisi;
-    private String nama_skema_biayaprovisi;
-
-    private Integer id_biayafidusia;
-    private String nama_skema_biayafidusia;
-    
-    private Integer id_usiakendaraanlunas;
-    private String nama_skema_usiakendaraanlunas;
-
-
-    public vwDataProgram() {
-    }
-
-    public vwDataProgram(Integer id, String program, Integer produk, String nama_produk, String deskripsi, Date start_date, Date end_date, Integer is_approved, Integer is_rejected, String remarks, Integer createdby, Date createddate, Integer updatedby, Date updateddate, String BranchId, Integer id_biayaadmin, String nama_skema_biayaadmin, Integer id_rateasuransi, String nama_skema_rateasuransi, Integer id_ratebunga, String nama_skema_ratebunga, Integer id_ratecp, String nama_skema_ratecp, Integer id_minimaldp, String nama_skema_minimaldp, Integer id_komponenph, String nama_skema_komponenph, Integer id_rateperluasan, String nama_skema_rateperluasan, Integer id_biayaprovisi, String nama_skema_biayaprovisi, Integer id_biayafidusia, String nama_skema_biayafidusia, Integer id_usiakendaraanlunas, String nama_skema_usiakendaraanlunas) {
+    public vwDataProgram(Integer id, String program, String produkName, Integer produk, String deskripsi,
+            Date startBerlaku, Date endBerlaku, Integer statusApproval, Integer isApproved, Integer isRejected,
+            String remarks, Long createdBy, Date createdDate, Long updatedBy, Date updatedDate, String branch,
+            String biayaAdminName, Integer biayaAdmin, String rateAsuransiName, Integer rateAsuransi,
+            String rateBungaName, Integer rateBunga, String rateCpName, Integer rateCp, String minimalDpName,
+            Integer minmalDp, String komponenPhName, Integer komponenPh, String ratePerluasanName,
+            Integer ratePerluasan, String biayaProvisiName, Integer biayaProvisi, String biayaFidusiaName,
+            Integer biayaFidusia, String usiaKendaraanLunasName, Integer usiaKendaraanLunas) {
         this.id = id;
         this.program = program;
+        this.produkName = produkName;
         this.produk = produk;
-        this.nama_produk = nama_produk;
         this.deskripsi = deskripsi;
-        this.start_date = start_date;
-        this.end_date = end_date;
-        this.is_approved = is_approved;
-        this.is_rejected = is_rejected;
+        this.startBerlaku = startBerlaku;
+        this.endBerlaku = endBerlaku;
+        this.statusApproval = statusApproval;
+        this.isApproved = isApproved;
+        this.isRejected = isRejected;
         this.remarks = remarks;
-        this.createdby = createdby;
-        this.createddate = createddate;
-        this.updatedby = updatedby;
-        this.updateddate = updateddate;
-        this.BranchId = BranchId;
-        this.id_biayaadmin = id_biayaadmin;
-        this.nama_skema_biayaadmin = nama_skema_biayaadmin;
-        this.id_rateasuransi = id_rateasuransi;
-        this.nama_skema_rateasuransi = nama_skema_rateasuransi;
-        this.id_ratebunga = id_ratebunga;
-        this.nama_skema_ratebunga = nama_skema_ratebunga;
-        this.id_ratecp = id_ratecp;
-        this.nama_skema_ratecp = nama_skema_ratecp;
-        this.id_minimaldp = id_minimaldp;
-        this.nama_skema_minimaldp = nama_skema_minimaldp;
-        this.id_komponenph = id_komponenph;
-        this.nama_skema_komponenph = nama_skema_komponenph;
-        this.id_rateperluasan = id_rateperluasan;
-        this.nama_skema_rateperluasan = nama_skema_rateperluasan;
-        this.id_biayaprovisi = id_biayaprovisi;
-        this.nama_skema_biayaprovisi = nama_skema_biayaprovisi;
-        this.id_biayafidusia = id_biayafidusia;
-        this.nama_skema_biayafidusia = nama_skema_biayafidusia;
-        this.id_usiakendaraanlunas = id_usiakendaraanlunas;
-        this.nama_skema_usiakendaraanlunas = nama_skema_usiakendaraanlunas;
+        this.createdBy = createdBy;
+        this.createdDate = createdDate;
+        this.updatedBy = updatedBy;
+        this.updatedDate = updatedDate;
+        this.branch = branch;
+        BiayaAdminName = biayaAdminName;
+        this.biayaAdmin = biayaAdmin;
+        this.rateAsuransiName = rateAsuransiName;
+        this.rateAsuransi = rateAsuransi;
+        this.rateBungaName = rateBungaName;
+        this.rateBunga = rateBunga;
+        this.rateCpName = rateCpName;
+        this.rateCp = rateCp;
+        this.minimalDpName = minimalDpName;
+        this.minmalDp = minmalDp;
+        this.komponenPhName = komponenPhName;
+        this.komponenPh = komponenPh;
+        this.ratePerluasanName = ratePerluasanName;
+        this.ratePerluasan = ratePerluasan;
+        this.biayaProvisiName = biayaProvisiName;
+        this.biayaProvisi = biayaProvisi;
+        this.biayaFidusiaName = biayaFidusiaName;
+        this.biayaFidusia = biayaFidusia;
+        this.usiaKendaraanLunasName = usiaKendaraanLunasName;
+        this.usiaKendaraanLunas = usiaKendaraanLunas;
     }
 
     public Integer getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(Integer id) {
@@ -115,277 +112,286 @@ public class vwDataProgram {
     }
 
     public String getProgram() {
-        return this.program;
+        return program;
     }
 
     public void setProgram(String program) {
         this.program = program;
     }
 
+    public String getProdukName() {
+        return produkName;
+    }
+
+    public void setProdukName(String produkName) {
+        this.produkName = produkName;
+    }
+
     public Integer getProduk() {
-        return this.produk;
+        return produk;
     }
 
     public void setProduk(Integer produk) {
         this.produk = produk;
     }
 
-    public String getNama_produk() {
-        return this.nama_produk;
-    }
-
-    public void setNama_produk(String nama_produk) {
-        this.nama_produk = nama_produk;
-    }
-
     public String getDeskripsi() {
-        return this.deskripsi;
+        return deskripsi;
     }
 
     public void setDeskripsi(String deskripsi) {
         this.deskripsi = deskripsi;
     }
 
-    public Date getStart_date() {
-        return this.start_date;
+    public Date getStartBerlaku() {
+        return startBerlaku;
     }
 
-    public void setStart_date(Date start_date) {
-        this.start_date = start_date;
+    public void setStartBerlaku(Date startBerlaku) {
+        this.startBerlaku = startBerlaku;
     }
 
-    public Date getEnd_date() {
-        return this.end_date;
+    public Date getEndBerlaku() {
+        return endBerlaku;
     }
 
-    public void setEnd_date(Date end_date) {
-        this.end_date = end_date;
+    public void setEndBerlaku(Date endBerlaku) {
+        this.endBerlaku = endBerlaku;
     }
 
-    public Integer getIs_approved() {
-        return this.is_approved;
+    public Integer getStatusApproval() {
+        return statusApproval;
     }
 
-    public void setIs_approved(Integer is_approved) {
-        this.is_approved = is_approved;
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
     }
 
-    public Integer getIs_rejected() {
-        return this.is_rejected;
+    public Integer getIsApproved() {
+        return isApproved;
     }
 
-    public void setIs_rejected(Integer is_rejected) {
-        this.is_rejected = is_rejected;
+    public void setIsApproved(Integer isApproved) {
+        this.isApproved = isApproved;
+    }
+
+    public Integer getIsRejected() {
+        return isRejected;
+    }
+
+    public void setIsRejected(Integer isRejected) {
+        this.isRejected = isRejected;
     }
 
     public String getRemarks() {
-        return this.remarks;
+        return remarks;
     }
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
     }
 
-    public Integer getCreatedby() {
-        return this.createdby;
+    public Long getCreatedBy() {
+        return createdBy;
     }
 
-    public void setCreatedby(Integer createdby) {
-        this.createdby = createdby;
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
     }
 
-    public Date getCreateddate() {
-        return this.createddate;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreateddate(Date createddate) {
-        this.createddate = createddate;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public Integer getUpdatedby() {
-        return this.updatedby;
+    public Long getUpdatedBy() {
+        return updatedBy;
     }
 
-    public void setUpdatedby(Integer updatedby) {
-        this.updatedby = updatedby;
+    public void setUpdatedBy(Long updatedBy) {
+        this.updatedBy = updatedBy;
     }
 
-    public Date getUpdateddate() {
-        return this.updateddate;
+    public Date getUpdatedDate() {
+        return updatedDate;
     }
 
-    public void setUpdateddate(Date updateddate) {
-        this.updateddate = updateddate;
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
-    public String getBranchId() {
-        return this.BranchId;
+    public String getBranch() {
+        return branch;
     }
 
-    public void setBranchId(String BranchId) {
-        this.BranchId = BranchId;
+    public void setBranch(String branch) {
+        this.branch = branch;
     }
 
-    public Integer getId_biayaadmin() {
-        return this.id_biayaadmin;
+    public String getBiayaAdminName() {
+        return BiayaAdminName;
     }
 
-    public void setId_biayaadmin(Integer id_biayaadmin) {
-        this.id_biayaadmin = id_biayaadmin;
+    public void setBiayaAdminName(String biayaAdminName) {
+        BiayaAdminName = biayaAdminName;
     }
 
-    public String getNama_skema_biayaadmin() {
-        return this.nama_skema_biayaadmin;
+    public Integer getBiayaAdmin() {
+        return biayaAdmin;
     }
 
-    public void setNama_skema_biayaadmin(String nama_skema_biayaadmin) {
-        this.nama_skema_biayaadmin = nama_skema_biayaadmin;
+    public void setBiayaAdmin(Integer biayaAdmin) {
+        this.biayaAdmin = biayaAdmin;
     }
 
-    public Integer getId_rateasuransi() {
-        return this.id_rateasuransi;
+    public String getRateAsuransiName() {
+        return rateAsuransiName;
     }
 
-    public void setId_rateasuransi(Integer id_rateasuransi) {
-        this.id_rateasuransi = id_rateasuransi;
+    public void setRateAsuransiName(String rateAsuransiName) {
+        this.rateAsuransiName = rateAsuransiName;
     }
 
-    public String getNama_skema_rateasuransi() {
-        return this.nama_skema_rateasuransi;
+    public Integer getRateAsuransi() {
+        return rateAsuransi;
     }
 
-    public void setNama_skema_rateasuransi(String nama_skema_rateasuransi) {
-        this.nama_skema_rateasuransi = nama_skema_rateasuransi;
+    public void setRateAsuransi(Integer rateAsuransi) {
+        this.rateAsuransi = rateAsuransi;
     }
 
-    public Integer getId_ratebunga() {
-        return this.id_ratebunga;
+    public String getRateBungaName() {
+        return rateBungaName;
     }
 
-    public void setId_ratebunga(Integer id_ratebunga) {
-        this.id_ratebunga = id_ratebunga;
+    public void setRateBungaName(String rateBungaName) {
+        this.rateBungaName = rateBungaName;
     }
 
-    public String getNama_skema_ratebunga() {
-        return this.nama_skema_ratebunga;
+    public Integer getRateBunga() {
+        return rateBunga;
     }
 
-    public void setNama_skema_ratebunga(String nama_skema_ratebunga) {
-        this.nama_skema_ratebunga = nama_skema_ratebunga;
+    public void setRateBunga(Integer rateBunga) {
+        this.rateBunga = rateBunga;
     }
 
-    public Integer getId_ratecp() {
-        return this.id_ratecp;
+    public String getRateCpName() {
+        return rateCpName;
     }
 
-    public void setId_ratecp(Integer id_ratecp) {
-        this.id_ratecp = id_ratecp;
+    public void setRateCpName(String rateCpName) {
+        this.rateCpName = rateCpName;
     }
 
-    public String getNama_skema_ratecp() {
-        return this.nama_skema_ratecp;
+    public Integer getRateCp() {
+        return rateCp;
     }
 
-    public void setNama_skema_ratecp(String nama_skema_ratecp) {
-        this.nama_skema_ratecp = nama_skema_ratecp;
+    public void setRateCp(Integer rateCp) {
+        this.rateCp = rateCp;
     }
 
-    public Integer getId_minimaldp() {
-        return this.id_minimaldp;
+    public String getMinimalDpName() {
+        return minimalDpName;
     }
 
-    public void setId_minimaldp(Integer id_minimaldp) {
-        this.id_minimaldp = id_minimaldp;
+    public void setMinimalDpName(String minimalDpName) {
+        this.minimalDpName = minimalDpName;
     }
 
-    public String getNama_skema_minimaldp() {
-        return this.nama_skema_minimaldp;
+    public Integer getMinmalDp() {
+        return minmalDp;
     }
 
-    public void setNama_skema_minimaldp(String nama_skema_minimaldp) {
-        this.nama_skema_minimaldp = nama_skema_minimaldp;
+    public void setMinmalDp(Integer minmalDp) {
+        this.minmalDp = minmalDp;
     }
 
-    public Integer getId_komponenph() {
-        return this.id_komponenph;
+    public String getKomponenPhName() {
+        return komponenPhName;
     }
 
-    public void setId_komponenph(Integer id_komponenph) {
-        this.id_komponenph = id_komponenph;
+    public void setKomponenPhName(String komponenPhName) {
+        this.komponenPhName = komponenPhName;
     }
 
-    public String getNama_skema_komponenph() {
-        return this.nama_skema_komponenph;
+    public Integer getKomponenPh() {
+        return komponenPh;
     }
 
-    public void setNama_skema_komponenph(String nama_skema_komponenph) {
-        this.nama_skema_komponenph = nama_skema_komponenph;
+    public void setKomponenPh(Integer komponenPh) {
+        this.komponenPh = komponenPh;
     }
 
-    public Integer getId_rateperluasan() {
-        return this.id_rateperluasan;
+    public String getRatePerluasanName() {
+        return ratePerluasanName;
     }
 
-    public void setId_rateperluasan(Integer id_rateperluasan) {
-        this.id_rateperluasan = id_rateperluasan;
+    public void setRatePerluasanName(String ratePerluasanName) {
+        this.ratePerluasanName = ratePerluasanName;
     }
 
-    public String getNama_skema_rateperluasan() {
-        return this.nama_skema_rateperluasan;
+    public Integer getRatePerluasan() {
+        return ratePerluasan;
     }
 
-    public void setNama_skema_rateperluasan(String nama_skema_rateperluasan) {
-        this.nama_skema_rateperluasan = nama_skema_rateperluasan;
+    public void setRatePerluasan(Integer ratePerluasan) {
+        this.ratePerluasan = ratePerluasan;
     }
 
-    public Integer getId_biayaprovisi() {
-        return this.id_biayaprovisi;
+    public String getBiayaProvisiName() {
+        return biayaProvisiName;
     }
 
-    public void setId_biayaprovisi(Integer id_biayaprovisi) {
-        this.id_biayaprovisi = id_biayaprovisi;
+    public void setBiayaProvisiName(String biayaProvisiName) {
+        this.biayaProvisiName = biayaProvisiName;
     }
 
-    public String getNama_skema_biayaprovisi() {
-        return this.nama_skema_biayaprovisi;
+    public Integer getBiayaProvisi() {
+        return biayaProvisi;
     }
 
-    public void setNama_skema_biayaprovisi(String nama_skema_biayaprovisi) {
-        this.nama_skema_biayaprovisi = nama_skema_biayaprovisi;
+    public void setBiayaProvisi(Integer biayaProvisi) {
+        this.biayaProvisi = biayaProvisi;
     }
 
-    public Integer getId_biayafidusia() {
-        return this.id_biayafidusia;
+    public String getBiayaFidusiaName() {
+        return biayaFidusiaName;
     }
 
-    public void setId_biayafidusia(Integer id_biayafidusia) {
-        this.id_biayafidusia = id_biayafidusia;
+    public void setBiayaFidusiaName(String biayaFidusiaName) {
+        this.biayaFidusiaName = biayaFidusiaName;
     }
 
-    public String getNama_skema_biayafidusia() {
-        return this.nama_skema_biayafidusia;
+    public Integer getBiayaFidusia() {
+        return biayaFidusia;
     }
 
-    public void setNama_skema_biayafidusia(String nama_skema_biayafidusia) {
-        this.nama_skema_biayafidusia = nama_skema_biayafidusia;
+    public void setBiayaFidusia(Integer biayaFidusia) {
+        this.biayaFidusia = biayaFidusia;
     }
 
-    public Integer getId_usiakendaraanlunas() {
-        return this.id_usiakendaraanlunas;
+    public String getUsiaKendaraanLunasName() {
+        return usiaKendaraanLunasName;
     }
 
-    public void setId_usiakendaraanlunas(Integer id_usiakendaraanlunas) {
-        this.id_usiakendaraanlunas = id_usiakendaraanlunas;
+    public void setUsiaKendaraanLunasName(String usiaKendaraanLunasName) {
+        this.usiaKendaraanLunasName = usiaKendaraanLunasName;
     }
 
-    public String getNama_skema_usiakendaraanlunas() {
-        return this.nama_skema_usiakendaraanlunas;
+    public Integer getUsiaKendaraanLunas() {
+        return usiaKendaraanLunas;
     }
 
-    public void setNama_skema_usiakendaraanlunas(String nama_skema_usiakendaraanlunas) {
-        this.nama_skema_usiakendaraanlunas = nama_skema_usiakendaraanlunas;
+    public void setUsiaKendaraanLunas(Integer usiaKendaraanLunas) {
+        this.usiaKendaraanLunas = usiaKendaraanLunas;
     }
-
+    
+    
 
 
 }

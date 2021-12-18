@@ -51,7 +51,7 @@ public class BiayaAdminRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil GET ALL DATA BiayaAdmin");
-                crunchifyMap.put("dataBiayaAdmin", biayaAdminRepository.findAll());
+                crunchifyMap.put("dataBiayaAdmin", biayaAdminRepository.getListDataBiayaAdmin());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");

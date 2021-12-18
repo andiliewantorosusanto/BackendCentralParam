@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import com.beCMS.BackendCentralParam.view.vwDataRateBunga;
-import com.beCMS.BackendCentralParam.view.vwSkemaRateBunga;
 import com.beCMS.BackendCentralParam.model.RateBunga;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -24,7 +22,7 @@ public class BiayaProvisi implements Serializable {
     private Integer id;
     
     @Column(name = "nama_skema")
-    private String nama_skema;
+    private String namaSkema;
 
     @Column(name = "startberlaku")
     private Date startBerlaku;
@@ -35,17 +33,11 @@ public class BiayaProvisi implements Serializable {
     @Column(name = "loantype")
     private Integer loanType;
 
-    @OneToOne()
-    @JoinColumn(name = "jeniskendaraanid",referencedColumnName = "id",insertable = false,updatable = false)
-    private JenisKendaraan jenis_kendaraanObject;
     @Column(name = "jeniskendaraanid")
-    private Integer jenis_kendaraan;
+    private Integer jenisKendaraan;
 
-    @OneToOne()
-    @JoinColumn(name = "jenis_pembiayaan",referencedColumnName = "id",insertable = false,updatable = false)
-    private JenisPembiayaan jenis_pembiayaanObject;
     @Column(name = "jenis_pembiayaan")
-    private Integer jenis_pembiayaan;
+    private Integer jenisPembiayaan;
 
 
     @Column(name = "tenor1")
@@ -71,406 +63,48 @@ public class BiayaProvisi implements Serializable {
 
     @Column(name = "remarks")
     private String remarks;
-    @Column(name = "status")
-    private String status;
 
     @Column(name = "tenor1_persen")
-    private Float tenor1_persen;
+    private Float tenor1Persen;
     @Column(name = "tenor2_persen")
-    private Float tenor2_persen;
+    private Float tenor2Persen;
     @Column(name = "tenor3_persen")
-    private Float tenor3_persen;
+    private Float tenor3Persen;
     @Column(name = "tenor4_persen")
-    private Float tenor4_persen;
+    private Float tenor4Persen;
     @Column(name = "tenor5_persen")
-    private Float tenor5_persen;
+    private Float tenor5Persen;
     @Column(name = "tenor6_persen")
-    private Float tenor6_persen;
+    private Float tenor6Persen;
     @Column(name = "tenor7_persen")
-    private Float tenor7_persen;
+    private Float tenor7Persen;
     @Column(name = "tenor8_persen")
-    private Float tenor8_persen;
+    private Float tenor8Persen;
     @Column(name = "tenor9_persen")
-    private Float tenor9_persen;
+    private Float tenor9Persen;
     @Column(name = "tenor10_persen")
-    private Float tenor10_persen;
+    private Float tenor10Persen;
     
 
 
     @Column(name = "updateddate")
-    private Date updateddate;
+    private Date updatedDate;
     @Column(name = "createddate")
-    private Date createddate;
+    private Date createdDate;
     @Column(name = "createdby")
-    private Long createdby;
+    private Long createdBy;
     @Column(name = "updatedby")
-    private Long updatedby;
+    private Long updatedBy;
 
-    @Column(name = "is_login")
-    private Integer is_login;
     @Column(name = "statusapproved")
-    private Integer statusApproved;
+    private Integer statusApproval;
     @Column(name = "is_rejected")
-    private Integer is_rejected;
+    private Integer isRejected;
     @Column(name = "is_approved")
-    private Integer is_approved;
+    private Integer isApproved;
 
 
     public BiayaProvisi() {
-    }
-
-    public BiayaProvisi(Integer id, String nama_skema, Date startBerlaku, Date endBerlaku, Integer loanType, JenisKendaraan jenis_kendaraanObject, Integer jenis_kendaraan, JenisPembiayaan jenis_pembiayaanObject, Integer jenis_pembiayaan, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6, Float tenor7, Float tenor8, Float tenor9, Float tenor10, String remarks, String status, Float tenor1_persen, Float tenor2_persen, Float tenor3_persen, Float tenor4_persen, Float tenor5_persen, Float tenor6_persen, Float tenor7_persen, Float tenor8_persen, Float tenor9_persen, Float tenor10_persen, Date updateddate, Date createddate, Long createdby, Long updatedby, Integer is_login, Integer statusApproved, Integer is_rejected, Integer is_approved) {
-        this.id = id;
-        this.nama_skema = nama_skema;
-        this.startBerlaku = startBerlaku;
-        this.endBerlaku = endBerlaku;
-        this.loanType = loanType;
-        this.jenis_kendaraanObject = jenis_kendaraanObject;
-        this.jenis_kendaraan = jenis_kendaraan;
-        this.jenis_pembiayaanObject = jenis_pembiayaanObject;
-        this.jenis_pembiayaan = jenis_pembiayaan;
-        this.tenor1 = tenor1;
-        this.tenor2 = tenor2;
-        this.tenor3 = tenor3;
-        this.tenor4 = tenor4;
-        this.tenor5 = tenor5;
-        this.tenor6 = tenor6;
-        this.tenor7 = tenor7;
-        this.tenor8 = tenor8;
-        this.tenor9 = tenor9;
-        this.tenor10 = tenor10;
-        this.remarks = remarks;
-        this.status = status;
-        this.tenor1_persen = tenor1_persen;
-        this.tenor2_persen = tenor2_persen;
-        this.tenor3_persen = tenor3_persen;
-        this.tenor4_persen = tenor4_persen;
-        this.tenor5_persen = tenor5_persen;
-        this.tenor6_persen = tenor6_persen;
-        this.tenor7_persen = tenor7_persen;
-        this.tenor8_persen = tenor8_persen;
-        this.tenor9_persen = tenor9_persen;
-        this.tenor10_persen = tenor10_persen;
-        this.updateddate = updateddate;
-        this.createddate = createddate;
-        this.createdby = createdby;
-        this.updatedby = updatedby;
-        this.is_login = is_login;
-        this.statusApproved = statusApproved;
-        this.is_rejected = is_rejected;
-        this.is_approved = is_approved;
-    }
-
-    public Integer getId() {
-        return this.id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNama_skema() {
-        return this.nama_skema;
-    }
-
-    public void setNama_skema(String nama_skema) {
-        this.nama_skema = nama_skema;
-    }
-
-    public Date getStartBerlaku() {
-        return this.startBerlaku;
-    }
-
-    public void setStartBerlaku(Date startBerlaku) {
-        this.startBerlaku = startBerlaku;
-    }
-
-    public Date getEndBerlaku() {
-        return this.endBerlaku;
-    }
-
-    public void setEndBerlaku(Date endBerlaku) {
-        this.endBerlaku = endBerlaku;
-    }
-
-    public Integer getLoanType() {
-        return this.loanType;
-    }
-
-    public void setLoanType(Integer loanType) {
-        this.loanType = loanType;
-    }
-
-    public JenisKendaraan getJenis_kendaraanObject() {
-        return this.jenis_kendaraanObject;
-    }
-
-    public void setJenis_kendaraanObject(JenisKendaraan jenis_kendaraanObject) {
-        this.jenis_kendaraanObject = jenis_kendaraanObject;
-    }
-
-    public Integer getJenis_kendaraan() {
-        return this.jenis_kendaraan;
-    }
-
-    public void setJenis_kendaraan(Integer jenis_kendaraan) {
-        this.jenis_kendaraan = jenis_kendaraan;
-    }
-
-    public JenisPembiayaan getJenis_pembiayaanObject() {
-        return this.jenis_pembiayaanObject;
-    }
-
-    public void setJenis_pembiayaanObject(JenisPembiayaan jenis_pembiayaanObject) {
-        this.jenis_pembiayaanObject = jenis_pembiayaanObject;
-    }
-
-    public Integer getJenis_pembiayaan() {
-        return this.jenis_pembiayaan;
-    }
-
-    public void setJenis_pembiayaan(Integer jenis_pembiayaan) {
-        this.jenis_pembiayaan = jenis_pembiayaan;
-    }
-
-    public Float getTenor1() {
-        return this.tenor1;
-    }
-
-    public void setTenor1(Float tenor1) {
-        this.tenor1 = tenor1;
-    }
-
-    public Float getTenor2() {
-        return this.tenor2;
-    }
-
-    public void setTenor2(Float tenor2) {
-        this.tenor2 = tenor2;
-    }
-
-    public Float getTenor3() {
-        return this.tenor3;
-    }
-
-    public void setTenor3(Float tenor3) {
-        this.tenor3 = tenor3;
-    }
-
-    public Float getTenor4() {
-        return this.tenor4;
-    }
-
-    public void setTenor4(Float tenor4) {
-        this.tenor4 = tenor4;
-    }
-
-    public Float getTenor5() {
-        return this.tenor5;
-    }
-
-    public void setTenor5(Float tenor5) {
-        this.tenor5 = tenor5;
-    }
-
-    public Float getTenor6() {
-        return this.tenor6;
-    }
-
-    public void setTenor6(Float tenor6) {
-        this.tenor6 = tenor6;
-    }
-
-    public Float getTenor7() {
-        return this.tenor7;
-    }
-
-    public void setTenor7(Float tenor7) {
-        this.tenor7 = tenor7;
-    }
-
-    public Float getTenor8() {
-        return this.tenor8;
-    }
-
-    public void setTenor8(Float tenor8) {
-        this.tenor8 = tenor8;
-    }
-
-    public Float getTenor9() {
-        return this.tenor9;
-    }
-
-    public void setTenor9(Float tenor9) {
-        this.tenor9 = tenor9;
-    }
-
-    public Float getTenor10() {
-        return this.tenor10;
-    }
-
-    public void setTenor10(Float tenor10) {
-        this.tenor10 = tenor10;
-    }
-
-    public String getRemarks() {
-        return this.remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
-    public String getStatus() {
-        return this.status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Float getTenor1_persen() {
-        return this.tenor1_persen;
-    }
-
-    public void setTenor1_persen(Float tenor1_persen) {
-        this.tenor1_persen = tenor1_persen;
-    }
-
-    public Float getTenor2_persen() {
-        return this.tenor2_persen;
-    }
-
-    public void setTenor2_persen(Float tenor2_persen) {
-        this.tenor2_persen = tenor2_persen;
-    }
-
-    public Float getTenor3_persen() {
-        return this.tenor3_persen;
-    }
-
-    public void setTenor3_persen(Float tenor3_persen) {
-        this.tenor3_persen = tenor3_persen;
-    }
-
-    public Float getTenor4_persen() {
-        return this.tenor4_persen;
-    }
-
-    public void setTenor4_persen(Float tenor4_persen) {
-        this.tenor4_persen = tenor4_persen;
-    }
-
-    public Float getTenor5_persen() {
-        return this.tenor5_persen;
-    }
-
-    public void setTenor5_persen(Float tenor5_persen) {
-        this.tenor5_persen = tenor5_persen;
-    }
-
-    public Float getTenor6_persen() {
-        return this.tenor6_persen;
-    }
-
-    public void setTenor6_persen(Float tenor6_persen) {
-        this.tenor6_persen = tenor6_persen;
-    }
-
-    public Float getTenor7_persen() {
-        return this.tenor7_persen;
-    }
-
-    public void setTenor7_persen(Float tenor7_persen) {
-        this.tenor7_persen = tenor7_persen;
-    }
-
-    public Float getTenor8_persen() {
-        return this.tenor8_persen;
-    }
-
-    public void setTenor8_persen(Float tenor8_persen) {
-        this.tenor8_persen = tenor8_persen;
-    }
-
-    public Float getTenor9_persen() {
-        return this.tenor9_persen;
-    }
-
-    public void setTenor9_persen(Float tenor9_persen) {
-        this.tenor9_persen = tenor9_persen;
-    }
-
-    public Float getTenor10_persen() {
-        return this.tenor10_persen;
-    }
-
-    public void setTenor10_persen(Float tenor10_persen) {
-        this.tenor10_persen = tenor10_persen;
-    }
-
-    public Date getUpdateddate() {
-        return this.updateddate;
-    }
-
-    public void setUpdateddate(Date updateddate) {
-        this.updateddate = updateddate;
-    }
-
-    public Date getCreateddate() {
-        return this.createddate;
-    }
-
-    public void setCreateddate(Date createddate) {
-        this.createddate = createddate;
-    }
-
-    public Long getCreatedby() {
-        return this.createdby;
-    }
-
-    public void setCreatedby(Long createdby) {
-        this.createdby = createdby;
-    }
-
-    public Long getUpdatedby() {
-        return this.updatedby;
-    }
-
-    public void setUpdatedby(Long updatedby) {
-        this.updatedby = updatedby;
-    }
-
-    public Integer getIs_login() {
-        return this.is_login;
-    }
-
-    public void setIs_login(Integer is_login) {
-        this.is_login = is_login;
-    }
-
-    public Integer getStatusApproved() {
-        return this.statusApproved;
-    }
-
-    public void setStatusApproved(Integer statusApproved) {
-        this.statusApproved = statusApproved;
-    }
-
-    public Integer getIs_rejected() {
-        return this.is_rejected;
-    }
-
-    public void setIs_rejected(Integer is_rejected) {
-        this.is_rejected = is_rejected;
-    }
-
-    public Integer getIs_approved() {
-        return this.is_approved;
-    }
-
-    public void setIs_approved(Integer is_approved) {
-        this.is_approved = is_approved;
     }
 
     public BiayaProvisi id(Integer id) {
@@ -478,8 +112,8 @@ public class BiayaProvisi implements Serializable {
         return this;
     }
 
-    public BiayaProvisi nama_skema(String nama_skema) {
-        setNama_skema(nama_skema);
+    public BiayaProvisi namaSkema(String namaSkema) {
+        setNamaSkema(namaSkema);
         return this;
     }
 
@@ -498,23 +132,13 @@ public class BiayaProvisi implements Serializable {
         return this;
     }
 
-    public BiayaProvisi jenis_kendaraanObject(JenisKendaraan jenis_kendaraanObject) {
-        setJenis_kendaraanObject(jenis_kendaraanObject);
+    public BiayaProvisi jenisKendaraan(Integer jenisKendaraan) {
+        setJenisKendaraan(jenisKendaraan);
         return this;
     }
 
-    public BiayaProvisi jenis_kendaraan(Integer jenis_kendaraan) {
-        setJenis_kendaraan(jenis_kendaraan);
-        return this;
-    }
-
-    public BiayaProvisi jenis_pembiayaanObject(JenisPembiayaan jenis_pembiayaanObject) {
-        setJenis_pembiayaanObject(jenis_pembiayaanObject);
-        return this;
-    }
-
-    public BiayaProvisi jenis_pembiayaan(Integer jenis_pembiayaan) {
-        setJenis_pembiayaan(jenis_pembiayaan);
+    public BiayaProvisi jenisPembiayaan(Integer jenisPembiayaan) {
+        setJenisPembiayaan(jenisPembiayaan);
         return this;
     }
 
@@ -573,98 +197,88 @@ public class BiayaProvisi implements Serializable {
         return this;
     }
 
-    public BiayaProvisi status(String status) {
-        setStatus(status);
+    public BiayaProvisi tenor1Persen(Float tenor1Persen) {
+        setTenor1Persen(tenor1Persen);
         return this;
     }
 
-    public BiayaProvisi tenor1_persen(Float tenor1_persen) {
-        setTenor1_persen(tenor1_persen);
+    public BiayaProvisi tenor2Persen(Float tenor2Persen) {
+        setTenor2Persen(tenor2Persen);
         return this;
     }
 
-    public BiayaProvisi tenor2_persen(Float tenor2_persen) {
-        setTenor2_persen(tenor2_persen);
+    public BiayaProvisi tenor3Persen(Float tenor3Persen) {
+        setTenor3Persen(tenor3Persen);
         return this;
     }
 
-    public BiayaProvisi tenor3_persen(Float tenor3_persen) {
-        setTenor3_persen(tenor3_persen);
+    public BiayaProvisi tenor4Persen(Float tenor4Persen) {
+        setTenor4Persen(tenor4Persen);
         return this;
     }
 
-    public BiayaProvisi tenor4_persen(Float tenor4_persen) {
-        setTenor4_persen(tenor4_persen);
+    public BiayaProvisi tenor5Persen(Float tenor5Persen) {
+        setTenor5Persen(tenor5Persen);
         return this;
     }
 
-    public BiayaProvisi tenor5_persen(Float tenor5_persen) {
-        setTenor5_persen(tenor5_persen);
+    public BiayaProvisi tenor6Persen(Float tenor6Persen) {
+        setTenor6Persen(tenor6Persen);
         return this;
     }
 
-    public BiayaProvisi tenor6_persen(Float tenor6_persen) {
-        setTenor6_persen(tenor6_persen);
+    public BiayaProvisi tenor7Persen(Float tenor7Persen) {
+        setTenor7Persen(tenor7Persen);
         return this;
     }
 
-    public BiayaProvisi tenor7_persen(Float tenor7_persen) {
-        setTenor7_persen(tenor7_persen);
+    public BiayaProvisi tenor8Persen(Float tenor8Persen) {
+        setTenor8Persen(tenor8Persen);
         return this;
     }
 
-    public BiayaProvisi tenor8_persen(Float tenor8_persen) {
-        setTenor8_persen(tenor8_persen);
+    public BiayaProvisi tenor9Persen(Float tenor9Persen) {
+        setTenor9Persen(tenor9Persen);
         return this;
     }
 
-    public BiayaProvisi tenor9_persen(Float tenor9_persen) {
-        setTenor9_persen(tenor9_persen);
+    public BiayaProvisi tenor10Persen(Float tenor10Persen) {
+        setTenor10Persen(tenor10Persen);
         return this;
     }
 
-    public BiayaProvisi tenor10_persen(Float tenor10_persen) {
-        setTenor10_persen(tenor10_persen);
+    public BiayaProvisi updatedDate(Date updatedDate) {
+        setUpdatedDate(updatedDate);
         return this;
     }
 
-    public BiayaProvisi updateddate(Date updateddate) {
-        setUpdateddate(updateddate);
+    public BiayaProvisi createdDate(Date createdDate) {
+        setCreatedDate(createdDate);
         return this;
     }
 
-    public BiayaProvisi createddate(Date createddate) {
-        setCreateddate(createddate);
+    public BiayaProvisi createdBy(Long createdBy) {
+        setCreatedBy(createdBy);
         return this;
     }
 
-    public BiayaProvisi createdby(Long createdby) {
-        setCreatedby(createdby);
+    public BiayaProvisi updatedBy(Long updatedBy) {
+        setUpdatedBy(updatedBy);
         return this;
     }
 
-    public BiayaProvisi updatedby(Long updatedby) {
-        setUpdatedby(updatedby);
+    public BiayaProvisi statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
         return this;
     }
 
-    public BiayaProvisi is_login(Integer is_login) {
-        setIs_login(is_login);
+    public BiayaProvisi isRejected(Integer isRejected) {
+        setIsRejected(isRejected);
         return this;
     }
 
-    public BiayaProvisi statusApproved(Integer statusApproved) {
-        setStatusApproved(statusApproved);
-        return this;
-    }
-
-    public BiayaProvisi is_rejected(Integer is_rejected) {
-        setIs_rejected(is_rejected);
-        return this;
-    }
-
-    public BiayaProvisi is_approved(Integer is_approved) {
-        setIs_approved(is_approved);
+    public BiayaProvisi isApproved(Integer isApproved) {
+        setIsApproved(isApproved);
         return this;
     }
 
@@ -672,14 +286,12 @@ public class BiayaProvisi implements Serializable {
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +
-            ", nama_skema='" + getNama_skema() + "'" +
+            ", namaSkema='" + getNamaSkema() + "'" +
             ", startBerlaku='" + getStartBerlaku() + "'" +
             ", endBerlaku='" + getEndBerlaku() + "'" +
             ", loanType='" + getLoanType() + "'" +
-            ", jenis_kendaraanObject='" + getJenis_kendaraanObject() + "'" +
-            ", jenis_kendaraan='" + getJenis_kendaraan() + "'" +
-            ", jenis_pembiayaanObject='" + getJenis_pembiayaanObject() + "'" +
-            ", jenis_pembiayaan='" + getJenis_pembiayaan() + "'" +
+            ", jenisKendaraan='" + getJenisKendaraan() + "'" +
+            ", jenisPembiayaan='" + getJenisPembiayaan() + "'" +
             ", tenor1='" + getTenor1() + "'" +
             ", tenor2='" + getTenor2() + "'" +
             ", tenor3='" + getTenor3() + "'" +
@@ -691,71 +303,387 @@ public class BiayaProvisi implements Serializable {
             ", tenor9='" + getTenor9() + "'" +
             ", tenor10='" + getTenor10() + "'" +
             ", remarks='" + getRemarks() + "'" +
-            ", status='" + getStatus() + "'" +
-            ", tenor1_persen='" + getTenor1_persen() + "'" +
-            ", tenor2_persen='" + getTenor2_persen() + "'" +
-            ", tenor3_persen='" + getTenor3_persen() + "'" +
-            ", tenor4_persen='" + getTenor4_persen() + "'" +
-            ", tenor5_persen='" + getTenor5_persen() + "'" +
-            ", tenor6_persen='" + getTenor6_persen() + "'" +
-            ", tenor7_persen='" + getTenor7_persen() + "'" +
-            ", tenor8_persen='" + getTenor8_persen() + "'" +
-            ", tenor9_persen='" + getTenor9_persen() + "'" +
-            ", tenor10_persen='" + getTenor10_persen() + "'" +
-            ", updateddate='" + getUpdateddate() + "'" +
-            ", createddate='" + getCreateddate() + "'" +
-            ", createdby='" + getCreatedby() + "'" +
-            ", updatedby='" + getUpdatedby() + "'" +
-            ", is_login='" + getIs_login() + "'" +
-            ", statusApproved='" + getStatusApproved() + "'" +
-            ", is_rejected='" + getIs_rejected() + "'" +
-            ", is_approved='" + getIs_approved() + "'" +
+            ", tenor1Persen='" + getTenor1Persen() + "'" +
+            ", tenor2Persen='" + getTenor2Persen() + "'" +
+            ", tenor3Persen='" + getTenor3Persen() + "'" +
+            ", tenor4Persen='" + getTenor4Persen() + "'" +
+            ", tenor5Persen='" + getTenor5Persen() + "'" +
+            ", tenor6Persen='" + getTenor6Persen() + "'" +
+            ", tenor7Persen='" + getTenor7Persen() + "'" +
+            ", tenor8Persen='" + getTenor8Persen() + "'" +
+            ", tenor9Persen='" + getTenor9Persen() + "'" +
+            ", tenor10Persen='" + getTenor10Persen() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", createdBy='" + getCreatedBy() + "'" +
+            ", updatedBy='" + getUpdatedBy() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
+            ", isRejected='" + getIsRejected() + "'" +
+            ", isApproved='" + getIsApproved() + "'" +
             "}";
     }
+    
+    public BiayaProvisi(Integer id, String namaSkema, Date startBerlaku, Date endBerlaku, Integer loanType,
+            Integer jenisKendaraan, Integer jenisPembiayaan, Float tenor1, Float tenor2, Float tenor3, Float tenor4,
+            Float tenor5, Float tenor6, Float tenor7, Float tenor8, Float tenor9, Float tenor10, String remarks,
+            Float tenor1Persen, Float tenor2Persen, Float tenor3Persen, Float tenor4Persen, Float tenor5Persen,
+            Float tenor6Persen, Float tenor7Persen, Float tenor8Persen, Float tenor9Persen, Float tenor10Persen,
+            Date updatedDate, Date createdDate, Long createdBy, Long updatedBy, Integer statusApproval,
+            Integer isRejected, Integer isApproved) {
+        this.id = id;
+        this.namaSkema = namaSkema;
+        this.startBerlaku = startBerlaku;
+        this.endBerlaku = endBerlaku;
+        this.loanType = loanType;
+        this.jenisKendaraan = jenisKendaraan;
+        this.jenisPembiayaan = jenisPembiayaan;
+        this.tenor1 = tenor1;
+        this.tenor2 = tenor2;
+        this.tenor3 = tenor3;
+        this.tenor4 = tenor4;
+        this.tenor5 = tenor5;
+        this.tenor6 = tenor6;
+        this.tenor7 = tenor7;
+        this.tenor8 = tenor8;
+        this.tenor9 = tenor9;
+        this.tenor10 = tenor10;
+        this.remarks = remarks;
+        this.tenor1Persen = tenor1Persen;
+        this.tenor2Persen = tenor2Persen;
+        this.tenor3Persen = tenor3Persen;
+        this.tenor4Persen = tenor4Persen;
+        this.tenor5Persen = tenor5Persen;
+        this.tenor6Persen = tenor6Persen;
+        this.tenor7Persen = tenor7Persen;
+        this.tenor8Persen = tenor8Persen;
+        this.tenor9Persen = tenor9Persen;
+        this.tenor10Persen = tenor10Persen;
+        this.updatedDate = updatedDate;
+        this.createdDate = createdDate;
+        this.createdBy = createdBy;
+        this.updatedBy = updatedBy;
+        this.statusApproval = statusApproval;
+        this.isRejected = isRejected;
+        this.isApproved = isApproved;
+    }
 
-    public BiayaProvisi submit(Long user) {
-        if(this.statusApproved == null || this.statusApproved == 0){
-            setIs_approved(0);
-            setIs_rejected(0);
-            setStatusApproved(1);
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNamaSkema() {
+        return namaSkema;
+    }
+
+    public void setNamaSkema(String namaSkema) {
+        this.namaSkema = namaSkema;
+    }
+
+    public Date getStartBerlaku() {
+        return startBerlaku;
+    }
+
+    public void setStartBerlaku(Date startBerlaku) {
+        this.startBerlaku = startBerlaku;
+    }
+
+    public Date getEndBerlaku() {
+        return endBerlaku;
+    }
+
+    public void setEndBerlaku(Date endBerlaku) {
+        this.endBerlaku = endBerlaku;
+    }
+
+    public Integer getLoanType() {
+        return loanType;
+    }
+
+    public void setLoanType(Integer loanType) {
+        this.loanType = loanType;
+    }
+
+    public Integer getJenisKendaraan() {
+        return jenisKendaraan;
+    }
+
+    public void setJenisKendaraan(Integer jenisKendaraan) {
+        this.jenisKendaraan = jenisKendaraan;
+    }
+
+    public Integer getJenisPembiayaan() {
+        return jenisPembiayaan;
+    }
+
+    public void setJenisPembiayaan(Integer jenisPembiayaan) {
+        this.jenisPembiayaan = jenisPembiayaan;
+    }
+
+    public Float getTenor1() {
+        return tenor1;
+    }
+
+    public void setTenor1(Float tenor1) {
+        this.tenor1 = tenor1;
+    }
+
+    public Float getTenor2() {
+        return tenor2;
+    }
+
+    public void setTenor2(Float tenor2) {
+        this.tenor2 = tenor2;
+    }
+
+    public Float getTenor3() {
+        return tenor3;
+    }
+
+    public void setTenor3(Float tenor3) {
+        this.tenor3 = tenor3;
+    }
+
+    public Float getTenor4() {
+        return tenor4;
+    }
+
+    public void setTenor4(Float tenor4) {
+        this.tenor4 = tenor4;
+    }
+
+    public Float getTenor5() {
+        return tenor5;
+    }
+
+    public void setTenor5(Float tenor5) {
+        this.tenor5 = tenor5;
+    }
+
+    public Float getTenor6() {
+        return tenor6;
+    }
+
+    public void setTenor6(Float tenor6) {
+        this.tenor6 = tenor6;
+    }
+
+    public Float getTenor7() {
+        return tenor7;
+    }
+
+    public void setTenor7(Float tenor7) {
+        this.tenor7 = tenor7;
+    }
+
+    public Float getTenor8() {
+        return tenor8;
+    }
+
+    public void setTenor8(Float tenor8) {
+        this.tenor8 = tenor8;
+    }
+
+    public Float getTenor9() {
+        return tenor9;
+    }
+
+    public void setTenor9(Float tenor9) {
+        this.tenor9 = tenor9;
+    }
+
+    public Float getTenor10() {
+        return tenor10;
+    }
+
+    public void setTenor10(Float tenor10) {
+        this.tenor10 = tenor10;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+    public Float getTenor1Persen() {
+        return tenor1Persen;
+    }
+
+    public void setTenor1Persen(Float tenor1Persen) {
+        this.tenor1Persen = tenor1Persen;
+    }
+
+    public Float getTenor2Persen() {
+        return tenor2Persen;
+    }
+
+    public void setTenor2Persen(Float tenor2Persen) {
+        this.tenor2Persen = tenor2Persen;
+    }
+
+    public Float getTenor3Persen() {
+        return tenor3Persen;
+    }
+
+    public void setTenor3Persen(Float tenor3Persen) {
+        this.tenor3Persen = tenor3Persen;
+    }
+
+    public Float getTenor4Persen() {
+        return tenor4Persen;
+    }
+
+    public void setTenor4Persen(Float tenor4Persen) {
+        this.tenor4Persen = tenor4Persen;
+    }
+
+    public Float getTenor5Persen() {
+        return tenor5Persen;
+    }
+
+    public void setTenor5Persen(Float tenor5Persen) {
+        this.tenor5Persen = tenor5Persen;
+    }
+
+    public Float getTenor6Persen() {
+        return tenor6Persen;
+    }
+
+    public void setTenor6Persen(Float tenor6Persen) {
+        this.tenor6Persen = tenor6Persen;
+    }
+
+    public Float getTenor7Persen() {
+        return tenor7Persen;
+    }
+
+    public void setTenor7Persen(Float tenor7Persen) {
+        this.tenor7Persen = tenor7Persen;
+    }
+
+    public Float getTenor8Persen() {
+        return tenor8Persen;
+    }
+
+    public void setTenor8Persen(Float tenor8Persen) {
+        this.tenor8Persen = tenor8Persen;
+    }
+
+    public Float getTenor9Persen() {
+        return tenor9Persen;
+    }
+
+    public void setTenor9Persen(Float tenor9Persen) {
+        this.tenor9Persen = tenor9Persen;
+    }
+
+    public Float getTenor10Persen() {
+        return tenor10Persen;
+    }
+
+    public void setTenor10Persen(Float tenor10Persen) {
+        this.tenor10Persen = tenor10Persen;
+    }
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Long getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(Long updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+    public Integer getStatusApproval() {
+        return statusApproval;
+    }
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
+    public Integer getIsRejected() {
+        return isRejected;
+    }
+
+    public void setIsRejected(Integer isRejected) {
+        this.isRejected = isRejected;
+    }
+
+    public Integer getIsApproved() {
+        return isApproved;
+    }
+
+    public void setIsApproved(Integer isApproved) {
+        this.isApproved = isApproved;
+    }
+
+    public void submit(Long user) {
+        if(this.statusApproval == null || this.statusApproval == 0){
+            setIsApproved(0);
+            setIsRejected(0);
+            setStatusApproval(1);
             
             trace(user);
         }
-        return this;
     }
 
-    public BiayaProvisi approve(Long user) {
-        if(this.statusApproved == 1) {
-            setIs_approved(1);
-            setIs_rejected(0);
-            setStatusApproved(2);
+    public void approve(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
+            setIsApproved(1);
+            setIsRejected(0);
+            setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public BiayaProvisi decline(Long user) {
-        if(this.statusApproved == 1) {
-            setIs_approved(0);
-            setIs_rejected(1);
-            setStatusApproved(2);
+    public void decline(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
+            setIsApproved(0);
+            setIsRejected(1);
+            setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public BiayaProvisi trace(Long user) {
-        if(this.createddate == null) {
-            setCreatedby(user);
-            setCreateddate(new Date());
+    public void trace(Long user) {
+        if(this.createdDate == null) {
+            setCreatedBy(user);
+            setCreatedDate(new Date());
         } else {
-            setUpdatedby(user);
-            setUpdateddate(new Date());
+            setUpdatedBy(user);
+            setUpdatedDate(new Date());
         }
-        return this;
     }
 }

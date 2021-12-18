@@ -34,163 +34,53 @@ public class Wilayah implements Serializable {
     private Date endBerlaku;
 
     @Column(name = "created_at")
-    private Date created_at;
-
-    @Column(name = "status")
-    private Integer status;
+    private Date createdDate;
 
     @Column(name = "remarks")
     private String remarks;
 
     @Column(name = "is_rejected")
-    private Integer is_rejected;
+    private Integer isRejected;
 
     @Column(name = "is_approved")
-    private Integer is_approved;
+    private Integer isApproved;
 
     @Column(name = "createdby")
-    private Long createdby;
+    private Long createdBy;
 
     @Column(name = "updateddate")
-    private Date updateddate;
+    private Date updatedDate;
 
     @Column(name = "updatedby")
-    private Long updatedby;
+    private Long updatedBy;
 
     @Column(name = "statusapproval")
     private Integer statusApproval;
 
-
-    public Wilayah() {
-    }
-
-    public Wilayah(Integer id, String namaWilayah, String deskripsi, Date startBerlaku, Date endBerlaku, Date created_at, Integer status, String remarks, Integer is_rejected, Integer is_approved, Long createdby, Date updateddate, Long updatedby, Integer statusApproval) {
+    public Wilayah(Integer id, String namaWilayah, String deskripsi, Date startBerlaku, Date endBerlaku,
+            Date createdDate, String remarks, Integer isRejected, Integer isApproved, Long createdBy, Date updatedDate,
+            Long updatedBy, Integer statusApproval) {
         this.id = id;
         this.namaWilayah = namaWilayah;
         this.deskripsi = deskripsi;
         this.startBerlaku = startBerlaku;
         this.endBerlaku = endBerlaku;
-        this.created_at = created_at;
-        this.status = status;
+        this.createdDate = createdDate;
         this.remarks = remarks;
-        this.is_rejected = is_rejected;
-        this.is_approved = is_approved;
-        this.createdby = createdby;
-        this.updateddate = updateddate;
-        this.updatedby = updatedby;
+        this.isRejected = isRejected;
+        this.isApproved = isApproved;
+        this.createdBy = createdBy;
+        this.updatedDate = updatedDate;
+        this.updatedBy = updatedBy;
         this.statusApproval = statusApproval;
     }
 
     public Integer getId() {
-        return this.id;
+        return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
-    public String getNamaWilayah() {
-        return this.namaWilayah;
-    }
-
-    public void setNamaWilayah(String namaWilayah) {
-        this.namaWilayah = namaWilayah;
-    }
-
-    public String getDeskripsi() {
-        return this.deskripsi;
-    }
-
-    public void setDeskripsi(String deskripsi) {
-        this.deskripsi = deskripsi;
-    }
-
-    public Date getStartBerlaku() {
-        return this.startBerlaku;
-    }
-
-    public void setStartBerlaku(Date startBerlaku) {
-        this.startBerlaku = startBerlaku;
-    }
-
-    public Date getEndBerlaku() {
-        return this.endBerlaku;
-    }
-
-    public void setEndBerlaku(Date endBerlaku) {
-        this.endBerlaku = endBerlaku;
-    }
-
-    public Date getCreated_at() {
-        return this.created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-    public Integer getStatus() {
-        return this.status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public String getRemarks() {
-        return this.remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
-    public Integer getIs_rejected() {
-        return this.is_rejected;
-    }
-
-    public void setIs_rejected(Integer is_rejected) {
-        this.is_rejected = is_rejected;
-    }
-
-    public Integer getIs_approved() {
-        return this.is_approved;
-    }
-
-    public void setIs_approved(Integer is_approved) {
-        this.is_approved = is_approved;
-    }
-
-    public Long getCreatedby() {
-        return this.createdby;
-    }
-
-    public void setCreatedby(Long createdby) {
-        this.createdby = createdby;
-    }
-
-    public Date getUpdateddate() {
-        return this.updateddate;
-    }
-
-    public void setUpdateddate(Date updateddate) {
-        this.updateddate = updateddate;
-    }
-
-    public Long getUpdatedby() {
-        return this.updatedby;
-    }
-
-    public void setUpdatedby(Long updatedby) {
-        this.updatedby = updatedby;
-    }
-
-    public Integer getStatusApproval() {
-        return this.statusApproval;
-    }
-
-    public void setStatusApproval(Integer statusApproval) {
-        this.statusApproval = statusApproval;
+    public Wilayah() {
     }
 
     public Wilayah id(Integer id) {
@@ -218,13 +108,8 @@ public class Wilayah implements Serializable {
         return this;
     }
 
-    public Wilayah created_at(Date created_at) {
-        setCreated_at(created_at);
-        return this;
-    }
-
-    public Wilayah status(Integer status) {
-        setStatus(status);
+    public Wilayah createdDate(Date createdDate) {
+        setCreatedDate(createdDate);
         return this;
     }
 
@@ -233,28 +118,28 @@ public class Wilayah implements Serializable {
         return this;
     }
 
-    public Wilayah is_rejected(Integer is_rejected) {
-        setIs_rejected(is_rejected);
+    public Wilayah isRejected(Integer isRejected) {
+        setIsRejected(isRejected);
         return this;
     }
 
-    public Wilayah is_approved(Integer is_approved) {
-        setIs_approved(is_approved);
+    public Wilayah isApproved(Integer isApproved) {
+        setIsApproved(isApproved);
         return this;
     }
 
-    public Wilayah createdby(Long createdby) {
-        setCreatedby(createdby);
+    public Wilayah createdBy(Long createdBy) {
+        setCreatedBy(createdBy);
         return this;
     }
 
-    public Wilayah updateddate(Date updateddate) {
-        setUpdateddate(updateddate);
+    public Wilayah updatedDate(Date updatedDate) {
+        setUpdatedDate(updatedDate);
         return this;
     }
 
-    public Wilayah updatedby(Long updatedby) {
-        setUpdatedby(updatedby);
+    public Wilayah updatedBy(Long updatedBy) {
+        setUpdatedBy(updatedBy);
         return this;
     }
 
@@ -271,62 +156,205 @@ public class Wilayah implements Serializable {
             ", deskripsi='" + getDeskripsi() + "'" +
             ", startBerlaku='" + getStartBerlaku() + "'" +
             ", endBerlaku='" + getEndBerlaku() + "'" +
-            ", created_at='" + getCreated_at() + "'" +
-            ", status='" + getStatus() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
             ", remarks='" + getRemarks() + "'" +
-            ", is_rejected='" + getIs_rejected() + "'" +
-            ", is_approved='" + getIs_approved() + "'" +
-            ", createdby='" + getCreatedby() + "'" +
-            ", updateddate='" + getUpdateddate() + "'" +
-            ", updatedby='" + getUpdatedby() + "'" +
+            ", isRejected='" + getIsRejected() + "'" +
+            ", isApproved='" + getIsApproved() + "'" +
+            ", createdBy='" + getCreatedBy() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
+            ", updatedBy='" + getUpdatedBy() + "'" +
             ", statusApproval='" + getStatusApproval() + "'" +
             "}";
     }
 
 
-    public Wilayah submit(Long user) {
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+
+
+    public String getNamaWilayah() {
+        return namaWilayah;
+    }
+
+
+
+    public void setNamaWilayah(String namaWilayah) {
+        this.namaWilayah = namaWilayah;
+    }
+
+
+
+    public String getDeskripsi() {
+        return deskripsi;
+    }
+
+
+
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
+    }
+
+
+
+    public Date getStartBerlaku() {
+        return startBerlaku;
+    }
+
+
+
+    public void setStartBerlaku(Date startBerlaku) {
+        this.startBerlaku = startBerlaku;
+    }
+
+
+
+    public Date getEndBerlaku() {
+        return endBerlaku;
+    }
+
+
+
+    public void setEndBerlaku(Date endBerlaku) {
+        this.endBerlaku = endBerlaku;
+    }
+
+
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+
+
+    public Integer getIsRejected() {
+        return isRejected;
+    }
+
+
+
+    public void setIsRejected(Integer isRejected) {
+        this.isRejected = isRejected;
+    }
+
+
+
+    public Integer getIsApproved() {
+        return isApproved;
+    }
+
+
+
+    public void setIsApproved(Integer isApproved) {
+        this.isApproved = isApproved;
+    }
+
+
+
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+
+
+    public Long getUpdatedBy() {
+        return updatedBy;
+    }
+
+
+
+    public void setUpdatedBy(Long updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+
+
+    public Integer getStatusApproval() {
+        return statusApproval;
+    }
+
+
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
+
+
+    public void submit(Long user) {
         if(this.statusApproval == null || this.statusApproval == 0){
-            setIs_approved(0);
-            setIs_rejected(0);
+            setIsApproved(0);
+            setIsRejected(0);
             setStatusApproval(1);
             
             trace(user);
         }
-        return this;
     }
 
-    public Wilayah approve(Long user) {
+    public void approve(Long user) {
         if(this.statusApproval != null && this.statusApproval == 1) {
-            setIs_approved(1);
-            setIs_rejected(0);
+            setIsApproved(1);
+            setIsRejected(0);
             setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public Wilayah decline(Long user) {
+    public void decline(Long user) {
         if(this.statusApproval != null && this.statusApproval == 1) {
-            setIs_approved(0);
-            setIs_rejected(1);
+            setIsApproved(0);
+            setIsRejected(1);
             setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public Wilayah trace(Long user) {
-        if(this.created_at == null) {
-            setCreatedby(user);
-            setCreated_at(new Date());
+    public void trace(Long user) {
+        if(this.createdDate == null) {
+            setCreatedBy(user);
+            setCreatedDate(new Date());
         } else {
-            setUpdatedby(user);
-            setUpdateddate(new Date());
+            setUpdatedBy(user);
+            setUpdatedDate(new Date());
         }
-        return this;
     }
 }

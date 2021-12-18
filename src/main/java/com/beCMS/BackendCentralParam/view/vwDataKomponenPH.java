@@ -4,89 +4,125 @@ import java.util.Date;
 
 public class vwDataKomponenPH {
 
-
     private Integer id;
 
-    private Integer idKompPH;
+    private String namaSkema;
+
+    private Integer idKompPh;
 
     private String jenis;
 
     private Integer addm;
-
     private Integer addb;
 
-    private Date created_at;
+    private Date createdDate;
 
     private Date startBerlaku;
-
     private Date endBerlaku;
 
-    private String Remarks;
+    private String remarks;
 
-    private Integer is_rejected;
+    private Integer isRejected;
+
+    private Integer isApproved;
 
     private String group_id;
 
-    private String kondisi_kendaraan;
+    private String kondisiKendaraanName;
+    private Integer kondisiKendaraan;
 
-    private String produk;
+    private String produkName;
+    private Integer produk;
 
-    private String status;
+    private String tipeKonsumenName;
+    private Integer tipeKonsumen;
 
-    private Integer tipe_konsumen;
+    private String jenisPembiayaanName;
+    private Integer jenisPembiayaan;
 
-    private Integer jenis_pembiayaan;
+    private String jenisKendaraanName;
+    private Integer jenisKendaraan;
 
-    private Integer jenis_kendaraan;
-
+    private String programName;
     private Integer program;
 
+    private String clusterName;
     private Integer cluster;
+    
+    private Long createdBy;
 
-    private Integer is_login;
+    private Long updatedBy;
 
+    private Date updatedDate;
 
-    public vwDataKomponenPH(Integer id, Integer idKompPH, String jenis, Integer addm, Integer addb, Date created_at, Date startBerlaku, Date endBerlaku, String Remarks, Integer is_rejected, String group_id, String kondisi_kendaraan, String produk, String status, Integer tipe_konsumen, Integer jenis_pembiayaan, Integer jenis_kendaraan, Integer program, Integer cluster, Integer is_login) {
+    private Integer statusApproval;
+
+    public vwDataKomponenPH(Integer id, String namaSkema, Integer idKompPh, String jenis, Integer addm, Integer addb,
+            Date createdDate, Date startBerlaku, Date endBerlaku, String remarks, Integer isRejected,
+            Integer isApproved, String group_id, String kondisiKendaraanName, Integer kondisiKendaraan,
+            String produkName, Integer produk, String tipeKonsumenName, Integer tipeKonsumen,
+            String jenisPembiayaanName, Integer jenisPembiayaan, String jenisKendaraanName, Integer jenisKendaraan,
+            String programName, Integer program, String clusterName, Integer cluster, Long createdBy, Long updatedBy,
+            Date updatedDate, Integer statusApproval) {
         this.id = id;
-        this.idKompPH = idKompPH;
+        this.namaSkema = namaSkema;
+        this.idKompPh = idKompPh;
         this.jenis = jenis;
         this.addm = addm;
         this.addb = addb;
-        this.created_at = created_at;
+        this.createdDate = createdDate;
         this.startBerlaku = startBerlaku;
         this.endBerlaku = endBerlaku;
-        this.Remarks = Remarks;
-        this.is_rejected = is_rejected;
+        this.remarks = remarks;
+        this.isRejected = isRejected;
+        this.isApproved = isApproved;
         this.group_id = group_id;
-        this.kondisi_kendaraan = kondisi_kendaraan;
+        this.kondisiKendaraanName = kondisiKendaraanName;
+        this.kondisiKendaraan = kondisiKendaraan;
+        this.produkName = produkName;
         this.produk = produk;
-        this.status = status;
-        this.tipe_konsumen = tipe_konsumen;
-        this.jenis_pembiayaan = jenis_pembiayaan;
-        this.jenis_kendaraan = jenis_kendaraan;
+        this.tipeKonsumenName = tipeKonsumenName;
+        this.tipeKonsumen = tipeKonsumen;
+        this.jenisPembiayaanName = jenisPembiayaanName;
+        this.jenisPembiayaan = jenisPembiayaan;
+        this.jenisKendaraanName = jenisKendaraanName;
+        this.jenisKendaraan = jenisKendaraan;
+        this.programName = programName;
         this.program = program;
+        this.clusterName = clusterName;
         this.cluster = cluster;
-        this.is_login = is_login;
+        this.createdBy = createdBy;
+        this.updatedBy = updatedBy;
+        this.updatedDate = updatedDate;
+        this.statusApproval = statusApproval;
     }
 
     public Integer getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public Integer getIdKompPH() {
-        return this.idKompPH;
+    public String getNamaSkema() {
+        return namaSkema;
     }
 
-    public void setIdKompPH(Integer idKompPH) {
-        this.idKompPH = idKompPH;
+    public void setNamaSkema(String namaSkema) {
+        this.namaSkema = namaSkema;
+    }
+
+    public Integer getIdKompPh() {
+        return idKompPh;
+    }
+
+    public void setIdKompPh(Integer idKompPh) {
+        this.idKompPh = idKompPh;
     }
 
     public String getJenis() {
-        return this.jenis;
+        return jenis;
     }
 
     public void setJenis(String jenis) {
@@ -94,7 +130,7 @@ public class vwDataKomponenPH {
     }
 
     public Integer getAddm() {
-        return this.addm;
+        return addm;
     }
 
     public void setAddm(Integer addm) {
@@ -102,23 +138,23 @@ public class vwDataKomponenPH {
     }
 
     public Integer getAddb() {
-        return this.addb;
+        return addb;
     }
 
     public void setAddb(Integer addb) {
         this.addb = addb;
     }
 
-    public Date getCreated_at() {
-        return this.created_at;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     public Date getStartBerlaku() {
-        return this.startBerlaku;
+        return startBerlaku;
     }
 
     public void setStartBerlaku(Date startBerlaku) {
@@ -126,7 +162,7 @@ public class vwDataKomponenPH {
     }
 
     public Date getEndBerlaku() {
-        return this.endBerlaku;
+        return endBerlaku;
     }
 
     public void setEndBerlaku(Date endBerlaku) {
@@ -134,99 +170,180 @@ public class vwDataKomponenPH {
     }
 
     public String getRemarks() {
-        return this.Remarks;
+        return remarks;
     }
 
-    public void setRemarks(String Remarks) {
-        this.Remarks = Remarks;
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
-    public Integer getIs_rejected() {
-        return this.is_rejected;
+    public Integer getIsRejected() {
+        return isRejected;
     }
 
-    public void setIs_rejected(Integer is_rejected) {
-        this.is_rejected = is_rejected;
+    public void setIsRejected(Integer isRejected) {
+        this.isRejected = isRejected;
+    }
+
+    public Integer getIsApproved() {
+        return isApproved;
+    }
+
+    public void setIsApproved(Integer isApproved) {
+        this.isApproved = isApproved;
     }
 
     public String getGroup_id() {
-        return this.group_id;
+        return group_id;
     }
 
     public void setGroup_id(String group_id) {
         this.group_id = group_id;
     }
 
-    public String getKondisi_kendaraan() {
-        return this.kondisi_kendaraan;
+    public String getKondisiKendaraanName() {
+        return kondisiKendaraanName;
     }
 
-    public void setKondisi_kendaraan(String kondisi_kendaraan) {
-        this.kondisi_kendaraan = kondisi_kendaraan;
+    public void setKondisiKendaraanName(String kondisiKendaraanName) {
+        this.kondisiKendaraanName = kondisiKendaraanName;
     }
 
-    public String getProduk() {
-        return this.produk;
+    public Integer getKondisiKendaraan() {
+        return kondisiKendaraan;
     }
 
-    public void setProduk(String produk) {
+    public void setKondisiKendaraan(Integer kondisiKendaraan) {
+        this.kondisiKendaraan = kondisiKendaraan;
+    }
+
+    public String getProdukName() {
+        return produkName;
+    }
+
+    public void setProdukName(String produkName) {
+        this.produkName = produkName;
+    }
+
+    public Integer getProduk() {
+        return produk;
+    }
+
+    public void setProduk(Integer produk) {
         this.produk = produk;
     }
 
-    public String getStatus() {
-        return this.status;
+    public String getTipeKonsumenName() {
+        return tipeKonsumenName;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setTipeKonsumenName(String tipeKonsumenName) {
+        this.tipeKonsumenName = tipeKonsumenName;
     }
 
-    public Integer getTipe_konsumen() {
-        return this.tipe_konsumen;
+    public Integer getTipeKonsumen() {
+        return tipeKonsumen;
     }
 
-    public void setTipe_konsumen(Integer tipe_konsumen) {
-        this.tipe_konsumen = tipe_konsumen;
+    public void setTipeKonsumen(Integer tipeKonsumen) {
+        this.tipeKonsumen = tipeKonsumen;
     }
 
-    public Integer getJenis_pembiayaan() {
-        return this.jenis_pembiayaan;
+    public String getJenisPembiayaanName() {
+        return jenisPembiayaanName;
     }
 
-    public void setJenis_pembiayaan(Integer jenis_pembiayaan) {
-        this.jenis_pembiayaan = jenis_pembiayaan;
+    public void setJenisPembiayaanName(String jenisPembiayaanName) {
+        this.jenisPembiayaanName = jenisPembiayaanName;
     }
 
-    public Integer getJenis_kendaraan() {
-        return this.jenis_kendaraan;
+    public Integer getJenisPembiayaan() {
+        return jenisPembiayaan;
     }
 
-    public void setJenis_kendaraan(Integer jenis_kendaraan) {
-        this.jenis_kendaraan = jenis_kendaraan;
+    public void setJenisPembiayaan(Integer jenisPembiayaan) {
+        this.jenisPembiayaan = jenisPembiayaan;
+    }
+
+    public String getJenisKendaraanName() {
+        return jenisKendaraanName;
+    }
+
+    public void setJenisKendaraanName(String jenisKendaraanName) {
+        this.jenisKendaraanName = jenisKendaraanName;
+    }
+
+    public Integer getJenisKendaraan() {
+        return jenisKendaraan;
+    }
+
+    public void setJenisKendaraan(Integer jenisKendaraan) {
+        this.jenisKendaraan = jenisKendaraan;
+    }
+
+    public String getProgramName() {
+        return programName;
+    }
+
+    public void setProgramName(String programName) {
+        this.programName = programName;
     }
 
     public Integer getProgram() {
-        return this.program;
+        return program;
     }
 
     public void setProgram(Integer program) {
         this.program = program;
     }
 
+    public String getClusterName() {
+        return clusterName;
+    }
+
+    public void setClusterName(String clusterName) {
+        this.clusterName = clusterName;
+    }
+
     public Integer getCluster() {
-        return this.cluster;
+        return cluster;
     }
 
     public void setCluster(Integer cluster) {
         this.cluster = cluster;
     }
 
-    public Integer getIs_login() {
-        return this.is_login;
+    public Long getCreatedBy() {
+        return createdBy;
     }
 
-    public void setIs_login(Integer is_login) {
-        this.is_login = is_login;
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
     }
 
+    public Long getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(Long updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+    public Integer getStatusApproval() {
+        return statusApproval;
+    }
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
+    
 }

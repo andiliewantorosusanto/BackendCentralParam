@@ -20,260 +20,41 @@ public class BiayaFidusia implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    
     @Column(name = "nama_skema")
     private String namaSkema;
 
     @Column(name = "startph")
-    private Integer startPH;
-
+    private Integer startPh;
     @Column(name = "endph")
-    private Integer endPH;
-
+    private Integer endPh;
     @Column(name = "biaya")
     private Integer biaya;
 
     @Column(name = "startberlaku")
     private Date startBerlaku;
-
     @Column(name = "endberlaku")
     private Date endBerlaku;
 
-    @Column(name = "created_at")
-    private Date created_at;
-
-    @Column(name = "operatorawal")
-    private String operatorAwal;
-
-    @Column(name = "operatorakhir")
-    private String operatorAkhir;
-
-    @Column(name = "is_rejected")
-    private Integer is_rejected;
-
-    @Column(name = "is_approved")
-    private Integer is_approved;
-
+    @Column(name = "statusapproved")
+    private Integer statusApproval;
     @Column(name = "remarks")
     private String remarks;
-
-    @Column(name = "statusapproved")
-    private Integer statusApproved;
-
-    @Column(name = "program")
-    private Integer program;
-
-    @Column(name = "produk")
-    private Integer produk;
-
-    @Column(name = "createddate")
-    private Date createddate;
+    @Column(name = "is_rejected")
+    private Integer isRejected;
+    @Column(name = "is_approved")
+    private Integer isApproved;
 
     @Column(name = "createdby")
-    private Long createdby;
-
-    @Column(name = "updateddate")
-    private Date updateddate;
-
+    private Long createdBy;
+    @Column(name = "createddate")
+    private Date createdDate;
     @Column(name = "updatedby")
-    private Long updatedby;
+    private Long updatedBy;
+    @Column(name = "updateddate")
+    private Date updatedDate;
 
-    @Column(name = "is_login")
-    private Integer is_login;
 
     public BiayaFidusia() {
-    }
-
-    public BiayaFidusia(Integer id, String namaSkema, Integer startPH, Integer endPH, Integer biaya, Date startBerlaku, Date endBerlaku, Date created_at, String operatorAwal, String operatorAkhir, Integer is_rejected, Integer is_approved, String remarks, Integer statusApproved, Integer program, Integer produk, Date createddate, Long createdby, Date updateddate, Long updatedby, Integer is_login) {
-        this.id = id;
-        this.namaSkema = namaSkema;
-        this.startPH = startPH;
-        this.endPH = endPH;
-        this.biaya = biaya;
-        this.startBerlaku = startBerlaku;
-        this.endBerlaku = endBerlaku;
-        this.created_at = created_at;
-        this.operatorAwal = operatorAwal;
-        this.operatorAkhir = operatorAkhir;
-        this.is_rejected = is_rejected;
-        this.is_approved = is_approved;
-        this.remarks = remarks;
-        this.statusApproved = statusApproved;
-        this.program = program;
-        this.produk = produk;
-        this.createddate = createddate;
-        this.createdby = createdby;
-        this.updateddate = updateddate;
-        this.updatedby = updatedby;
-        this.is_login = is_login;
-    }
-
-    public Integer getId() {
-        return this.id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNamaSkema() {
-        return this.namaSkema;
-    }
-
-    public void setNamaSkema(String namaSkema) {
-        this.namaSkema = namaSkema;
-    }
-
-    public Integer getStartPH() {
-        return this.startPH;
-    }
-
-    public void setStartPH(Integer startPH) {
-        this.startPH = startPH;
-    }
-
-    public Integer getEndPH() {
-        return this.endPH;
-    }
-
-    public void setEndPH(Integer endPH) {
-        this.endPH = endPH;
-    }
-
-    public Integer getBiaya() {
-        return this.biaya;
-    }
-
-    public void setBiaya(Integer biaya) {
-        this.biaya = biaya;
-    }
-
-    public Date getStartBerlaku() {
-        return this.startBerlaku;
-    }
-
-    public void setStartBerlaku(Date startBerlaku) {
-        this.startBerlaku = startBerlaku;
-    }
-
-    public Date getEndBerlaku() {
-        return this.endBerlaku;
-    }
-
-    public void setEndBerlaku(Date endBerlaku) {
-        this.endBerlaku = endBerlaku;
-    }
-
-    public Date getCreated_at() {
-        return this.created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-    public String getOperatorAwal() {
-        return this.operatorAwal;
-    }
-
-    public void setOperatorAwal(String operatorAwal) {
-        this.operatorAwal = operatorAwal;
-    }
-
-    public String getOperatorAkhir() {
-        return this.operatorAkhir;
-    }
-
-    public void setOperatorAkhir(String operatorAkhir) {
-        this.operatorAkhir = operatorAkhir;
-    }
-
-    public Integer getIs_rejected() {
-        return this.is_rejected;
-    }
-
-    public void setIs_rejected(Integer is_rejected) {
-        this.is_rejected = is_rejected;
-    }
-
-    public Integer getIs_approved() {
-        return this.is_approved;
-    }
-
-    public void setIs_approved(Integer is_approved) {
-        this.is_approved = is_approved;
-    }
-
-    public String getRemarks() {
-        return this.remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
-    public Integer getStatusApproved() {
-        return this.statusApproved;
-    }
-
-    public void setStatusApproved(Integer statusApproved) {
-        this.statusApproved = statusApproved;
-    }
-
-    public Integer getProgram() {
-        return this.program;
-    }
-
-    public void setProgram(Integer program) {
-        this.program = program;
-    }
-
-    public Integer getProduk() {
-        return this.produk;
-    }
-
-    public void setProduk(Integer produk) {
-        this.produk = produk;
-    }
-
-    public Date getCreateddate() {
-        return this.createddate;
-    }
-
-    public void setCreateddate(Date createddate) {
-        this.createddate = createddate;
-    }
-
-    public Long getCreatedby() {
-        return this.createdby;
-    }
-
-    public void setCreatedby(Long createdby) {
-        this.createdby = createdby;
-    }
-
-    public Date getUpdateddate() {
-        return this.updateddate;
-    }
-
-    public void setUpdateddate(Date updateddate) {
-        this.updateddate = updateddate;
-    }
-
-    public Long getUpdatedby() {
-        return this.updatedby;
-    }
-
-    public void setUpdatedby(Long updatedby) {
-        this.updatedby = updatedby;
-    }
-
-    public Integer getIs_login() {
-        return this.is_login;
-    }
-
-    public void setIs_login(Integer is_login) {
-        this.is_login = is_login;
     }
 
     public BiayaFidusia id(Integer id) {
@@ -286,13 +67,13 @@ public class BiayaFidusia implements Serializable {
         return this;
     }
 
-    public BiayaFidusia startPH(Integer startPH) {
-        setStartPH(startPH);
+    public BiayaFidusia startPh(Integer startPh) {
+        setStartPh(startPh);
         return this;
     }
 
-    public BiayaFidusia endPH(Integer endPH) {
-        setEndPH(endPH);
+    public BiayaFidusia endPh(Integer endPh) {
+        setEndPh(endPh);
         return this;
     }
 
@@ -311,28 +92,8 @@ public class BiayaFidusia implements Serializable {
         return this;
     }
 
-    public BiayaFidusia created_at(Date created_at) {
-        setCreated_at(created_at);
-        return this;
-    }
-
-    public BiayaFidusia operatorAwal(String operatorAwal) {
-        setOperatorAwal(operatorAwal);
-        return this;
-    }
-
-    public BiayaFidusia operatorAkhir(String operatorAkhir) {
-        setOperatorAkhir(operatorAkhir);
-        return this;
-    }
-
-    public BiayaFidusia is_rejected(Integer is_rejected) {
-        setIs_rejected(is_rejected);
-        return this;
-    }
-
-    public BiayaFidusia is_approved(Integer is_approved) {
-        setIs_approved(is_approved);
+    public BiayaFidusia statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
         return this;
     }
 
@@ -341,43 +102,33 @@ public class BiayaFidusia implements Serializable {
         return this;
     }
 
-    public BiayaFidusia statusApproved(Integer statusApproved) {
-        setStatusApproved(statusApproved);
+    public BiayaFidusia isRejected(Integer isRejected) {
+        setIsRejected(isRejected);
         return this;
     }
 
-    public BiayaFidusia program(Integer program) {
-        setProgram(program);
+    public BiayaFidusia isApproved(Integer isApproved) {
+        setIsApproved(isApproved);
         return this;
     }
 
-    public BiayaFidusia produk(Integer produk) {
-        setProduk(produk);
+    public BiayaFidusia createdBy(Long createdBy) {
+        setCreatedBy(createdBy);
         return this;
     }
 
-    public BiayaFidusia createddate(Date createddate) {
-        setCreateddate(createddate);
+    public BiayaFidusia createdDate(Date createdDate) {
+        setCreatedDate(createdDate);
         return this;
     }
 
-    public BiayaFidusia createdby(Long createdby) {
-        setCreatedby(createdby);
+    public BiayaFidusia updatedBy(Long updatedBy) {
+        setUpdatedBy(updatedBy);
         return this;
     }
 
-    public BiayaFidusia updateddate(Date updateddate) {
-        setUpdateddate(updateddate);
-        return this;
-    }
-
-    public BiayaFidusia updatedby(Long updatedby) {
-        setUpdatedby(updatedby);
-        return this;
-    }
-
-    public BiayaFidusia is_login(Integer is_login) {
-        setIs_login(is_login);
+    public BiayaFidusia updatedDate(Date updatedDate) {
+        setUpdatedDate(updatedDate);
         return this;
     }
 
@@ -386,71 +137,263 @@ public class BiayaFidusia implements Serializable {
         return "{" +
             " id='" + getId() + "'" +
             ", namaSkema='" + getNamaSkema() + "'" +
-            ", startPH='" + getStartPH() + "'" +
-            ", endPH='" + getEndPH() + "'" +
+            ", startPh='" + getStartPh() + "'" +
+            ", endPh='" + getEndPh() + "'" +
             ", biaya='" + getBiaya() + "'" +
             ", startBerlaku='" + getStartBerlaku() + "'" +
             ", endBerlaku='" + getEndBerlaku() + "'" +
-            ", created_at='" + getCreated_at() + "'" +
-            ", operatorAwal='" + getOperatorAwal() + "'" +
-            ", operatorAkhir='" + getOperatorAkhir() + "'" +
-            ", is_rejected='" + getIs_rejected() + "'" +
-            ", is_approved='" + getIs_approved() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
             ", remarks='" + getRemarks() + "'" +
-            ", statusApproved='" + getStatusApproved() + "'" +
-            ", program='" + getProgram() + "'" +
-            ", produk='" + getProduk() + "'" +
-            ", createddate='" + getCreateddate() + "'" +
-            ", createdby='" + getCreatedby() + "'" +
-            ", updateddate='" + getUpdateddate() + "'" +
-            ", updatedby='" + getUpdatedby() + "'" +
-            ", is_login='" + getIs_login() + "'" +
+            ", isRejected='" + getIsRejected() + "'" +
+            ", isApproved='" + getIsApproved() + "'" +
+            ", createdBy='" + getCreatedBy() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", updatedBy='" + getUpdatedBy() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             "}";
     }
+    
 
-    public BiayaFidusia submit(Long user) {
-        if(this.statusApproved == null || this.statusApproved == 0){
-            setIs_approved(0);
-            setIs_rejected(0);
-            setStatusApproved(1);
+    public BiayaFidusia(Integer id, String namaSkema, Integer startPh, Integer endPh, Integer biaya, Date startBerlaku,
+            Date endBerlaku, Integer statusApproval, String remarks, Integer isRejected, Integer isApproved,
+            Long createdBy, Date createdDate, Long updatedBy, Date updatedDate) {
+        this.id = id;
+        this.namaSkema = namaSkema;
+        this.startPh = startPh;
+        this.endPh = endPh;
+        this.biaya = biaya;
+        this.startBerlaku = startBerlaku;
+        this.endBerlaku = endBerlaku;
+        this.statusApproval = statusApproval;
+        this.remarks = remarks;
+        this.isRejected = isRejected;
+        this.isApproved = isApproved;
+        this.createdBy = createdBy;
+        this.createdDate = createdDate;
+        this.updatedBy = updatedBy;
+        this.updatedDate = updatedDate;
+    }
+
+    
+
+    public Integer getId() {
+        return id;
+    }
+
+
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+
+
+    public String getNamaSkema() {
+        return namaSkema;
+    }
+
+
+
+    public void setNamaSkema(String namaSkema) {
+        this.namaSkema = namaSkema;
+    }
+
+
+
+    public Integer getStartPh() {
+        return startPh;
+    }
+
+
+
+    public void setStartPh(Integer startPh) {
+        this.startPh = startPh;
+    }
+
+
+
+    public Integer getEndPh() {
+        return endPh;
+    }
+
+
+
+    public void setEndPh(Integer endPh) {
+        this.endPh = endPh;
+    }
+
+
+
+    public Integer getBiaya() {
+        return biaya;
+    }
+
+
+
+    public void setBiaya(Integer biaya) {
+        this.biaya = biaya;
+    }
+
+
+
+    public Date getStartBerlaku() {
+        return startBerlaku;
+    }
+
+
+
+    public void setStartBerlaku(Date startBerlaku) {
+        this.startBerlaku = startBerlaku;
+    }
+
+
+
+    public Date getEndBerlaku() {
+        return endBerlaku;
+    }
+
+
+
+    public void setEndBerlaku(Date endBerlaku) {
+        this.endBerlaku = endBerlaku;
+    }
+
+
+
+    public Integer getStatusApproval() {
+        return statusApproval;
+    }
+
+
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
+
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+
+
+    public Integer getIsRejected() {
+        return isRejected;
+    }
+
+
+
+    public void setIsRejected(Integer isRejected) {
+        this.isRejected = isRejected;
+    }
+
+
+
+    public Integer getIsApproved() {
+        return isApproved;
+    }
+
+
+
+    public void setIsApproved(Integer isApproved) {
+        this.isApproved = isApproved;
+    }
+
+
+
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+
+
+    public Long getUpdatedBy() {
+        return updatedBy;
+    }
+
+
+
+    public void setUpdatedBy(Long updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+
+
+    
+    public void submit(Long user) {
+        if(this.statusApproval == null || this.statusApproval == 0){
+            setIsApproved(0);
+            setIsRejected(0);
+            setStatusApproval(1);
             
             trace(user);
         }
-        return this;
     }
 
-    public BiayaFidusia approve(Long user) {
-        if(this.statusApproved == 1) {
-            setIs_approved(1);
-            setIs_rejected(0);
-            setStatusApproved(2);
+    public void approve(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
+            setIsApproved(1);
+            setIsRejected(0);
+            setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public BiayaFidusia decline(Long user) {
-        if(this.statusApproved == 1) {
-            setIs_approved(0);
-            setIs_rejected(1);
-            setStatusApproved(2);
+    public void decline(Long user) {
+        if(this.statusApproval != null && this.statusApproval == 1) {
+            setIsApproved(0);
+            setIsRejected(1);
+            setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public BiayaFidusia trace(Long user) {
-        if(this.createddate == null) {
-            setCreatedby(user);
-            setCreateddate(new Date());
+    public void trace(Long user) {
+        if(this.createdDate == null) {
+            setCreatedBy(user);
+            setCreatedDate(new Date());
         } else {
-            setUpdatedby(user);
-            setUpdateddate(new Date());
+            setUpdatedBy(user);
+            setUpdatedDate(new Date());
         }
-        return this;
     }
 }

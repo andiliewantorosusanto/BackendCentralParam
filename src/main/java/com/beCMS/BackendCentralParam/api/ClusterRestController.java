@@ -51,7 +51,7 @@ public class ClusterRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil GET ALL DATA Cluster");
-                crunchifyMap.put("dataCluster", clusterRepository.findAll());
+                crunchifyMap.put("dataCluster", clusterRepository.getListDataCluster());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");

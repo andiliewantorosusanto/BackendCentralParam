@@ -54,6 +54,7 @@ public class ProdukRestController {
                 crunchifyMap.put("dataProduk", produkRepository.findAll());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
+                System.out.print(e.toString());
                 logger.error("ERROR");
                 response.setStatus(400);
                 crunchifyMap.put("code", "0");

@@ -3,7 +3,6 @@ package com.beCMS.BackendCentralParam.repository;
 import java.util.List;
 
 import com.beCMS.BackendCentralParam.model.UsiaKendaraanLunas;
-import com.beCMS.BackendCentralParam.view.vwSkemaUsiaKendaranLunas;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -4,7 +4,6 @@ import java.util.List;
 import org.springframework.data.domain.Pageable;
 import com.beCMS.BackendCentralParam.model.RateAsuransi;
 import com.beCMS.BackendCentralParam.view.vwDataRateAsuransi;
-import com.beCMS.BackendCentralParam.view.vwSkemaRateAsuransi;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -25,316 +25,71 @@ public class KomponenPH implements Serializable {
     private String namaSkema;
 
     @Column(name = "idkompph")
-    private Integer idKompPH;
+    private Integer idKompPh;
 
     @Column(name = "jenis")
     private String jenis;
 
     @Column(name = "addm")
     private Integer addm;
-
     @Column(name = "addb")
     private Integer addb;
 
     @Column(name = "created_at")
-    private Date created_at;
+    private Date createdDate;
 
     @Column(name = "startberlaku")
     private Date startBerlaku;
-
     @Column(name = "endberlaku")
     private Date endBerlaku;
 
     @Column(name = "Remarks")
-    private String Remarks;
+    private String remarks;
 
     @Column(name = "is_rejected")
-    private Integer is_rejected;
+    private Integer isRejected;
 
     @Column(name = "is_approved")
-    private Integer is_approved;
+    private Integer isApproved;
 
     @Column(name = "group_id")
     private String group_id;
 
     @Column(name = "kondisi_kendaraan")
-    private String kondisi_kendaraan;
+    private Integer kondisiKendaraan;
 
     @Column(name = "produk")
-    private String produk;
-
-    @Column(name = "status")
-    private String status;
+    private Integer produk;
 
     @Column(name = "tipe_konsumen")
-    private Integer tipe_konsumen;
+    private Integer tipeKonsumen;
 
     @Column(name = "jenis_pembiayaan")
-    private Integer jenis_pembiayaan;
+    private Integer jenisPembiayaan;
 
     @Column(name = "jenis_kendaraan")
-    private Integer jenis_kendaraan;
+    private Integer jenisKendaraan;
 
     @Column(name = "program")
     private Integer program;
 
     @Column(name = "cluster")
     private Integer cluster;
-
-    @Column(name = "is_login")
-    private Integer is_login;
     
     @Column(name = "createdby")
-    private Long createdby;
+    private Long createdBy;
 
     @Column(name = "updatedby")
-    private Long updatedby;
+    private Long updatedBy;
 
     @Column(name = "updateddate")
-    private Date updateddate;
+    private Date updatedDate;
 
     @Column(name = "statusapproval")
     private Integer statusApproval;
 
 
     public KomponenPH() {
-    }
-
-    public KomponenPH(Integer id, String namaSkema, Integer idKompPH, String jenis, Integer addm, Integer addb, Date created_at, Date startBerlaku, Date endBerlaku, String Remarks, Integer is_rejected, Integer is_approved, String group_id, String kondisi_kendaraan, String produk, String status, Integer tipe_konsumen, Integer jenis_pembiayaan, Integer jenis_kendaraan, Integer program, Integer cluster, Integer is_login, Long createdby, Long updatedby, Date updateddate, Integer statusApproval) {
-        this.id = id;
-        this.namaSkema = namaSkema;
-        this.idKompPH = idKompPH;
-        this.jenis = jenis;
-        this.addm = addm;
-        this.addb = addb;
-        this.created_at = created_at;
-        this.startBerlaku = startBerlaku;
-        this.endBerlaku = endBerlaku;
-        this.Remarks = Remarks;
-        this.is_rejected = is_rejected;
-        this.is_approved = is_approved;
-        this.group_id = group_id;
-        this.kondisi_kendaraan = kondisi_kendaraan;
-        this.produk = produk;
-        this.status = status;
-        this.tipe_konsumen = tipe_konsumen;
-        this.jenis_pembiayaan = jenis_pembiayaan;
-        this.jenis_kendaraan = jenis_kendaraan;
-        this.program = program;
-        this.cluster = cluster;
-        this.is_login = is_login;
-        this.createdby = createdby;
-        this.updatedby = updatedby;
-        this.updateddate = updateddate;
-        this.statusApproval = statusApproval;
-    }
-
-    public Integer getId() {
-        return this.id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNamaSkema() {
-        return this.namaSkema;
-    }
-
-    public void setNamaSkema(String namaSkema) {
-        this.namaSkema = namaSkema;
-    }
-
-    public Integer getIdKompPH() {
-        return this.idKompPH;
-    }
-
-    public void setIdKompPH(Integer idKompPH) {
-        this.idKompPH = idKompPH;
-    }
-
-    public String getJenis() {
-        return this.jenis;
-    }
-
-    public void setJenis(String jenis) {
-        this.jenis = jenis;
-    }
-
-    public Integer getAddm() {
-        return this.addm;
-    }
-
-    public void setAddm(Integer addm) {
-        this.addm = addm;
-    }
-
-    public Integer getAddb() {
-        return this.addb;
-    }
-
-    public void setAddb(Integer addb) {
-        this.addb = addb;
-    }
-
-    public Date getCreated_at() {
-        return this.created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-    public Date getStartBerlaku() {
-        return this.startBerlaku;
-    }
-
-    public void setStartBerlaku(Date startBerlaku) {
-        this.startBerlaku = startBerlaku;
-    }
-
-    public Date getEndBerlaku() {
-        return this.endBerlaku;
-    }
-
-    public void setEndBerlaku(Date endBerlaku) {
-        this.endBerlaku = endBerlaku;
-    }
-
-    public String getRemarks() {
-        return this.Remarks;
-    }
-
-    public void setRemarks(String Remarks) {
-        this.Remarks = Remarks;
-    }
-
-    public Integer getIs_rejected() {
-        return this.is_rejected;
-    }
-
-    public void setIs_rejected(Integer is_rejected) {
-        this.is_rejected = is_rejected;
-    }
-
-    public Integer getIs_approved() {
-        return this.is_approved;
-    }
-
-    public void setIs_approved(Integer is_approved) {
-        this.is_approved = is_approved;
-    }
-
-    public String getGroup_id() {
-        return this.group_id;
-    }
-
-    public void setGroup_id(String group_id) {
-        this.group_id = group_id;
-    }
-
-    public String getKondisi_kendaraan() {
-        return this.kondisi_kendaraan;
-    }
-
-    public void setKondisi_kendaraan(String kondisi_kendaraan) {
-        this.kondisi_kendaraan = kondisi_kendaraan;
-    }
-
-    public String getProduk() {
-        return this.produk;
-    }
-
-    public void setProduk(String produk) {
-        this.produk = produk;
-    }
-
-    public String getStatus() {
-        return this.status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Integer getTipe_konsumen() {
-        return this.tipe_konsumen;
-    }
-
-    public void setTipe_konsumen(Integer tipe_konsumen) {
-        this.tipe_konsumen = tipe_konsumen;
-    }
-
-    public Integer getJenis_pembiayaan() {
-        return this.jenis_pembiayaan;
-    }
-
-    public void setJenis_pembiayaan(Integer jenis_pembiayaan) {
-        this.jenis_pembiayaan = jenis_pembiayaan;
-    }
-
-    public Integer getJenis_kendaraan() {
-        return this.jenis_kendaraan;
-    }
-
-    public void setJenis_kendaraan(Integer jenis_kendaraan) {
-        this.jenis_kendaraan = jenis_kendaraan;
-    }
-
-    public Integer getProgram() {
-        return this.program;
-    }
-
-    public void setProgram(Integer program) {
-        this.program = program;
-    }
-
-    public Integer getCluster() {
-        return this.cluster;
-    }
-
-    public void setCluster(Integer cluster) {
-        this.cluster = cluster;
-    }
-
-    public Integer getIs_login() {
-        return this.is_login;
-    }
-
-    public void setIs_login(Integer is_login) {
-        this.is_login = is_login;
-    }
-
-    public Long getCreatedby() {
-        return this.createdby;
-    }
-
-    public void setCreatedby(Long createdby) {
-        this.createdby = createdby;
-    }
-
-    public Long getUpdatedby() {
-        return this.updatedby;
-    }
-
-    public void setUpdatedby(Long updatedby) {
-        this.updatedby = updatedby;
-    }
-
-    public Date getUpdateddate() {
-        return this.updateddate;
-    }
-
-    public void setUpdateddate(Date updateddate) {
-        this.updateddate = updateddate;
-    }
-
-    public Integer getStatusApproval() {
-        return this.statusApproval;
-    }
-
-    public void setStatusApproval(Integer statusApproval) {
-        this.statusApproval = statusApproval;
     }
 
     public KomponenPH id(Integer id) {
@@ -347,8 +102,8 @@ public class KomponenPH implements Serializable {
         return this;
     }
 
-    public KomponenPH idKompPH(Integer idKompPH) {
-        setIdKompPH(idKompPH);
+    public KomponenPH idKompPh(Integer idKompPh) {
+        setIdKompPh(idKompPh);
         return this;
     }
 
@@ -367,8 +122,8 @@ public class KomponenPH implements Serializable {
         return this;
     }
 
-    public KomponenPH created_at(Date created_at) {
-        setCreated_at(created_at);
+    public KomponenPH createdDate(Date createdDate) {
+        setCreatedDate(createdDate);
         return this;
     }
 
@@ -382,18 +137,18 @@ public class KomponenPH implements Serializable {
         return this;
     }
 
-    public KomponenPH Remarks(String Remarks) {
-        setRemarks(Remarks);
+    public KomponenPH remarks(String remarks) {
+        setRemarks(remarks);
         return this;
     }
 
-    public KomponenPH is_rejected(Integer is_rejected) {
-        setIs_rejected(is_rejected);
+    public KomponenPH isRejected(Integer isRejected) {
+        setIsRejected(isRejected);
         return this;
     }
 
-    public KomponenPH is_approved(Integer is_approved) {
-        setIs_approved(is_approved);
+    public KomponenPH isApproved(Integer isApproved) {
+        setIsApproved(isApproved);
         return this;
     }
 
@@ -402,33 +157,28 @@ public class KomponenPH implements Serializable {
         return this;
     }
 
-    public KomponenPH kondisi_kendaraan(String kondisi_kendaraan) {
-        setKondisi_kendaraan(kondisi_kendaraan);
+    public KomponenPH kondisiKendaraan(Integer kondisiKendaraan) {
+        setKondisiKendaraan(kondisiKendaraan);
         return this;
     }
 
-    public KomponenPH produk(String produk) {
+    public KomponenPH produk(Integer produk) {
         setProduk(produk);
         return this;
     }
 
-    public KomponenPH status(String status) {
-        setStatus(status);
+    public KomponenPH tipeKonsumen(Integer tipeKonsumen) {
+        setTipeKonsumen(tipeKonsumen);
         return this;
     }
 
-    public KomponenPH tipe_konsumen(Integer tipe_konsumen) {
-        setTipe_konsumen(tipe_konsumen);
+    public KomponenPH jenisPembiayaan(Integer jenisPembiayaan) {
+        setJenisPembiayaan(jenisPembiayaan);
         return this;
     }
 
-    public KomponenPH jenis_pembiayaan(Integer jenis_pembiayaan) {
-        setJenis_pembiayaan(jenis_pembiayaan);
-        return this;
-    }
-
-    public KomponenPH jenis_kendaraan(Integer jenis_kendaraan) {
-        setJenis_kendaraan(jenis_kendaraan);
+    public KomponenPH jenisKendaraan(Integer jenisKendaraan) {
+        setJenisKendaraan(jenisKendaraan);
         return this;
     }
 
@@ -442,23 +192,18 @@ public class KomponenPH implements Serializable {
         return this;
     }
 
-    public KomponenPH is_login(Integer is_login) {
-        setIs_login(is_login);
+    public KomponenPH createdBy(Long createdBy) {
+        setCreatedBy(createdBy);
         return this;
     }
 
-    public KomponenPH createdby(Long createdby) {
-        setCreatedby(createdby);
+    public KomponenPH updatedBy(Long updatedBy) {
+        setUpdatedBy(updatedBy);
         return this;
     }
 
-    public KomponenPH updatedby(Long updatedby) {
-        setUpdatedby(updatedby);
-        return this;
-    }
-
-    public KomponenPH updateddate(Date updateddate) {
-        setUpdateddate(updateddate);
+    public KomponenPH updatedDate(Date updatedDate) {
+        setUpdatedDate(updatedDate);
         return this;
     }
 
@@ -472,77 +217,388 @@ public class KomponenPH implements Serializable {
         return "{" +
             " id='" + getId() + "'" +
             ", namaSkema='" + getNamaSkema() + "'" +
-            ", idKompPH='" + getIdKompPH() + "'" +
+            ", idKompPh='" + getIdKompPh() + "'" +
             ", jenis='" + getJenis() + "'" +
             ", addm='" + getAddm() + "'" +
             ", addb='" + getAddb() + "'" +
-            ", created_at='" + getCreated_at() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
             ", startBerlaku='" + getStartBerlaku() + "'" +
             ", endBerlaku='" + getEndBerlaku() + "'" +
-            ", Remarks='" + getRemarks() + "'" +
-            ", is_rejected='" + getIs_rejected() + "'" +
-            ", is_approved='" + getIs_approved() + "'" +
+            ", remarks='" + getRemarks() + "'" +
+            ", isRejected='" + getIsRejected() + "'" +
+            ", isApproved='" + getIsApproved() + "'" +
             ", group_id='" + getGroup_id() + "'" +
-            ", kondisi_kendaraan='" + getKondisi_kendaraan() + "'" +
+            ", kondisiKendaraan='" + getKondisiKendaraan() + "'" +
             ", produk='" + getProduk() + "'" +
-            ", status='" + getStatus() + "'" +
-            ", tipe_konsumen='" + getTipe_konsumen() + "'" +
-            ", jenis_pembiayaan='" + getJenis_pembiayaan() + "'" +
-            ", jenis_kendaraan='" + getJenis_kendaraan() + "'" +
+            ", tipeKonsumen='" + getTipeKonsumen() + "'" +
+            ", jenisPembiayaan='" + getJenisPembiayaan() + "'" +
+            ", jenisKendaraan='" + getJenisKendaraan() + "'" +
             ", program='" + getProgram() + "'" +
             ", cluster='" + getCluster() + "'" +
-            ", is_login='" + getIs_login() + "'" +
-            ", createdby='" + getCreatedby() + "'" +
-            ", updatedby='" + getUpdatedby() + "'" +
-            ", updateddate='" + getUpdateddate() + "'" +
+            ", createdBy='" + getCreatedBy() + "'" +
+            ", updatedBy='" + getUpdatedBy() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             ", statusApproval='" + getStatusApproval() + "'" +
             "}";
     }
 
 
-    public KomponenPH submit(Long user) {
+    public KomponenPH(Integer id, String namaSkema, Integer idKompPh, String jenis, Integer addm, Integer addb,
+            Date createdDate, Date startBerlaku, Date endBerlaku, String remarks, Integer isRejected,
+            Integer isApproved, String group_id, Integer kondisiKendaraan, Integer produk, Integer tipeKonsumen,
+            Integer jenisPembiayaan, Integer jenisKendaraan, Integer program, Integer cluster, Long createdBy,
+            Long updatedBy, Date updatedDate, Integer statusApproval) {
+        this.id = id;
+        this.namaSkema = namaSkema;
+        this.idKompPh = idKompPh;
+        this.jenis = jenis;
+        this.addm = addm;
+        this.addb = addb;
+        this.createdDate = createdDate;
+        this.startBerlaku = startBerlaku;
+        this.endBerlaku = endBerlaku;
+        this.remarks = remarks;
+        this.isRejected = isRejected;
+        this.isApproved = isApproved;
+        this.group_id = group_id;
+        this.kondisiKendaraan = kondisiKendaraan;
+        this.produk = produk;
+        this.tipeKonsumen = tipeKonsumen;
+        this.jenisPembiayaan = jenisPembiayaan;
+        this.jenisKendaraan = jenisKendaraan;
+        this.program = program;
+        this.cluster = cluster;
+        this.createdBy = createdBy;
+        this.updatedBy = updatedBy;
+        this.updatedDate = updatedDate;
+        this.statusApproval = statusApproval;
+    }
+
+
+    
+    public Integer getId() {
+        return id;
+    }
+
+
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+
+
+    public String getNamaSkema() {
+        return namaSkema;
+    }
+
+
+
+    public void setNamaSkema(String namaSkema) {
+        this.namaSkema = namaSkema;
+    }
+
+
+
+    public Integer getIdKompPh() {
+        return idKompPh;
+    }
+
+
+
+    public void setIdKompPh(Integer idKompPh) {
+        this.idKompPh = idKompPh;
+    }
+
+
+
+    public String getJenis() {
+        return jenis;
+    }
+
+
+
+    public void setJenis(String jenis) {
+        this.jenis = jenis;
+    }
+
+
+
+    public Integer getAddm() {
+        return addm;
+    }
+
+
+
+    public void setAddm(Integer addm) {
+        this.addm = addm;
+    }
+
+
+
+    public Integer getAddb() {
+        return addb;
+    }
+
+
+
+    public void setAddb(Integer addb) {
+        this.addb = addb;
+    }
+
+
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+
+
+    public Date getStartBerlaku() {
+        return startBerlaku;
+    }
+
+
+
+    public void setStartBerlaku(Date startBerlaku) {
+        this.startBerlaku = startBerlaku;
+    }
+
+
+
+    public Date getEndBerlaku() {
+        return endBerlaku;
+    }
+
+
+
+    public void setEndBerlaku(Date endBerlaku) {
+        this.endBerlaku = endBerlaku;
+    }
+
+
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+
+
+    public Integer getIsRejected() {
+        return isRejected;
+    }
+
+
+
+    public void setIsRejected(Integer isRejected) {
+        this.isRejected = isRejected;
+    }
+
+
+
+    public Integer getIsApproved() {
+        return isApproved;
+    }
+
+
+
+    public void setIsApproved(Integer isApproved) {
+        this.isApproved = isApproved;
+    }
+
+
+
+    public String getGroup_id() {
+        return group_id;
+    }
+
+
+
+    public void setGroup_id(String group_id) {
+        this.group_id = group_id;
+    }
+
+
+
+    public Integer getKondisiKendaraan() {
+        return kondisiKendaraan;
+    }
+
+
+
+    public void setKondisiKendaraan(Integer kondisiKendaraan) {
+        this.kondisiKendaraan = kondisiKendaraan;
+    }
+
+
+
+    public Integer getProduk() {
+        return produk;
+    }
+
+
+
+    public void setProduk(Integer produk) {
+        this.produk = produk;
+    }
+
+
+
+    public Integer getTipeKonsumen() {
+        return tipeKonsumen;
+    }
+
+
+
+    public void setTipeKonsumen(Integer tipeKonsumen) {
+        this.tipeKonsumen = tipeKonsumen;
+    }
+
+
+
+    public Integer getJenisPembiayaan() {
+        return jenisPembiayaan;
+    }
+
+
+
+    public void setJenisPembiayaan(Integer jenisPembiayaan) {
+        this.jenisPembiayaan = jenisPembiayaan;
+    }
+
+
+
+    public Integer getJenisKendaraan() {
+        return jenisKendaraan;
+    }
+
+
+
+    public void setJenisKendaraan(Integer jenisKendaraan) {
+        this.jenisKendaraan = jenisKendaraan;
+    }
+
+
+
+    public Integer getProgram() {
+        return program;
+    }
+
+
+
+    public void setProgram(Integer program) {
+        this.program = program;
+    }
+
+
+
+    public Integer getCluster() {
+        return cluster;
+    }
+
+
+
+    public void setCluster(Integer cluster) {
+        this.cluster = cluster;
+    }
+
+
+
+    public Long getCreatedBy() {
+        return createdBy;
+    }
+
+
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+
+
+    public Long getUpdatedBy() {
+        return updatedBy;
+    }
+
+
+
+    public void setUpdatedBy(Long updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+
+
+    public Integer getStatusApproval() {
+        return statusApproval;
+    }
+
+
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
+    public void submit(Long user) {
         if(this.statusApproval == null || this.statusApproval == 0){
-            setIs_approved(0);
-            setIs_rejected(0);
+            setIsApproved(0);
+            setIsRejected(0);
             setStatusApproval(1);
             
             trace(user);
         }
-        return this;
     }
 
-    public KomponenPH approve(Long user) {
+    public void approve(Long user) {
         if(this.statusApproval != null && this.statusApproval == 1) {
-            setIs_approved(1);
-            setIs_rejected(0);
+            setIsApproved(1);
+            setIsRejected(0);
             setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public KomponenPH decline(Long user) {
+    public void decline(Long user) {
         if(this.statusApproval != null && this.statusApproval == 1) {
-            setIs_approved(0);
-            setIs_rejected(1);
+            setIsApproved(0);
+            setIsRejected(1);
             setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public KomponenPH trace(Long user) {
-        if(this.created_at == null) {
-            setCreatedby(user);
-            setCreated_at(new Date());
+    public void trace(Long user) {
+        if(this.createdDate == null) {
+            setCreatedBy(user);
+            setCreatedDate(new Date());
         } else {
-            setUpdatedby(user);
-            setUpdateddate(new Date());
+            setUpdatedBy(user);
+            setUpdatedDate(new Date());
         }
-        return this;
     }
 }

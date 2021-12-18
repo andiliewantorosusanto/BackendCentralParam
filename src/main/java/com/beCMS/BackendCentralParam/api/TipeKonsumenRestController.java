@@ -51,10 +51,10 @@ public class TipeKonsumenRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil GET ALL DATA Tipe Konsumen");
-                crunchifyMap.put("dataTipeKonsumen", tipeKonsumenRepository.findAll());
+                crunchifyMap.put("dataTipeKonsumen", tipeKonsumenRepository.getListDataTipeKonsumen());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
-                logger.error("ERROR");
+                logger.error(e.toString());
                 response.setStatus(400);
                 crunchifyMap.put("code", "0");
                 crunchifyMap.put("message", "Gagal membuka Tipe Konsumen!");

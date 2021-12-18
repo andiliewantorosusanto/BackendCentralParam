@@ -31,54 +31,52 @@ public class TipeAsuransi implements Serializable {
     private Date endBerlaku;
 
     @Column(name = "created_at")
-    private Date created_at;
+    private Date createdDate;
 
     @Column(name = "deskripsi")
     private String deskripsi;
 
     @Column(name = "is_approved")
-    private Integer is_approved;
+    private Integer isApproved;
 
     @Column(name = "is_rejected")
-    private Integer is_rejected;
+    private Integer isRejected;
 
     @Column(name = "remarks")
     private String remarks;
 
     @Column(name = "createdby")
-    private Long createdby;
+    private Long createdBy;
 
     @Column(name = "updatedby")
-    private Long updatedby;
+    private Long updatedBy;
 
     @Column(name = "updateddate")
-    private Date updateddate;
+    private Date updatedDate;
     
     @Column(name = "statusapproval")
     private Integer statusApproval;
-
-
-    public TipeAsuransi() {
-    }
-
-    public TipeAsuransi(Integer id, String namaAsuransi, Date startBerlaku, Date endBerlaku, Date created_at, String deskripsi, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Long updatedby, Date updateddate, Integer statusApproval) {
+    
+    public TipeAsuransi(Integer id, String namaAsuransi, Date startBerlaku, Date endBerlaku, Date createdDate,
+            String deskripsi, Integer isApproved, Integer isRejected, String remarks, Long createdBy, Long updatedBy,
+            Date updatedDate, Integer statusApproval) {
         this.id = id;
         this.namaAsuransi = namaAsuransi;
         this.startBerlaku = startBerlaku;
         this.endBerlaku = endBerlaku;
-        this.created_at = created_at;
+        this.createdDate = createdDate;
         this.deskripsi = deskripsi;
-        this.is_approved = is_approved;
-        this.is_rejected = is_rejected;
+        this.isApproved = isApproved;
+        this.isRejected = isRejected;
         this.remarks = remarks;
-        this.createdby = createdby;
-        this.updatedby = updatedby;
-        this.updateddate = updateddate;
+        this.createdBy = createdBy;
+        this.updatedBy = updatedBy;
+        this.updatedDate = updatedDate;
         this.statusApproval = statusApproval;
     }
 
     public Integer getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(Integer id) {
@@ -86,7 +84,7 @@ public class TipeAsuransi implements Serializable {
     }
 
     public String getNamaAsuransi() {
-        return this.namaAsuransi;
+        return namaAsuransi;
     }
 
     public void setNamaAsuransi(String namaAsuransi) {
@@ -94,7 +92,7 @@ public class TipeAsuransi implements Serializable {
     }
 
     public Date getStartBerlaku() {
-        return this.startBerlaku;
+        return startBerlaku;
     }
 
     public void setStartBerlaku(Date startBerlaku) {
@@ -102,83 +100,86 @@ public class TipeAsuransi implements Serializable {
     }
 
     public Date getEndBerlaku() {
-        return this.endBerlaku;
+        return endBerlaku;
     }
 
     public void setEndBerlaku(Date endBerlaku) {
         this.endBerlaku = endBerlaku;
     }
 
-    public Date getCreated_at() {
-        return this.created_at;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     public String getDeskripsi() {
-        return this.deskripsi;
+        return deskripsi;
     }
 
     public void setDeskripsi(String deskripsi) {
         this.deskripsi = deskripsi;
     }
 
-    public Integer getIs_approved() {
-        return this.is_approved;
+    public Integer getIsApproved() {
+        return isApproved;
     }
 
-    public void setIs_approved(Integer is_approved) {
-        this.is_approved = is_approved;
+    public void setIsApproved(Integer isApproved) {
+        this.isApproved = isApproved;
     }
 
-    public Integer getIs_rejected() {
-        return this.is_rejected;
+    public Integer getIsRejected() {
+        return isRejected;
     }
 
-    public void setIs_rejected(Integer is_rejected) {
-        this.is_rejected = is_rejected;
+    public void setIsRejected(Integer isRejected) {
+        this.isRejected = isRejected;
     }
 
     public String getRemarks() {
-        return this.remarks;
+        return remarks;
     }
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
     }
 
-    public Long getCreatedby() {
-        return this.createdby;
+    public Long getCreatedBy() {
+        return createdBy;
     }
 
-    public void setCreatedby(Long createdby) {
-        this.createdby = createdby;
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
     }
 
-    public Long getUpdatedby() {
-        return this.updatedby;
+    public Long getUpdatedBy() {
+        return updatedBy;
     }
 
-    public void setUpdatedby(Long updatedby) {
-        this.updatedby = updatedby;
+    public void setUpdatedBy(Long updatedBy) {
+        this.updatedBy = updatedBy;
     }
 
-    public Date getUpdateddate() {
-        return this.updateddate;
+    public Date getUpdatedDate() {
+        return updatedDate;
     }
 
-    public void setUpdateddate(Date updateddate) {
-        this.updateddate = updateddate;
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     public Integer getStatusApproval() {
-        return this.statusApproval;
+        return statusApproval;
     }
 
     public void setStatusApproval(Integer statusApproval) {
         this.statusApproval = statusApproval;
+    }
+
+    public TipeAsuransi() {
     }
 
     public TipeAsuransi id(Integer id) {
@@ -201,8 +202,8 @@ public class TipeAsuransi implements Serializable {
         return this;
     }
 
-    public TipeAsuransi created_at(Date created_at) {
-        setCreated_at(created_at);
+    public TipeAsuransi createdDate(Date createdDate) {
+        setCreatedDate(createdDate);
         return this;
     }
 
@@ -211,13 +212,13 @@ public class TipeAsuransi implements Serializable {
         return this;
     }
 
-    public TipeAsuransi is_approved(Integer is_approved) {
-        setIs_approved(is_approved);
+    public TipeAsuransi isApproved(Integer isApproved) {
+        setIsApproved(isApproved);
         return this;
     }
 
-    public TipeAsuransi is_rejected(Integer is_rejected) {
-        setIs_rejected(is_rejected);
+    public TipeAsuransi isRejected(Integer isRejected) {
+        setIsRejected(isRejected);
         return this;
     }
 
@@ -226,18 +227,18 @@ public class TipeAsuransi implements Serializable {
         return this;
     }
 
-    public TipeAsuransi createdby(Long createdby) {
-        setCreatedby(createdby);
+    public TipeAsuransi createdBy(Long createdBy) {
+        setCreatedBy(createdBy);
         return this;
     }
 
-    public TipeAsuransi updatedby(Long updatedby) {
-        setUpdatedby(updatedby);
+    public TipeAsuransi updatedBy(Long updatedBy) {
+        setUpdatedBy(updatedBy);
         return this;
     }
 
-    public TipeAsuransi updateddate(Date updateddate) {
-        setUpdateddate(updateddate);
+    public TipeAsuransi updatedDate(Date updatedDate) {
+        setUpdatedDate(updatedDate);
         return this;
     }
 
@@ -253,62 +254,55 @@ public class TipeAsuransi implements Serializable {
             ", namaAsuransi='" + getNamaAsuransi() + "'" +
             ", startBerlaku='" + getStartBerlaku() + "'" +
             ", endBerlaku='" + getEndBerlaku() + "'" +
-            ", created_at='" + getCreated_at() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
             ", deskripsi='" + getDeskripsi() + "'" +
-            ", is_approved='" + getIs_approved() + "'" +
-            ", is_rejected='" + getIs_rejected() + "'" +
+            ", isApproved='" + getIsApproved() + "'" +
+            ", isRejected='" + getIsRejected() + "'" +
             ", remarks='" + getRemarks() + "'" +
-            ", createdby='" + getCreatedby() + "'" +
-            ", updatedby='" + getUpdatedby() + "'" +
-            ", updateddate='" + getUpdateddate() + "'" +
+            ", createdBy='" + getCreatedBy() + "'" +
+            ", updatedBy='" + getUpdatedBy() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             ", statusApproval='" + getStatusApproval() + "'" +
             "}";
     }
 
-
-    public TipeAsuransi submit(Long user) {
+    public void submit(Long user) {
         if(this.statusApproval == null || this.statusApproval == 0){
-            setIs_approved(0);
-            setIs_rejected(0);
+            setIsApproved(0);
+            setIsRejected(0);
             setStatusApproval(1);
             
             trace(user);
         }
-        return this;
     }
 
-    public TipeAsuransi approve(Long user) {
+    public void approve(Long user) {
         if(this.statusApproval != null && this.statusApproval == 1) {
-            setIs_approved(1);
-            setIs_rejected(0);
+            setIsApproved(1);
+            setIsRejected(0);
             setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public TipeAsuransi decline(Long user) {
+    public void decline(Long user) {
         if(this.statusApproval != null && this.statusApproval == 1) {
-            setIs_approved(0);
-            setIs_rejected(1);
+            setIsApproved(0);
+            setIsRejected(1);
             setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public TipeAsuransi trace(Long user) {
-        if(this.created_at == null) {
-            setCreatedby(user);
-            setCreated_at(new Date());
+    public void trace(Long user) {
+        if(this.createdDate == null) {
+            setCreatedBy(user);
+            setCreatedDate(new Date());
         } else {
-            setUpdatedby(user);
-            setUpdateddate(new Date());
+            setUpdatedBy(user);
+            setUpdatedDate(new Date());
         }
-        return this;
     }
 }

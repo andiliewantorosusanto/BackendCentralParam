@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.beCMS.BackendCentralParam.model.BiayaAdmin;
 import com.beCMS.BackendCentralParam.view.vwDataBiayaAdmin;
-import com.beCMS.BackendCentralParam.view.vwSkemaBiayaAdmin;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,8 +12,23 @@ import org.springframework.data.jpa.repository.Query;
 @DynamicUpdate
 public interface BiayaAdminRepository extends JpaRepository<BiayaAdmin, Integer> {
 
-    // @Query("SELECT new com.beCMS.BackendCentralParam.view.vwDataBiayaAdmin(a.namaSkema,a.tipe_konsumen,i.Nama,a.jeniskendaraanid,b.jenis_kendaraan_id,a.jenis_pembiayaan,d.jenis_pembiayaan_id,a.cluster,j.cluster_id,a.diskon_npwp,a.startBerlaku,a.endBerlaku,a.statusApproval,a.remarks) from modelBiayaAdmin a left join modelJenisKendaraan b on a.jeniskendaraanid = b.id left join modelJenisPembiayaan d on a.jenis_pembiayaan = d.id  LEFT JOIN modelTipeKonsumen i ON a.tipe_konsumen = i.id LEFT JOIN modelCluster j ON a.cluster = j.id")
-    // List<vwDataBiayaAdmin> getListDataBiayaAdmin();
+    @Query(
+        "SELECT new com.beCMS.BackendCentralParam.view.vwDataBiayaAdmin"
+        + "(a.id,a.namaSkema,a.loanType"
+        + ",a.tipeKonsumen,tk.nama AS tipeKonsumenName"
+        + ",a.jenisKendaraan,jk.jenisKendaraan"
+        + ",a.jenisPembiayaan,jp.jenisPembiayaan"
+        + ",a.cluster,c.cluster"
+        + ",a.diskonNpwp"
+        + ",a.tenor1,a.tenor2,a.tenor3,a.tenor4,a.tenor5,a.tenor6,a.tenor7,a.tenor8,a.tenor9,a.tenor10"
+        + ",a.startBerlaku,a.endBerlaku,a.statusApproval,a.remarks,a.isRejected,a.isApproved)"
+        + "FROM BiayaAdmin a "
+        + "left join JenisKendaraan jk on a.jenisKendaraan = jk.id " 
+        + "left join JenisPembiayaan jp on a.jenisPembiayaan = jp.id " 
+        + "LEFT JOIN TipeKonsumen tk ON a.tipeKonsumen = tk.id " 
+        + "LEFT JOIN Cluster c ON a.cluster = c.id"
+        )
+    List<vwDataBiayaAdmin> getListDataBiayaAdmin();
 
     // @Query("SELECT new com.beCMS.BackendCentralParam.view.vwDataBiayaAdmin(a.namaSkema,a.tipe_konsumen,i.Nama,a.jeniskendaraanid,b.jenis_kendaraan_id,a.jenis_pembiayaan,d.jenis_pembiayaan_id,a.cluster,j.cluster_id,a.diskon_npwp,a.startBerlaku,a.endBerlaku,a.statusApproval,a.remarks) from modelBiayaAdmin a left join modelJenisKendaraan b on a.jeniskendaraanid = b.id left join modelJenisPembiayaan d on a.jenis_pembiayaan = d.id  LEFT JOIN modelTipeKonsumen i ON a.tipe_konsumen = i.id LEFT JOIN modelCluster j ON a.cluster = j.id where a.statusApproval = 0 OR a.statusApproval IS NULL")
     // List<vwDataBiayaAdmin> getListBucketApprovalBiayaAdmin();

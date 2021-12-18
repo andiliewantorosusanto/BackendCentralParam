@@ -3,73 +3,70 @@ package com.beCMS.BackendCentralParam.view;
 import java.util.Date;
 
 public class vwDataRateAsuransi {
+    private String namaSkema;
 
-//NOTE Data Rate Asuransi
+    private Integer wilayah;
+    private String wilayahName;
 
-private String namaSkema;
+    private Integer startOTR;
 
-private Integer wilayah;
-private String namaWilayah;
+    private Integer endOTR;
 
-private Integer startOTR;
+    private Integer startyear;
 
-private Integer endOTR;
+    private Integer endyear;
 
-private Integer startyear;
+    private Integer tipeAsuransi;
+    private String tipeAsuransiName;
 
-private Integer endyear;
+    private Date startBerlaku;
+    private Date endBerlaku;
 
-private Integer tipeAsuransi;
-private String namaAsuransi;
+    private Integer loanType;
 
-private Date startBerlaku;
+    private Integer produk;
 
-private Date endBerlaku;
+    private Integer jenisKendaraan;
+    private String jenisKendaraanName;
 
-private Integer loan_type;
+    private Integer jenisPembiayaan;
+    private String jenisPembiayaanName;
 
-private Integer produk;
+    private String statusApproved;
 
-private Integer jenis_kendaraan;
-private String jenis_kendaraan_id;
+    private String remarks;
 
-private Integer jenis_pembiayaan;
-private String jenis_pembiayaan_id;
+    private Integer program;
 
-private String statusApproved;
-
-private String remarks;
-
-private Integer program;
-
-    public vwDataRateAsuransi() {
-    }
-
-    public vwDataRateAsuransi(String namaSkema, Integer wilayah, String namaWilayah, Integer startOTR, Integer endOTR, Integer startyear, Integer endyear, Integer tipeAsuransi, String namaAsuransi, Date startBerlaku, Date endBerlaku, Integer loan_type, Integer produk, Integer jenis_kendaraan, String jenis_kendaraan_id, Integer jenis_pembiayaan, String jenis_pembiayaan_id, String statusApproved, String remarks, Integer program) {
+    public vwDataRateAsuransi(String namaSkema, Integer wilayah, String wilayahName, Integer startOTR, Integer endOTR,
+            Integer startyear, Integer endyear, Integer tipeAsuransi, String tipeAsuransiName, Date startBerlaku,
+            Date endBerlaku, Integer loanType, Integer produk, Integer jenisKendaraan, String jenisKendaraanName,
+            Integer jenisPembiayaan, String jenisPembiayaanName, String statusApproved, String remarks,
+            Integer program) {
         this.namaSkema = namaSkema;
         this.wilayah = wilayah;
-        this.namaWilayah = namaWilayah;
+        this.wilayahName = wilayahName;
         this.startOTR = startOTR;
         this.endOTR = endOTR;
         this.startyear = startyear;
         this.endyear = endyear;
         this.tipeAsuransi = tipeAsuransi;
-        this.namaAsuransi = namaAsuransi;
+        this.tipeAsuransiName = tipeAsuransiName;
         this.startBerlaku = startBerlaku;
         this.endBerlaku = endBerlaku;
-        this.loan_type = loan_type;
+        this.loanType = loanType;
         this.produk = produk;
-        this.jenis_kendaraan = jenis_kendaraan;
-        this.jenis_kendaraan_id = jenis_kendaraan_id;
-        this.jenis_pembiayaan = jenis_pembiayaan;
-        this.jenis_pembiayaan_id = jenis_pembiayaan_id;
+        this.jenisKendaraan = jenisKendaraan;
+        this.jenisKendaraanName = jenisKendaraanName;
+        this.jenisPembiayaan = jenisPembiayaan;
+        this.jenisPembiayaanName = jenisPembiayaanName;
         this.statusApproved = statusApproved;
         this.remarks = remarks;
         this.program = program;
     }
 
     public String getNamaSkema() {
-        return this.namaSkema;
+        return namaSkema;
     }
 
     public void setNamaSkema(String namaSkema) {
@@ -77,23 +74,23 @@ private Integer program;
     }
 
     public Integer getWilayah() {
-        return this.wilayah;
+        return wilayah;
     }
 
     public void setWilayah(Integer wilayah) {
         this.wilayah = wilayah;
     }
 
-    public String getNamaWilayah() {
-        return this.namaWilayah;
+    public String getWilayahName() {
+        return wilayahName;
     }
 
-    public void setNamaWilayah(String namaWilayah) {
-        this.namaWilayah = namaWilayah;
+    public void setWilayahName(String wilayahName) {
+        this.wilayahName = wilayahName;
     }
 
     public Integer getStartOTR() {
-        return this.startOTR;
+        return startOTR;
     }
 
     public void setStartOTR(Integer startOTR) {
@@ -101,7 +98,7 @@ private Integer program;
     }
 
     public Integer getEndOTR() {
-        return this.endOTR;
+        return endOTR;
     }
 
     public void setEndOTR(Integer endOTR) {
@@ -109,7 +106,7 @@ private Integer program;
     }
 
     public Integer getStartyear() {
-        return this.startyear;
+        return startyear;
     }
 
     public void setStartyear(Integer startyear) {
@@ -117,7 +114,7 @@ private Integer program;
     }
 
     public Integer getEndyear() {
-        return this.endyear;
+        return endyear;
     }
 
     public void setEndyear(Integer endyear) {
@@ -125,23 +122,23 @@ private Integer program;
     }
 
     public Integer getTipeAsuransi() {
-        return this.tipeAsuransi;
+        return tipeAsuransi;
     }
 
     public void setTipeAsuransi(Integer tipeAsuransi) {
         this.tipeAsuransi = tipeAsuransi;
     }
 
-    public String getNamaAsuransi() {
-        return this.namaAsuransi;
+    public String getTipeAsuransiName() {
+        return tipeAsuransiName;
     }
 
-    public void setNamaAsuransi(String namaAsuransi) {
-        this.namaAsuransi = namaAsuransi;
+    public void setTipeAsuransiName(String tipeAsuransiName) {
+        this.tipeAsuransiName = tipeAsuransiName;
     }
 
     public Date getStartBerlaku() {
-        return this.startBerlaku;
+        return startBerlaku;
     }
 
     public void setStartBerlaku(Date startBerlaku) {
@@ -149,63 +146,63 @@ private Integer program;
     }
 
     public Date getEndBerlaku() {
-        return this.endBerlaku;
+        return endBerlaku;
     }
 
     public void setEndBerlaku(Date endBerlaku) {
         this.endBerlaku = endBerlaku;
     }
 
-    public Integer getLoan_type() {
-        return this.loan_type;
+    public Integer getLoanType() {
+        return loanType;
     }
 
-    public void setLoan_type(Integer loan_type) {
-        this.loan_type = loan_type;
+    public void setLoanType(Integer loanType) {
+        this.loanType = loanType;
     }
 
     public Integer getProduk() {
-        return this.produk;
+        return produk;
     }
 
     public void setProduk(Integer produk) {
         this.produk = produk;
     }
 
-    public Integer getJenis_kendaraan() {
-        return this.jenis_kendaraan;
+    public Integer getJenisKendaraan() {
+        return jenisKendaraan;
     }
 
-    public void setJenis_kendaraan(Integer jenis_kendaraan) {
-        this.jenis_kendaraan = jenis_kendaraan;
+    public void setJenisKendaraan(Integer jenisKendaraan) {
+        this.jenisKendaraan = jenisKendaraan;
     }
 
-    public String getJenis_kendaraan_id() {
-        return this.jenis_kendaraan_id;
+    public String getJenisKendaraanName() {
+        return jenisKendaraanName;
     }
 
-    public void setJenis_kendaraan_id(String jenis_kendaraan_id) {
-        this.jenis_kendaraan_id = jenis_kendaraan_id;
+    public void setJenisKendaraanName(String jenisKendaraanName) {
+        this.jenisKendaraanName = jenisKendaraanName;
     }
 
-    public Integer getJenis_pembiayaan() {
-        return this.jenis_pembiayaan;
+    public Integer getJenisPembiayaan() {
+        return jenisPembiayaan;
     }
 
-    public void setJenis_pembiayaan(Integer jenis_pembiayaan) {
-        this.jenis_pembiayaan = jenis_pembiayaan;
+    public void setJenisPembiayaan(Integer jenisPembiayaan) {
+        this.jenisPembiayaan = jenisPembiayaan;
     }
 
-    public String getJenis_pembiayaan_id() {
-        return this.jenis_pembiayaan_id;
+    public String getJenisPembiayaanName() {
+        return jenisPembiayaanName;
     }
 
-    public void setJenis_pembiayaan_id(String jenis_pembiayaan_id) {
-        this.jenis_pembiayaan_id = jenis_pembiayaan_id;
+    public void setJenisPembiayaanName(String jenisPembiayaanName) {
+        this.jenisPembiayaanName = jenisPembiayaanName;
     }
 
     public String getStatusApproved() {
-        return this.statusApproved;
+        return statusApproved;
     }
 
     public void setStatusApproved(String statusApproved) {
@@ -213,7 +210,7 @@ private Integer program;
     }
 
     public String getRemarks() {
-        return this.remarks;
+        return remarks;
     }
 
     public void setRemarks(String remarks) {
@@ -221,12 +218,15 @@ private Integer program;
     }
 
     public Integer getProgram() {
-        return this.program;
+        return program;
     }
 
     public void setProgram(Integer program) {
         this.program = program;
     }
 
+    
+    
+    
 
 }

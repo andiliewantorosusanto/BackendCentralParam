@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.beCMS.BackendCentralParam.model.BiayaProvisi;
 import com.beCMS.BackendCentralParam.view.vwDataBiayaProvisi;
-import com.beCMS.BackendCentralParam.view.vwSkemaBiayaProvisi;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;

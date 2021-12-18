@@ -31,98 +31,98 @@ public class Program implements Serializable {
     private String deskripsi;
 
     @Column(name = "start_date")
-    private Date start_date;
+    private Date startBerlaku;
 
     @Column(name = "end_date")
-    private Date end_date;
+    private Date endBerlaku;
 
     @Column(name = "statusapproval")
     private Integer statusApproval;
 
     @Column(name = "is_approved")
-    private Integer is_approved;
+    private Integer isApproved;
 
     @Column(name = "is_rejected")
-    private Integer is_rejected;
+    private Integer isRejected;
 
     @Column(name = "remarks")
     private String remarks;
 
     @Column(name = "createdby")
-    private Long createdby;
+    private Long createdBy;
 
     @Column(name = "createddate")
-    private Date createddate;
+    private Date createdDate;
 
     @Column(name = "updatedby")
-    private Long updatedby;
+    private Long updatedBy;
 
     @Column(name = "updateddate")
-    private Date updateddate;
+    private Date updatedDate;
     
     @Column(name = "branchid")
     private String BranchId;
 
     @Column(name = "id_biayaadmin")
-    private Integer id_biayaadmin;
+    private Integer biayaAdmin;
 
     @Column(name = "id_rateasuransi")
-    private Integer id_rateasuransi;
+    private Integer rateAsuransi;
 
     @Column(name = "id_ratebunga")
-    private Integer id_ratebunga;
+    private Integer rateBunga;
 
     @Column(name = "id_ratecp")
-    private Integer id_ratecp;
+    private Integer rateCp;
 
     @Column(name = "id_minimaldp")
-    private Integer id_minimaldp;
+    private Integer minmalDp;
 
     @Column(name = "id_komponenph")
-    private Integer id_komponenph;
+    private Integer komponenph;
 
     @Column(name = "id_rateperluasan")
-    private Integer id_rateperluasan;
+    private Integer ratePerluasan;
 
     @Column(name = "id_biayaprovisi")
-    private Integer id_biayaprovisi;
+    private Integer biayaProvisi;
 
     @Column(name = "id_biayafidusia")
-    private Integer id_biayafidusia;
+    private Integer biayaFidusia;
 
     @Column(name = "id_usiakendaraanlunas")
-    private Integer id_usiakendaraanlunas;
+    private Integer usiaKendaraanLunas;
 
 
     public Program() {
     }
 
-    public Program(Integer id, String program, Integer produk, String deskripsi, Date start_date, Date end_date, Integer statusApproval, Integer is_approved, Integer is_rejected, String remarks, Long createdby, Date createddate, Long updatedby, Date updateddate, String BranchId, Integer id_biayaadmin, Integer id_rateasuransi, Integer id_ratebunga, Integer id_ratecp, Integer id_minimaldp, Integer id_komponenph, Integer id_rateperluasan, Integer id_biayaprovisi, Integer id_biayafidusia, Integer id_usiakendaraanlunas) {
+    public Program(Integer id, String program, Integer produk, String deskripsi, Date startBerlaku, Date endBerlaku, Integer statusApproval, Integer isApproved, Integer isRejected, String remarks, Long createdBy, Date createdDate, Long updatedBy, Date updatedDate, String BranchId, Integer biayaAdmin, Integer rateAsuransi, Integer rateBunga, Integer rateCp, Integer minmalDp, Integer komponenph, Integer ratePerluasan, Integer biayaProvisi, Integer biayaFidusia, Integer usiaKendaraanLunas) {
         this.id = id;
         this.program = program;
         this.produk = produk;
         this.deskripsi = deskripsi;
-        this.start_date = start_date;
-        this.end_date = end_date;
+        this.startBerlaku = startBerlaku;
+        this.endBerlaku = endBerlaku;
         this.statusApproval = statusApproval;
-        this.is_approved = is_approved;
-        this.is_rejected = is_rejected;
+        this.isApproved = isApproved;
+        this.isRejected = isRejected;
         this.remarks = remarks;
-        this.createdby = createdby;
-        this.createddate = createddate;
-        this.updatedby = updatedby;
-        this.updateddate = updateddate;
+        this.createdBy = createdBy;
+        this.createdDate = createdDate;
+        this.updatedBy = updatedBy;
+        this.updatedDate = updatedDate;
         this.BranchId = BranchId;
-        this.id_biayaadmin = id_biayaadmin;
-        this.id_rateasuransi = id_rateasuransi;
-        this.id_ratebunga = id_ratebunga;
-        this.id_ratecp = id_ratecp;
-        this.id_minimaldp = id_minimaldp;
-        this.id_komponenph = id_komponenph;
-        this.id_rateperluasan = id_rateperluasan;
-        this.id_biayaprovisi = id_biayaprovisi;
-        this.id_biayafidusia = id_biayafidusia;
-        this.id_usiakendaraanlunas = id_usiakendaraanlunas;
+        this.biayaAdmin = biayaAdmin;
+        this.rateAsuransi = rateAsuransi;
+        this.rateBunga = rateBunga;
+        this.rateCp = rateCp;
+        this.minmalDp = minmalDp;
+        this.komponenph = komponenph;
+        this.ratePerluasan = ratePerluasan;
+        this.biayaProvisi = biayaProvisi;
+        this.biayaFidusia = biayaFidusia;
+        this.usiaKendaraanLunas = usiaKendaraanLunas;
     }
 
     public Integer getId() {
@@ -157,20 +157,20 @@ public class Program implements Serializable {
         this.deskripsi = deskripsi;
     }
 
-    public Date getStart_date() {
-        return this.start_date;
+    public Date getStartBerlaku() {
+        return this.startBerlaku;
     }
 
-    public void setStart_date(Date start_date) {
-        this.start_date = start_date;
+    public void setStartBerlaku(Date startBerlaku) {
+        this.startBerlaku = startBerlaku;
     }
 
-    public Date getEnd_date() {
-        return this.end_date;
+    public Date getEndBerlaku() {
+        return this.endBerlaku;
     }
 
-    public void setEnd_date(Date end_date) {
-        this.end_date = end_date;
+    public void setEndBerlaku(Date endBerlaku) {
+        this.endBerlaku = endBerlaku;
     }
 
     public Integer getStatusApproval() {
@@ -181,20 +181,20 @@ public class Program implements Serializable {
         this.statusApproval = statusApproval;
     }
 
-    public Integer getIs_approved() {
-        return this.is_approved;
+    public Integer getIsApproved() {
+        return this.isApproved;
     }
 
-    public void setIs_approved(Integer is_approved) {
-        this.is_approved = is_approved;
+    public void setIsApproved(Integer isApproved) {
+        this.isApproved = isApproved;
     }
 
-    public Integer getIs_rejected() {
-        return this.is_rejected;
+    public Integer getIsRejected() {
+        return this.isRejected;
     }
 
-    public void setIs_rejected(Integer is_rejected) {
-        this.is_rejected = is_rejected;
+    public void setIsRejected(Integer isRejected) {
+        this.isRejected = isRejected;
     }
 
     public String getRemarks() {
@@ -205,36 +205,36 @@ public class Program implements Serializable {
         this.remarks = remarks;
     }
 
-    public Long getCreatedby() {
-        return this.createdby;
+    public Long getCreatedBy() {
+        return this.createdBy;
     }
 
-    public void setCreatedby(Long createdby) {
-        this.createdby = createdby;
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
     }
 
-    public Date getCreateddate() {
-        return this.createddate;
+    public Date getCreatedDate() {
+        return this.createdDate;
     }
 
-    public void setCreateddate(Date createddate) {
-        this.createddate = createddate;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public Long getUpdatedby() {
-        return this.updatedby;
+    public Long getUpdatedBy() {
+        return this.updatedBy;
     }
 
-    public void setUpdatedby(Long updatedby) {
-        this.updatedby = updatedby;
+    public void setUpdatedBy(Long updatedBy) {
+        this.updatedBy = updatedBy;
     }
 
-    public Date getUpdateddate() {
-        return this.updateddate;
+    public Date getUpdatedDate() {
+        return this.updatedDate;
     }
 
-    public void setUpdateddate(Date updateddate) {
-        this.updateddate = updateddate;
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     public String getBranchId() {
@@ -245,84 +245,84 @@ public class Program implements Serializable {
         this.BranchId = BranchId;
     }
 
-    public Integer getId_biayaadmin() {
-        return this.id_biayaadmin;
+    public Integer getBiayaAdmin() {
+        return this.biayaAdmin;
     }
 
-    public void setId_biayaadmin(Integer id_biayaadmin) {
-        this.id_biayaadmin = id_biayaadmin;
+    public void setBiayaAdmin(Integer biayaAdmin) {
+        this.biayaAdmin = biayaAdmin;
     }
 
-    public Integer getId_rateasuransi() {
-        return this.id_rateasuransi;
+    public Integer getRateAsuransi() {
+        return this.rateAsuransi;
     }
 
-    public void setId_rateasuransi(Integer id_rateasuransi) {
-        this.id_rateasuransi = id_rateasuransi;
+    public void setRateAsuransi(Integer rateAsuransi) {
+        this.rateAsuransi = rateAsuransi;
     }
 
-    public Integer getId_ratebunga() {
-        return this.id_ratebunga;
+    public Integer getRateBunga() {
+        return this.rateBunga;
     }
 
-    public void setId_ratebunga(Integer id_ratebunga) {
-        this.id_ratebunga = id_ratebunga;
+    public void setRateBunga(Integer rateBunga) {
+        this.rateBunga = rateBunga;
     }
 
-    public Integer getId_ratecp() {
-        return this.id_ratecp;
+    public Integer getRateCp() {
+        return this.rateCp;
     }
 
-    public void setId_ratecp(Integer id_ratecp) {
-        this.id_ratecp = id_ratecp;
+    public void setRateCp(Integer rateCp) {
+        this.rateCp = rateCp;
     }
 
-    public Integer getId_minimaldp() {
-        return this.id_minimaldp;
+    public Integer getMinmalDp() {
+        return this.minmalDp;
     }
 
-    public void setId_minimaldp(Integer id_minimaldp) {
-        this.id_minimaldp = id_minimaldp;
+    public void setMinmalDp(Integer minmalDp) {
+        this.minmalDp = minmalDp;
     }
 
-    public Integer getId_komponenph() {
-        return this.id_komponenph;
+    public Integer getKomponenph() {
+        return this.komponenph;
     }
 
-    public void setId_komponenph(Integer id_komponenph) {
-        this.id_komponenph = id_komponenph;
+    public void setKomponenph(Integer komponenph) {
+        this.komponenph = komponenph;
     }
 
-    public Integer getId_rateperluasan() {
-        return this.id_rateperluasan;
+    public Integer getRatePerluasan() {
+        return this.ratePerluasan;
     }
 
-    public void setId_rateperluasan(Integer id_rateperluasan) {
-        this.id_rateperluasan = id_rateperluasan;
+    public void setRatePerluasan(Integer ratePerluasan) {
+        this.ratePerluasan = ratePerluasan;
     }
 
-    public Integer getId_biayaprovisi() {
-        return this.id_biayaprovisi;
+    public Integer getBiayaProvisi() {
+        return this.biayaProvisi;
     }
 
-    public void setId_biayaprovisi(Integer id_biayaprovisi) {
-        this.id_biayaprovisi = id_biayaprovisi;
+    public void setBiayaProvisi(Integer biayaProvisi) {
+        this.biayaProvisi = biayaProvisi;
     }
 
-    public Integer getId_biayafidusia() {
-        return this.id_biayafidusia;
+    public Integer getBiayaFidusia() {
+        return this.biayaFidusia;
     }
 
-    public void setId_biayafidusia(Integer id_biayafidusia) {
-        this.id_biayafidusia = id_biayafidusia;
+    public void setBiayaFidusia(Integer biayaFidusia) {
+        this.biayaFidusia = biayaFidusia;
     }
 
-    public Integer getId_usiakendaraanlunas() {
-        return this.id_usiakendaraanlunas;
+    public Integer getUsiaKendaraanLunas() {
+        return this.usiaKendaraanLunas;
     }
 
-    public void setId_usiakendaraanlunas(Integer id_usiakendaraanlunas) {
-        this.id_usiakendaraanlunas = id_usiakendaraanlunas;
+    public void setUsiaKendaraanLunas(Integer usiaKendaraanLunas) {
+        this.usiaKendaraanLunas = usiaKendaraanLunas;
     }
 
     public Program id(Integer id) {
@@ -345,13 +345,13 @@ public class Program implements Serializable {
         return this;
     }
 
-    public Program start_date(Date start_date) {
-        setStart_date(start_date);
+    public Program startBerlaku(Date startBerlaku) {
+        setStartBerlaku(startBerlaku);
         return this;
     }
 
-    public Program end_date(Date end_date) {
-        setEnd_date(end_date);
+    public Program endBerlaku(Date endBerlaku) {
+        setEndBerlaku(endBerlaku);
         return this;
     }
 
@@ -360,13 +360,13 @@ public class Program implements Serializable {
         return this;
     }
 
-    public Program is_approved(Integer is_approved) {
-        setIs_approved(is_approved);
+    public Program isApproved(Integer isApproved) {
+        setIsApproved(isApproved);
         return this;
     }
 
-    public Program is_rejected(Integer is_rejected) {
-        setIs_rejected(is_rejected);
+    public Program isRejected(Integer isRejected) {
+        setIsRejected(isRejected);
         return this;
     }
 
@@ -375,23 +375,23 @@ public class Program implements Serializable {
         return this;
     }
 
-    public Program createdby(Long createdby) {
-        setCreatedby(createdby);
+    public Program createdBy(Long createdBy) {
+        setCreatedBy(createdBy);
         return this;
     }
 
-    public Program createddate(Date createddate) {
-        setCreateddate(createddate);
+    public Program createdDate(Date createdDate) {
+        setCreatedDate(createdDate);
         return this;
     }
 
-    public Program updatedby(Long updatedby) {
-        setUpdatedby(updatedby);
+    public Program updatedBy(Long updatedBy) {
+        setUpdatedBy(updatedBy);
         return this;
     }
 
-    public Program updateddate(Date updateddate) {
-        setUpdateddate(updateddate);
+    public Program updatedDate(Date updatedDate) {
+        setUpdatedDate(updatedDate);
         return this;
     }
 
@@ -400,53 +400,53 @@ public class Program implements Serializable {
         return this;
     }
 
-    public Program id_biayaadmin(Integer id_biayaadmin) {
-        setId_biayaadmin(id_biayaadmin);
+    public Program biayaAdmin(Integer biayaAdmin) {
+        setBiayaAdmin(biayaAdmin);
         return this;
     }
 
-    public Program id_rateasuransi(Integer id_rateasuransi) {
-        setId_rateasuransi(id_rateasuransi);
+    public Program rateAsuransi(Integer rateAsuransi) {
+        setRateAsuransi(rateAsuransi);
         return this;
     }
 
-    public Program id_ratebunga(Integer id_ratebunga) {
-        setId_ratebunga(id_ratebunga);
+    public Program rateBunga(Integer rateBunga) {
+        setRateBunga(rateBunga);
         return this;
     }
 
-    public Program id_ratecp(Integer id_ratecp) {
-        setId_ratecp(id_ratecp);
+    public Program rateCp(Integer rateCp) {
+        setRateCp(rateCp);
         return this;
     }
 
-    public Program id_minimaldp(Integer id_minimaldp) {
-        setId_minimaldp(id_minimaldp);
+    public Program minmalDp(Integer minmalDp) {
+        setMinmalDp(minmalDp);
         return this;
     }
 
-    public Program id_komponenph(Integer id_komponenph) {
-        setId_komponenph(id_komponenph);
+    public Program komponenph(Integer komponenph) {
+        setKomponenph(komponenph);
         return this;
     }
 
-    public Program id_rateperluasan(Integer id_rateperluasan) {
-        setId_rateperluasan(id_rateperluasan);
+    public Program ratePerluasan(Integer ratePerluasan) {
+        setRatePerluasan(ratePerluasan);
         return this;
     }
 
-    public Program id_biayaprovisi(Integer id_biayaprovisi) {
-        setId_biayaprovisi(id_biayaprovisi);
+    public Program biayaProvisi(Integer biayaProvisi) {
+        setBiayaProvisi(biayaProvisi);
         return this;
     }
 
-    public Program id_biayafidusia(Integer id_biayafidusia) {
-        setId_biayafidusia(id_biayafidusia);
+    public Program biayaFidusia(Integer biayaFidusia) {
+        setBiayaFidusia(biayaFidusia);
         return this;
     }
 
-    public Program id_usiakendaraanlunas(Integer id_usiakendaraanlunas) {
-        setId_usiakendaraanlunas(id_usiakendaraanlunas);
+    public Program usiaKendaraanLunas(Integer usiaKendaraanLunas) {
+        setUsiaKendaraanLunas(usiaKendaraanLunas);
         return this;
     }
 
@@ -457,74 +457,68 @@ public class Program implements Serializable {
             ", program='" + getProgram() + "'" +
             ", produk='" + getProduk() + "'" +
             ", deskripsi='" + getDeskripsi() + "'" +
-            ", start_date='" + getStart_date() + "'" +
-            ", end_date='" + getEnd_date() + "'" +
+            ", startBerlaku='" + getStartBerlaku() + "'" +
+            ", endBerlaku='" + getEndBerlaku() + "'" +
             ", statusApproval='" + getStatusApproval() + "'" +
-            ", is_approved='" + getIs_approved() + "'" +
-            ", is_rejected='" + getIs_rejected() + "'" +
+            ", isApproved='" + getIsApproved() + "'" +
+            ", isRejected='" + getIsRejected() + "'" +
             ", remarks='" + getRemarks() + "'" +
-            ", createdby='" + getCreatedby() + "'" +
-            ", createddate='" + getCreateddate() + "'" +
-            ", updatedby='" + getUpdatedby() + "'" +
-            ", updateddate='" + getUpdateddate() + "'" +
+            ", createdBy='" + getCreatedBy() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", updatedBy='" + getUpdatedBy() + "'" +
+            ", updatedDate='" + getUpdatedDate() + "'" +
             ", BranchId='" + getBranchId() + "'" +
-            ", id_biayaadmin='" + getId_biayaadmin() + "'" +
-            ", id_rateasuransi='" + getId_rateasuransi() + "'" +
-            ", id_ratebunga='" + getId_ratebunga() + "'" +
-            ", id_ratecp='" + getId_ratecp() + "'" +
-            ", id_minimaldp='" + getId_minimaldp() + "'" +
-            ", id_komponenph='" + getId_komponenph() + "'" +
-            ", id_rateperluasan='" + getId_rateperluasan() + "'" +
-            ", id_biayaprovisi='" + getId_biayaprovisi() + "'" +
-            ", id_biayafidusia='" + getId_biayafidusia() + "'" +
-            ", id_usiakendaraanlunas='" + getId_usiakendaraanlunas() + "'" +
+            ", biayaAdmin='" + getBiayaAdmin() + "'" +
+            ", rateAsuransi='" + getRateAsuransi() + "'" +
+            ", rateBunga='" + getRateBunga() + "'" +
+            ", rateCp='" + getRateCp() + "'" +
+            ", minmalDp='" + getMinmalDp() + "'" +
+            ", komponenph='" + getKomponenph() + "'" +
+            ", ratePerluasan='" + getRatePerluasan() + "'" +
+            ", biayaProvisi='" + getBiayaProvisi() + "'" +
+            ", biayaFidusia='" + getBiayaFidusia() + "'" +
+            ", usiaKendaraanLunas='" + getUsiaKendaraanLunas() + "'" +
             "}";
     }
 
 
-    public Program submit(Long user) {
+    public void submit(Long user) {
         if(this.statusApproval == null || this.statusApproval == 0){
-            setIs_approved(0);
-            setIs_rejected(0);
+            setIsApproved(0);
+            setIsRejected(0);
             setStatusApproval(1);
             
             trace(user);
         }
-        return this;
     }
 
-    public Program approve(Long user) {
+    public void approve(Long user) {
         if(this.statusApproval != null && this.statusApproval == 1) {
-            setIs_approved(1);
-            setIs_rejected(0);
+            setIsApproved(1);
+            setIsRejected(0);
             setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public Program decline(Long user) {
+    public void decline(Long user) {
         if(this.statusApproval != null && this.statusApproval == 1) {
-            setIs_approved(0);
-            setIs_rejected(1);
+            setIsApproved(0);
+            setIsRejected(1);
             setStatusApproval(2);
 
             trace(user);
         }
-
-        return this;
     }
 
-    public Program trace(Long user) {
-        if(this.createddate == null) {
-            setCreatedby(user);
-            setCreateddate(new Date());
+    public void trace(Long user) {
+        if(this.createdDate == null) {
+            setCreatedBy(user);
+            setCreatedDate(new Date());
         } else {
-            setUpdatedby(user);
-            setUpdateddate(new Date());
+            setUpdatedBy(user);
+            setUpdatedDate(new Date());
         }
-        return this;
     }
 }
