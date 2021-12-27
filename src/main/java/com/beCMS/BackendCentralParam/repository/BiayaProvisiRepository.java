@@ -12,14 +12,19 @@ import org.springframework.data.jpa.repository.Query;
 @DynamicUpdate
 public interface BiayaProvisiRepository extends JpaRepository<BiayaProvisi, Integer> {
 
-    // @Query("SELECT new com.beCMS.BackendCentralParam.view.vwDataBiayaProvisi(a.id,a.startBerlaku,a.endBerlaku,a.loanType,a.productid,a.jeniskendaraanid,b.jenis_kendaraan_id,a.kondisikendaraanid,a.tipe_konsumen,a.jenis_pembiayaan,c.jenis_pembiayaan_id,a.tujuan_penggunaan,a.cluster,a.program,a.remarks,a.status,a.tahun_awal,a.tahun_akhir,a.updateddate,a.createddate,a.createdby,a.updatedby,a.is_login,a.statusApproved,a.namaSkema,d.deskripsi) from modelBiayaProvisi a LEFT JOIN modelJenisKendaraan b ON a.jeniskendaraanid = b.id LEFT JOIN modelJenisPembiayaan c ON a.jenis_pembiayaan = c.id LEFT JOIN modelLoanType d ON a.loanType = d.id_komp")
-    // List<vwDataBiayaProvisi> getListDataBiayaProvisi();
-
-
-    // @Query("SELECT new com.beCMS.BackendCentralParam.view.vwDataBiayaProvisi(a.id,a.startBerlaku,a.endBerlaku,a.loanType,a.productid,a.jeniskendaraanid,b.jenis_kendaraan_id,a.kondisikendaraanid,a.tipe_konsumen,a.jenis_pembiayaan,c.jenis_pembiayaan_id,a.tujuan_penggunaan,a.cluster,a.program,a.remarks,a.status,a.tahun_awal,a.tahun_akhir,a.updateddate,a.createddate,a.createdby,a.updatedby,a.is_login,a.statusApproved,a.namaSkema,d.deskripsi) from modelBiayaProvisi a LEFT JOIN modelJenisKendaraan b ON a.jeniskendaraanid = b.id LEFT JOIN modelJenisPembiayaan c ON a.jenis_pembiayaan = c.id LEFT JOIN modelLoanType d ON a.loanType = d.id_komp where a.statusApproved = 0 OR a.statusApproved IS NULL")
-    // List<vwDataBiayaProvisi> getListDataBucketApprovalBiayaProvisi();
-
-    // @Query("SELECT new com.beCMS.BackendCentralParam.view.vwSkemaBiayaProvisi(id,namaSkema) from modelBiayaProvisi")
-    // List<vwSkemaBiayaProvisi> getAllDatavwSkemaBiayaProvisi();
-
+    
+    @Query(
+        "SELECT new com.beCMS.BackendCentralParam.view.vwDataBiayaProvisi"
+        + "(a.id,a.namaSkema"
+        + ",a.loanType,CASE WHEN a.loanType = 0 THEN 'All' WHEN a.loanType = 1 THEN 'ADDM' ELSE 'ADDB' END"
+        + ",a.jenisKendaraan,CASE WHEN a.jenisKendaraan = 0 THEN 'All' ELSE jk.jenisKendaraan END "
+        + ",a.jenisPembiayaan,jp.jenisPembiayaan"
+        + ",a.tenor1,a.tenor2,a.tenor3,a.tenor4,a.tenor5,a.tenor6,a.tenor7,a.tenor8,a.tenor9,a.tenor10"
+        + ",a.tenor1Persen,a.tenor2Persen,a.tenor3Persen,a.tenor4Persen,a.tenor5Persen,a.tenor6Persen,a.tenor7Persen,a.tenor8Persen,a.tenor9Persen,a.tenor10Persen"
+        + ",a.startBerlaku,a.endBerlaku,a.statusApproval,a.remarks,a.isRejected,a.isApproved)"
+        + "FROM BiayaProvisi a "
+        + "left join JenisKendaraan jk on a.jenisKendaraan = jk.id " 
+        + "left join JenisPembiayaan jp on a.jenisPembiayaan = jp.id "
+        )
+    List<vwDataBiayaProvisi> getListDataBiayaProvisi();
 }

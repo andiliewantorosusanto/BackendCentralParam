@@ -51,7 +51,7 @@ public class MinimalDPRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil GET ALL DATA MinimalDP");
-                crunchifyMap.put("dataMinimalDP", rateMinimalDPRepository.findAll());
+                crunchifyMap.put("dataMinimalDP", rateMinimalDPRepository.getListDataMinimalDP());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 System.out.println("err"+e.toString());

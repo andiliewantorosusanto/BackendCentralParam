@@ -51,7 +51,7 @@ public class RateCPRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil GET ALL DATA RateCP");
-                crunchifyMap.put("dataRateCP", rateCPRepository.findAll());
+                crunchifyMap.put("dataRateCP", rateCPRepository.getListDataRateCP());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");

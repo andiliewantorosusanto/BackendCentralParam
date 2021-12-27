@@ -47,25 +47,25 @@ public class PerluasanAsuransi implements Serializable {
     private Integer endYear;
 
     @Column(name = "tenor1")
-    private Float tenor1;
+    private Integer tenor1;
     @Column(name = "tenor2")
-    private Float tenor2;
+    private Integer tenor2;
     @Column(name = "tenor3")
-    private Float tenor3;
+    private Integer tenor3;
     @Column(name = "tenor4")
-    private Float tenor4;
+    private Integer tenor4;
     @Column(name = "tenor5")
-    private Float tenor5;
+    private Integer tenor5;
     @Column(name = "tenor6")
-    private Float tenor6;
+    private Integer tenor6;
     @Column(name = "tenor7")
-    private Float tenor7;
+    private Integer tenor7;
     @Column(name = "tenor8")
-    private Float tenor8;
+    private Integer tenor8;
     @Column(name = "tenor9")
-    private Float tenor9;
+    private Integer tenor9;
     @Column(name = "tenor10")
-    private Float tenor10;
+    private Integer tenor10;
 
     @Column(name = "startberlaku")
     private Date startBerlaku;
@@ -91,6 +91,279 @@ public class PerluasanAsuransi implements Serializable {
 
 
     public PerluasanAsuransi() {
+    }
+
+    public PerluasanAsuransi(Integer id, String namaSkema, Integer wilayah, Integer jenisKendaraan, Integer tipeAsuransi, Integer jenisPerluasan, Integer startOtr, Integer endOtr, Integer startYear, Integer endYear, Integer tenor1, Integer tenor2, Integer tenor3, Integer tenor4, Integer tenor5, Integer tenor6, Integer tenor7, Integer tenor8, Integer tenor9, Integer tenor10, Date startBerlaku, Date endBerlaku, Date createdDate, Integer statusApproval, String remarks, Integer isRejected, Integer isApproved, Long createdBy, Long updatedBy, Date updatedDate) {
+        this.id = id;
+        this.namaSkema = namaSkema;
+        this.wilayah = wilayah;
+        this.jenisKendaraan = jenisKendaraan;
+        this.tipeAsuransi = tipeAsuransi;
+        this.jenisPerluasan = jenisPerluasan;
+        this.startOtr = startOtr;
+        this.endOtr = endOtr;
+        this.startYear = startYear;
+        this.endYear = endYear;
+        this.tenor1 = tenor1;
+        this.tenor2 = tenor2;
+        this.tenor3 = tenor3;
+        this.tenor4 = tenor4;
+        this.tenor5 = tenor5;
+        this.tenor6 = tenor6;
+        this.tenor7 = tenor7;
+        this.tenor8 = tenor8;
+        this.tenor9 = tenor9;
+        this.tenor10 = tenor10;
+        this.startBerlaku = startBerlaku;
+        this.endBerlaku = endBerlaku;
+        this.createdDate = createdDate;
+        this.statusApproval = statusApproval;
+        this.remarks = remarks;
+        this.isRejected = isRejected;
+        this.isApproved = isApproved;
+        this.createdBy = createdBy;
+        this.updatedBy = updatedBy;
+        this.updatedDate = updatedDate;
+    }
+
+    public Integer getId() {
+        return this.id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNamaSkema() {
+        return this.namaSkema;
+    }
+
+    public void setNamaSkema(String namaSkema) {
+        this.namaSkema = namaSkema;
+    }
+
+    public Integer getWilayah() {
+        return this.wilayah;
+    }
+
+    public void setWilayah(Integer wilayah) {
+        this.wilayah = wilayah;
+    }
+
+    public Integer getJenisKendaraan() {
+        return this.jenisKendaraan;
+    }
+
+    public void setJenisKendaraan(Integer jenisKendaraan) {
+        this.jenisKendaraan = jenisKendaraan;
+    }
+
+    public Integer getTipeAsuransi() {
+        return this.tipeAsuransi;
+    }
+
+    public void setTipeAsuransi(Integer tipeAsuransi) {
+        this.tipeAsuransi = tipeAsuransi;
+    }
+
+    public Integer getJenisPerluasan() {
+        return this.jenisPerluasan;
+    }
+
+    public void setJenisPerluasan(Integer jenisPerluasan) {
+        this.jenisPerluasan = jenisPerluasan;
+    }
+
+    public Integer getStartOtr() {
+        return this.startOtr;
+    }
+
+    public void setStartOtr(Integer startOtr) {
+        this.startOtr = startOtr;
+    }
+
+    public Integer getEndOtr() {
+        return this.endOtr;
+    }
+
+    public void setEndOtr(Integer endOtr) {
+        this.endOtr = endOtr;
+    }
+
+    public Integer getStartYear() {
+        return this.startYear;
+    }
+
+    public void setStartYear(Integer startYear) {
+        this.startYear = startYear;
+    }
+
+    public Integer getEndYear() {
+        return this.endYear;
+    }
+
+    public void setEndYear(Integer endYear) {
+        this.endYear = endYear;
+    }
+
+    public Integer getTenor1() {
+        return this.tenor1;
+    }
+
+    public void setTenor1(Integer tenor1) {
+        this.tenor1 = tenor1;
+    }
+
+    public Integer getTenor2() {
+        return this.tenor2;
+    }
+
+    public void setTenor2(Integer tenor2) {
+        this.tenor2 = tenor2;
+    }
+
+    public Integer getTenor3() {
+        return this.tenor3;
+    }
+
+    public void setTenor3(Integer tenor3) {
+        this.tenor3 = tenor3;
+    }
+
+    public Integer getTenor4() {
+        return this.tenor4;
+    }
+
+    public void setTenor4(Integer tenor4) {
+        this.tenor4 = tenor4;
+    }
+
+    public Integer getTenor5() {
+        return this.tenor5;
+    }
+
+    public void setTenor5(Integer tenor5) {
+        this.tenor5 = tenor5;
+    }
+
+    public Integer getTenor6() {
+        return this.tenor6;
+    }
+
+    public void setTenor6(Integer tenor6) {
+        this.tenor6 = tenor6;
+    }
+
+    public Integer getTenor7() {
+        return this.tenor7;
+    }
+
+    public void setTenor7(Integer tenor7) {
+        this.tenor7 = tenor7;
+    }
+
+    public Integer getTenor8() {
+        return this.tenor8;
+    }
+
+    public void setTenor8(Integer tenor8) {
+        this.tenor8 = tenor8;
+    }
+
+    public Integer getTenor9() {
+        return this.tenor9;
+    }
+
+    public void setTenor9(Integer tenor9) {
+        this.tenor9 = tenor9;
+    }
+
+    public Integer getTenor10() {
+        return this.tenor10;
+    }
+
+    public void setTenor10(Integer tenor10) {
+        this.tenor10 = tenor10;
+    }
+
+    public Date getStartBerlaku() {
+        return this.startBerlaku;
+    }
+
+    public void setStartBerlaku(Date startBerlaku) {
+        this.startBerlaku = startBerlaku;
+    }
+
+    public Date getEndBerlaku() {
+        return this.endBerlaku;
+    }
+
+    public void setEndBerlaku(Date endBerlaku) {
+        this.endBerlaku = endBerlaku;
+    }
+
+    public Date getCreatedDate() {
+        return this.createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Integer getStatusApproval() {
+        return this.statusApproval;
+    }
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
+    }
+
+    public String getRemarks() {
+        return this.remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+    public Integer getIsRejected() {
+        return this.isRejected;
+    }
+
+    public void setIsRejected(Integer isRejected) {
+        this.isRejected = isRejected;
+    }
+
+    public Integer getIsApproved() {
+        return this.isApproved;
+    }
+
+    public void setIsApproved(Integer isApproved) {
+        this.isApproved = isApproved;
+    }
+
+    public Long getCreatedBy() {
+        return this.createdBy;
+    }
+
+    public void setCreatedBy(Long createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Long getUpdatedBy() {
+        return this.updatedBy;
+    }
+
+    public void setUpdatedBy(Long updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+    public Date getUpdatedDate() {
+        return this.updatedDate;
+    }
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     public PerluasanAsuransi id(Integer id) {
@@ -143,52 +416,52 @@ public class PerluasanAsuransi implements Serializable {
         return this;
     }
 
-    public PerluasanAsuransi tenor1(Float tenor1) {
+    public PerluasanAsuransi tenor1(Integer tenor1) {
         setTenor1(tenor1);
         return this;
     }
 
-    public PerluasanAsuransi tenor2(Float tenor2) {
+    public PerluasanAsuransi tenor2(Integer tenor2) {
         setTenor2(tenor2);
         return this;
     }
 
-    public PerluasanAsuransi tenor3(Float tenor3) {
+    public PerluasanAsuransi tenor3(Integer tenor3) {
         setTenor3(tenor3);
         return this;
     }
 
-    public PerluasanAsuransi tenor4(Float tenor4) {
+    public PerluasanAsuransi tenor4(Integer tenor4) {
         setTenor4(tenor4);
         return this;
     }
 
-    public PerluasanAsuransi tenor5(Float tenor5) {
+    public PerluasanAsuransi tenor5(Integer tenor5) {
         setTenor5(tenor5);
         return this;
     }
 
-    public PerluasanAsuransi tenor6(Float tenor6) {
+    public PerluasanAsuransi tenor6(Integer tenor6) {
         setTenor6(tenor6);
         return this;
     }
 
-    public PerluasanAsuransi tenor7(Float tenor7) {
+    public PerluasanAsuransi tenor7(Integer tenor7) {
         setTenor7(tenor7);
         return this;
     }
 
-    public PerluasanAsuransi tenor8(Float tenor8) {
+    public PerluasanAsuransi tenor8(Integer tenor8) {
         setTenor8(tenor8);
         return this;
     }
 
-    public PerluasanAsuransi tenor9(Float tenor9) {
+    public PerluasanAsuransi tenor9(Integer tenor9) {
         setTenor9(tenor9);
         return this;
     }
 
-    public PerluasanAsuransi tenor10(Float tenor10) {
+    public PerluasanAsuransi tenor10(Integer tenor10) {
         setTenor10(tenor10);
         return this;
     }
@@ -278,408 +551,7 @@ public class PerluasanAsuransi implements Serializable {
             ", updatedDate='" + getUpdatedDate() + "'" +
             "}";
     }
-
-
-    public PerluasanAsuransi(Integer id, String namaSkema, Integer wilayah, Integer jenisKendaraan,
-            Integer tipeAsuransi, Integer jenisPerluasan, Integer startOtr, Integer endOtr, Integer startYear,
-            Integer endYear, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6,
-            Float tenor7, Float tenor8, Float tenor9, Float tenor10, Date startBerlaku, Date endBerlaku,
-            Date createdDate, Integer statusApproval, String remarks, Integer isRejected, Integer isApproved,
-            Long createdBy, Long updatedBy, Date updatedDate) {
-        this.id = id;
-        this.namaSkema = namaSkema;
-        this.wilayah = wilayah;
-        this.jenisKendaraan = jenisKendaraan;
-        this.tipeAsuransi = tipeAsuransi;
-        this.jenisPerluasan = jenisPerluasan;
-        this.startOtr = startOtr;
-        this.endOtr = endOtr;
-        this.startYear = startYear;
-        this.endYear = endYear;
-        this.tenor1 = tenor1;
-        this.tenor2 = tenor2;
-        this.tenor3 = tenor3;
-        this.tenor4 = tenor4;
-        this.tenor5 = tenor5;
-        this.tenor6 = tenor6;
-        this.tenor7 = tenor7;
-        this.tenor8 = tenor8;
-        this.tenor9 = tenor9;
-        this.tenor10 = tenor10;
-        this.startBerlaku = startBerlaku;
-        this.endBerlaku = endBerlaku;
-        this.createdDate = createdDate;
-        this.statusApproval = statusApproval;
-        this.remarks = remarks;
-        this.isRejected = isRejected;
-        this.isApproved = isApproved;
-        this.createdBy = createdBy;
-        this.updatedBy = updatedBy;
-        this.updatedDate = updatedDate;
-    }
-
     
-
-    public Integer getId() {
-        return id;
-    }
-
-
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-
-
-    public String getNamaSkema() {
-        return namaSkema;
-    }
-
-
-
-    public void setNamaSkema(String namaSkema) {
-        this.namaSkema = namaSkema;
-    }
-
-
-
-    public Integer getWilayah() {
-        return wilayah;
-    }
-
-
-
-    public void setWilayah(Integer wilayah) {
-        this.wilayah = wilayah;
-    }
-
-
-
-    public Integer getJenisKendaraan() {
-        return jenisKendaraan;
-    }
-
-
-
-    public void setJenisKendaraan(Integer jenisKendaraan) {
-        this.jenisKendaraan = jenisKendaraan;
-    }
-
-
-
-    public Integer getTipeAsuransi() {
-        return tipeAsuransi;
-    }
-
-
-
-    public void setTipeAsuransi(Integer tipeAsuransi) {
-        this.tipeAsuransi = tipeAsuransi;
-    }
-
-
-
-    public Integer getJenisPerluasan() {
-        return jenisPerluasan;
-    }
-
-
-
-    public void setJenisPerluasan(Integer jenisPerluasan) {
-        this.jenisPerluasan = jenisPerluasan;
-    }
-
-
-
-    public Integer getStartOtr() {
-        return startOtr;
-    }
-
-
-
-    public void setStartOtr(Integer startOtr) {
-        this.startOtr = startOtr;
-    }
-
-
-
-    public Integer getEndOtr() {
-        return endOtr;
-    }
-
-
-
-    public void setEndOtr(Integer endOtr) {
-        this.endOtr = endOtr;
-    }
-
-
-
-    public Integer getStartYear() {
-        return startYear;
-    }
-
-
-
-    public void setStartYear(Integer startYear) {
-        this.startYear = startYear;
-    }
-
-
-
-    public Integer getEndYear() {
-        return endYear;
-    }
-
-
-
-    public void setEndYear(Integer endYear) {
-        this.endYear = endYear;
-    }
-
-
-
-    public Float getTenor1() {
-        return tenor1;
-    }
-
-
-
-    public void setTenor1(Float tenor1) {
-        this.tenor1 = tenor1;
-    }
-
-
-
-    public Float getTenor2() {
-        return tenor2;
-    }
-
-
-
-    public void setTenor2(Float tenor2) {
-        this.tenor2 = tenor2;
-    }
-
-
-
-    public Float getTenor3() {
-        return tenor3;
-    }
-
-
-
-    public void setTenor3(Float tenor3) {
-        this.tenor3 = tenor3;
-    }
-
-
-
-    public Float getTenor4() {
-        return tenor4;
-    }
-
-
-
-    public void setTenor4(Float tenor4) {
-        this.tenor4 = tenor4;
-    }
-
-
-
-    public Float getTenor5() {
-        return tenor5;
-    }
-
-
-
-    public void setTenor5(Float tenor5) {
-        this.tenor5 = tenor5;
-    }
-
-
-
-    public Float getTenor6() {
-        return tenor6;
-    }
-
-
-
-    public void setTenor6(Float tenor6) {
-        this.tenor6 = tenor6;
-    }
-
-
-
-    public Float getTenor7() {
-        return tenor7;
-    }
-
-
-
-    public void setTenor7(Float tenor7) {
-        this.tenor7 = tenor7;
-    }
-
-
-
-    public Float getTenor8() {
-        return tenor8;
-    }
-
-
-
-    public void setTenor8(Float tenor8) {
-        this.tenor8 = tenor8;
-    }
-
-
-
-    public Float getTenor9() {
-        return tenor9;
-    }
-
-
-
-    public void setTenor9(Float tenor9) {
-        this.tenor9 = tenor9;
-    }
-
-
-
-    public Float getTenor10() {
-        return tenor10;
-    }
-
-
-
-    public void setTenor10(Float tenor10) {
-        this.tenor10 = tenor10;
-    }
-
-
-
-    public Date getStartBerlaku() {
-        return startBerlaku;
-    }
-
-
-
-    public void setStartBerlaku(Date startBerlaku) {
-        this.startBerlaku = startBerlaku;
-    }
-
-
-
-    public Date getEndBerlaku() {
-        return endBerlaku;
-    }
-
-
-
-    public void setEndBerlaku(Date endBerlaku) {
-        this.endBerlaku = endBerlaku;
-    }
-
-
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-
-
-    public Integer getStatusApproval() {
-        return statusApproval;
-    }
-
-
-
-    public void setStatusApproval(Integer statusApproval) {
-        this.statusApproval = statusApproval;
-    }
-
-
-
-    public String getRemarks() {
-        return remarks;
-    }
-
-
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
-
-
-    public Integer getIsRejected() {
-        return isRejected;
-    }
-
-
-
-    public void setIsRejected(Integer isRejected) {
-        this.isRejected = isRejected;
-    }
-
-
-
-    public Integer getIsApproved() {
-        return isApproved;
-    }
-
-
-
-    public void setIsApproved(Integer isApproved) {
-        this.isApproved = isApproved;
-    }
-
-
-
-    public Long getCreatedBy() {
-        return createdBy;
-    }
-
-
-
-    public void setCreatedBy(Long createdBy) {
-        this.createdBy = createdBy;
-    }
-
-
-
-    public Long getUpdatedBy() {
-        return updatedBy;
-    }
-
-
-
-    public void setUpdatedBy(Long updatedBy) {
-        this.updatedBy = updatedBy;
-    }
-
-
-
-    public Date getUpdatedDate() {
-        return updatedDate;
-    }
-
-
-
-    public void setUpdatedDate(Date updatedDate) {
-        this.updatedDate = updatedDate;
-    }
-
-
-
     public void submit(Long user) {
         if(this.statusApproval == null || this.statusApproval == 0){
             setIsApproved(0);

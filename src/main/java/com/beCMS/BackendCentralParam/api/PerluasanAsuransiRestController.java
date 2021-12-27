@@ -51,9 +51,8 @@ public class PerluasanAsuransiRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil GET ALL DATA PerluasanAsuransi");
-                crunchifyMap.put("dataPerluasanAsuransi", ratePerluasanAsuransiRepository.findAll());
+                crunchifyMap.put("dataPerluasanAsuransi", ratePerluasanAsuransiRepository.getListDataPerluasanAsuransi());
                 crunchifyMap.put("code", "1");
-                System.out.println(ratePerluasanAsuransiRepository.findAll().get(1).toString());
             } catch (Exception e) {
                 logger.error("ERROR");
                 response.setStatus(400);
@@ -80,7 +79,7 @@ public class PerluasanAsuransiRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil PerluasanAsuransi");
-                crunchifyMap.put("ratePerluasanAsuransi", ratePerluasanAsuransiRepository.findById(id));
+                crunchifyMap.put("perluasanAsuransi", ratePerluasanAsuransiRepository.findById(id));
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");
@@ -102,7 +101,6 @@ public class PerluasanAsuransiRestController {
     public HashMap<String, String> insertPerluasanAsuransi(@RequestBody PerluasanAsuransi PerluasanAsuransi,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        System.out.println("hey : " +PerluasanAsuransi.toString());
         PerluasanAsuransi.trace(user.getId());
         ratePerluasanAsuransiRepository.save(PerluasanAsuransi);
 

@@ -51,7 +51,7 @@ public class BiayaProvisiRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil GET ALL DATA BiayaProvisi");
-                crunchifyMap.put("dataBiayaProvisi", biayaProvisiRepository.findAll());
+                crunchifyMap.put("dataBiayaProvisi", biayaProvisiRepository.getListDataBiayaProvisi());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");

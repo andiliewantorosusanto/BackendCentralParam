@@ -61,7 +61,7 @@ public class Program implements Serializable {
     private Date updatedDate;
     
     @Column(name = "branchid")
-    private String BranchId;
+    private String branch;
 
     @Column(name = "id_biayaadmin")
     private Integer biayaAdmin;
@@ -76,10 +76,10 @@ public class Program implements Serializable {
     private Integer rateCp;
 
     @Column(name = "id_minimaldp")
-    private Integer minmalDp;
+    private Integer minimalDp;
 
     @Column(name = "id_komponenph")
-    private Integer komponenph;
+    private Integer komponenPh;
 
     @Column(name = "id_rateperluasan")
     private Integer ratePerluasan;
@@ -97,7 +97,7 @@ public class Program implements Serializable {
     public Program() {
     }
 
-    public Program(Integer id, String program, Integer produk, String deskripsi, Date startBerlaku, Date endBerlaku, Integer statusApproval, Integer isApproved, Integer isRejected, String remarks, Long createdBy, Date createdDate, Long updatedBy, Date updatedDate, String BranchId, Integer biayaAdmin, Integer rateAsuransi, Integer rateBunga, Integer rateCp, Integer minmalDp, Integer komponenph, Integer ratePerluasan, Integer biayaProvisi, Integer biayaFidusia, Integer usiaKendaraanLunas) {
+    public Program(Integer id, String program, Integer produk, String deskripsi, Date startBerlaku, Date endBerlaku, Integer statusApproval, Integer isApproved, Integer isRejected, String remarks, Long createdBy, Date createdDate, Long updatedBy, Date updatedDate, String branch, Integer biayaAdmin, Integer rateAsuransi, Integer rateBunga, Integer rateCp, Integer minimalDp, Integer komponenPh, Integer ratePerluasan, Integer biayaProvisi, Integer biayaFidusia, Integer usiaKendaraanLunas) {
         this.id = id;
         this.program = program;
         this.produk = produk;
@@ -112,13 +112,13 @@ public class Program implements Serializable {
         this.createdDate = createdDate;
         this.updatedBy = updatedBy;
         this.updatedDate = updatedDate;
-        this.BranchId = BranchId;
+        this.branch = branch;
         this.biayaAdmin = biayaAdmin;
         this.rateAsuransi = rateAsuransi;
         this.rateBunga = rateBunga;
         this.rateCp = rateCp;
-        this.minmalDp = minmalDp;
-        this.komponenph = komponenph;
+        this.minimalDp = minimalDp;
+        this.komponenPh = komponenPh;
         this.ratePerluasan = ratePerluasan;
         this.biayaProvisi = biayaProvisi;
         this.biayaFidusia = biayaFidusia;
@@ -237,12 +237,12 @@ public class Program implements Serializable {
         this.updatedDate = updatedDate;
     }
 
-    public String getBranchId() {
-        return this.BranchId;
+    public String getBranch() {
+        return this.branch;
     }
 
-    public void setBranchId(String BranchId) {
-        this.BranchId = BranchId;
+    public void setBranch(String branch) {
+        this.branch = branch;
     }
 
     public Integer getBiayaAdmin() {
@@ -277,20 +277,20 @@ public class Program implements Serializable {
         this.rateCp = rateCp;
     }
 
-    public Integer getMinmalDp() {
-        return this.minmalDp;
+    public Integer getMinimalDp() {
+        return this.minimalDp;
     }
 
-    public void setMinmalDp(Integer minmalDp) {
-        this.minmalDp = minmalDp;
+    public void setMinimalDp(Integer minimalDp) {
+        this.minimalDp = minimalDp;
     }
 
-    public Integer getKomponenph() {
-        return this.komponenph;
+    public Integer getKomponenPh() {
+        return this.komponenPh;
     }
 
-    public void setKomponenph(Integer komponenph) {
-        this.komponenph = komponenph;
+    public void setKomponenPh(Integer komponenPh) {
+        this.komponenPh = komponenPh;
     }
 
     public Integer getRatePerluasan() {
@@ -395,8 +395,8 @@ public class Program implements Serializable {
         return this;
     }
 
-    public Program BranchId(String BranchId) {
-        setBranchId(BranchId);
+    public Program branch(String branch) {
+        setBranch(branch);
         return this;
     }
 
@@ -420,13 +420,13 @@ public class Program implements Serializable {
         return this;
     }
 
-    public Program minmalDp(Integer minmalDp) {
-        setMinmalDp(minmalDp);
+    public Program minimalDp(Integer minimalDp) {
+        setMinimalDp(minimalDp);
         return this;
     }
 
-    public Program komponenph(Integer komponenph) {
-        setKomponenph(komponenph);
+    public Program komponenPh(Integer komponenPh) {
+        setKomponenPh(komponenPh);
         return this;
     }
 
@@ -449,7 +449,7 @@ public class Program implements Serializable {
         setUsiaKendaraanLunas(usiaKendaraanLunas);
         return this;
     }
-
+    
     @Override
     public String toString() {
         return "{" +
@@ -467,13 +467,13 @@ public class Program implements Serializable {
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedBy='" + getUpdatedBy() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +
-            ", BranchId='" + getBranchId() + "'" +
+            ", branch='" + getBranch() + "'" +
             ", biayaAdmin='" + getBiayaAdmin() + "'" +
             ", rateAsuransi='" + getRateAsuransi() + "'" +
             ", rateBunga='" + getRateBunga() + "'" +
             ", rateCp='" + getRateCp() + "'" +
-            ", minmalDp='" + getMinmalDp() + "'" +
-            ", komponenph='" + getKomponenph() + "'" +
+            ", minimalDp='" + getMinimalDp() + "'" +
+            ", komponenPh='" + getKomponenPh() + "'" +
             ", ratePerluasan='" + getRatePerluasan() + "'" +
             ", biayaProvisi='" + getBiayaProvisi() + "'" +
             ", biayaFidusia='" + getBiayaFidusia() + "'" +

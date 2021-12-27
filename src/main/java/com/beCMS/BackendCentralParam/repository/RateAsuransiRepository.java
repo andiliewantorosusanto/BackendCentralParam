@@ -1,7 +1,6 @@
 package com.beCMS.BackendCentralParam.repository;
 
 import java.util.List;
-import org.springframework.data.domain.Pageable;
 import com.beCMS.BackendCentralParam.model.RateAsuransi;
 import com.beCMS.BackendCentralParam.view.vwDataRateAsuransi;
 
@@ -12,13 +11,22 @@ import org.springframework.data.jpa.repository.Query;
 @DynamicUpdate
 public interface RateAsuransiRepository extends JpaRepository<RateAsuransi, Integer> {
 
-    // @Query("SELECT new com.beCMS.BackendCentralParam.view.vwDataRateAsuransi( a.namaSkema, a.wilayah,g.namaWilayah,a.startOTR,a.endOTR,a.startyear,a.endyear,a.tipeAsuransi,f.namaAsuransi,a.startBerlaku,a.endBerlaku,a.loan_type,a.produk,a.jenis_kendaraan,b.jenis_kendaraan_id,a.jenis_pembiayaan,d.jenis_pembiayaan_id,a.statusApproved,a.remarks,a.program) from modelRateAsuransi a left join modelJenisKendaraan b on a.jenis_kendaraan = b.id left join modelJenisPembiayaan d on a.jenis_pembiayaan = d.id left join modelLoanType e on a.loan_type = e.id_komp left join modelTipeAsuransi f on a.tipeAsuransi = f.id left join modelWilayah g on a.wilayah = g.id")
-    // List<vwDataRateAsuransi> getListDataRateAsuransi();
-
-    // @Query("SELECT new com.beCMS.BackendCentralParam.view.vwDataRateAsuransi(a.namaSkema, a.wilayah,g.namaWilayah,a.startOTR,a.endOTR,a.startyear,a.endyear,a.tipeAsuransi,f.namaAsuransi,a.startBerlaku,a.endBerlaku,a.loan_type,a.produk,a.jenis_kendaraan,b.jenis_kendaraan_id,a.jenis_pembiayaan,d.jenis_pembiayaan_id,a.statusApproved,a.remarks,a.program) from modelRateAsuransi a left join modelJenisKendaraan b on a.jenis_kendaraan = b.id left join modelJenisPembiayaan d on a.jenis_pembiayaan = d.id left join modelLoanType e on a.loan_type = e.id_komp left join modelTipeAsuransi f on a.tipeAsuransi = f.id left join modelWilayah g on a.wilayah = g.id where a.statusApproved = 0 OR a.statusApproved IS NULL")
-    // List<vwDataRateAsuransi> getListBucketApprovalRateAsuransi(Pageable pageable);
-
-    // @Query("SELECT new com.beCMS.BackendCentralParam.view.vwSkemaRateAsuransi(id,namaSkema) from modelRateAsuransi")
-    // List<vwSkemaRateAsuransi> getAllDataSkemaRateAsuransi();
+    @Query(
+        "SELECT new com.beCMS.BackendCentralParam.view.vwDataRateAsuransi"
+        + "(a.id,a.namaSkema"
+        + ",a.wilayah,CASE WHEN a.wilayah = 0 THEN 'All' ELSE w.namaWilayah END"
+        + ",a.jenisPembiayaan,jp.jenisPembiayaan"
+        + ",a.jenisKendaraan,CASE WHEN a.jenisKendaraan = 0 THEN 'All' ELSE jk.jenisKendaraan END "
+        + ",a.tipeAsuransi,CASE WHEN a.tipeAsuransi = 0 THEN 'All' ELSE ta.namaAsuransi END"
+        + ",a.startOtr,a.endOtr,a.startYear,a.endYear"
+        + ",a.tenor1,a.tenor2,a.tenor3,a.tenor4,a.tenor5,a.tenor6,a.tenor7,a.tenor8,a.tenor9,a.tenor10"
+        + ",a.startBerlaku,a.endBerlaku,a.statusApproval,a.remarks,a.isRejected,a.isApproved)"
+        + "FROM RateAsuransi a "
+        + "LEFT JOIN Wilayah w on a.wilayah = w.id " 
+        + "LEFT JOIN JenisKendaraan jk on a.jenisKendaraan = jk.id " 
+        + "LEFT JOIN JenisPembiayaan jp on a.jenisPembiayaan = jp.id " 
+        + "LEFT JOIN TipeAsuransi ta ON a.tipeAsuransi = ta.id "
+        )
+    List<vwDataRateAsuransi> getListDataRateAsuransi();
 
 }

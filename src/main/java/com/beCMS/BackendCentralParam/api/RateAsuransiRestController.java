@@ -51,7 +51,7 @@ public class RateAsuransiRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil GET ALL DATA RateAsuransi");
-                crunchifyMap.put("dataRateAsuransi", rateAsuransiRepository.findAll());
+                crunchifyMap.put("dataRateAsuransi", rateAsuransiRepository.getListDataRateAsuransi());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");

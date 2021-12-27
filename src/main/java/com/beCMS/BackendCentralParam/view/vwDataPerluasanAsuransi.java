@@ -8,17 +8,17 @@ public class vwDataPerluasanAsuransi {
 
     private String namaSkema;
 
-    private String wilayaName;
-    private Integer wilayah;
-
-    private String jenisKendaraanName;
     private Integer jenisKendaraan;
+    private String jenisKendaraanName;
 
-    private String tipeAsuransiName;
+    private Integer wilayah;
+    private String wilayahName;
+
     private Integer tipeAsuransi;
+    private String tipeAsuransiName;
 
-    private String jenisPerluasanName;
     private Integer jenisPerluasan;
+    private String jenisPerluasanName;
 
     private Integer startOtr;
     private Integer endOtr;
@@ -26,46 +26,40 @@ public class vwDataPerluasanAsuransi {
     private Integer startYear;
     private Integer endYear;
 
-    private Float tenor1;
-    private Float tenor2;
-    private Float tenor3;
-    private Float tenor4;
-    private Float tenor5;
-    private Float tenor6;
-    private Float tenor7;
-    private Float tenor8;
-    private Float tenor9;
-    private Float tenor10;
+    private Integer tenor1;
+    private Integer tenor2;
+    private Integer tenor3;
+    private Integer tenor4;
+    private Integer tenor5;
+    private Integer tenor6;
+    private Integer tenor7;
+    private Integer tenor8;
+    private Integer tenor9;
+    private Integer tenor10;
 
     private Date startBerlaku;
     private Date endBerlaku;
 
-    private Date createdDate;
     private Integer statusApproval;
     private String remarks;
     private Integer isRejected;
     private Integer isApproved;
-    private Long createdBy;
-    private Long updatedBy;
-    private Date updatedDate;
     
-    public vwDataPerluasanAsuransi(Integer id, String namaSkema, String wilayaName, Integer wilayah,
-            String jenisKendaraanName, Integer jenisKendaraan, String tipeAsuransiName, Integer tipeAsuransi,
-            String jenisPerluasanName, Integer jenisPerluasan, Integer startOtr, Integer endOtr, Integer startYear,
-            Integer endYear, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6,
-            Float tenor7, Float tenor8, Float tenor9, Float tenor10, Date startBerlaku, Date endBerlaku,
-            Date createdDate, Integer statusApproval, String remarks, Integer isRejected, Integer isApproved,
-            Long createdBy, Long updatedBy, Date updatedDate) {
+
+    public vwDataPerluasanAsuransi() {
+    }
+
+    public vwDataPerluasanAsuransi(Integer id, String namaSkema, Integer jenisKendaraan, String jenisKendaraanName, Integer wilayah, String wilayahName, Integer tipeAsuransi, String tipeAsuransiName, Integer jenisPerluasan, String jenisPerluasanName, Integer startOtr, Integer endOtr, Integer startYear, Integer endYear, Integer tenor1, Integer tenor2, Integer tenor3, Integer tenor4, Integer tenor5, Integer tenor6, Integer tenor7, Integer tenor8, Integer tenor9, Integer tenor10, Date startBerlaku, Date endBerlaku, Integer statusApproval, String remarks, Integer isRejected, Integer isApproved) {
         this.id = id;
         this.namaSkema = namaSkema;
-        this.wilayaName = wilayaName;
-        this.wilayah = wilayah;
-        this.jenisKendaraanName = jenisKendaraanName;
         this.jenisKendaraan = jenisKendaraan;
-        this.tipeAsuransiName = tipeAsuransiName;
+        this.jenisKendaraanName = jenisKendaraanName;
+        this.wilayah = wilayah;
+        this.wilayahName = wilayahName;
         this.tipeAsuransi = tipeAsuransi;
-        this.jenisPerluasanName = jenisPerluasanName;
+        this.tipeAsuransiName = tipeAsuransiName;
         this.jenisPerluasan = jenisPerluasan;
+        this.jenisPerluasanName = jenisPerluasanName;
         this.startOtr = startOtr;
         this.endOtr = endOtr;
         this.startYear = startYear;
@@ -82,18 +76,14 @@ public class vwDataPerluasanAsuransi {
         this.tenor10 = tenor10;
         this.startBerlaku = startBerlaku;
         this.endBerlaku = endBerlaku;
-        this.createdDate = createdDate;
         this.statusApproval = statusApproval;
         this.remarks = remarks;
         this.isRejected = isRejected;
         this.isApproved = isApproved;
-        this.createdBy = createdBy;
-        this.updatedBy = updatedBy;
-        this.updatedDate = updatedDate;
     }
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Integer id) {
@@ -101,79 +91,79 @@ public class vwDataPerluasanAsuransi {
     }
 
     public String getNamaSkema() {
-        return namaSkema;
+        return this.namaSkema;
     }
 
     public void setNamaSkema(String namaSkema) {
         this.namaSkema = namaSkema;
     }
 
-    public String getWilayaName() {
-        return wilayaName;
-    }
-
-    public void setWilayaName(String wilayaName) {
-        this.wilayaName = wilayaName;
-    }
-
-    public Integer getWilayah() {
-        return wilayah;
-    }
-
-    public void setWilayah(Integer wilayah) {
-        this.wilayah = wilayah;
-    }
-
-    public String getJenisKendaraanName() {
-        return jenisKendaraanName;
-    }
-
-    public void setJenisKendaraanName(String jenisKendaraanName) {
-        this.jenisKendaraanName = jenisKendaraanName;
-    }
-
     public Integer getJenisKendaraan() {
-        return jenisKendaraan;
+        return this.jenisKendaraan;
     }
 
     public void setJenisKendaraan(Integer jenisKendaraan) {
         this.jenisKendaraan = jenisKendaraan;
     }
 
-    public String getTipeAsuransiName() {
-        return tipeAsuransiName;
+    public String getJenisKendaraanName() {
+        return this.jenisKendaraanName;
     }
 
-    public void setTipeAsuransiName(String tipeAsuransiName) {
-        this.tipeAsuransiName = tipeAsuransiName;
+    public void setJenisKendaraanName(String jenisKendaraanName) {
+        this.jenisKendaraanName = jenisKendaraanName;
+    }
+
+    public Integer getWilayah() {
+        return this.wilayah;
+    }
+
+    public void setWilayah(Integer wilayah) {
+        this.wilayah = wilayah;
+    }
+
+    public String getWilayahName() {
+        return this.wilayahName;
+    }
+
+    public void setWilayahName(String wilayahName) {
+        this.wilayahName = wilayahName;
     }
 
     public Integer getTipeAsuransi() {
-        return tipeAsuransi;
+        return this.tipeAsuransi;
     }
 
     public void setTipeAsuransi(Integer tipeAsuransi) {
         this.tipeAsuransi = tipeAsuransi;
     }
 
-    public String getJenisPerluasanName() {
-        return jenisPerluasanName;
+    public String getTipeAsuransiName() {
+        return this.tipeAsuransiName;
     }
 
-    public void setJenisPerluasanName(String jenisPerluasanName) {
-        this.jenisPerluasanName = jenisPerluasanName;
+    public void setTipeAsuransiName(String tipeAsuransiName) {
+        this.tipeAsuransiName = tipeAsuransiName;
     }
 
     public Integer getJenisPerluasan() {
-        return jenisPerluasan;
+        return this.jenisPerluasan;
     }
 
     public void setJenisPerluasan(Integer jenisPerluasan) {
         this.jenisPerluasan = jenisPerluasan;
     }
 
+    public String getJenisPerluasanName() {
+        return this.jenisPerluasanName;
+    }
+
+    public void setJenisPerluasanName(String jenisPerluasanName) {
+        this.jenisPerluasanName = jenisPerluasanName;
+    }
+
     public Integer getStartOtr() {
-        return startOtr;
+        return this.startOtr;
     }
 
     public void setStartOtr(Integer startOtr) {
@@ -181,7 +171,7 @@ public class vwDataPerluasanAsuransi {
     }
 
     public Integer getEndOtr() {
-        return endOtr;
+        return this.endOtr;
     }
 
     public void setEndOtr(Integer endOtr) {
@@ -189,7 +179,7 @@ public class vwDataPerluasanAsuransi {
     }
 
     public Integer getStartYear() {
-        return startYear;
+        return this.startYear;
     }
 
     public void setStartYear(Integer startYear) {
@@ -197,95 +187,95 @@ public class vwDataPerluasanAsuransi {
     }
 
     public Integer getEndYear() {
-        return endYear;
+        return this.endYear;
     }
 
     public void setEndYear(Integer endYear) {
         this.endYear = endYear;
     }
 
-    public Float getTenor1() {
-        return tenor1;
+    public Integer getTenor1() {
+        return this.tenor1;
     }
 
-    public void setTenor1(Float tenor1) {
+    public void setTenor1(Integer tenor1) {
         this.tenor1 = tenor1;
     }
 
-    public Float getTenor2() {
-        return tenor2;
+    public Integer getTenor2() {
+        return this.tenor2;
     }
 
-    public void setTenor2(Float tenor2) {
+    public void setTenor2(Integer tenor2) {
         this.tenor2 = tenor2;
     }
 
-    public Float getTenor3() {
-        return tenor3;
+    public Integer getTenor3() {
+        return this.tenor3;
     }
 
-    public void setTenor3(Float tenor3) {
+    public void setTenor3(Integer tenor3) {
         this.tenor3 = tenor3;
     }
 
-    public Float getTenor4() {
-        return tenor4;
+    public Integer getTenor4() {
+        return this.tenor4;
     }
 
-    public void setTenor4(Float tenor4) {
+    public void setTenor4(Integer tenor4) {
         this.tenor4 = tenor4;
     }
 
-    public Float getTenor5() {
-        return tenor5;
+    public Integer getTenor5() {
+        return this.tenor5;
     }
 
-    public void setTenor5(Float tenor5) {
+    public void setTenor5(Integer tenor5) {
         this.tenor5 = tenor5;
     }
 
-    public Float getTenor6() {
-        return tenor6;
+    public Integer getTenor6() {
+        return this.tenor6;
     }
 
-    public void setTenor6(Float tenor6) {
+    public void setTenor6(Integer tenor6) {
         this.tenor6 = tenor6;
     }
 
-    public Float getTenor7() {
-        return tenor7;
+    public Integer getTenor7() {
+        return this.tenor7;
     }
 
-    public void setTenor7(Float tenor7) {
+    public void setTenor7(Integer tenor7) {
         this.tenor7 = tenor7;
     }
 
-    public Float getTenor8() {
-        return tenor8;
+    public Integer getTenor8() {
+        return this.tenor8;
     }
 
-    public void setTenor8(Float tenor8) {
+    public void setTenor8(Integer tenor8) {
         this.tenor8 = tenor8;
     }
 
-    public Float getTenor9() {
-        return tenor9;
+    public Integer getTenor9() {
+        return this.tenor9;
     }
 
-    public void setTenor9(Float tenor9) {
+    public void setTenor9(Integer tenor9) {
         this.tenor9 = tenor9;
     }
 
-    public Float getTenor10() {
-        return tenor10;
+    public Integer getTenor10() {
+        return this.tenor10;
     }
 
-    public void setTenor10(Float tenor10) {
+    public void setTenor10(Integer tenor10) {
         this.tenor10 = tenor10;
     }
 
     public Date getStartBerlaku() {
-        return startBerlaku;
+        return this.startBerlaku;
     }
 
     public void setStartBerlaku(Date startBerlaku) {
@@ -293,23 +283,15 @@ public class vwDataPerluasanAsuransi {
     }
 
     public Date getEndBerlaku() {
-        return endBerlaku;
+        return this.endBerlaku;
     }
 
     public void setEndBerlaku(Date endBerlaku) {
         this.endBerlaku = endBerlaku;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
     public Integer getStatusApproval() {
-        return statusApproval;
+        return this.statusApproval;
     }
 
     public void setStatusApproval(Integer statusApproval) {
@@ -317,7 +299,7 @@ public class vwDataPerluasanAsuransi {
     }
 
     public String getRemarks() {
-        return remarks;
+        return this.remarks;
     }
 
     public void setRemarks(String remarks) {
@@ -325,7 +307,7 @@ public class vwDataPerluasanAsuransi {
     }
 
     public Integer getIsRejected() {
-        return isRejected;
+        return this.isRejected;
     }
 
     public void setIsRejected(Integer isRejected) {
@@ -333,35 +315,197 @@ public class vwDataPerluasanAsuransi {
     }
 
     public Integer getIsApproved() {
-        return isApproved;
+        return this.isApproved;
     }
 
     public void setIsApproved(Integer isApproved) {
         this.isApproved = isApproved;
     }
 
-    public Long getCreatedBy() {
-        return createdBy;
+    public vwDataPerluasanAsuransi id(Integer id) {
+        setId(id);
+        return this;
     }
 
-    public void setCreatedBy(Long createdBy) {
-        this.createdBy = createdBy;
+    public vwDataPerluasanAsuransi namaSkema(String namaSkema) {
+        setNamaSkema(namaSkema);
+        return this;
     }
 
-    public Long getUpdatedBy() {
-        return updatedBy;
+    public vwDataPerluasanAsuransi jenisKendaraan(Integer jenisKendaraan) {
+        setJenisKendaraan(jenisKendaraan);
+        return this;
     }
 
-    public void setUpdatedBy(Long updatedBy) {
-        this.updatedBy = updatedBy;
+    public vwDataPerluasanAsuransi jenisKendaraanName(String jenisKendaraanName) {
+        setJenisKendaraanName(jenisKendaraanName);
+        return this;
     }
 
-    public Date getUpdatedDate() {
-        return updatedDate;
+    public vwDataPerluasanAsuransi wilayah(Integer wilayah) {
+        setWilayah(wilayah);
+        return this;
     }
 
-    public void setUpdatedDate(Date updatedDate) {
-        this.updatedDate = updatedDate;
+    public vwDataPerluasanAsuransi wilayahName(String wilayahName) {
+        setWilayahName(wilayahName);
+        return this;
     }
-    
+
+    public vwDataPerluasanAsuransi tipeAsuransi(Integer tipeAsuransi) {
+        setTipeAsuransi(tipeAsuransi);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi tipeAsuransiName(String tipeAsuransiName) {
+        setTipeAsuransiName(tipeAsuransiName);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi jenisPerluasan(Integer jenisPerluasan) {
+        setJenisPerluasan(jenisPerluasan);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi jenisPerluasanName(String jenisPerluasanName) {
+        setJenisPerluasanName(jenisPerluasanName);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi startOtr(Integer startOtr) {
+        setStartOtr(startOtr);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi endOtr(Integer endOtr) {
+        setEndOtr(endOtr);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi startYear(Integer startYear) {
+        setStartYear(startYear);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi endYear(Integer endYear) {
+        setEndYear(endYear);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi tenor1(Integer tenor1) {
+        setTenor1(tenor1);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi tenor2(Integer tenor2) {
+        setTenor2(tenor2);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi tenor3(Integer tenor3) {
+        setTenor3(tenor3);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi tenor4(Integer tenor4) {
+        setTenor4(tenor4);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi tenor5(Integer tenor5) {
+        setTenor5(tenor5);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi tenor6(Integer tenor6) {
+        setTenor6(tenor6);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi tenor7(Integer tenor7) {
+        setTenor7(tenor7);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi tenor8(Integer tenor8) {
+        setTenor8(tenor8);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi tenor9(Integer tenor9) {
+        setTenor9(tenor9);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi tenor10(Integer tenor10) {
+        setTenor10(tenor10);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi startBerlaku(Date startBerlaku) {
+        setStartBerlaku(startBerlaku);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi endBerlaku(Date endBerlaku) {
+        setEndBerlaku(endBerlaku);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi remarks(String remarks) {
+        setRemarks(remarks);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi isRejected(Integer isRejected) {
+        setIsRejected(isRejected);
+        return this;
+    }
+
+    public vwDataPerluasanAsuransi isApproved(Integer isApproved) {
+        setIsApproved(isApproved);
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", namaSkema='" + getNamaSkema() + "'" +
+            ", jenisKendaraan='" + getJenisKendaraan() + "'" +
+            ", jenisKendaraanName='" + getJenisKendaraanName() + "'" +
+            ", wilayah='" + getWilayah() + "'" +
+            ", wilayahName='" + getWilayahName() + "'" +
+            ", tipeAsuransi='" + getTipeAsuransi() + "'" +
+            ", tipeAsuransiName='" + getTipeAsuransiName() + "'" +
+            ", jenisPerluasan='" + getJenisPerluasan() + "'" +
+            ", jenisPerluasanName='" + getJenisPerluasanName() + "'" +
+            ", startOtr='" + getStartOtr() + "'" +
+            ", endOtr='" + getEndOtr() + "'" +
+            ", startYear='" + getStartYear() + "'" +
+            ", endYear='" + getEndYear() + "'" +
+            ", tenor1='" + getTenor1() + "'" +
+            ", tenor2='" + getTenor2() + "'" +
+            ", tenor3='" + getTenor3() + "'" +
+            ", tenor4='" + getTenor4() + "'" +
+            ", tenor5='" + getTenor5() + "'" +
+            ", tenor6='" + getTenor6() + "'" +
+            ", tenor7='" + getTenor7() + "'" +
+            ", tenor8='" + getTenor8() + "'" +
+            ", tenor9='" + getTenor9() + "'" +
+            ", tenor10='" + getTenor10() + "'" +
+            ", startBerlaku='" + getStartBerlaku() + "'" +
+            ", endBerlaku='" + getEndBerlaku() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
+            ", remarks='" + getRemarks() + "'" +
+            ", isRejected='" + getIsRejected() + "'" +
+            ", isApproved='" + getIsApproved() + "'" +
+            "}";
+    }
+
 }

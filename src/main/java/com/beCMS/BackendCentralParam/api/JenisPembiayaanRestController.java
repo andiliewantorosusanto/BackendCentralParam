@@ -51,7 +51,7 @@ public class JenisPembiayaanRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil GET ALL DATA JenisPembiayaan");
-                crunchifyMap.put("dataJenisPembiayaan", jenisPembiayaanRepository.findAll());
+                crunchifyMap.put("dataJenisPembiayaan", jenisPembiayaanRepository.getListDataJenisPembiayaan());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");

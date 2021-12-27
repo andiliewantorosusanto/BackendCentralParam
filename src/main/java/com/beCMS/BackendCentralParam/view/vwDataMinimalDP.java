@@ -1,85 +1,69 @@
 
 package com.beCMS.BackendCentralParam.view;
 
-import java.util.Date;
-
 public class vwDataMinimalDP {
-
     private Integer id;
 
     private String namaSkema;
+
     private Integer loanType;
+    private String loanTypeName;
+
+    private Integer produk;
+    private String produkName;
+
+    private Integer tujuanPenggunaan;
+    private String tujuanPenggunaanName;
+
+    private Integer tipeKonsumen;
+    private String tipeKonsumenName;
+    
+    private Integer jenisKendaraan;
+    private String jenisKendaraanName;
+
+    private Integer jenisPembiayaan;
+    private String jenisPembiayaanName;
+
+    private Integer cluster;
+    private String clusterName;
 
     private Float minimalDp;
 
-    private String produkName;
-    private Integer produk;
-
-    private String tujuanpenggunaanName;
-    private Integer tujuanPenggunaan;
-
-    private String tipeKonsumenName;
-    private Integer tipeKonsumen;
-
-    private String jenisKendaraanName;
-    private Integer jenisKendaraan;
-
-    private String jenisPembiayaanName;
-    private Integer jenisPembiayaan;
-
-    private String clusterName;
-    private Integer cluster;
-
-    private Date createdDate;
-
-    private String remarks;
-
-    private Integer isRejected;
-
     private Integer statusApproval;
-    
-    private Long createdBy;
-
-    private Long updatedBy;
-
-    private Date updatedDate;
-
+    private String remarks;
+    private Integer isRejected;
     private Integer isApproved;
 
-    public vwDataMinimalDP(Integer id, String namaSkema, Integer loanType, Float minimalDp, String produkName,
-            Integer produk, String tujuanpenggunaanName, Integer tujuanPenggunaan, String tipeKonsumenName,
-            Integer tipeKonsumen, String jenisKendaraanName, Integer jenisKendaraan, String jenisPembiayaanName,
-            Integer jenisPembiayaan, String clusterName, Integer cluster, Date createdDate, String remarks,
-            Integer isRejected, Integer statusApproval, Long createdBy, Long updatedBy, Date updatedDate,
-            Integer isApproved) {
+
+    public vwDataMinimalDP() {
+    }
+
+    public vwDataMinimalDP(Integer id, String namaSkema, Integer loanType, String loanTypeName, Integer produk, String produkName, Integer tujuanPenggunaan, String tujuanPenggunaanName, Integer tipeKonsumen, String tipeKonsumenName, Integer jenisKendaraan, String jenisKendaraanName, Integer jenisPembiayaan, String jenisPembiayaanName, Integer cluster, String clusterName, Float minimalDp, Integer statusApproval, String remarks, Integer isRejected, Integer isApproved) {
         this.id = id;
         this.namaSkema = namaSkema;
         this.loanType = loanType;
-        this.minimalDp = minimalDp;
-        this.produkName = produkName;
+        this.loanTypeName = loanTypeName;
         this.produk = produk;
-        this.tujuanpenggunaanName = tujuanpenggunaanName;
+        this.produkName = produkName;
         this.tujuanPenggunaan = tujuanPenggunaan;
-        this.tipeKonsumenName = tipeKonsumenName;
+        this.tujuanPenggunaanName = tujuanPenggunaanName;
         this.tipeKonsumen = tipeKonsumen;
-        this.jenisKendaraanName = jenisKendaraanName;
+        this.tipeKonsumenName = tipeKonsumenName;
         this.jenisKendaraan = jenisKendaraan;
-        this.jenisPembiayaanName = jenisPembiayaanName;
+        this.jenisKendaraanName = jenisKendaraanName;
         this.jenisPembiayaan = jenisPembiayaan;
-        this.clusterName = clusterName;
+        this.jenisPembiayaanName = jenisPembiayaanName;
         this.cluster = cluster;
-        this.createdDate = createdDate;
+        this.clusterName = clusterName;
+        this.minimalDp = minimalDp;
+        this.statusApproval = statusApproval;
         this.remarks = remarks;
         this.isRejected = isRejected;
-        this.statusApproval = statusApproval;
-        this.createdBy = createdBy;
-        this.updatedBy = updatedBy;
-        this.updatedDate = updatedDate;
         this.isApproved = isApproved;
     }
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Integer id) {
@@ -87,7 +71,7 @@ public class vwDataMinimalDP {
     }
 
     public String getNamaSkema() {
-        return namaSkema;
+        return this.namaSkema;
     }
 
     public void setNamaSkema(String namaSkema) {
@@ -95,127 +79,135 @@ public class vwDataMinimalDP {
     }
 
     public Integer getLoanType() {
-        return loanType;
+        return this.loanType;
     }
 
     public void setLoanType(Integer loanType) {
         this.loanType = loanType;
     }
 
-    public Float getMinimalDp() {
-        return minimalDp;
+    public String getLoanTypeName() {
+        return this.loanTypeName;
     }
 
-    public void setMinimalDp(Float minimalDp) {
-        this.minimalDp = minimalDp;
-    }
-
-    public String getProdukName() {
-        return produkName;
-    }
-
-    public void setProdukName(String produkName) {
-        this.produkName = produkName;
+    public void setLoanTypeName(String loanTypeName) {
+        this.loanTypeName = loanTypeName;
     }
 
     public Integer getProduk() {
-        return produk;
+        return this.produk;
     }
 
     public void setProduk(Integer produk) {
         this.produk = produk;
     }
 
-    public String getTujuanpenggunaanName() {
-        return tujuanpenggunaanName;
+    public String getProdukName() {
+        return this.produkName;
     }
 
-    public void setTujuanpenggunaanName(String tujuanpenggunaanName) {
-        this.tujuanpenggunaanName = tujuanpenggunaanName;
+    public void setProdukName(String produkName) {
+        this.produkName = produkName;
     }
 
     public Integer getTujuanPenggunaan() {
-        return tujuanPenggunaan;
+        return this.tujuanPenggunaan;
     }
 
     public void setTujuanPenggunaan(Integer tujuanPenggunaan) {
         this.tujuanPenggunaan = tujuanPenggunaan;
     }
 
-    public String getTipeKonsumenName() {
-        return tipeKonsumenName;
+    public String getTujuanPenggunaanName() {
+        return this.tujuanPenggunaanName;
     }
 
-    public void setTipeKonsumenName(String tipeKonsumenName) {
-        this.tipeKonsumenName = tipeKonsumenName;
+    public void setTujuanPenggunaanName(String tujuanPenggunaanName) {
+        this.tujuanPenggunaanName = tujuanPenggunaanName;
     }
 
     public Integer getTipeKonsumen() {
-        return tipeKonsumen;
+        return this.tipeKonsumen;
     }
 
     public void setTipeKonsumen(Integer tipeKonsumen) {
         this.tipeKonsumen = tipeKonsumen;
     }
 
-    public String getJenisKendaraanName() {
-        return jenisKendaraanName;
+    public String getTipeKonsumenName() {
+        return this.tipeKonsumenName;
     }
 
-    public void setJenisKendaraanName(String jenisKendaraanName) {
-        this.jenisKendaraanName = jenisKendaraanName;
+    public void setTipeKonsumenName(String tipeKonsumenName) {
+        this.tipeKonsumenName = tipeKonsumenName;
     }
 
     public Integer getJenisKendaraan() {
-        return jenisKendaraan;
+        return this.jenisKendaraan;
     }
 
     public void setJenisKendaraan(Integer jenisKendaraan) {
         this.jenisKendaraan = jenisKendaraan;
     }
 
-    public String getJenisPembiayaanName() {
-        return jenisPembiayaanName;
+    public String getJenisKendaraanName() {
+        return this.jenisKendaraanName;
     }
 
-    public void setJenisPembiayaanName(String jenisPembiayaanName) {
-        this.jenisPembiayaanName = jenisPembiayaanName;
+    public void setJenisKendaraanName(String jenisKendaraanName) {
+        this.jenisKendaraanName = jenisKendaraanName;
     }
 
     public Integer getJenisPembiayaan() {
-        return jenisPembiayaan;
+        return this.jenisPembiayaan;
     }
 
     public void setJenisPembiayaan(Integer jenisPembiayaan) {
         this.jenisPembiayaan = jenisPembiayaan;
     }
 
-    public String getClusterName() {
-        return clusterName;
+    public String getJenisPembiayaanName() {
+        return this.jenisPembiayaanName;
     }
 
-    public void setClusterName(String clusterName) {
-        this.clusterName = clusterName;
+    public void setJenisPembiayaanName(String jenisPembiayaanName) {
+        this.jenisPembiayaanName = jenisPembiayaanName;
     }
 
     public Integer getCluster() {
-        return cluster;
+        return this.cluster;
     }
 
     public void setCluster(Integer cluster) {
         this.cluster = cluster;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
+    public String getClusterName() {
+        return this.clusterName;
     }
 
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
+    public void setClusterName(String clusterName) {
+        this.clusterName = clusterName;
+    }
+
+    public Float getMinimalDp() {
+        return this.minimalDp;
+    }
+
+    public void setMinimalDp(Float minimalDp) {
+        this.minimalDp = minimalDp;
+    }
+
+    public Integer getStatusApproval() {
+        return this.statusApproval;
+    }
+
+    public void setStatusApproval(Integer statusApproval) {
+        this.statusApproval = statusApproval;
     }
 
     public String getRemarks() {
-        return remarks;
+        return this.remarks;
     }
 
     public void setRemarks(String remarks) {
@@ -223,53 +215,153 @@ public class vwDataMinimalDP {
     }
 
     public Integer getIsRejected() {
-        return isRejected;
+        return this.isRejected;
     }
 
     public void setIsRejected(Integer isRejected) {
         this.isRejected = isRejected;
     }
 
-    public Integer getStatusApproval() {
-        return statusApproval;
-    }
-
-    public void setStatusApproval(Integer statusApproval) {
-        this.statusApproval = statusApproval;
-    }
-
-    public Long getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(Long createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public Long getUpdatedBy() {
-        return updatedBy;
-    }
-
-    public void setUpdatedBy(Long updatedBy) {
-        this.updatedBy = updatedBy;
-    }
-
-    public Date getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(Date updatedDate) {
-        this.updatedDate = updatedDate;
-    }
-
     public Integer getIsApproved() {
-        return isApproved;
+        return this.isApproved;
     }
 
     public void setIsApproved(Integer isApproved) {
         this.isApproved = isApproved;
     }
-    
+
+    public vwDataMinimalDP id(Integer id) {
+        setId(id);
+        return this;
+    }
+
+    public vwDataMinimalDP namaSkema(String namaSkema) {
+        setNamaSkema(namaSkema);
+        return this;
+    }
+
+    public vwDataMinimalDP loanType(Integer loanType) {
+        setLoanType(loanType);
+        return this;
+    }
+
+    public vwDataMinimalDP loanTypeName(String loanTypeName) {
+        setLoanTypeName(loanTypeName);
+        return this;
+    }
+
+    public vwDataMinimalDP produk(Integer produk) {
+        setProduk(produk);
+        return this;
+    }
+
+    public vwDataMinimalDP produkName(String produkName) {
+        setProdukName(produkName);
+        return this;
+    }
+
+    public vwDataMinimalDP tujuanPenggunaan(Integer tujuanPenggunaan) {
+        setTujuanPenggunaan(tujuanPenggunaan);
+        return this;
+    }
+
+    public vwDataMinimalDP tujuanPenggunaanName(String tujuanPenggunaanName) {
+        setTujuanPenggunaanName(tujuanPenggunaanName);
+        return this;
+    }
+
+    public vwDataMinimalDP tipeKonsumen(Integer tipeKonsumen) {
+        setTipeKonsumen(tipeKonsumen);
+        return this;
+    }
+
+    public vwDataMinimalDP tipeKonsumenName(String tipeKonsumenName) {
+        setTipeKonsumenName(tipeKonsumenName);
+        return this;
+    }
+
+    public vwDataMinimalDP jenisKendaraan(Integer jenisKendaraan) {
+        setJenisKendaraan(jenisKendaraan);
+        return this;
+    }
+
+    public vwDataMinimalDP jenisKendaraanName(String jenisKendaraanName) {
+        setJenisKendaraanName(jenisKendaraanName);
+        return this;
+    }
+
+    public vwDataMinimalDP jenisPembiayaan(Integer jenisPembiayaan) {
+        setJenisPembiayaan(jenisPembiayaan);
+        return this;
+    }
+
+    public vwDataMinimalDP jenisPembiayaanName(String jenisPembiayaanName) {
+        setJenisPembiayaanName(jenisPembiayaanName);
+        return this;
+    }
+
+    public vwDataMinimalDP cluster(Integer cluster) {
+        setCluster(cluster);
+        return this;
+    }
+
+    public vwDataMinimalDP clusterName(String clusterName) {
+        setClusterName(clusterName);
+        return this;
+    }
+
+    public vwDataMinimalDP minimalDp(Float minimalDp) {
+        setMinimalDp(minimalDp);
+        return this;
+    }
+
+    public vwDataMinimalDP statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
+        return this;
+    }
+
+    public vwDataMinimalDP remarks(String remarks) {
+        setRemarks(remarks);
+        return this;
+    }
+
+    public vwDataMinimalDP isRejected(Integer isRejected) {
+        setIsRejected(isRejected);
+        return this;
+    }
+
+    public vwDataMinimalDP isApproved(Integer isApproved) {
+        setIsApproved(isApproved);
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", namaSkema='" + getNamaSkema() + "'" +
+            ", loanType='" + getLoanType() + "'" +
+            ", loanTypeName='" + getLoanTypeName() + "'" +
+            ", produk='" + getProduk() + "'" +
+            ", produkName='" + getProdukName() + "'" +
+            ", tujuanPenggunaan='" + getTujuanPenggunaan() + "'" +
+            ", tujuanPenggunaanName='" + getTujuanPenggunaanName() + "'" +
+            ", tipeKonsumen='" + getTipeKonsumen() + "'" +
+            ", tipeKonsumenName='" + getTipeKonsumenName() + "'" +
+            ", jenisKendaraan='" + getJenisKendaraan() + "'" +
+            ", jenisKendaraanName='" + getJenisKendaraanName() + "'" +
+            ", jenisPembiayaan='" + getJenisPembiayaan() + "'" +
+            ", jenisPembiayaanName='" + getJenisPembiayaanName() + "'" +
+            ", cluster='" + getCluster() + "'" +
+            ", clusterName='" + getClusterName() + "'" +
+            ", minimalDp='" + getMinimalDp() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
+            ", remarks='" + getRemarks() + "'" +
+            ", isRejected='" + getIsRejected() + "'" +
+            ", isApproved='" + getIsApproved() + "'" +
+            "}";
+    }
+
     
 
 }

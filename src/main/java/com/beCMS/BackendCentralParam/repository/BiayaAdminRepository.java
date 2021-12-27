@@ -15,11 +15,11 @@ public interface BiayaAdminRepository extends JpaRepository<BiayaAdmin, Integer>
     @Query(
         "SELECT new com.beCMS.BackendCentralParam.view.vwDataBiayaAdmin"
         + "(a.id,a.namaSkema,a.loanType"
-        + ",a.tipeKonsumen,tk.nama AS tipeKonsumenName"
-        + ",a.jenisKendaraan,jk.jenisKendaraan"
+        + ",a.tipeKonsumen,CASE WHEN a.tipeKonsumen = 0 THEN 'All' ELSE tk.nama END"
+        + ",a.jenisKendaraan,CASE WHEN a.jenisKendaraan = 0 THEN 'All' ELSE jk.jenisKendaraan END "
         + ",a.jenisPembiayaan,jp.jenisPembiayaan"
-        + ",a.cluster,c.cluster"
-        + ",a.diskonNpwp"
+        + ",a.cluster,c.cluster"    
+        + ",a.diskonNpwp,CASE WHEN a.diskonNpwp = 0 THEN 'All' WHEN a.diskonNpwp = 1 THEN 'Yes' ELSE 'No' END "
         + ",a.tenor1,a.tenor2,a.tenor3,a.tenor4,a.tenor5,a.tenor6,a.tenor7,a.tenor8,a.tenor9,a.tenor10"
         + ",a.startBerlaku,a.endBerlaku,a.statusApproval,a.remarks,a.isRejected,a.isApproved)"
         + "FROM BiayaAdmin a "
@@ -29,11 +29,5 @@ public interface BiayaAdminRepository extends JpaRepository<BiayaAdmin, Integer>
         + "LEFT JOIN Cluster c ON a.cluster = c.id"
         )
     List<vwDataBiayaAdmin> getListDataBiayaAdmin();
-
-    // @Query("SELECT new com.beCMS.BackendCentralParam.view.vwDataBiayaAdmin(a.namaSkema,a.tipe_konsumen,i.Nama,a.jeniskendaraanid,b.jenis_kendaraan_id,a.jenis_pembiayaan,d.jenis_pembiayaan_id,a.cluster,j.cluster_id,a.diskon_npwp,a.startBerlaku,a.endBerlaku,a.statusApproval,a.remarks) from modelBiayaAdmin a left join modelJenisKendaraan b on a.jeniskendaraanid = b.id left join modelJenisPembiayaan d on a.jenis_pembiayaan = d.id  LEFT JOIN modelTipeKonsumen i ON a.tipe_konsumen = i.id LEFT JOIN modelCluster j ON a.cluster = j.id where a.statusApproval = 0 OR a.statusApproval IS NULL")
-    // List<vwDataBiayaAdmin> getListBucketApprovalBiayaAdmin();
-
-    // @Query("SELECT new com.beCMS.BackendCentralParam.view.vwSkemaBiayaAdmin(id,namaSkema) from modelBiayaAdmin")
-    // List<vwSkemaBiayaAdmin> getAllDataSkemaBiayaAdmin();
 
 }

@@ -1,13 +1,13 @@
 package com.beCMS.BackendCentralParam.view;
+
 import java.util.Date;
 
 public class vwDataRateCP {
-
     private Integer id;
     private String namaSkema;
 
-    private String tipeKonsumenName;
     private Integer tipeKonsumen;
+    private String tipeKonsumenName;
 
     private Float tenor1;
     private Float tenor2;
@@ -23,22 +23,20 @@ public class vwDataRateCP {
     private Date startBerlaku;
     private Date endBerlaku;
 
-    private Date createdDate;
     private Integer statusApproval;
     private String remarks;
     private Integer isRejected;
     private Integer isApproved;
-    private Long createdBy;
-    private Long updatedBy;
-    private Date updatedDate;
-    public vwDataRateCP(Integer id, String namaSkema, String tipeKonsumenName, Integer tipeKonsumen, Float tenor1,
-            Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6, Float tenor7, Float tenor8,
-            Float tenor9, Float tenor10, Date startBerlaku, Date endBerlaku, Date createdDate, Integer statusApproval,
-            String remarks, Integer isRejected, Integer isApproved, Long createdBy, Long updatedBy, Date updatedDate) {
+
+
+    public vwDataRateCP() {
+    }
+
+    public vwDataRateCP(Integer id, String namaSkema, Integer tipeKonsumen, String tipeKonsumenName, Float tenor1, Float tenor2, Float tenor3, Float tenor4, Float tenor5, Float tenor6, Float tenor7, Float tenor8, Float tenor9, Float tenor10, Date startBerlaku, Date endBerlaku, Integer statusApproval, String remarks, Integer isRejected, Integer isApproved) {
         this.id = id;
         this.namaSkema = namaSkema;
-        this.tipeKonsumenName = tipeKonsumenName;
         this.tipeKonsumen = tipeKonsumen;
+        this.tipeKonsumenName = tipeKonsumenName;
         this.tenor1 = tenor1;
         this.tenor2 = tenor2;
         this.tenor3 = tenor3;
@@ -51,158 +49,297 @@ public class vwDataRateCP {
         this.tenor10 = tenor10;
         this.startBerlaku = startBerlaku;
         this.endBerlaku = endBerlaku;
-        this.createdDate = createdDate;
         this.statusApproval = statusApproval;
         this.remarks = remarks;
         this.isRejected = isRejected;
         this.isApproved = isApproved;
-        this.createdBy = createdBy;
-        this.updatedBy = updatedBy;
-        this.updatedDate = updatedDate;
     }
+
     public Integer getId() {
-        return id;
+        return this.id;
     }
+
     public void setId(Integer id) {
         this.id = id;
     }
+
     public String getNamaSkema() {
-        return namaSkema;
+        return this.namaSkema;
     }
+
     public void setNamaSkema(String namaSkema) {
         this.namaSkema = namaSkema;
     }
-    public String getTipeKonsumenName() {
-        return tipeKonsumenName;
-    }
-    public void setTipeKonsumenName(String tipeKonsumenName) {
-        this.tipeKonsumenName = tipeKonsumenName;
-    }
+
     public Integer getTipeKonsumen() {
-        return tipeKonsumen;
+        return this.tipeKonsumen;
     }
+
     public void setTipeKonsumen(Integer tipeKonsumen) {
         this.tipeKonsumen = tipeKonsumen;
     }
-    public Float getTenor1() {
-        return tenor1;
+
+    public String getTipeKonsumenName() {
+        return this.tipeKonsumenName;
     }
+
+    public void setTipeKonsumenName(String tipeKonsumenName) {
+        this.tipeKonsumenName = tipeKonsumenName;
+    }
+
+    public Float getTenor1() {
+        return this.tenor1;
+    }
+
     public void setTenor1(Float tenor1) {
         this.tenor1 = tenor1;
     }
+
     public Float getTenor2() {
-        return tenor2;
+        return this.tenor2;
     }
+
     public void setTenor2(Float tenor2) {
         this.tenor2 = tenor2;
     }
+
     public Float getTenor3() {
-        return tenor3;
+        return this.tenor3;
     }
+
     public void setTenor3(Float tenor3) {
         this.tenor3 = tenor3;
     }
+
     public Float getTenor4() {
-        return tenor4;
+        return this.tenor4;
     }
+
     public void setTenor4(Float tenor4) {
         this.tenor4 = tenor4;
     }
+
     public Float getTenor5() {
-        return tenor5;
+        return this.tenor5;
     }
+
     public void setTenor5(Float tenor5) {
         this.tenor5 = tenor5;
     }
+
     public Float getTenor6() {
-        return tenor6;
+        return this.tenor6;
     }
+
     public void setTenor6(Float tenor6) {
         this.tenor6 = tenor6;
     }
+
     public Float getTenor7() {
-        return tenor7;
+        return this.tenor7;
     }
+
     public void setTenor7(Float tenor7) {
         this.tenor7 = tenor7;
     }
+
     public Float getTenor8() {
-        return tenor8;
+        return this.tenor8;
     }
+
     public void setTenor8(Float tenor8) {
         this.tenor8 = tenor8;
     }
+
     public Float getTenor9() {
-        return tenor9;
+        return this.tenor9;
     }
+
     public void setTenor9(Float tenor9) {
         this.tenor9 = tenor9;
     }
+
     public Float getTenor10() {
-        return tenor10;
+        return this.tenor10;
     }
+
     public void setTenor10(Float tenor10) {
         this.tenor10 = tenor10;
     }
+
     public Date getStartBerlaku() {
-        return startBerlaku;
+        return this.startBerlaku;
     }
+
     public void setStartBerlaku(Date startBerlaku) {
         this.startBerlaku = startBerlaku;
     }
+
     public Date getEndBerlaku() {
-        return endBerlaku;
+        return this.endBerlaku;
     }
+
     public void setEndBerlaku(Date endBerlaku) {
         this.endBerlaku = endBerlaku;
     }
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
+
     public Integer getStatusApproval() {
-        return statusApproval;
+        return this.statusApproval;
     }
+
     public void setStatusApproval(Integer statusApproval) {
         this.statusApproval = statusApproval;
     }
+
     public String getRemarks() {
-        return remarks;
+        return this.remarks;
     }
+
     public void setRemarks(String remarks) {
         this.remarks = remarks;
     }
+
     public Integer getIsRejected() {
-        return isRejected;
+        return this.isRejected;
     }
+
     public void setIsRejected(Integer isRejected) {
         this.isRejected = isRejected;
     }
+
     public Integer getIsApproved() {
-        return isApproved;
+        return this.isApproved;
     }
+
     public void setIsApproved(Integer isApproved) {
         this.isApproved = isApproved;
     }
-    public Long getCreatedBy() {
-        return createdBy;
+
+    public vwDataRateCP id(Integer id) {
+        setId(id);
+        return this;
     }
-    public void setCreatedBy(Long createdBy) {
-        this.createdBy = createdBy;
+
+    public vwDataRateCP namaSkema(String namaSkema) {
+        setNamaSkema(namaSkema);
+        return this;
     }
-    public Long getUpdatedBy() {
-        return updatedBy;
+
+    public vwDataRateCP tipeKonsumen(Integer tipeKonsumen) {
+        setTipeKonsumen(tipeKonsumen);
+        return this;
     }
-    public void setUpdatedBy(Long updatedBy) {
-        this.updatedBy = updatedBy;
+
+    public vwDataRateCP tipeKonsumenName(String tipeKonsumenName) {
+        setTipeKonsumenName(tipeKonsumenName);
+        return this;
     }
-    public Date getUpdatedDate() {
-        return updatedDate;
+
+    public vwDataRateCP tenor1(Float tenor1) {
+        setTenor1(tenor1);
+        return this;
     }
-    public void setUpdatedDate(Date updatedDate) {
-        this.updatedDate = updatedDate;
+
+    public vwDataRateCP tenor2(Float tenor2) {
+        setTenor2(tenor2);
+        return this;
     }
+
+    public vwDataRateCP tenor3(Float tenor3) {
+        setTenor3(tenor3);
+        return this;
+    }
+
+    public vwDataRateCP tenor4(Float tenor4) {
+        setTenor4(tenor4);
+        return this;
+    }
+
+    public vwDataRateCP tenor5(Float tenor5) {
+        setTenor5(tenor5);
+        return this;
+    }
+
+    public vwDataRateCP tenor6(Float tenor6) {
+        setTenor6(tenor6);
+        return this;
+    }
+
+    public vwDataRateCP tenor7(Float tenor7) {
+        setTenor7(tenor7);
+        return this;
+    }
+
+    public vwDataRateCP tenor8(Float tenor8) {
+        setTenor8(tenor8);
+        return this;
+    }
+
+    public vwDataRateCP tenor9(Float tenor9) {
+        setTenor9(tenor9);
+        return this;
+    }
+
+    public vwDataRateCP tenor10(Float tenor10) {
+        setTenor10(tenor10);
+        return this;
+    }
+
+    public vwDataRateCP startBerlaku(Date startBerlaku) {
+        setStartBerlaku(startBerlaku);
+        return this;
+    }
+
+    public vwDataRateCP endBerlaku(Date endBerlaku) {
+        setEndBerlaku(endBerlaku);
+        return this;
+    }
+
+    public vwDataRateCP statusApproval(Integer statusApproval) {
+        setStatusApproval(statusApproval);
+        return this;
+    }
+
+    public vwDataRateCP remarks(String remarks) {
+        setRemarks(remarks);
+        return this;
+    }
+
+    public vwDataRateCP isRejected(Integer isRejected) {
+        setIsRejected(isRejected);
+        return this;
+    }
+
+    public vwDataRateCP isApproved(Integer isApproved) {
+        setIsApproved(isApproved);
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", namaSkema='" + getNamaSkema() + "'" +
+            ", tipeKonsumen='" + getTipeKonsumen() + "'" +
+            ", tipeKonsumenName='" + getTipeKonsumenName() + "'" +
+            ", tenor1='" + getTenor1() + "'" +
+            ", tenor2='" + getTenor2() + "'" +
+            ", tenor3='" + getTenor3() + "'" +
+            ", tenor4='" + getTenor4() + "'" +
+            ", tenor5='" + getTenor5() + "'" +
+            ", tenor6='" + getTenor6() + "'" +
+            ", tenor7='" + getTenor7() + "'" +
+            ", tenor8='" + getTenor8() + "'" +
+            ", tenor9='" + getTenor9() + "'" +
+            ", tenor10='" + getTenor10() + "'" +
+            ", startBerlaku='" + getStartBerlaku() + "'" +
+            ", endBerlaku='" + getEndBerlaku() + "'" +
+            ", statusApproval='" + getStatusApproval() + "'" +
+            ", remarks='" + getRemarks() + "'" +
+            ", isRejected='" + getIsRejected() + "'" +
+            ", isApproved='" + getIsApproved() + "'" +
+            "}";
+    }
+
 
 }

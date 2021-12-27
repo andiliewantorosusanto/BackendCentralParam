@@ -51,7 +51,7 @@ public class TujuanPenggunaanRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil GET ALL DATA TujuanPenggunaan");
-                crunchifyMap.put("dataTujuanPenggunaan", tujuanPenggunaanRepository.findAll());
+                crunchifyMap.put("dataTujuanPenggunaan", tujuanPenggunaanRepository.getListDataTujuanPenggunaan());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");
