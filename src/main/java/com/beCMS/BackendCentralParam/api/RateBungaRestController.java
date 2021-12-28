@@ -52,7 +52,6 @@ public class RateBungaRestController {
             try {
                 logger.info("Berhasil GET ALL DATA RateBunga");
                 crunchifyMap.put("dataRateBunga", rateBungaRepository.getListDataRateBunga());
-                System.out.println(rateBungaRepository.getListDataRateBunga().get(10).toString());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");
