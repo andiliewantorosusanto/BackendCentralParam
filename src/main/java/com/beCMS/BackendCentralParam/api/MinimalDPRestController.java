@@ -37,7 +37,7 @@ public class MinimalDPRestController {
     private UserRepository userRepository;
 
     @Autowired
-    private MinimalDPRepository rateMinimalDPRepository;
+    private MinimalDPRepository minimalDPRepository;
 
     @PostMapping("/getalldata")
     public Map<String, Object> getAllDataMinimalDP(Principal principal, Pageable pageable,
@@ -51,7 +51,7 @@ public class MinimalDPRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil GET ALL DATA MinimalDP");
-                crunchifyMap.put("dataMinimalDP", rateMinimalDPRepository.getListDataMinimalDP());
+                crunchifyMap.put("dataMinimalDP", minimalDPRepository.getListDataMinimalDP());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 System.out.println("err"+e.toString());
@@ -80,7 +80,7 @@ public class MinimalDPRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil MinimalDP");
-                crunchifyMap.put("rateMinimalDP", rateMinimalDPRepository.findById(id));
+                crunchifyMap.put("minimalDP", minimalDPRepository.findById(id));
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");
@@ -104,7 +104,7 @@ public class MinimalDPRestController {
         User user = userRepository.findBynip(principal.getName());
         System.out.println("hey : " +MinimalDP.toString());
         MinimalDP.trace(user.getId());
-        rateMinimalDPRepository.save(MinimalDP);
+        minimalDPRepository.save(MinimalDP);
 
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
@@ -118,7 +118,7 @@ public class MinimalDPRestController {
         User user = userRepository.findBynip(principal.getName());
         System.out.println("hey : " +MinimalDP.toString());
         MinimalDP.submit(user.getId());
-        rateMinimalDPRepository.save(MinimalDP);
+        minimalDPRepository.save(MinimalDP);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
@@ -130,10 +130,10 @@ public class MinimalDPRestController {
     public HashMap<String, String> approveDataMinimalDP(@RequestBody MinimalDP modelMinimalDP,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        Optional<MinimalDP> optionalMinimalDP = rateMinimalDPRepository.findById(modelMinimalDP.getId());
+        Optional<MinimalDP> optionalMinimalDP = minimalDPRepository.findById(modelMinimalDP.getId());
         MinimalDP approvalModel = optionalMinimalDP.get();
         approvalModel.approve(user.getId());
-        rateMinimalDPRepository.save(approvalModel);
+        minimalDPRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
@@ -145,10 +145,10 @@ public class MinimalDPRestController {
     public HashMap<String, String> declineDataMinimalDP(@RequestBody MinimalDP modelMinimalDP,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        Optional<MinimalDP> optionalMinimalDP = rateMinimalDPRepository.findById(modelMinimalDP.getId());
+        Optional<MinimalDP> optionalMinimalDP = minimalDPRepository.findById(modelMinimalDP.getId());
         MinimalDP approvalModel = optionalMinimalDP.get();
         approvalModel.decline(user.getId());
-        rateMinimalDPRepository.save(approvalModel);
+        minimalDPRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
@@ -163,10 +163,10 @@ public class MinimalDPRestController {
         List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
         for(String id : idList) {
             System.out.println("Mengakses ID : "+id);
-            Optional<MinimalDP> optionalMinimalDP = rateMinimalDPRepository.findById(Integer.parseInt(id));
+            Optional<MinimalDP> optionalMinimalDP = minimalDPRepository.findById(Integer.parseInt(id));
             MinimalDP MinimalDP = optionalMinimalDP.get();
             MinimalDP.approve(user.getId());
-            rateMinimalDPRepository.save(MinimalDP);
+            minimalDPRepository.save(MinimalDP);
         }
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
@@ -181,10 +181,10 @@ public class MinimalDPRestController {
         User user = userRepository.findBynip(principal.getName());
         List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
         for(String id : idList) {
-            Optional<MinimalDP> optionalMinimalDP = rateMinimalDPRepository.findById(Integer.parseInt(id));
+            Optional<MinimalDP> optionalMinimalDP = minimalDPRepository.findById(Integer.parseInt(id));
             MinimalDP MinimalDP = optionalMinimalDP.get();
             MinimalDP.decline(user.getId());
-            rateMinimalDPRepository.save(MinimalDP);
+            minimalDPRepository.save(MinimalDP);
         }
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
@@ -199,9 +199,9 @@ public class MinimalDPRestController {
         List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
 
         for(String id : idList) {
-            Optional<MinimalDP> optionalMinimalDP = rateMinimalDPRepository.findById(Integer.parseInt(id));
+            Optional<MinimalDP> optionalMinimalDP = minimalDPRepository.findById(Integer.parseInt(id));
             MinimalDP MinimalDP = optionalMinimalDP.get();
-            rateMinimalDPRepository.delete(MinimalDP);
+            minimalDPRepository.delete(MinimalDP);
         }
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
@@ -217,10 +217,10 @@ public class MinimalDPRestController {
         User user = userRepository.findBynip(principal.getName());
 
         for(String id : idList) {
-            Optional<MinimalDP> optionalMinimalDP = rateMinimalDPRepository.findById(Integer.parseInt(id));
+            Optional<MinimalDP> optionalMinimalDP = minimalDPRepository.findById(Integer.parseInt(id));
             MinimalDP MinimalDP = optionalMinimalDP.get();
             MinimalDP.submit(user.getId());
-            rateMinimalDPRepository.save(MinimalDP);
+            minimalDPRepository.save(MinimalDP);
         }
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
