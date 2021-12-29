@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/rateBiayaFidusia")
+@RequestMapping("/api/biayafidusia")
 @CrossOrigin(origins = "*")
 public class BiayaFidusiaRestController {
 
@@ -79,7 +79,7 @@ public class BiayaFidusiaRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil BiayaFidusia");
-                crunchifyMap.put("rateBiayaFidusia", biayaFidusiaRepository.findById(id));
+                crunchifyMap.put("biayaFidusia", biayaFidusiaRepository.findById(id));
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");

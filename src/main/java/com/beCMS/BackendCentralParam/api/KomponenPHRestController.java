@@ -27,17 +27,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/rateKomponenPH")
+@RequestMapping("/api/komponenph")
 @CrossOrigin(origins = "*")
-public class RateKomponenPHRestController {
+public class KomponenPHRestController {
 
-    Logger logger = LoggerFactory.getLogger(RateKomponenPHRestController.class);
+    Logger logger = LoggerFactory.getLogger(KomponenPHRestController.class);
 
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
-    private KomponenPHRepository rateKomponenPHRepository;
+    private KomponenPHRepository komponenPhRepository;
 
     @PostMapping("/getalldata")
     public Map<String, Object> getAllDataRateKomponenPH(Principal principal, Pageable pageable,
@@ -51,7 +51,7 @@ public class RateKomponenPHRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil GET ALL DATA RateKomponenPH");
-                crunchifyMap.put("dataRateKomponenPH", rateKomponenPHRepository.findAll());
+                crunchifyMap.put("dataRateKomponenPH", komponenPhRepository.findAll());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");
@@ -79,7 +79,7 @@ public class RateKomponenPHRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil RateKomponenPH");
-                crunchifyMap.put("rateKomponenPH", rateKomponenPHRepository.findById(id));
+                crunchifyMap.put("komponenPh", komponenPhRepository.findById(id));
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");
@@ -103,7 +103,7 @@ public class RateKomponenPHRestController {
         User user = userRepository.findBynip(principal.getName());
         System.out.println("hey : " +KomponenPH.toString());
         KomponenPH.trace(user.getId());
-        rateKomponenPHRepository.save(KomponenPH);
+        komponenPhRepository.save(KomponenPH);
 
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
@@ -117,7 +117,7 @@ public class RateKomponenPHRestController {
         User user = userRepository.findBynip(principal.getName());
         System.out.println("hey : " +KomponenPH.toString());
         KomponenPH.submit(user.getId());
-        rateKomponenPHRepository.save(KomponenPH);
+        komponenPhRepository.save(KomponenPH);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
@@ -129,10 +129,10 @@ public class RateKomponenPHRestController {
     public HashMap<String, String> approveDataKomponenPH(@RequestBody KomponenPH modelKomponenPH,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        Optional<KomponenPH> optionalKomponenPH = rateKomponenPHRepository.findById(modelKomponenPH.getId());
+        Optional<KomponenPH> optionalKomponenPH = komponenPhRepository.findById(modelKomponenPH.getId());
         KomponenPH approvalModel = optionalKomponenPH.get();
         approvalModel.approve(user.getId());
-        rateKomponenPHRepository.save(approvalModel);
+        komponenPhRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
@@ -144,10 +144,10 @@ public class RateKomponenPHRestController {
     public HashMap<String, String> declineDataKomponenPH(@RequestBody KomponenPH modelKomponenPH,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        Optional<KomponenPH> optionalKomponenPH = rateKomponenPHRepository.findById(modelKomponenPH.getId());
+        Optional<KomponenPH> optionalKomponenPH = komponenPhRepository.findById(modelKomponenPH.getId());
         KomponenPH approvalModel = optionalKomponenPH.get();
         approvalModel.decline(user.getId());
-        rateKomponenPHRepository.save(approvalModel);
+        komponenPhRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
@@ -162,10 +162,10 @@ public class RateKomponenPHRestController {
         List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
         for(String id : idList) {
             System.out.println("Mengakses ID : "+id);
-            Optional<KomponenPH> optionalRateKomponenPH = rateKomponenPHRepository.findById(Integer.parseInt(id));
+            Optional<KomponenPH> optionalRateKomponenPH = komponenPhRepository.findById(Integer.parseInt(id));
             KomponenPH KomponenPH = optionalRateKomponenPH.get();
             KomponenPH.approve(user.getId());
-            rateKomponenPHRepository.save(KomponenPH);
+            komponenPhRepository.save(KomponenPH);
         }
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
@@ -180,10 +180,10 @@ public class RateKomponenPHRestController {
         User user = userRepository.findBynip(principal.getName());
         List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
         for(String id : idList) {
-            Optional<KomponenPH> optionalRateKomponenPH = rateKomponenPHRepository.findById(Integer.parseInt(id));
+            Optional<KomponenPH> optionalRateKomponenPH = komponenPhRepository.findById(Integer.parseInt(id));
             KomponenPH KomponenPH = optionalRateKomponenPH.get();
             KomponenPH.decline(user.getId());
-            rateKomponenPHRepository.save(KomponenPH);
+            komponenPhRepository.save(KomponenPH);
         }
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
@@ -198,9 +198,9 @@ public class RateKomponenPHRestController {
         List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
 
         for(String id : idList) {
-            Optional<KomponenPH> optionalRateKomponenPH = rateKomponenPHRepository.findById(Integer.parseInt(id));
+            Optional<KomponenPH> optionalRateKomponenPH = komponenPhRepository.findById(Integer.parseInt(id));
             KomponenPH KomponenPH = optionalRateKomponenPH.get();
-            rateKomponenPHRepository.delete(KomponenPH);
+            komponenPhRepository.delete(KomponenPH);
         }
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
@@ -216,10 +216,10 @@ public class RateKomponenPHRestController {
         User user = userRepository.findBynip(principal.getName());
 
         for(String id : idList) {
-            Optional<KomponenPH> optionalRateKomponenPH = rateKomponenPHRepository.findById(Integer.parseInt(id));
+            Optional<KomponenPH> optionalRateKomponenPH = komponenPhRepository.findById(Integer.parseInt(id));
             KomponenPH KomponenPH = optionalRateKomponenPH.get();
             KomponenPH.submit(user.getId());
-            rateKomponenPHRepository.save(KomponenPH);
+            komponenPhRepository.save(KomponenPH);
         }
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
