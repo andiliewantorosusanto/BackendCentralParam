@@ -51,7 +51,7 @@ public class KomponenPHRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil GET ALL DATA RateKomponenPH");
-                crunchifyMap.put("dataRateKomponenPH", komponenPhRepository.findAll());
+                crunchifyMap.put("dataKomponenPH", komponenPhRepository.getListDataKomponenPH());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");
