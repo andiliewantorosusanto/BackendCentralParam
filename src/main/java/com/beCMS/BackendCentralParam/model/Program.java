@@ -61,7 +61,7 @@ public class Program implements Serializable {
     private Date updatedDate;
     
     @Column(name = "branchid")
-    private String branchId;
+    private String branch;
 
     @Column(name = "id_biayaadmin")
     private Integer biayaAdmin;
@@ -97,7 +97,7 @@ public class Program implements Serializable {
     public Program() {
     }
 
-    public Program(Integer id, String program, Integer produk, String deskripsi, Date startBerlaku, Date endBerlaku, Integer statusApproval, Integer isApproved, Integer isRejected, String remarks, Long createdBy, Date createdDate, Long updatedBy, Date updatedDate, String branchId, Integer biayaAdmin, Integer rateAsuransi, Integer rateBunga, Integer rateCp, Integer minimalDp, Integer komponenPh, Integer ratePerluasan, Integer biayaProvisi, Integer biayaFidusia, Integer usiaKendaraanLunas) {
+    public Program(Integer id, String program, Integer produk, String deskripsi, Date startBerlaku, Date endBerlaku, Integer statusApproval, Integer isApproved, Integer isRejected, String remarks, Long createdBy, Date createdDate, Long updatedBy, Date updatedDate, String branch, Integer biayaAdmin, Integer rateAsuransi, Integer rateBunga, Integer rateCp, Integer minimalDp, Integer komponenPh, Integer ratePerluasan, Integer biayaProvisi, Integer biayaFidusia, Integer usiaKendaraanLunas) {
         this.id = id;
         this.program = program;
         this.produk = produk;
@@ -112,7 +112,7 @@ public class Program implements Serializable {
         this.createdDate = createdDate;
         this.updatedBy = updatedBy;
         this.updatedDate = updatedDate;
-        this.branchId = branchId;
+        this.branch = branch;
         this.biayaAdmin = biayaAdmin;
         this.rateAsuransi = rateAsuransi;
         this.rateBunga = rateBunga;
@@ -237,12 +237,12 @@ public class Program implements Serializable {
         this.updatedDate = updatedDate;
     }
 
-    public String getBranchId() {
-        return this.branchId;
+    public String getBranch() {
+        return this.branch;
     }
 
-    public void setBranchId(String branchId) {
-        this.branchId = branchId;
+    public void setBranch(String branch) {
+        this.branch = branch;
     }
 
     public Integer getBiayaAdmin() {
@@ -395,8 +395,8 @@ public class Program implements Serializable {
         return this;
     }
 
-    public Program branchId(String branchId) {
-        setBranchId(branchId);
+    public Program branch(String branch) {
+        setBranch(branch);
         return this;
     }
 
@@ -467,7 +467,7 @@ public class Program implements Serializable {
             ", createdDate='" + getCreatedDate() + "'" +
             ", updatedBy='" + getUpdatedBy() + "'" +
             ", updatedDate='" + getUpdatedDate() + "'" +
-            ", branchId='" + getBranchId() + "'" +
+            ", branch='" + getBranch() + "'" +
             ", biayaAdmin='" + getBiayaAdmin() + "'" +
             ", rateAsuransi='" + getRateAsuransi() + "'" +
             ", rateBunga='" + getRateBunga() + "'" +
