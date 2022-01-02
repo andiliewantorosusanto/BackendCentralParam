@@ -70,6 +70,36 @@ public class MinimalDPRestController {
         }
     }
 
+    @GetMapping("/getallskema")
+    public Map<String, Object> getAllSkemaMinimalDP(Principal principal, Pageable pageable,
+            HttpServletResponse response) {
+        Map<String, Object> crunchifyMap = new HashMap<String, Object>();
+        String id = principal.getName();
+
+        String role = userRepository.cekRoles(id);
+        logger.info("NIP : " + id);
+        logger.info("ROLE : " + role);
+        if (role.contains("USER")) {
+            try {
+                logger.info("Berhasil GET ALL Skema MinimalDP");
+                crunchifyMap.put("dataSkema", minimalDPRepository.getListDataSkemaMinimalDP());
+                crunchifyMap.put("code", "1");
+            } catch (Exception e) {
+                logger.error("ERROR");
+                response.setStatus(400);
+                crunchifyMap.put("code", "0");
+                crunchifyMap.put("message", "Gagal membuka MinimalDP!");
+            }
+            return crunchifyMap;
+        } else {
+            logger.warn("TIDAK MEMILIKI HAK AKSES");
+            response.setStatus(400);
+            crunchifyMap.put("code", "00");
+            crunchifyMap.put("message", "OOPS. SOMETHING WENT WRONG !");
+            return crunchifyMap;
+        }
+    }
+
     @GetMapping("/{id}")
     public Map<String, Object> getMinimalDP(Principal principal,@PathVariable Integer id,
             HttpServletResponse response) {
@@ -80,6 +110,7 @@ public class MinimalDPRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil MinimalDP");
+                System.out.println(minimalDPRepository.findById(id));
                 crunchifyMap.put("minimalDP", minimalDPRepository.findById(id));
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.beCMS.BackendCentralParam.model.PerluasanAsuransi;
 import com.beCMS.BackendCentralParam.view.vwDataPerluasanAsuransi;
+import com.beCMS.BackendCentralParam.view.vwSkemaList;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -30,10 +31,7 @@ public interface PerluasanAsuransiRepository extends JpaRepository<PerluasanAsur
         )
     List<vwDataPerluasanAsuransi> getListDataPerluasanAsuransi();
 
-    // @Query("SELECT new com.beCMS.BackendCentralParam.view.vwDataRatePerluasanAsuransi(  a.wilayah, g.namaWilayah,a.startOTR, a.endOTR, a.startyear, a.endyear, a.tipeAsuransi,f.namaAsuransi, a.startBerlaku, a.endBerlaku, a.loan_type, a.produk, a.jenis_kendaraan,b.jenis_kendaraan_id, a.jenis_pembiayaan, d.jenis_pembiayaan_id,a.remarks ,a.statusApproved,a.namaSkema,a.jenis_perluasan,h.jenis_perluasan_id) from modelPerluasanAsuransi a left join modelJenisKendaraan b on a.jenis_kendaraan = b.id left join modelJenisPembiayaan d on a.jenis_pembiayaan = d.id left join modelLoanType e on a.loan_type = e.id_komp left join modelTipeAsuransi f on a.tipeAsuransi = f.id left join modelWilayah g on a.wilayah = g.id left join modelJenisPerluasan h on a.jenis_perluasan = h.id where a.statusApproved = 0 OR a.statusApproved IS NULL")
-    // List<vwDataRatePerluasanAsuransi>getListBucketApprovalRatePerluasanAsuransi(Pageable pageable);
-
-    // @Query("SELECT new com.beCMS.BackendCentralParam.view.vwSkemaPerluasanAsuransi(id,namaSkema) from modelPerluasanAsuransi")
-    // List<vwSkemaPerluasanAsuransi> getAllDatavwSkemaPerluasanAsuransi();
+    @Query("SELECT new com.beCMS.BackendCentralParam.view.vwSkemaList(id,namaSkema) from PerluasanAsuransi")
+    List<vwSkemaList> getListDataSkemaPerluasanAsuransi();
 
 }

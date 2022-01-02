@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.beCMS.BackendCentralParam.model.BiayaAdmin;
 import com.beCMS.BackendCentralParam.view.vwDataBiayaAdmin;
+import com.beCMS.BackendCentralParam.view.vwSkemaList;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -30,4 +31,6 @@ public interface BiayaAdminRepository extends JpaRepository<BiayaAdmin, Integer>
         )
     List<vwDataBiayaAdmin> getListDataBiayaAdmin();
 
+    @Query("SELECT new com.beCMS.BackendCentralParam.view.vwSkemaList(id,namaSkema) from BiayaAdmin")
+    List<vwSkemaList> getListDataSkemaBiayaAdmin();
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.beCMS.BackendCentralParam.model.RateCP;
 import com.beCMS.BackendCentralParam.view.vwDataRateCP;
+import com.beCMS.BackendCentralParam.view.vwSkemaList;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,5 +24,6 @@ public interface RateCPRepository extends JpaRepository<RateCP, Integer> {
         )
     List<vwDataRateCP> getListDataRateCP();
 
-
+    @Query("SELECT new com.beCMS.BackendCentralParam.view.vwSkemaList(id,namaSkema) from RateCP")
+    List<vwSkemaList> getListDataSkemaRateCP();
 }

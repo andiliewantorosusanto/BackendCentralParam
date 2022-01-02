@@ -37,7 +37,7 @@ public class KomponenPHRestController {
     private UserRepository userRepository;
 
     @Autowired
-    private KomponenPHRepository komponenPhRepository;
+    private KomponenPHRepository komponenPHRepository;
 
     @PostMapping("/getalldata")
     public Map<String, Object> getAllDataRateKomponenPH(Principal principal, Pageable pageable,
@@ -51,13 +51,43 @@ public class KomponenPHRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil GET ALL DATA RateKomponenPH");
-                crunchifyMap.put("dataKomponenPH", komponenPhRepository.getListDataKomponenPH());
+                crunchifyMap.put("dataKomponenPH", komponenPHRepository.getListDataKomponenPH());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");
                 response.setStatus(400);
                 crunchifyMap.put("code", "0");
                 crunchifyMap.put("message", "Gagal membuka RateKomponenPH!");
+            }
+            return crunchifyMap;
+        } else {
+            logger.warn("TIDAK MEMILIKI HAK AKSES");
+            response.setStatus(400);
+            crunchifyMap.put("code", "00");
+            crunchifyMap.put("message", "OOPS. SOMETHING WENT WRONG !");
+            return crunchifyMap;
+        }
+    }
+
+    @GetMapping("/getallskema")
+    public Map<String, Object> getAllSkemaKomponenPH(Principal principal, Pageable pageable,
+            HttpServletResponse response) {
+        Map<String, Object> crunchifyMap = new HashMap<String, Object>();
+        String id = principal.getName();
+
+        String role = userRepository.cekRoles(id);
+        logger.info("NIP : " + id);
+        logger.info("ROLE : " + role);
+        if (role.contains("USER")) {
+            try {
+                logger.info("Berhasil GET ALL Skema KomponenPH");
+                crunchifyMap.put("dataSkema", komponenPHRepository.getListDataSkemaKomponenPH());
+                crunchifyMap.put("code", "1");
+            } catch (Exception e) {
+                logger.error("ERROR");
+                response.setStatus(400);
+                crunchifyMap.put("code", "0");
+                crunchifyMap.put("message", "Gagal membuka KomponenPH!");
             }
             return crunchifyMap;
         } else {
@@ -79,7 +109,7 @@ public class KomponenPHRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil RateKomponenPH");
-                crunchifyMap.put("komponenPh", komponenPhRepository.findById(id));
+                crunchifyMap.put("komponenPH", komponenPHRepository.findById(id));
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");
@@ -103,7 +133,7 @@ public class KomponenPHRestController {
         User user = userRepository.findBynip(principal.getName());
         System.out.println("hey : " +KomponenPH.toString());
         KomponenPH.trace(user.getId());
-        komponenPhRepository.save(KomponenPH);
+        komponenPHRepository.save(KomponenPH);
 
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
@@ -117,7 +147,7 @@ public class KomponenPHRestController {
         User user = userRepository.findBynip(principal.getName());
         System.out.println("hey : " +KomponenPH.toString());
         KomponenPH.submit(user.getId());
-        komponenPhRepository.save(KomponenPH);
+        komponenPHRepository.save(KomponenPH);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
@@ -129,10 +159,10 @@ public class KomponenPHRestController {
     public HashMap<String, String> approveDataKomponenPH(@RequestBody KomponenPH modelKomponenPH,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        Optional<KomponenPH> optionalKomponenPH = komponenPhRepository.findById(modelKomponenPH.getId());
+        Optional<KomponenPH> optionalKomponenPH = komponenPHRepository.findById(modelKomponenPH.getId());
         KomponenPH approvalModel = optionalKomponenPH.get();
         approvalModel.approve(user.getId());
-        komponenPhRepository.save(approvalModel);
+        komponenPHRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
@@ -144,10 +174,10 @@ public class KomponenPHRestController {
     public HashMap<String, String> declineDataKomponenPH(@RequestBody KomponenPH modelKomponenPH,Principal principal) {
         
         User user = userRepository.findBynip(principal.getName());
-        Optional<KomponenPH> optionalKomponenPH = komponenPhRepository.findById(modelKomponenPH.getId());
+        Optional<KomponenPH> optionalKomponenPH = komponenPHRepository.findById(modelKomponenPH.getId());
         KomponenPH approvalModel = optionalKomponenPH.get();
         approvalModel.decline(user.getId());
-        komponenPhRepository.save(approvalModel);
+        komponenPHRepository.save(approvalModel);
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
         crunchifyMap.put("code", "1");
@@ -162,10 +192,10 @@ public class KomponenPHRestController {
         List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
         for(String id : idList) {
             System.out.println("Mengakses ID : "+id);
-            Optional<KomponenPH> optionalRateKomponenPH = komponenPhRepository.findById(Integer.parseInt(id));
+            Optional<KomponenPH> optionalRateKomponenPH = komponenPHRepository.findById(Integer.parseInt(id));
             KomponenPH KomponenPH = optionalRateKomponenPH.get();
             KomponenPH.approve(user.getId());
-            komponenPhRepository.save(KomponenPH);
+            komponenPHRepository.save(KomponenPH);
         }
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
@@ -180,10 +210,10 @@ public class KomponenPHRestController {
         User user = userRepository.findBynip(principal.getName());
         List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
         for(String id : idList) {
-            Optional<KomponenPH> optionalRateKomponenPH = komponenPhRepository.findById(Integer.parseInt(id));
+            Optional<KomponenPH> optionalRateKomponenPH = komponenPHRepository.findById(Integer.parseInt(id));
             KomponenPH KomponenPH = optionalRateKomponenPH.get();
             KomponenPH.decline(user.getId());
-            komponenPhRepository.save(KomponenPH);
+            komponenPHRepository.save(KomponenPH);
         }
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
@@ -198,9 +228,9 @@ public class KomponenPHRestController {
         List<String> idList = Arrays.asList(((String)data.get("ids")).split(","));
 
         for(String id : idList) {
-            Optional<KomponenPH> optionalRateKomponenPH = komponenPhRepository.findById(Integer.parseInt(id));
+            Optional<KomponenPH> optionalRateKomponenPH = komponenPHRepository.findById(Integer.parseInt(id));
             KomponenPH KomponenPH = optionalRateKomponenPH.get();
-            komponenPhRepository.delete(KomponenPH);
+            komponenPHRepository.delete(KomponenPH);
         }
         
         HashMap<String, String> crunchifyMap = new HashMap<>();
@@ -216,10 +246,10 @@ public class KomponenPHRestController {
         User user = userRepository.findBynip(principal.getName());
 
         for(String id : idList) {
-            Optional<KomponenPH> optionalRateKomponenPH = komponenPhRepository.findById(Integer.parseInt(id));
+            Optional<KomponenPH> optionalRateKomponenPH = komponenPHRepository.findById(Integer.parseInt(id));
             KomponenPH KomponenPH = optionalRateKomponenPH.get();
             KomponenPH.submit(user.getId());
-            komponenPhRepository.save(KomponenPH);
+            komponenPHRepository.save(KomponenPH);
         }
         
         HashMap<String, String> crunchifyMap = new HashMap<>();

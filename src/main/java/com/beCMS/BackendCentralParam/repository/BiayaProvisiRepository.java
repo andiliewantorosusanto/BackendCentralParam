@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.beCMS.BackendCentralParam.model.BiayaProvisi;
 import com.beCMS.BackendCentralParam.view.vwDataBiayaProvisi;
+import com.beCMS.BackendCentralParam.view.vwSkemaList;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -27,4 +28,7 @@ public interface BiayaProvisiRepository extends JpaRepository<BiayaProvisi, Inte
         + "left join JenisPembiayaan jp on a.jenisPembiayaan = jp.id "
         )
     List<vwDataBiayaProvisi> getListDataBiayaProvisi();
+
+    @Query("SELECT new com.beCMS.BackendCentralParam.view.vwSkemaList(id,namaSkema) from BiayaProvisi")
+    List<vwSkemaList> getListDataSkemaBiayaProvisi();
 }

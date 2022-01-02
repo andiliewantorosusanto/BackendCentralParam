@@ -3,6 +3,7 @@ package com.beCMS.BackendCentralParam.repository;
 import java.util.List;
 
 import com.beCMS.BackendCentralParam.view.vwDataRateBunga;
+import com.beCMS.BackendCentralParam.view.vwSkemaList;
 import com.beCMS.BackendCentralParam.model.RateBunga;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -34,5 +35,6 @@ public interface RateBungaRepository extends JpaRepository<RateBunga, Integer> {
         )
     List<vwDataRateBunga> getListDataRateBunga();
 
-
+    @Query("SELECT new com.beCMS.BackendCentralParam.view.vwSkemaList(id,namaSkema) from RateBunga")
+    List<vwSkemaList> getListDataSkemaRateBunga();
 }

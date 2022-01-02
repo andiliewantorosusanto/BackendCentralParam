@@ -3,6 +3,7 @@ package com.beCMS.BackendCentralParam.repository;
 import java.util.List;
 import com.beCMS.BackendCentralParam.model.RateAsuransi;
 import com.beCMS.BackendCentralParam.view.vwDataRateAsuransi;
+import com.beCMS.BackendCentralParam.view.vwSkemaList;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -29,4 +30,6 @@ public interface RateAsuransiRepository extends JpaRepository<RateAsuransi, Inte
         )
     List<vwDataRateAsuransi> getListDataRateAsuransi();
 
+    @Query("SELECT new com.beCMS.BackendCentralParam.view.vwSkemaList(id,namaSkema) from RateAsuransi")
+    List<vwSkemaList> getListDataSkemaRateAsuransi();
 }
