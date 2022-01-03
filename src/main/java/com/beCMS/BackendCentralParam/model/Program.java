@@ -82,7 +82,7 @@ public class Program implements Serializable {
     private Integer komponenPh;
 
     @Column(name = "id_rateperluasan")
-    private Integer ratePerluasan;
+    private Integer perluasanAsuransi;
 
     @Column(name = "id_biayaprovisi")
     private Integer biayaProvisi;
@@ -97,7 +97,7 @@ public class Program implements Serializable {
     public Program() {
     }
 
-    public Program(Integer id, String program, Integer produk, String deskripsi, Date startBerlaku, Date endBerlaku, Integer statusApproval, Integer isApproved, Integer isRejected, String remarks, Long createdBy, Date createdDate, Long updatedBy, Date updatedDate, String branch, Integer biayaAdmin, Integer rateAsuransi, Integer rateBunga, Integer rateCp, Integer minimalDp, Integer komponenPh, Integer ratePerluasan, Integer biayaProvisi, Integer biayaFidusia, Integer usiaKendaraanLunas) {
+    public Program(Integer id, String program, Integer produk, String deskripsi, Date startBerlaku, Date endBerlaku, Integer statusApproval, Integer isApproved, Integer isRejected, String remarks, Long createdBy, Date createdDate, Long updatedBy, Date updatedDate, String branch, Integer biayaAdmin, Integer rateAsuransi, Integer rateBunga, Integer rateCp, Integer minimalDp, Integer komponenPh, Integer perluasanAsuransi, Integer biayaProvisi, Integer biayaFidusia, Integer usiaKendaraanLunas) {
         this.id = id;
         this.program = program;
         this.produk = produk;
@@ -119,7 +119,7 @@ public class Program implements Serializable {
         this.rateCp = rateCp;
         this.minimalDp = minimalDp;
         this.komponenPh = komponenPh;
-        this.ratePerluasan = ratePerluasan;
+        this.perluasanAsuransi = perluasanAsuransi;
         this.biayaProvisi = biayaProvisi;
         this.biayaFidusia = biayaFidusia;
         this.usiaKendaraanLunas = usiaKendaraanLunas;
@@ -293,12 +293,12 @@ public class Program implements Serializable {
         this.komponenPh = komponenPh;
     }
 
-    public Integer getRatePerluasan() {
-        return this.ratePerluasan;
+    public Integer getPerluasanAsuransi() {
+        return this.perluasanAsuransi;
     }
 
-    public void setRatePerluasan(Integer ratePerluasan) {
-        this.ratePerluasan = ratePerluasan;
+    public void setPerluasanAsuransi(Integer perluasanAsuransi) {
+        this.perluasanAsuransi = perluasanAsuransi;
     }
 
     public Integer getBiayaProvisi() {
@@ -430,8 +430,8 @@ public class Program implements Serializable {
         return this;
     }
 
-    public Program ratePerluasan(Integer ratePerluasan) {
-        setRatePerluasan(ratePerluasan);
+    public Program perluasanAsuransi(Integer perluasanAsuransi) {
+        setPerluasanAsuransi(perluasanAsuransi);
         return this;
     }
 
@@ -474,7 +474,7 @@ public class Program implements Serializable {
             ", rateCp='" + getRateCp() + "'" +
             ", minimalDp='" + getMinimalDp() + "'" +
             ", komponenPh='" + getKomponenPh() + "'" +
-            ", ratePerluasan='" + getRatePerluasan() + "'" +
+            ", perluasanAsuransi='" + getPerluasanAsuransi() + "'" +
             ", biayaProvisi='" + getBiayaProvisi() + "'" +
             ", biayaFidusia='" + getBiayaFidusia() + "'" +
             ", usiaKendaraanLunas='" + getUsiaKendaraanLunas() + "'" +

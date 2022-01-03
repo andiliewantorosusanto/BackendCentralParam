@@ -11,8 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.beCMS.BackendCentralParam.model.Program;
 import com.beCMS.BackendCentralParam.model.userlogin.User;
+import com.beCMS.BackendCentralParam.repository.BiayaAdminRepository;
+import com.beCMS.BackendCentralParam.repository.BiayaFidusiaRepository;
+import com.beCMS.BackendCentralParam.repository.BiayaProvisiRepository;
+import com.beCMS.BackendCentralParam.repository.KomponenPHRepository;
+import com.beCMS.BackendCentralParam.repository.MinimalDPRepository;
+import com.beCMS.BackendCentralParam.repository.PerluasanAsuransiRepository;
 import com.beCMS.BackendCentralParam.repository.ProgramRepository;
+import com.beCMS.BackendCentralParam.repository.RateAsuransiRepository;
+import com.beCMS.BackendCentralParam.repository.RateBungaRepository;
+import com.beCMS.BackendCentralParam.repository.RateCPRepository;
 import com.beCMS.BackendCentralParam.repository.UserRepository;
+import com.beCMS.BackendCentralParam.repository.UsiaKendaraanLunasRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +49,36 @@ public class ProgramRestController {
     @Autowired
     private ProgramRepository programRepository;
 
+    @Autowired
+    private RateAsuransiRepository rateAsuransiRepository;
+
+    @Autowired
+    private PerluasanAsuransiRepository perluasanAsuransiRepository;
+
+    @Autowired
+    private RateCPRepository rateCPRepository;
+
+    @Autowired
+    private RateBungaRepository rateBungaRepository;
+
+    @Autowired
+    private BiayaAdminRepository biayaAdminRepository;
+
+    @Autowired
+    private BiayaProvisiRepository biayaProvisiRepository;
+
+    @Autowired
+    private MinimalDPRepository minimalDPRepository;
+
+    @Autowired
+    private BiayaFidusiaRepository biayaFidusiaRepository;
+
+    @Autowired
+    private KomponenPHRepository komponenPHRepository;
+
+    @Autowired
+    private UsiaKendaraanLunasRepository usiaKendaraanLunasRepository;
+
     @PostMapping("/getalldata")
     public Map<String, Object> getAllDataProgram(Principal principal, Pageable pageable,
             HttpServletResponse response) {
@@ -51,13 +91,52 @@ public class ProgramRestController {
         if (role.contains("USER")) {
             try {
                 logger.info("Berhasil GET ALL DATA Program");
-                crunchifyMap.put("dataProgram", programRepository.findAll());
+                crunchifyMap.put("dataProgram", programRepository.getListDataProgram());
                 crunchifyMap.put("code", "1");
             } catch (Exception e) {
                 logger.error("ERROR");
                 response.setStatus(400);
                 crunchifyMap.put("code", "0");
                 crunchifyMap.put("message", "Gagal membuka Program!");
+            }
+            return crunchifyMap;
+        } else {
+            logger.warn("TIDAK MEMILIKI HAK AKSES");
+            response.setStatus(400);
+            crunchifyMap.put("code", "00");
+            crunchifyMap.put("message", "OOPS. SOMETHING WENT WRONG !");
+            return crunchifyMap;
+        }
+    }
+
+    @GetMapping("/getallskema")
+    public Map<String, Object> getAllSkema(Principal principal, Pageable pageable,
+            HttpServletResponse response) {
+        Map<String, Object> crunchifyMap = new HashMap<String, Object>();
+        String id = principal.getName();
+
+        String role = userRepository.cekRoles(id);
+        logger.info("NIP : " + id);
+        logger.info("ROLE : " + role);
+        if (role.contains("USER")) {
+            try {
+                logger.info("Berhasil GET ALL DATA Skema Program");
+                crunchifyMap.put("skemaRateAsuransi", rateAsuransiRepository.getListDataSkemaRateAsuransi());
+                crunchifyMap.put("skemaPerluasanAsuransi", perluasanAsuransiRepository.getListDataSkemaPerluasanAsuransi());
+                crunchifyMap.put("skemaRateCP", rateCPRepository.getListDataSkemaRateCP());
+                crunchifyMap.put("skemaRateBunga", rateBungaRepository.getListDataSkemaRateBunga());
+                crunchifyMap.put("skemaBiayaAdmin", biayaAdminRepository.getListDataSkemaBiayaAdmin());
+                crunchifyMap.put("skemaBiayaProvisi", biayaProvisiRepository.getListDataSkemaBiayaProvisi());
+                crunchifyMap.put("skemaMinimalDP", minimalDPRepository.getListDataSkemaMinimalDP());
+                crunchifyMap.put("skemaBiayaFidusia", biayaFidusiaRepository.getListDataSkemaBiayaFidusia());
+                crunchifyMap.put("skemaKomponenPH", komponenPHRepository.getListDataSkemaKomponenPH());
+                crunchifyMap.put("skemaUsiaKendaraanLunas", usiaKendaraanLunasRepository.getListDataSkemaUsiaKendaraanLunas());
+                crunchifyMap.put("code", "1");
+            } catch (Exception e) {
+                logger.error("ERROR");
+                response.setStatus(400);
+                crunchifyMap.put("code", "0");
+                crunchifyMap.put("message", "Gagal membuka Skema Program!");
             }
             return crunchifyMap;
         } else {

@@ -7,6 +7,7 @@ public class vwDataProgram {
     private Integer id;
 
     private String program;
+    private String deskripsi;
 
     private Integer produk;
     private String produkName;
@@ -56,9 +57,10 @@ public class vwDataProgram {
     public vwDataProgram() {
     }
 
-    public vwDataProgram(Integer id, String program, Integer produk, String produkName, String branch, String branchName, Integer rateAsuransi, String rateAsuransiName, Integer ratePerluasan, String ratePerluasanName, Integer rateCp, String rateCpName, Integer rateBunga, String rateBungaName, Integer biayaAdmin, String BiayaAdminName, Integer biayaProvisi, String biayaProvisiName, Integer minmalDp, String minimalDpName, Integer biayaFidusia, String biayaFidusiaName, Integer komponenPh, String komponenPhName, Integer usiaKendaraanLunas, String usiaKendaraanLunasName, Date startBerlaku, Date endBerlaku, Integer statusApproval, String remarks, Integer isRejected, Integer isApproved) {
+    public vwDataProgram(Integer id, String program, String deskripsi, Integer produk, String produkName, String branch, String branchName, Integer rateAsuransi, String rateAsuransiName, Integer ratePerluasan, String ratePerluasanName, Integer rateCp, String rateCpName, Integer rateBunga, String rateBungaName, Integer biayaAdmin, String BiayaAdminName, Integer biayaProvisi, String biayaProvisiName, Integer minmalDp, String minimalDpName, Integer biayaFidusia, String biayaFidusiaName, Integer komponenPh, String komponenPhName, Integer usiaKendaraanLunas, String usiaKendaraanLunasName, Date startBerlaku, Date endBerlaku, Integer statusApproval, String remarks, Integer isRejected, Integer isApproved) {
         this.id = id;
         this.program = program;
+        this.deskripsi = deskripsi;
         this.produk = produk;
         this.produkName = produkName;
         this.branch = branch;
@@ -105,6 +107,14 @@ public class vwDataProgram {
 
     public void setProgram(String program) {
         this.program = program;
+    }
+
+    public String getDeskripsi() {
+        return this.deskripsi;
+    }
+
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
     }
 
     public Integer getProduk() {
@@ -357,6 +367,11 @@ public class vwDataProgram {
         return this;
     }
 
+    public vwDataProgram deskripsi(String deskripsi) {
+        setDeskripsi(deskripsi);
+        return this;
+    }
+
     public vwDataProgram produk(Integer produk) {
         setProduk(produk);
         return this;
@@ -512,6 +527,7 @@ public class vwDataProgram {
         return "{" +
             " id='" + getId() + "'" +
             ", program='" + getProgram() + "'" +
+            ", deskripsi='" + getDeskripsi() + "'" +
             ", produk='" + getProduk() + "'" +
             ", produkName='" + getProdukName() + "'" +
             ", branch='" + getBranch() + "'" +
@@ -544,7 +560,6 @@ public class vwDataProgram {
             ", isApproved='" + getIsApproved() + "'" +
             "}";
     }
-
 
 
 }

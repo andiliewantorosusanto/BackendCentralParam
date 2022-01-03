@@ -17,10 +17,10 @@ import lombok.Data;
 public class Branch implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "BranchId")
+    @Column(name = "branchid")
     private String id;
 
-    @Column(name = "BranchName")
+    @Column(name = "branchname")
     private String name;
     
 

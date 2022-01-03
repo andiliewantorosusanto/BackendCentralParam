@@ -13,11 +13,11 @@ public interface ProgramRepository extends JpaRepository<Program, Integer> {
 
     @Query(
         "SELECT new com.beCMS.BackendCentralParam.view.vwDataProgram"
-        + "(a.id,a.program"
+        + "(a.id,a.program,a.deskripsi"
         + ",a.produk,p.produk"
         + ",a.branch,b.name"
         + ",a.rateAsuransi,rt.namaSkema"
-        + ",a.ratePerluasan,pa.namaSkema"
+        + ",a.perluasanAsuransi,pa.namaSkema"
         + ",a.rateCp,rc.namaSkema"
         + ",a.rateBunga,rb.namaSkema"
         + ",a.biayaAdmin,ba.namaSkema"
@@ -31,7 +31,7 @@ public interface ProgramRepository extends JpaRepository<Program, Integer> {
         + "LEFT JOIN Branch b on a.branch = b.id " 
         + "LEFT JOIN Produk p on a.produk = p.id " 
         + "LEFT JOIN RateAsuransi rt on a.rateAsuransi = rt.id " 
-        + "LEFT JOIN PerluasanAsuransi pa on a.ratePerluasan = pa.id " 
+        + "LEFT JOIN PerluasanAsuransi pa on a.perluasanAsuransi = pa.id " 
         + "LEFT JOIN RateCP rc on a.rateCp = rc.id " 
         + "LEFT JOIN RateBunga rb on a.rateBunga = rb.id " 
         + "LEFT JOIN BiayaAdmin ba on a.biayaAdmin = ba.id " 
