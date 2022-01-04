@@ -135,7 +135,7 @@ public class KomponenPHRestController {
         KomponenPH.trace(user.getId());
         komponenPHRepository.save(KomponenPH);
 
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input RateKomponenPH Berhasil !");
         return crunchifyMap;
@@ -149,7 +149,7 @@ public class KomponenPHRestController {
         KomponenPH.submit(user.getId());
         komponenPHRepository.save(KomponenPH);
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit RateKomponenPH Berhasil !");
         return crunchifyMap;
@@ -164,7 +164,7 @@ public class KomponenPHRestController {
         approvalModel.approve(user.getId());
         komponenPHRepository.save(approvalModel);
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
@@ -179,7 +179,7 @@ public class KomponenPHRestController {
         approvalModel.decline(user.getId());
         komponenPHRepository.save(approvalModel);
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
@@ -198,7 +198,7 @@ public class KomponenPHRestController {
             komponenPHRepository.save(KomponenPH);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit RateKomponenPH Berhasil !");
         return crunchifyMap;
@@ -216,7 +216,7 @@ public class KomponenPHRestController {
             komponenPHRepository.save(KomponenPH);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit RateKomponenPH Berhasil !");
         return crunchifyMap;
@@ -233,7 +233,7 @@ public class KomponenPHRestController {
             komponenPHRepository.delete(KomponenPH);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Delete RateKomponenPH Berhasil !");
         return crunchifyMap;
@@ -252,7 +252,7 @@ public class KomponenPHRestController {
             komponenPHRepository.save(KomponenPH);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Edit Dan Submit RateKomponenPH Berhasil !");
         return crunchifyMap;

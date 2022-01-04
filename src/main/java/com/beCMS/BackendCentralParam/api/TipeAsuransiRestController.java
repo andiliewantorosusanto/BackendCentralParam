@@ -105,7 +105,7 @@ public class TipeAsuransiRestController {
         modelTipeAsuransi.trace(user.getId());
         tipeAsuransiRepository.save(modelTipeAsuransi);
 
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input TipeAsuransi Berhasil !");
         return crunchifyMap;
@@ -119,7 +119,7 @@ public class TipeAsuransiRestController {
         modelTipeAsuransi.submit(user.getId());
         tipeAsuransiRepository.save(modelTipeAsuransi);
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit TipeAsuransi Berhasil !");
         return crunchifyMap;
@@ -134,7 +134,7 @@ public class TipeAsuransiRestController {
         approvalModel.approve(user.getId());
         tipeAsuransiRepository.save(approvalModel);
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
@@ -149,7 +149,7 @@ public class TipeAsuransiRestController {
         approvalModel.decline(user.getId());
         tipeAsuransiRepository.save(approvalModel);
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
@@ -168,7 +168,7 @@ public class TipeAsuransiRestController {
             tipeAsuransiRepository.save(modelTipeAsuransi);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit TipeAsuransi Berhasil !");
         return crunchifyMap;
@@ -186,7 +186,7 @@ public class TipeAsuransiRestController {
             tipeAsuransiRepository.save(modelTipeAsuransi);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit TipeAsuransi Berhasil !");
         return crunchifyMap;
@@ -203,7 +203,7 @@ public class TipeAsuransiRestController {
             tipeAsuransiRepository.delete(modelTipeAsuransi);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Delete TipeAsuransi Berhasil !");
         return crunchifyMap;
@@ -222,7 +222,7 @@ public class TipeAsuransiRestController {
             tipeAsuransiRepository.save(modelTipeAsuransi);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Edit Dan Submit TipeAsuransi Berhasil !");
         return crunchifyMap;

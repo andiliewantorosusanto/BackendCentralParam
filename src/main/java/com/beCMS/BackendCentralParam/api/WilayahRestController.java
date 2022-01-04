@@ -105,7 +105,7 @@ public class WilayahRestController {
         modelWilayah.trace(user.getId());
         wilayahRepository.save(modelWilayah);
 
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Wilayah Berhasil !");
         return crunchifyMap;
@@ -119,7 +119,7 @@ public class WilayahRestController {
         modelWilayah.submit(user.getId());
         wilayahRepository.save(modelWilayah);
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit Wilayah Berhasil !");
         return crunchifyMap;
@@ -134,7 +134,7 @@ public class WilayahRestController {
         approvalModel.approve(user.getId());
         wilayahRepository.save(approvalModel);
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
@@ -149,7 +149,7 @@ public class WilayahRestController {
         approvalModel.decline(user.getId());
         wilayahRepository.save(approvalModel);
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
@@ -168,7 +168,7 @@ public class WilayahRestController {
             wilayahRepository.save(modelWilayah);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit Wilayah Berhasil !");
         return crunchifyMap;
@@ -186,7 +186,7 @@ public class WilayahRestController {
             wilayahRepository.save(modelWilayah);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit Wilayah Berhasil !");
         return crunchifyMap;
@@ -203,7 +203,7 @@ public class WilayahRestController {
             wilayahRepository.delete(modelWilayah);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Delete Wilayah Berhasil !");
         return crunchifyMap;
@@ -222,7 +222,7 @@ public class WilayahRestController {
             wilayahRepository.save(modelWilayah);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Edit Dan Submit Wilayah Berhasil !");
         return crunchifyMap;

@@ -137,7 +137,7 @@ public class MinimalDPRestController {
         MinimalDP.trace(user.getId());
         minimalDPRepository.save(MinimalDP);
 
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input MinimalDP Berhasil !");
         return crunchifyMap;
@@ -151,7 +151,7 @@ public class MinimalDPRestController {
         MinimalDP.submit(user.getId());
         minimalDPRepository.save(MinimalDP);
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit MinimalDP Berhasil !");
         return crunchifyMap;
@@ -166,7 +166,7 @@ public class MinimalDPRestController {
         approvalModel.approve(user.getId());
         minimalDPRepository.save(approvalModel);
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
@@ -181,7 +181,7 @@ public class MinimalDPRestController {
         approvalModel.decline(user.getId());
         minimalDPRepository.save(approvalModel);
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
@@ -200,7 +200,7 @@ public class MinimalDPRestController {
             minimalDPRepository.save(MinimalDP);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit MinimalDP Berhasil !");
         return crunchifyMap;
@@ -218,7 +218,7 @@ public class MinimalDPRestController {
             minimalDPRepository.save(MinimalDP);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit MinimalDP Berhasil !");
         return crunchifyMap;
@@ -235,7 +235,7 @@ public class MinimalDPRestController {
             minimalDPRepository.delete(MinimalDP);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Delete MinimalDP Berhasil !");
         return crunchifyMap;
@@ -254,7 +254,7 @@ public class MinimalDPRestController {
             minimalDPRepository.save(MinimalDP);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Edit Dan Submit MinimalDP Berhasil !");
         return crunchifyMap;

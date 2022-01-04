@@ -105,7 +105,7 @@ public class TujuanPenggunaanRestController {
         modelTujuanPenggunaan.trace(user.getId());
         tujuanPenggunaanRepository.save(modelTujuanPenggunaan);
 
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input TujuanPenggunaan Berhasil !");
         return crunchifyMap;
@@ -119,7 +119,7 @@ public class TujuanPenggunaanRestController {
         modelTujuanPenggunaan.submit(user.getId());
         tujuanPenggunaanRepository.save(modelTujuanPenggunaan);
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit TujuanPenggunaan Berhasil !");
         return crunchifyMap;
@@ -134,7 +134,7 @@ public class TujuanPenggunaanRestController {
         approvalModel.approve(user.getId());
         tujuanPenggunaanRepository.save(approvalModel);
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
@@ -149,7 +149,7 @@ public class TujuanPenggunaanRestController {
         approvalModel.decline(user.getId());
         tujuanPenggunaanRepository.save(approvalModel);
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
@@ -168,7 +168,7 @@ public class TujuanPenggunaanRestController {
             tujuanPenggunaanRepository.save(modelTujuanPenggunaan);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit TujuanPenggunaan Berhasil !");
         return crunchifyMap;
@@ -186,7 +186,7 @@ public class TujuanPenggunaanRestController {
             tujuanPenggunaanRepository.save(modelTujuanPenggunaan);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit TujuanPenggunaan Berhasil !");
         return crunchifyMap;
@@ -203,7 +203,7 @@ public class TujuanPenggunaanRestController {
             tujuanPenggunaanRepository.delete(modelTujuanPenggunaan);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Delete TujuanPenggunaan Berhasil !");
         return crunchifyMap;
@@ -222,7 +222,7 @@ public class TujuanPenggunaanRestController {
             tujuanPenggunaanRepository.save(modelTujuanPenggunaan);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Edit Dan Submit TujuanPenggunaan Berhasil !");
         return crunchifyMap;

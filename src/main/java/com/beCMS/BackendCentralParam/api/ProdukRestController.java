@@ -106,7 +106,7 @@ public class ProdukRestController {
         produk.trace(user.getId());
         produkRepository.save(produk);
 
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Produk Berhasil !");
         return crunchifyMap;
@@ -120,7 +120,7 @@ public class ProdukRestController {
         produk.submit(user.getId());
         produkRepository.save(produk);
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit Produk Berhasil !");
         return crunchifyMap;
@@ -135,7 +135,7 @@ public class ProdukRestController {
         approvalModel.approve(user.getId());
         produkRepository.save(approvalModel);
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
@@ -150,7 +150,7 @@ public class ProdukRestController {
         approvalModel.decline(user.getId());
         produkRepository.save(approvalModel);
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit Tipe Konsumen Berhasil !");
         return crunchifyMap;
@@ -169,7 +169,7 @@ public class ProdukRestController {
             produkRepository.save(produk);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit Produk Berhasil !");
         return crunchifyMap;
@@ -187,7 +187,7 @@ public class ProdukRestController {
             produkRepository.save(produk);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Input Dan Submit Produk Berhasil !");
         return crunchifyMap;
@@ -204,7 +204,7 @@ public class ProdukRestController {
             produkRepository.delete(produk);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Delete Produk Berhasil !");
         return crunchifyMap;
@@ -223,7 +223,7 @@ public class ProdukRestController {
             produkRepository.save(produk);
         }
         
-        HashMap<String, String> crunchifyMap = new HashMap<>();
+        HashMap<String, String> crunchifyMap = new HashMap<String,String>();
         crunchifyMap.put("code", "1");
         crunchifyMap.put("message", "Edit Dan Submit Produk Berhasil !");
         return crunchifyMap;
